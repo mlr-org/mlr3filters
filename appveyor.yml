@@ -14,7 +14,7 @@ install:
   - cmd: Rscript -e "if (!requireNamespace('remotes')) install.packages('remotes'); if (!requireNamespace('curl')) install.packages('curl'); remotes::install_github('ropenscilabs/tic'); tic::prepare_all_stages(); tic::before_install()""
 
 cache:
-- C:\RLibrary
+- c:\RLibrary
 
 before_build: Rscript -e "tic::before_install()"
 build_script: Rscript -e "tic::install()"
