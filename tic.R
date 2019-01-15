@@ -4,7 +4,7 @@ if (inherits(ci(), "TravisCI")) {
     add_step(step_rcmdcheck(args = "--as-cran", error_on = "error"))
 }
 
-if (inherits(ci(), "Appveyor")) {
+if (inherits(ci(), "AppVeyorCI")) {
   get_stage("script") %>%
     add_step(step_rcmdcheck(args = "--as-cran --no-manual", error_on = "error"))
 }
