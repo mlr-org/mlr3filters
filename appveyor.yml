@@ -9,39 +9,24 @@ init:
 
 install:
   - ps: Bootstrap
-  - cmd: R -q -e "writeLines('options(repos = \'https://cloud.r-project.org\')', '~/.Rprofile')"
-  - cmd: R -q -e "getOption('repos')"
-  - cmd: R -q -e "if (!requireNamespace('remotes')) install.packages('remotes')"
-  - cmd: R -q -e "if (!requireNamespace('curl')) install.packages('curl')"
-  - cmd: R -q -e "remotes::install_github('ropenscilabs/tic'); tic::prepare_all_stages()"
-  - set "PATH=%PATH%;c:\miktex\miktex\bin"
-  - if not exist c:\miktex\miktex\bin\pdflatex.exe .\inst\miktex-install.bat
+  - cmd: Rscript -e "writeLines('options(repos = \'https://cloud.r-project.org\')', '~/.Rprofile')"
+  - cmd: Rscript -e "getOption('repos')"
+  - cmd: Rscript -e "install.packages('remotes'); remotes::install_github('ropenscilabs/tic'); tic::prepare_all_stages()"
 
 cache:
-  - C:\RLibrary
-  - C:\Program Files\Pandoc\
-  - c:\miktex -> .\inst\miktex-install.bat
+- C:\RLibrary
 
-before_build: R -q -e "tic::before_install()"
-build_script: R -q -e "tic::install()"
-before_test:
- - ps: >-
-      if (-Not (Test-Path "C:\Program Files\Pandoc\")) {
-        cinst pandoc
-      }
- - ps: $env:Path += ";C:\Program Files\Pandoc\"
- # autoinstall latex packages (0=no, 1=autoinstall, 2=ask)
- # this adds this to the registry!
- - initexmf --set-config-value "[MPM]AutoInstall=1"
- - R -q -e "tic::before_script()"
-after_build: R -q -e "tic::after_install()"
-test_script: R -q -e "tic::script()"
-# on_success: R -q -e "try(tic::after_success(), silent = TRUE)" covr is run on travis
-on_failure: R -q -e "tic::after_failure()"
-before_deploy: R -q -e "tic::before_deploy()"
-deploy_script: R -q -e "tic::deploy()"
-after_deploy: R -q -e "tic::after_deploy()"
-on_finish: R -q -e "tic::after_script()"
+before_build: Rscript -e "tic::before_install()"
+build_script: Rscript -e "tic::install()"
+after_build: Rscript -e "tic::after_install()"
+before_test: Rscript -e "tic::before_script()"
+test_script: Rscript -e "tic::script()"
+on_success: Rscript -e "try(tic::after_success(), silent = TRUE)"
+on_failure: Rscript -e "tic::after_failure()"
+before_deploy: Rscript -e "tic::before_deploy()"
+deploy_script: Rscript -e "tic::deploy()"
+after_deploy: Rscript -e "tic::after_deploy()"
+on_finish: Rscript -e "tic::after_script()"
 
 # Adapt as necessary starting from here
 
@@ -50,8 +35,8 @@ on_finish: R -q -e "tic::after_script()"
 #  - appveyor PushArtifact failure.zip
 
 environment:
-  global:
-    USE_RTOOLS: true
+  GITHUB_PAT:
+    secure: VXO22OHLkl4YhVIomSMwCZyOTx03Xf2WICaVng9xH7gISlAg8a+qrt1DtFtk8sK5
 
 artifacts:
   - path: '*.Rcheck\**\*.log'
