@@ -14,13 +14,13 @@ install:
   - cmd: R -q -e "if (!requireNamespace('remotes')) install.packages('remotes')"
   - cmd: R -q -e "if (!requireNamespace('curl')) install.packages('curl')"
   - cmd: R -q -e "remotes::install_github('ropenscilabs/tic'); tic::prepare_all_stages()"
-  - ps: choco install -y miktex --version 2.9.6842
-  - cmd:  refreshenv
+  - set "PATH=%PATH%;c:\miktex\miktex\bin"
+  - if not exist c:\miktex\miktex\bin\pdflatex.exe .\inst\miktex-install.bat
 
 cache:
   - C:\RLibrary
   - C:\Program Files\Pandoc\
-  - C:\miktex -> appveyor.yml
+  - c:\miktex -> .\inst\miktex-install.bat
 
 before_build: R -q -e "tic::before_install()"
 build_script: R -q -e "tic::install()"
