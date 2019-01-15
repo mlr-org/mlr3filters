@@ -14,7 +14,7 @@ install:
   - cmd: R -q -e "if (!requireNamespace('remotes')) install.packages('remotes')"
   - cmd: R -q -e "if (!requireNamespace('curl')) install.packages('curl')"
   - cmd: R -q -e "remotes::install_github('ropenscilabs/tic'); tic::prepare_all_stages()"
-  - ps: choco install -y miktex --version 2.9.6813
+  - ps: choco install -y miktex --version 2.9.6842
   - cmd:  refreshenv
 
 cache:
