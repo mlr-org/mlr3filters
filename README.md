@@ -14,7 +14,9 @@ status](https://codecov.io/gh/mlr-org/mlr3featsel/branch/master/graph/badge.svg)
 
 ## Installation
 
-The package is currently in development and not yet usable.
+``` r
+remotes::install_github("mlr-org/mlr3featsel")
+```
 
 ## Filters
 
@@ -73,16 +75,51 @@ as.data.table(mlr_filters)
     ## 14:                                     NA           NA
     ## 15:                        integer,numeric classif,regr
 
-#### Methods
+#### Public Methods
 
-  - $calculate(): Calculates Filter values
+  - `.$calculate()`: Calculates Filter values
 
-  - $filter(): filters the task by a given criterion
+  - `.$filter()`: filters the task by a given criterion
 
-  - $scores: Filter score values
+  - `.$scores`: Filter score values
 
-  - $filtered\_task: Filtered task
+  - `.$filtered_task`: Filtered task
 
-### Implemented wrappers
+## Implemented “wrapper methods”
 
-### Implemented embedded methods
+## Algorithm-embedded methods
+
+All learners that support the property “importance” can be used to
+create a filter based on their respective implemented variable
+importance measure.
+
+``` r
+library(mlr3)
+library(mlr3learners)
+mlr_learners$get("classif.ranger")$properties
+```
+
+    ## [1] "importance" "multiclass" "oob_error"  "twoclass"   "weights"
+
+Some learner need to have their variable importance measure activated
+during learner creation. For example, to use the “impurity” measure of
+Random Forest via the *ranger* package:
+
+``` r
+task = mlr_tasks$get("iris")
+lrn = mlr_learners$get("classif.ranger", 
+  param_vals = list(importance = "impurity"))
+
+filter = FilterVariableImportance$new(learner = lrn)
+filter$calculate(task)
+```
+
+    ## INFO  [16:27:49.885] Training learner 'classif.ranger' on task 'iris' ...
+
+    ## Error: No importance stored
+
+``` r
+head(as.data.table(filter), 3)
+```
+
+    ## Error: No filter data available
