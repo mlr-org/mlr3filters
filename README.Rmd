@@ -13,7 +13,9 @@ _mlr3featsel_ adds filters, feature selection methods and embedded feature selec
 
 ## Installation
 
-The package is currently in development and not yet usable.
+```{r eval = FALSE}
+remotes::install_github("mlr-org/mlr3featsel")
+```
 
 ## Filters
 
@@ -21,8 +23,8 @@ The package is currently in development and not yet usable.
 * `stats::cor(method = "pearson")`
 * `stats::kruskal.test()`
 * `stats::var()`
-* `AUC` -> `mlr3measures::measureAUC`
-* `FSelectorRcpp::information.gain(type = "gainratop")`
+* `AUC` -> `Metrics::auc`
+* `FSelectorRcpp::information.gain(type = "gainratio")`
 * `FSelectorRcpp::information.gain(type = "infogain")`
 * `FSelectorRcpp::information.gain(type = "symuncert")`
 * `praznik::CMIM()`
@@ -38,13 +40,13 @@ as.data.table(mlr_filters)
 ```
 
 
-#### Methods
+#### Public Methods
 
-* $calculate(): Calculates Filter values
-* $filter(): filters the task by a given criterion
+* `.$calculate()`: Calculates Filter values
+* `.$filter()`: filters the task by a given criterion
 
-* $scores: Filter score values
-* $filtered_task: Filtered task
+* `.$scores`: Filter score values
+* `.$filtered_task`: Filtered task
 
 ### Implemented wrappers
 

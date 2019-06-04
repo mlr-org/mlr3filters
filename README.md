@@ -22,8 +22,8 @@ The package is currently in development and not yet usable.
   - `stats::cor(method = "pearson")`
   - `stats::kruskal.test()`
   - `stats::var()`
-  - `AUC` -\> `mlr3measures::measureAUC`
-  - `FSelectorRcpp::information.gain(type = "gainratop")`
+  - `AUC` -\> `Metrics::auc`
+  - `FSelectorRcpp::information.gain(type = "gainratio")`
   - `FSelectorRcpp::information.gain(type = "infogain")`
   - `FSelectorRcpp::information.gain(type = "symuncert")`
   - `praznik::CMIM()`
@@ -40,36 +40,38 @@ library(mlr3featsel)
 as.data.table(mlr_filters)
 ```
 
-    ##                               id      packages
-    ##  1:                    FilterAUC         stats
-    ##  2:                   FilterCMIM       praznik
-    ##  3:                   FilterDISR       praznik
-    ##  4:              FilterGainRatio FSelectorRcpp
-    ##  5:        FilterInformationGain FSelectorRcpp
-    ##  6:                    FilterJMI       praznik
-    ##  7:                   FilterJMIM       praznik
-    ##  8:            FilterKruskalTest         stats
-    ##  9:      FilterLinearCorrelation         stats
-    ## 10:                    FilterMIM       praznik
-    ## 11:                  FilterNJMIM       praznik
-    ## 12:        FilterRankCorrelation         stats
-    ## 13: FilterSymmetricalUncertainty FSelectorRcpp
-    ## 14:               FilterVariance         stats
-    ##                      feature_types    task_type
-    ##  1:                        numeric      classif
-    ##  2:         numeric,factor,ordered classif,regr
-    ##  3:         numeric,factor,ordered      classif
-    ##  4:         numeric,factor,ordered classif,regr
-    ##  5:         numeric,factor,ordered classif,regr
-    ##  6:         numeric,factor,ordered      classif
-    ##  7:         numeric,factor,ordered      classif
-    ##  8:                        numeric      classif
-    ##  9:                        numeric         regr
-    ## 10:         numeric,factor,ordered      classif
-    ## 11:         numeric,factor,ordered      classif
-    ## 12:                        numeric         regr
-    ## 13: numeric,integer,factor,ordered classif,regr
-    ## 14:                        numeric classif,regr
+    ##                          id      packages
+    ##  1:                     auc       Metrics
+    ##  2:                    cmim       praznik
+    ##  3:                    disr       praznik
+    ##  4:              gain_ratio FSelectorRcpp
+    ##  5:        information_gain FSelectorRcpp
+    ##  6:                     jmi       praznik
+    ##  7:                    jmim       praznik
+    ##  8:            kruskal_test         stats
+    ##  9:      linear_correlation         stats
+    ## 10:                     mim       praznik
+    ## 11:                   njmim       praznik
+    ## 12:        rank_correlation         stats
+    ## 13: symmetrical_uncertainty FSelectorRcpp
+    ## 14:     variable_importance            NA
+    ## 15:                variance         stats
+    ##                              feature_types    task_type
+    ##  1:                        integer,numeric      classif
+    ##  2:         integer,numeric,factor,ordered classif,regr
+    ##  3:         integer,numeric,factor,ordered      classif
+    ##  4:         integer,numeric,factor,ordered classif,regr
+    ##  5:         integer,numeric,factor,ordered classif,regr
+    ##  6:         integer,numeric,factor,ordered      classif
+    ##  7:         integer,numeric,factor,ordered      classif
+    ##  8:                        integer,numeric      classif
+    ##  9:                        integer,numeric         regr
+    ## 10:         integer,numeric,factor,ordered      classif
+    ## 11:         integer,numeric,factor,ordered      classif
+    ## 12:                        integer,numeric         regr
+    ## 13: integer,numeric,integer,factor,ordered classif,regr
+    ## 14:                                     NA           NA
+    ## 15:                        integer,numeric classif,regr
 
 #### Methods
 
