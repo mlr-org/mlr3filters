@@ -30,9 +30,9 @@ Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterLinearCorrelation}},
   \code{\link{FilterMIM}}, \code{\link{FilterNJMIM}},
   \code{\link{FilterRankCorrelation}},
+  \code{\link{FilterResult}},
   \code{\link{FilterVariableImportance}},
-  \code{\link{FilterVariance}}, \code{\link{Filter}},
-  \code{\link{mlr_filters}}
+  \code{\link{FilterVariance}}, \code{\link{mlr_filters}}
 }
 \concept{Filter}
 \keyword{datasets}

@@ -9,7 +9,7 @@
 #'
 #' @section Construction:
 #' ```
-#' f = Filter$new(id, task_type, param_set, param_vals, feature_types, packages)
+#' f = FilterResult$new(id, task_type, param_set, param_vals, feature_types, packages)
 #' ```
 #'
 #' * `id` :: `character(1)`\cr
@@ -80,7 +80,7 @@
 #'
 #' @family Filter
 #' @export
-Filter = R6Class("Filter",
+FilterResult = R6Class("FilterResult",
   public = list(
     id = NULL,
     task_type = NULL,
@@ -100,6 +100,10 @@ Filter = R6Class("Filter",
       self$packages = assert_character(packages, any.missing = FALSE, unique = TRUE)
     },
 
+    format = function() {
+      "<FilterResult>"
+    },
+
     calculate = function(task) {
 
       assert_task(task, feature_types = self$feature_types, task_properties = self$task_properties)
@@ -114,6 +118,12 @@ Filter = R6Class("Filter",
       # shuffle fv before sort to generate a random order of tied observations
       self$scores = sort(shuffle(fv), decreasing = TRUE, na.last = TRUE)
 
+      invisible(self)
+    },
+
+    combine = function(fr) {
+      assert_filter_result(fr)
+      self$data = rbindlist(list(self$data, bmr$data), fill = TRUE, use.names = TRUE)
       invisible(self)
     },
 
