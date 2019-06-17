@@ -1,4 +1,4 @@
-assert_filter = function(filter, task = NULL) {
+assert_filter_result = function(filter, task = NULL) {
   filter = cast_from_dict(filter, "FilterResult", mlr_filters, FALSE)[[1L]]
 
   if (!is.null(task)) {
@@ -10,9 +10,3 @@ assert_filter = function(filter, task = NULL) {
   return(filter)
 }
 
-
-#' @export
-#' @param fr :: [FilterResult].
-assert_filter_result = function(fr, .var.name = vname(fr)) {
-  assert_class(fr, "FilterResult", .var.name = .var.name)
-}
