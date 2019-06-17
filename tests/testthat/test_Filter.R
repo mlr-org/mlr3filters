@@ -13,19 +13,20 @@ test_that("fr$combine()", {
   task = mlr3::mlr_tasks$get("iris")
 
   # create filters
-  fr_new = FilterMIM$new()
-  fr_new$calculate(task)
-  fr_new2 = FilterVariance$new()
-  fr_new2$calculate(task)
+  fr1 = FilterMIM$new()
+  fr1$calculate(task)
+  fr2 = FilterVariance$new()
+  fr2$calculate(task)
 
-  fr_comb = fr_new$combine(fr_new2)
+  expect_data_table(fr1$scores, nrow = 4)
+  expect_data_table(fr2$scores, nrow = 4)
 
-  expect_filter_result(fr_new)
-  expect_filter_result(fr_new2)
-  expect_filter_result(fr_comb)
+  fr2$combine(fr1)
 
-  expect_data_table(fr_new$scores, nrow = 4)
-  expect_data_table(fr_new2$scores, nrow = 4)
-  expect_data_table(fr_comb$scores, nrow = 8)
+  expect_data_table(fr2$scores, nrow = 8)
+
+  expect_filter_result(fr1)
+  expect_filter_result(fr2)
 
 })
+

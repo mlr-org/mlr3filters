@@ -8,7 +8,7 @@ test_that("mlr_filters autotest", {
     f = mlr_filters$get(key)
     if (task$task_type %in% f$task_type) {
       f$calculate(task)
-      expect_filter(f, task = task)
+      expect_filter_result(f, task = task)
     }
   }
 
@@ -17,7 +17,7 @@ test_that("mlr_filters autotest", {
     f = mlr_filters$get(key)
     if (task$task_type %in% f$task_type) {
       f$calculate(task)
-      expect_filter(f, task = task)
+      expect_filter_result(f, task = task)
     }
   }
 })
@@ -27,7 +27,7 @@ test_that("sanity check regression", {
   task = gen$generate(500)
 
   keys = as.data.table(mlr_filters)[map_lgl(task_type, is.element, el = "regr"), id]
-  keys = setdiff(keys, "variance")
+  keys = setdiff(keys, "FilterVariance")
   for (key in keys) {
     f = mlr_filters$get(key)
     f$calculate(task)

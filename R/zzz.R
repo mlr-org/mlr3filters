@@ -10,7 +10,7 @@
 .onLoad = function(libname, pkgname) {
 
   # nocov start
-  mlr_filters <<- DictionaryFilter$new()
+  mlr_filters <<- DictionaryFilterResult$new()
 
   mlr_filters$add("auc", FilterAUC)
   mlr_filters$add("cmim", FilterCMIM)

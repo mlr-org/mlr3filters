@@ -18,7 +18,7 @@
 #' mlr_filters$get("mim")
 NULL
 
-DictionaryFilter = R6Class("DictionaryFilter",
+DictionaryFilterResult = R6Class("DictionaryFilterResult",
   inherit = Dictionary,
   cloneable = FALSE
 )
@@ -27,7 +27,7 @@ DictionaryFilter = R6Class("DictionaryFilter",
 mlr_filters = NULL
 
 #' @export
-as.data.table.DictionaryFilter = function(x, ...) {
+as.data.table.DictionaryFilterResult = function(x, ...) {
   setkeyv(map_dtr(x$keys(), function(id) {
     if (length(x$required_args(id)) > 0L) {
       return(list(id = id, packages = list(NA_character_), feature_types = list(NA_character_), task_type = list(NA_character_)))
