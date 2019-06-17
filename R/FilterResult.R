@@ -115,15 +115,14 @@ FilterResult = R6Class("FilterResult",
       assert_numeric(fv, len = length(fn), any.missing = FALSE)
       assert_names(names(fv), permutation.of = fn)
 
-      # shuffle fv before sort to generate a random order of tied observations
-      self$scores = sort(shuffle(fv), decreasing = TRUE, na.last = TRUE)
+      self$scores = data.table(scores = fv, method = self$id)[order(method, -scores)]
 
       invisible(self)
     },
 
     combine = function(fr) {
       assert_filter_result(fr)
-      self$data = rbindlist(list(self$data, bmr$data), fill = TRUE, use.names = TRUE)
+      self$scores = rbindlist(list(self$scores, fr$scores))
       invisible(self)
     },
 
