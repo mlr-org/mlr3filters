@@ -15,7 +15,7 @@
 #' filter = FilterAUC$new()
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
-FilterAUC = R6Class("FilterAUC", inherit = Filter,
+FilterAUC = R6Class("FilterAUC", inherit = FilterResult,
   public = list(
     initialize = function(id = "auc") {
       super$initialize(

@@ -15,7 +15,7 @@
 #' filter = FilterRankCorrelation$new()
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
-FilterRankCorrelation = R6Class("FilterRankCorrelation", inherit = Filter,
+FilterRankCorrelation = R6Class("FilterRankCorrelation", inherit = FilterResult,
   public = list(
     initialize = function(id = "rank_correlation") {
       super$initialize(

@@ -156,7 +156,7 @@ filter_n = function(self, task, n) {
 }
 
 #' @export
-as.data.table.Filter = function(x, ...) {
+as.data.table.FilterResult = function(x, ...) {
   fv = x$scores
   if (is.null(fv)) {
     stopf("No filter data available")

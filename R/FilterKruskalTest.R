@@ -15,7 +15,7 @@
 #' filter = FilterKruskalTest$new()
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
-FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
+FilterKruskalTest = R6Class("FilterKruskalTest", inherit = FilterResult,
   public = list(
     initialize = function(id = "kruskal_test") {
       super$initialize(

@@ -18,7 +18,7 @@
 #' filter = FilterVariableImportance$new(learner = learner)
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
-FilterVariableImportance = R6Class("FilterVariableImportance", inherit = Filter,
+FilterVariableImportance = R6Class("FilterVariableImportance", inherit = FilterResult,
   public = list(
     learner = NULL,
     initialize = function(id = "variable_importance", learner) {

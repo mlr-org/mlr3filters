@@ -2,7 +2,7 @@
 #'
 #' @format [R6Class] object
 #' @description
-#' A simple [Dictionary] storing objects of class [Filter].
+#' A simple [Dictionary] storing objects of class [FilterResult].
 #' Each Filter has an associated help page, see `mlr_filters_[id]`.
 #'
 #' @section Usage:

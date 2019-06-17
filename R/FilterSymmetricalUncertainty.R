@@ -16,7 +16,7 @@
 #' filter = FilterSymmetricalUncertainty$new()
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
-FilterSymmetricalUncertainty = R6Class("FilterSymmetricalUncertainty", inherit = Filter,
+FilterSymmetricalUncertainty = R6Class("FilterSymmetricalUncertainty", inherit = FilterResult,
   public = list(
     initialize = function(id = "symmetrical_uncertainty") {
       super$initialize(

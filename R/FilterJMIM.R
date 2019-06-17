@@ -15,7 +15,7 @@
 #' filter = FilterJMIM$new()
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
-FilterJMIM = R6Class("FilterJMIM", inherit = Filter,
+FilterJMIM = R6Class("FilterJMIM", inherit = FilterResult,
   public = list(
     initialize = function(id = "jmim") {
       super$initialize(

@@ -15,7 +15,7 @@
 #' filter = FilterDISR$new()
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
-FilterDISR = R6Class("FilterDISR", inherit = Filter,
+FilterDISR = R6Class("FilterDISR", inherit = FilterResult,
   public = list(
     initialize = function(id = "disr") {
       super$initialize(

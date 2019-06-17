@@ -5,7 +5,7 @@
 \title{Dictionary of Filters}
 \format{\link{R6Class} object}
 \description{
-A simple \link{Dictionary} storing objects of class \link{Filter}.
+A simple \link{Dictionary} storing objects of class \link{FilterResult}.
 Each Filter has an associated help page, see \code{mlr_filters_[id]}.
 }
 \section{Usage}{
