@@ -9,3 +9,10 @@ assert_filter = function(filter, task = NULL) {
   }
   return(filter)
 }
+
+
+#' @export
+#' @param fr :: [FilterResult].
+assert_filter_result = function(fr, .var.name = vname(fr)) {
+  assert_class(fr, "FilterResult", .var.name = .var.name)
+}
