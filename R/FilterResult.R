@@ -107,7 +107,7 @@ FilterResult = R6Class("FilterResult",
     calculate = function(task) {
 
       assert_task(task, feature_types = self$feature_types, task_properties = self$task_properties)
-      assert_filter(self, task)
+      assert_filter_result(self, task)
       require_namespaces(self$packages)
       fn = task$feature_names
 

@@ -75,5 +75,6 @@ Collate:
     'FilterVariance.R'
     'helpers.R'
     'mlr_filters.R'
+    'helper_expectations.R'
     'reexports.R'
     'zzz.R'
