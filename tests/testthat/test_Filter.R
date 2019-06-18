@@ -9,7 +9,6 @@ test_that("Errors for unsupported features", {
 })
 
 test_that("fr$combine()", {
-
   task = mlr3::mlr_tasks$get("iris")
 
   # create filters
@@ -27,6 +26,4 @@ test_that("fr$combine()", {
 
   expect_filter_result(fr1)
   expect_filter_result(fr2)
-
 })
-

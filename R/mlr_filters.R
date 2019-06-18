@@ -32,7 +32,6 @@ as.data.table.DictionaryFilterResult = function(x, ...) {
     l = x$get(key)
     list(
       key = key,
-      id = list(l$id),
       task_type = list(l$task_type),
       task_properties = list(l$task_properties),
       param_set = list(l$param_set),

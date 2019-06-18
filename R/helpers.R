@@ -9,4 +9,3 @@ assert_filter_result = function(filter, task = NULL) {
   }
   return(filter)
 }
-
