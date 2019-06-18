@@ -71,7 +71,6 @@ Collate:
     'FilterMIM.R'
     'FilterNJMIM.R'
     'FilterRankCorrelation.R'
-    'FilterResult.R'
     'FilterSymmetricalUncertainty.R'
     'FilterVariableImportance.R'
     'FilterVariance.R'
