@@ -35,3 +35,5 @@ FilterJMI = R6Class("FilterJMI", inherit = FilterResult,
     }
   )
 )
+
+register_filter("jmi", FilterJMI)

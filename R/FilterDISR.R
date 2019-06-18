@@ -35,3 +35,5 @@ FilterDISR = R6Class("FilterDISR", inherit = FilterResult,
     }
   )
 )
+
+register_filter("disr", FilterDISR)

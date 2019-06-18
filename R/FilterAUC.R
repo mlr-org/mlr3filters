@@ -37,3 +37,5 @@ FilterAUC = R6Class("FilterAUC", inherit = FilterResult,
     }
   )
 )
+
+register_filter("auc", FilterAUC)

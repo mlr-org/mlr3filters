@@ -35,3 +35,5 @@ FilterMIM = R6Class("FilterMIM", inherit = FilterResult,
     }
   )
 )
+
+register_filter("mim", FilterMIM)

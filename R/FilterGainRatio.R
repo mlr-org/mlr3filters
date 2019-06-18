@@ -38,3 +38,5 @@ FilterGainRatio = R6Class("FilterGainRatio", inherit = FilterResult,
     }
   )
 )
+
+register_filter("gain_ratio", FilterGainRatio)

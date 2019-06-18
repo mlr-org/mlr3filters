@@ -37,3 +37,5 @@ FilterRankCorrelation = R6Class("FilterRankCorrelation", inherit = FilterResult,
     }
   )
 )
+
+register_filter("rank_correlation", FilterRankCorrelation)

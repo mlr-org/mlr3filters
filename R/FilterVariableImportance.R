@@ -20,8 +20,8 @@
 #' head(as.data.table(filter), 3)
 FilterVariableImportance = R6Class("FilterVariableImportance", inherit = FilterResult,
   public = list(
-    learner = NULL,
-    initialize = function(id = "variable_importance", learner) {
+    learner = mlr3::mlr_learners$get("classif.rpart"),
+    initialize = function(id = "variable_importance", learner = self$learner) {
       self$learner = assert_learner(learner, properties = "importance")
 
       super$initialize(
@@ -45,3 +45,5 @@ FilterVariableImportance = R6Class("FilterVariableImportance", inherit = FilterR
     }
   )
 )
+
+register_filter("variable_importance", FilterVariableImportance)

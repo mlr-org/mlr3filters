@@ -35,3 +35,5 @@ FilterNJMIM = R6Class("FilterNJMIM", inherit = FilterResult,
     }
   )
 )
+
+register_filter("njmim", FilterNJMIM)

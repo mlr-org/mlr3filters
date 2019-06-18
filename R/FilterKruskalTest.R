@@ -38,3 +38,5 @@ FilterKruskalTest = R6Class("FilterKruskalTest", inherit = FilterResult,
     }
   )
 )
+
+register_filter("kruskal_test", FilterKruskalTest)

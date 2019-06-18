@@ -101,7 +101,11 @@ FilterResult = R6Class("FilterResult",
     },
 
     format = function() {
-      "<FilterResult>"
+      sprintf("<%s:%s>", class(self)[1L], self$id)
+    },
+
+    print = function() {
+      filter_print(self)
     },
 
     calculate = function(task) {
@@ -161,4 +165,12 @@ as.data.table.FilterResult = function(x, ...) {
     stopf("No filter data available")
   }
   enframe(x$scores)
+}
+
+filter_print = function(self) {
+  catf(format(self))
+  catf(str_indent("Task Types:", self$task_type))
+  catf(str_indent("Task Properties:", self$task_properties))
+  catf(str_indent("Packages:", self$packages))
+  catf(str_indent("Feature types:", self$feature_types))
 }

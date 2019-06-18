@@ -17,7 +17,7 @@
 #' head(as.data.table(filter), 3)
 FilterVariance = R6Class("FilterVariance", inherit = FilterResult,
   public = list(
-    initialize = function(id = "FilterVariance", param_vals = list(na.rm = TRUE)) {
+    initialize = function(id = "variance", param_vals = list(na.rm = TRUE)) {
       super$initialize(
         id = id,
         packages = "stats",
@@ -38,3 +38,5 @@ FilterVariance = R6Class("FilterVariance", inherit = FilterResult,
     }
   )
 )
+
+register_filter("variance", FilterVariance)

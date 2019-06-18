@@ -38,3 +38,5 @@ FilterSymmetricalUncertainty = R6Class("FilterSymmetricalUncertainty", inherit =
     }
   )
 )
+
+register_filter("symmetrical_uncertainty", FilterSymmetricalUncertainty)

@@ -37,3 +37,5 @@ FilterLinearCorrelation = R6Class("FilterLinearCorrelation", inherit = FilterRes
     }
   )
 )
+
+register_filter("linear_correlation", FilterLinearCorrelation)

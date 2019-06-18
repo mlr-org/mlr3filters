@@ -37,3 +37,5 @@ FilterInformationGain = R6Class("FilterInformationGain", inherit = FilterResult,
     }
   )
 )
+
+register_filter("information_gain", FilterInformationGain)
