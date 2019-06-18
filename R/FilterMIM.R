@@ -14,7 +14,7 @@
 #' task = mlr3::mlr_tasks$get("iris")
 #' filter = FilterMIM$new()
 #' filter$calculate(task)
-#' head(as.data.table(filter), 3)
+#' as.data.table(filter)[1:3]
 FilterMIM = R6Class("FilterMIM", inherit = FilterResult,
   public = list(
     initialize = function(id = "mim") {

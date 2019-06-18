@@ -14,7 +14,7 @@
 #' task = mlr3::mlr_tasks$get("mtcars")
 #' filter = FilterLinearCorrelation$new()
 #' filter$calculate(task)
-#' head(as.data.table(filter), 3)
+#' as.data.table(filter)[1:3]
 FilterLinearCorrelation = R6Class("FilterLinearCorrelation", inherit = FilterResult,
   public = list(
     initialize = function(id = "linear_correlation") {

@@ -17,7 +17,7 @@ Calls \code{\link[praznik:DISR]{praznik::DISR()}}.
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterDISR$new()
 filter$calculate(task)
-head(as.data.table(filter), 3)
+as.data.table(filter)[1:3]
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},

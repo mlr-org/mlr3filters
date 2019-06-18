@@ -14,7 +14,7 @@
 #' task = mlr3::mlr_tasks$get("mtcars")
 #' filter = FilterVariance$new()
 #' filter$calculate(task)
-#' head(as.data.table(filter), 3)
+#' as.data.table(filter)[1:3]
 FilterVariance = R6Class("FilterVariance", inherit = FilterResult,
   public = list(
     initialize = function(id = "variance", param_vals = list(na.rm = TRUE)) {

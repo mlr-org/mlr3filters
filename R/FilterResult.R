@@ -164,7 +164,7 @@ as.data.table.FilterResult = function(x, ...) {
   if (is.null(fv)) {
     stopf("No filter data available")
   }
-  enframe(x$scores)
+  return(fv)
 }
 
 filter_print = function(self) {

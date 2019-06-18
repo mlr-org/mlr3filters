@@ -17,7 +17,7 @@ Calls \code{\link[stats:cor]{stats::cor()}}.
 task = mlr3::mlr_tasks$get("mtcars")
 filter = FilterRankCorrelation$new()
 filter$calculate(task)
-head(as.data.table(filter), 3)
+as.data.table(filter)[1:3]
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},

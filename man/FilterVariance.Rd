@@ -17,7 +17,7 @@ Calls \code{\link[stats:var]{stats::var()}}. Argument \code{na.rm} defaults to \
 task = mlr3::mlr_tasks$get("mtcars")
 filter = FilterVariance$new()
 filter$calculate(task)
-head(as.data.table(filter), 3)
+as.data.table(filter)[1:3]
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},

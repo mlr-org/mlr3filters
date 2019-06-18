@@ -17,7 +17,7 @@
 #' learner = mlr3::mlr_learners$get("classif.rpart")
 #' filter = FilterVariableImportance$new(learner = learner)
 #' filter$calculate(task)
-#' head(as.data.table(filter), 3)
+#' as.data.table(filter)[1:3]
 FilterVariableImportance = R6Class("FilterVariableImportance", inherit = FilterResult,
   public = list(
     learner = mlr3::mlr_learners$get("classif.rpart"),

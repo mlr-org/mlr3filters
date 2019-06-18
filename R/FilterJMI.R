@@ -14,7 +14,7 @@
 #' task = mlr3::mlr_tasks$get("iris")
 #' filter = FilterJMI$new()
 #' filter$calculate(task)
-#' head(as.data.table(filter), 3)
+#' as.data.table(filter)[1:3]
 FilterJMI = R6Class("FilterJMI", inherit = FilterResult,
   public = list(
     initialize = function(id = "jmi") {

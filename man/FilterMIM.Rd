@@ -17,7 +17,7 @@ Calls \code{\link[praznik:MIM]{praznik::MIM()}}.
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterMIM$new()
 filter$calculate(task)
-head(as.data.table(filter), 3)
+as.data.table(filter)[1:3]
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},
