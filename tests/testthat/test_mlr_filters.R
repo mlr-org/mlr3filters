@@ -26,7 +26,7 @@ test_that("sanity check regression", {
   gen = mlr_generators$get("friedman1")
   task = gen$generate(500)
 
-  keys = as.data.table(mlr_filters)[map_lgl(task_type, is.element, el = "regr"), id]
+  keys = as.data.table(mlr_filters)[map_lgl(task_type, is.element, el = "regr"), key]
   keys = setdiff(keys, "variance")
   for (key in keys) {
     f = mlr_filters$get(key)
