@@ -5,7 +5,7 @@
 \alias{FilterSymmetricalUncertainty}
 \alias{mlr_filters_symmetrical_uncertainty}
 \title{Symmetrical Uncertainty Filter}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
+\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{FilterResult}.}
 \usage{
 FilterSymmetricalUncertainty
 }
@@ -30,9 +30,8 @@ Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterLinearCorrelation}},
   \code{\link{FilterMIM}}, \code{\link{FilterNJMIM}},
   \code{\link{FilterRankCorrelation}},
-  \code{\link{FilterResult}},
-  \code{\link{FilterVariableImportance}},
-  \code{\link{FilterVariance}}, \code{\link{mlr_filters}}
+  \code{\link{FilterResult}}, \code{\link{FilterVariance}},
+  \code{\link{mlr_filters}}
 }
 \concept{Filter}
 \keyword{datasets}

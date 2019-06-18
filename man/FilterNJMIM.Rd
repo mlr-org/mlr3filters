@@ -5,7 +5,7 @@
 \alias{FilterNJMIM}
 \alias{mlr_filters_njmim}
 \title{Minimal Normalised Joint Mutual Information Maximisation Filter}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
+\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{FilterResult}.}
 \usage{
 FilterNJMIM
 }
@@ -31,7 +31,6 @@ Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterRankCorrelation}},
   \code{\link{FilterResult}},
   \code{\link{FilterSymmetricalUncertainty}},
-  \code{\link{FilterVariableImportance}},
   \code{\link{FilterVariance}}, \code{\link{mlr_filters}}
 }
 \concept{Filter}

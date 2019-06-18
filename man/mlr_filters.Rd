@@ -31,7 +31,6 @@ Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterRankCorrelation}},
   \code{\link{FilterResult}},
   \code{\link{FilterSymmetricalUncertainty}},
-  \code{\link{FilterVariableImportance}},
   \code{\link{FilterVariance}}
 }
 \concept{Dictionary}

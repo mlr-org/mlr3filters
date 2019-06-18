@@ -5,7 +5,7 @@
 \alias{FilterRankCorrelation}
 \alias{mlr_filters_rank_correlation}
 \title{Rank Correlation Filter}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
+\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{FilterResult}.}
 \usage{
 FilterRankCorrelation
 }
@@ -30,7 +30,6 @@ Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterMIM}}, \code{\link{FilterNJMIM}},
   \code{\link{FilterResult}},
   \code{\link{FilterSymmetricalUncertainty}},
-  \code{\link{FilterVariableImportance}},
   \code{\link{FilterVariance}}, \code{\link{mlr_filters}}
 }
 \concept{Filter}

@@ -1,7 +1,7 @@
 #' @title Conditional Mutual Information Based Feature Selection Filter
 #'
 #' @aliases mlr_filters_mim
-#' @format [R6::R6Class] inheriting from [Filter].
+#' @format [R6::R6Class] inheriting from [FilterResult].
 #' @include Filter.R
 #'
 #' @description

@@ -1,7 +1,7 @@
 #' @title Variable Importance Filter
 #'
 #' @aliases mlr_filters_variable_importance
-#' @format [R6::R6Class] inheriting from [Filter].
+#' @format [R6::R6Class] inheriting from [FilterResult].
 #' @include Filter.R
 #'
 #' @description
@@ -10,7 +10,7 @@
 #' fits the model and uses the importance values as filter scores.
 #'
 #'
-#' @family Filter
+#' @family FilterResult
 #' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("iris")

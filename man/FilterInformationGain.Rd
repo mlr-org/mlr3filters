@@ -5,7 +5,7 @@
 \alias{FilterInformationGain}
 \alias{mlr_filters_information_gain}
 \title{Information Gain Filter}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
+\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{FilterResult}.}
 \usage{
 FilterInformationGain
 }
@@ -30,7 +30,6 @@ Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterRankCorrelation}},
   \code{\link{FilterResult}},
   \code{\link{FilterSymmetricalUncertainty}},
-  \code{\link{FilterVariableImportance}},
   \code{\link{FilterVariance}}, \code{\link{mlr_filters}}
 }
 \concept{Filter}

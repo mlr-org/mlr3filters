@@ -1,7 +1,7 @@
 #' @title Linear Correlation Filter
 #'
 #' @aliases mlr_filters_linear_correlation
-#' @format [R6::R6Class] inheriting from [Filter].
+#' @format [R6::R6Class] inheriting from [FilterResult].
 #' @include Filter.R
 #'
 #' @description

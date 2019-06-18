@@ -5,7 +5,7 @@
 \alias{FilterVariance}
 \alias{mlr_filters_variance}
 \title{Variance Filter}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
+\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{FilterResult}.}
 \usage{
 FilterVariance
 }
@@ -31,7 +31,6 @@ Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterRankCorrelation}},
   \code{\link{FilterResult}},
   \code{\link{FilterSymmetricalUncertainty}},
-  \code{\link{FilterVariableImportance}},
   \code{\link{mlr_filters}}
 }
 \concept{Filter}
