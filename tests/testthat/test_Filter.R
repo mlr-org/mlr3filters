@@ -18,12 +18,12 @@ test_that("fr$combine()", {
   fr2 = FilterVariance$new()
   fr2$calculate(task)
 
-  expect_data_table(fr1$scores, nrow = 4)
-  expect_data_table(fr2$scores, nrow = 4)
+  expect_data_table(fr1$scores, nrow = 4, ncol = 3)
+  expect_data_table(fr2$scores, nrow = 4, ncol = 3)
 
   fr2$combine(fr1)
 
-  expect_data_table(fr2$scores, nrow = 8)
+  expect_data_table(fr2$scores, nrow = 8, ncol = 3)
 
   expect_filter_result(fr1)
   expect_filter_result(fr2)
