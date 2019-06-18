@@ -115,7 +115,7 @@ FilterResult = R6Class("FilterResult",
       assert_numeric(fv, len = length(fn), any.missing = FALSE)
       assert_names(names(fv), permutation.of = fn)
 
-      self$scores = data.table(scores = fv, method = self$id)[order(method, -scores)]
+      self$scores = data.table(score = fv, feature = fn, method = self$id)[order(method, -score)]
 
       invisible(self)
     },
