@@ -5,7 +5,7 @@
 \alias{FilterMRMR}
 \alias{mlr_filters_MRMR}
 \title{Minimum redundancy maximal relevancy filter}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
+\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{FilterResult}.}
 \usage{
 FilterMRMR
 }
