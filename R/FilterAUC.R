@@ -18,19 +18,22 @@
 #' as.data.table(filter)[1:3]
 FilterAUC = R6Class("FilterAUC", inherit = FilterResult,
   public = list(
-    initialize = function(id = "auc") {
+    initialize = function(id = "auc", param_vals = list()) {
       super$initialize(
         id = id,
         packages = "Metrics",
         feature_types = c("integer", "numeric"),
         task_type = "classif",
-        task_properties = "twoclass"
+        task_properties = "twoclass",
+        param_set = ParamSet$new(list()),
+        param_vals = param_vals
       )
     }
   ),
 
   private = list(
     .calculate = function(task) {
+
       x = task$truth() == task$positive
       y = task$data(cols = task$feature_names)
       score = map_dbl(y, function(y) Metrics::auc(x, y))

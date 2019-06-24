@@ -10,15 +10,24 @@
 #' correlations between the target and the decorrelated features.
 #'
 #' @family Filter
+#' @examples
+#' task = mlr3::mlr_tasks$get("mtcars")
+#' filter = FilterCarScore$new()
+#' filter$calculate(task)
 #' @export
 FilterCarScore = R6Class("FilterCarScore", inherit = FilterResult,
   public = list(
-    initialize = function(id = "carscore") {
+    initialize = function(id = "carscore", param_vals = list()) {
       super$initialize(
         id = id,
         packages = "care",
         feature_types = c("numeric"),
-        task_type = "regr"
+        task_type = "regr",
+        param_set = ParamSet$new(list(
+          ParDbl$new("lambda", lower = 0, upper = 1, default = NULL),
+          ParLgl$new("diagonal", default = FALSE, tags = "required"),
+          ParLgl$new("verbose", default = FALSE))),
+        param_vals = param_vals
       )
     }
   ),
@@ -34,7 +43,19 @@ FilterCarScore = R6Class("FilterCarScore", inherit = FilterResult,
       features = task$feature_names
       features = as.data.frame(data[, ..features])
 
-      y = care::carscore(Xtrain = features, Ytrain = target, verbose = FALSE)^2
+      # setting params
+      lambda = self$param_set$values$lambda
+      diagonal = self$param_set$values$diagonal
+      verbose = self$param_set$values$verbose
+
+      if (is.null(lambda)) {
+        y = care::carscore(Xtrain = features, Ytrain = target,
+          diagonal = diagonal, verbose = verbose)^2
+      } else {
+        y = care::carscore(Xtrain = features, Ytrain = target, lambda = lambda,
+          diagonal = diagonal, verbose = verbose)^2
+      }
+
       setNames(as.double(y), names(y))
     }
   )
