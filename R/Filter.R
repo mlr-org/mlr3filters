@@ -108,16 +108,25 @@ Filter = R6Class("Filter",
       filter_print(self)
     },
 
-    calculate = function(task) {
+    calculate = function(task, n = NULL) {
 
       assert_task(task, feature_types = self$feature_types, task_properties = self$task_properties)
       assert_filter_result(self, task)
       require_namespaces(self$packages)
       fn = task$feature_names
 
-      fv = private$.calculate(task)
-      assert_numeric(fv, len = length(fn), any.missing = FALSE)
-      assert_names(names(fv), permutation.of = fn)
+      fv = private$.calculate(task, n)
+
+      # if 'n' is given (e.g. for praznik filter), we only get 'n' scores back
+      if (is.null(n)) {
+        assert_numeric(fv, len = length(fn), any.missing = FALSE)
+        assert_names(names(fv), permutation.of = fn)
+      } else {
+        assert_numeric(fv, len = n, any.missing = FALSE)
+        # no name assertion possible here because we do not know which features
+        # will be returned
+      }
+
 
       self$scores = data.table(score = fv, feature = fn, method = self$id)[order(method, -score)]
 
@@ -131,6 +140,14 @@ Filter = R6Class("Filter",
     },
 
     filter_abs = function(task, abs) {
+
+      browser()
+      if (is.null(self$param_set$values$abs)) {
+        stopf("Either pass 'abs' directly or define it during construction in the ParamSet.")
+      } else {
+        abs = self$param_set$values$abs
+      }
+
       assert_task(task)
       assert_count(abs)
       filter_n(self, task, abs)
@@ -152,7 +169,7 @@ Filter = R6Class("Filter",
 
 filter_n = function(self, task, n) {
   if (is.null(self$scores)) {
-    filter$calculate(task)
+    filter$calculate(task, n)
   }
   keep = head(self$scores$feature, n)
   task$select(keep)
