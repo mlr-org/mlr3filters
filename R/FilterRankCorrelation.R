@@ -1,8 +1,8 @@
 #' @title Rank Correlation Filter
 #'
 #' @aliases mlr_filters_rank_correlation
-#' @format [R6::R6Class] inheriting from [FilterResult].
-#' @include FilterResult.R
+#' @format [R6::R6Class] inheriting from [Filter].
+#' @include Filter.R
 #'
 #' @description
 #' Rank correlation filter.
@@ -15,7 +15,7 @@
 #' filter = FilterRankCorrelation$new()
 #' filter$calculate(task)
 #' as.data.table(filter)[1:3]
-FilterRankCorrelation = R6Class("FilterRankCorrelation", inherit = FilterResult,
+FilterRankCorrelation = R6Class("FilterRankCorrelation", inherit = Filter,
   public = list(
     initialize = function(id = "rank_correlation") {
       super$initialize(
@@ -29,11 +29,13 @@ FilterRankCorrelation = R6Class("FilterRankCorrelation", inherit = FilterResult,
 
   private = list(
     .calculate = function(task) {
-      abs(stats::cor(
+      fn = task$feature_names
+      m = abs(stats::cor(
         x = as.matrix(task$data(cols = task$feature_names)),
         y = as.matrix(task$data(cols = task$target_names)),
         use = "pairwise.complete.obs",
         method = "spearman")[, 1L])
+      set_names(m, fn)
     }
   )
 )

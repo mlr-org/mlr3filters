@@ -9,7 +9,7 @@
 #'
 #' @section Construction:
 #' ```
-#' f = FilterResult$new(id, task_type, param_set, param_vals, feature_types, packages)
+#' f = Filter$new(id, task_type, param_set, param_vals, feature_types, packages)
 #' ```
 #'
 #' * `id` :: `character(1)`\cr
@@ -80,7 +80,7 @@
 #'
 #' @family Filter
 #' @export
-FilterResult = R6Class("FilterResult",
+Filter = R6Class("Filter",
   public = list(
     id = NULL,
     task_type = NULL,
@@ -139,7 +139,7 @@ FilterResult = R6Class("FilterResult",
     filter_perc = function(task, perc) {
       assert_task(task)
       assert_number(perc, lower = 0, upper = 1)
-      filter_n(self, task, round(task$nrow * perc))
+      filter_n(self, task, round(task$ncol * perc))
     },
 
     filter_thresh = function(task, threshold) {
@@ -152,14 +152,14 @@ FilterResult = R6Class("FilterResult",
 
 filter_n = function(self, task, n) {
   if (is.null(self$scores)) {
-    stopf("Filter values have not been computed yet")
+    filter$calculate(task)
   }
-  keep = names(head(self$scores, n))
+  keep = head(self$scores$feature, n)
   task$select(keep)
 }
 
 #' @export
-as.data.table.FilterResult = function(x, ...) {
+as.data.table.Filter = function(x, ...) {
   fv = x$scores
   if (is.null(fv)) {
     stopf("No filter data available")

@@ -1,8 +1,8 @@
 #' @title Linear Correlation Filter
 #'
 #' @aliases mlr_filters_linear_correlation
-#' @format [R6::R6Class] inheriting from [FilterResult].
-#' @include FilterResult.R
+#' @format [R6::R6Class] inheriting from [Filter].
+#' @include Filter.R
 #'
 #' @description
 #' Linear correlation filter.
@@ -15,7 +15,7 @@
 #' filter = FilterLinearCorrelation$new()
 #' filter$calculate(task)
 #' as.data.table(filter)[1:3]
-FilterLinearCorrelation = R6Class("FilterLinearCorrelation", inherit = FilterResult,
+FilterLinearCorrelation = R6Class("FilterLinearCorrelation", inherit = Filter,
   public = list(
     initialize = function(id = "linear_correlation") {
       super$initialize(
@@ -29,11 +29,13 @@ FilterLinearCorrelation = R6Class("FilterLinearCorrelation", inherit = FilterRes
 
   private = list(
     .calculate = function(task) {
-      abs(stats::cor(
+      fn = task$feature_names
+      score = abs(stats::cor(
         x = as.matrix(task$data(cols = task$feature_names)),
         y = as.matrix(task$data(cols = task$target_names)),
         use = "pairwise.complete.obs",
         method = "pearson")[, 1L])
+      set_names(score, fn)
     }
   )
 )
