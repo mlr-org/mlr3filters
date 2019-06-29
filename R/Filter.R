@@ -137,7 +137,8 @@ Filter = R6Class("Filter",
 
     filter_abs = function(task, abs) {
 
-      browser()
+      # FIXME: What happens if abs is supplied and param_vals values is set?
+      # -> take abs and issue warning
       if (is.null(self$param_set$values$abs)) {
         stopf("Either pass 'abs' directly or define it during construction in the ParamSet.")
       } else {
