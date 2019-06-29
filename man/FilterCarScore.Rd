@@ -14,6 +14,11 @@ Filter \code{carscore} determines the Correlation-Adjusted (marginal) coRelation
 scores (short CAR scores). The CAR scores for a set of features are defined as the
 correlations between the target and the decorrelated features.
 }
+\examples{
+task = mlr3::mlr_tasks$get("mtcars")
+filter = FilterCarScore$new()
+filter$calculate(task)
+}
 \seealso{
 Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterCMIM}}, \code{\link{FilterDISR}},
