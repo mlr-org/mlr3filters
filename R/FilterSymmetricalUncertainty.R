@@ -29,7 +29,7 @@ FilterSymmetricalUncertainty = R6Class("FilterSymmetricalUncertainty", inherit =
   ),
 
   private = list(
-    .calculate = function(task) {
+    .calculate = function(task, n = NULL) {
       x = as.data.frame(task$data(cols = task$feature_names))
       y = task$truth()
 

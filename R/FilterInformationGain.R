@@ -29,7 +29,7 @@ FilterInformationGain = R6Class("FilterInformationGain", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task) {
+    .calculate = function(task, n = NULL) {
       x = setDF(task$data(cols = task$feature_names))
       y = task$truth()
       scores = FSelectorRcpp::information_gain(x = x, y = y, type = "infogain", equal = task$task_type == "regr")

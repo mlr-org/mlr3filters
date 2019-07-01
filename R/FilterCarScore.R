@@ -24,16 +24,16 @@ FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
         feature_types = c("numeric"),
         task_type = "regr",
         param_set = ParamSet$new(list(
-          ParDbl$new("lambda", lower = 0, upper = 1, default = NULL),
-          ParLgl$new("diagonal", default = FALSE, tags = "required"),
-          ParLgl$new("verbose", default = FALSE))),
+          ParamDbl$new("lambda", lower = 0, upper = 1, default = NO_DEF),
+          ParamLgl$new("diagonal", default = FALSE),
+          ParamLgl$new("verbose", default = FALSE))),
         param_vals = param_vals
       )
     }
   ),
 
   private = list(
-    .calculate = function(task) {
+    .calculate = function(task, n = NULL) {
 
       # FIXME task splitting should really be easier
       data = as.data.table(task)
@@ -44,6 +44,7 @@ FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
       features = as.data.frame(data[, ..features])
 
       # setting params
+      # FIXME: account for default values of paramset
       lambda = self$param_set$values$lambda
       diagonal = self$param_set$values$diagonal
       verbose = self$param_set$values$verbose

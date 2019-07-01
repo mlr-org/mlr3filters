@@ -32,7 +32,7 @@ FilterAUC = R6Class("FilterAUC", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task) {
+    .calculate = function(task, n = NULL) {
 
       x = task$truth() == task$positive
       y = task$data(cols = task$feature_names)

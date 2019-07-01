@@ -28,7 +28,7 @@ FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task) {
+    .calculate = function(task, n = NULL) {
       data = task$data(cols = task$feature_names)
       g = task$truth()
       scores = map_dbl(data, function(x) {

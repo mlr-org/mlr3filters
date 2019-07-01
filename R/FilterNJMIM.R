@@ -28,7 +28,7 @@ FilterNJMIM = R6Class("FilterNJMIM", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task) {
+    .calculate = function(task, n = NULL) {
       X = task$data(cols = task$feature_names)
       Y = task$truth()
       praznik::NJMIM(X = X, Y = Y, k = ncol(X))$score

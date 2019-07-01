@@ -28,7 +28,7 @@ FilterRankCorrelation = R6Class("FilterRankCorrelation", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task) {
+    .calculate = function(task, n = NULL) {
       fn = task$feature_names
       m = abs(stats::cor(
         x = as.matrix(task$data(cols = task$feature_names)),
