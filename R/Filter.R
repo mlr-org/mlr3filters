@@ -137,11 +137,16 @@ Filter = R6Class("Filter",
 
     filter_abs = function(task, abs) {
 
-      # FIXME: What happens if abs is supplied and param_vals values is set?
-      # -> take abs and issue warning
-      if (is.null(self$param_set$values$abs)) {
-        stopf("Either pass 'abs' directly or define it during construction in the ParamSet.")
-      } else {
+      # check if abs was supplied in any way
+      if (is.null(self$param_set$values$abs) && missing(abs)) {
+        stopf("No 'abs' supplied. Either pass 'abs' directly or define it during construction in the ParamSet.")
+      }
+      # check if abs was supplied during construction AND in the function call
+      else if (!is.null(self$param_set$values$abs) && !missing(abs)) {
+        warningf("Taking the user supplied value of 'abs' and ignoring the value set during construction.")
+      }
+      # if construction value is missing and abs is supplied, take abs
+      else if (!is.null(self$param_set$values$abs) && missing(abs)) {
         abs = self$param_set$values$abs
       }
 
@@ -151,12 +156,40 @@ Filter = R6Class("Filter",
     },
 
     filter_perc = function(task, perc) {
+
+      # check if perc was supplied in any way
+      if (is.null(self$param_set$values$perc) && missing(perc)) {
+        stopf("No 'perc' supplied. Either pass 'perc' directly or define it during construction in the ParamSet.")
+      }
+      # check if perc was supplied during construction AND in the function call
+      else if (!is.null(self$param_set$values$perc) && !missing(perc)) {
+        warningf("Taking the user supplied value of 'perc' and ignoring the value set during construction.")
+      }
+      # if construction value is missing and perc is supplied, take perc
+      else if (!is.null(self$param_set$values$perc) && missing(perc)) {
+        perc = self$param_set$values$perc
+      }
+
       assert_task(task)
       assert_number(perc, lower = 0, upper = 1)
       filter_n(self, task, round(task$ncol * perc))
     },
 
     filter_thresh = function(task, threshold) {
+
+      # check if thresh was supplied in any way
+      if (is.null(self$param_set$values$thresh) && missing(thresh)) {
+        stopf("No 'thresh' supplied. Either pass 'thresh' directly or define it during construction in the ParamSet.")
+      }
+      # check if thresh was supplied during construction AND in the function call
+      else if (!is.null(self$param_set$values$thresh) && !missing(thresh)) {
+        warningf("Taking the user supplied value of 'thresh' and ignoring the value set during construction.")
+      }
+      # if construction value is missing and thresh is supplied, take thresh
+      else if (!is.null(self$param_set$values$thresh) && missing(thresh)) {
+        thresh = self$param_set$values$thresh
+      }
+
       assert_task(task)
       assert_number(threshold)
       filter_n(self, task, sum(self$scores > threshold))
