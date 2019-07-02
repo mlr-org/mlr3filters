@@ -49,6 +49,14 @@ FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
       diagonal = self$param_set$values$diagonal
       verbose = self$param_set$values$verbose
 
+      if (is.null(diagonal)) {
+        diagonal = self$param_set$default$diagonal
+      }
+      if (is.null(verbose)) {
+        verbose = self$param_set$default$verbose
+      }
+
+      # since lambda has no default, we need to split the execution on it
       if (is.null(lambda)) {
         y = care::carscore(Xtrain = features, Ytrain = target,
           diagonal = diagonal, verbose = verbose)^2
