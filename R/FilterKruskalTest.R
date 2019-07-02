@@ -23,7 +23,7 @@ FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
         feature_types = c("integer", "numeric"),
         task_type = "classif",
         param_set = ParamSet$new(list(
-          ParamInt$new("na.action", default = "na.omit", tags = "filter"),
+          ParamFct$new("na.action", default = "na.omit", tags = "filter"),
           ParamInt$new("abs", lower = 1, tags = "generic"),
           ParamDbl$new("perc", lower = 0, upper = 1, tags = "generic"),
           ParamDbl$new("thresh", tags = "generic")
