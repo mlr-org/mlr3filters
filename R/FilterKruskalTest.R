@@ -16,14 +16,15 @@
 #' as.data.table(filter)[1:3]
 FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
   public = list(
-    initialize = function(id = "kruskal_test") {
+    initialize = function(id = "kruskal_test", param_vals = list()) {
       super$initialize(
         id = id,
         packages = "stats",
         feature_types = c("integer", "numeric"),
         task_type = "classif",
         param_set = ParamSet$new(list(
-          ParamFct$new("na.action", default = "na.omit", tags = "filter"),
+          ParamFct$new("na.action", default = "na.omit",
+            levels = c("na.omit", "na.fail", "na.exclude", "na.pass"), tags = "filter"),
           ParamInt$new("abs", lower = 1, tags = "generic"),
           ParamDbl$new("perc", lower = 0, upper = 1, tags = "generic"),
           ParamDbl$new("thresh", tags = "generic")
