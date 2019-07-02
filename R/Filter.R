@@ -199,7 +199,7 @@ Filter = R6Class("Filter",
 
 filter_n = function(self, task, n) {
   if (is.null(self$scores)) {
-    filter$calculate(task, n)
+    self$calculate(task, n)
   }
   keep = head(self$scores$feature, n)
   task$select(keep)
