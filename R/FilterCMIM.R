@@ -43,7 +43,9 @@ FilterCMIM = R6Class("FilterCMIM", inherit = Filter,
       threads = self$param_set$values$threads
 
       if (is.null(k)) {
-        k = self$param_set$default$k
+        # by default we calculate all scores
+        # partial scoring need to be specifically requested by setting k during construction
+        k = length(task$feature_names)
       }
       if (is.null(threads)) {
         threads = self$param_set$default$threads
