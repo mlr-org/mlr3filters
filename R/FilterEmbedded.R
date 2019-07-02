@@ -21,9 +21,8 @@
 FilterEmbedded = R6Class("FilterEmbedded", inherit = Filter,
   public = list(
     learner = mlr3::mlr_learners$get("classif.rpart"),
-    initialize = function(id = "embedded", learner = self$learner) {
-      self$learner = assert_learner(learner, properties = "importance",
-        param_vals = list())
+    initialize = function(id = "embedded", learner = self$learner, param_vals = list()) {
+      self$learner = assert_learner(learner, properties = "importance")
 
       super$initialize(
         id = id,
