@@ -26,14 +26,21 @@ FilterNJMIM = R6Class("FilterNJMIM", inherit = Filter,
         id = id,
         packages = "praznik",
         feature_types = c("integer", "numeric", "factor", "ordered"),
-        task_type = "classif"
+        task_type = "classif",
+        param_set = ParamSet$new(list(
+          ParamInt$new("k", lower = 1L, default = 3L, tags = "filter"),
+          ParamInt$new("threads", lower = 0L, default = 0L, tags = "filter"),
+          ParamInt$new("abs", lower = 1, tags = "generic"),
+          ParamDbl$new("perc", lower = 0, upper = 1, tags = "generic"),
+          ParamDbl$new("thresh", tags = "generic")
+        )),
+        param_vals = param_vals
       )
     }
   ),
 
   private = list(
     .calculate = function(task, n = NULL) {
-
 
       # setting params
       k = self$param_set$values$k
