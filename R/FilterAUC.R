@@ -5,9 +5,8 @@
 #' @include Filter.R
 #' @include mlr_filters.R
 #'
-#' @description
-#' Area under the (ROC) Curve filter.
-#' Calls [Metrics::auc()], and scores with the absolute value of the difference between the AUC and 0.5.
+#' @description Area under the (ROC) Curve filter. Calls [Metrics::auc()], and
+#'   scores with the absolute value of the difference between the AUC and 0.5.
 #'
 #' @family Filter
 #' @export
@@ -25,7 +24,11 @@ FilterAUC = R6Class("FilterAUC", inherit = Filter,
         feature_types = c("integer", "numeric"),
         task_type = "classif",
         task_properties = "twoclass",
-        param_set = ParamSet$new(list()),
+        param_set = ParamSet$new(list(
+          ParamInt$new("abs", lower = 1, tags = "generic"),
+          ParamDbl$new("perc", lower = 0, upper = 1, tags = "generic"),
+          ParamDbl$new("thresh", tags = "generic")
+        )),
         param_vals = param_vals
       )
     }
