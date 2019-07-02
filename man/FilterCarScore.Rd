@@ -22,16 +22,14 @@ filter$calculate(task)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},
-  \code{\link{FilterCMIM}}, \code{\link{FilterDISR}},
-  \code{\link{FilterEmbedded}},
+  \code{\link{FilterCMIM}},
+  \code{\link{FilterCorrelation}},
+  \code{\link{FilterDISR}}, \code{\link{FilterEmbedded}},
   \code{\link{FilterGainRatio}},
   \code{\link{FilterInformationGain}},
   \code{\link{FilterJMIM}}, \code{\link{FilterJMI}},
-  \code{\link{FilterKruskalTest}},
-  \code{\link{FilterLinearCorrelation}},
-  \code{\link{FilterMIM}}, \code{\link{FilterMRMR}},
-  \code{\link{FilterNJMIM}},
-  \code{\link{FilterRankCorrelation}},
+  \code{\link{FilterKruskalTest}}, \code{\link{FilterMIM}},
+  \code{\link{FilterMRMR}}, \code{\link{FilterNJMIM}},
   \code{\link{FilterSymmetricalUncertainty}},
   \code{\link{FilterVariance}}, \code{\link{Filter}},
   \code{\link{mlr_filters}}
