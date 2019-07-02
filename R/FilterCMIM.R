@@ -4,9 +4,11 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Minimal conditional mutual information maximisation filter.
+#' @description Minimal conditional mutual information maximisation filter.
 #' Calls [praznik::CMIM()].
+#'
+#' @details This filter supports partial scoring via hyperparameter `k`. To use
+#' it, set `k` during construction via `param_vals.`
 #'
 #' @family Filter
 #' @export

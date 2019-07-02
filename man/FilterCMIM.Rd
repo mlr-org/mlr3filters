@@ -13,6 +13,10 @@ FilterCMIM
 Minimal conditional mutual information maximisation filter.
 Calls \code{\link[praznik:CMIM]{praznik::CMIM()}}.
 }
+\details{
+This filter supports partial scoring via hyperparameter \code{k}. To use
+it, set \code{k} during construction via \code{param_vals.}
+}
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterCMIM$new()

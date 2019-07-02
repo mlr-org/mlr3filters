@@ -4,10 +4,10 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Filter `carscore` determines the Correlation-Adjusted (marginal) coRelation
-#' scores (short CAR scores). The CAR scores for a set of features are defined as the
-#' correlations between the target and the decorrelated features.
+#' @description Filter `carscore` determines the Correlation-Adjusted (marginal)
+#' coRelation scores (short CAR scores). The CAR scores for a set of features
+#' are defined as the correlations between the target and the decorrelated
+#' features.
 #'
 #' @family Filter
 #' @examples
@@ -44,7 +44,6 @@ FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
       features = as.data.frame(data[, ..features])
 
       # setting params
-      # FIXME: account for default values of paramset
       lambda = self$param_set$values$lambda
       diagonal = self$param_set$values$diagonal
       verbose = self$param_set$values$verbose
