@@ -6,6 +6,11 @@
 #'
 #' @description Joint mutual information filter. Calls [praznik::JMI()].
 #'
+#' @details This filter supports partial scoring via hyperparameter `k`. To use
+#'   it, set `k` during construction via `param_vals.` By default all filter
+#'   scores are calculated and the default of `k = 3` in the ParamSet does not
+#'   apply.
+#'
 #' @family Filter
 #' @export
 #' @examples
