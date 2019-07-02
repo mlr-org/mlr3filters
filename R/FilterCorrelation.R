@@ -22,11 +22,11 @@ FilterCorrelation = R6Class("FilterCorrelation", inherit = Filter,
         feature_types = c("integer", "numeric"),
         task_type = "regr",
         param_set = ParamSet$new(list(
-          ParamFct$new("use", default = "everything", values = c("everything",
+          ParamFct$new("use", default = "everything", levels = c("everything",
             "all.obs", "complete.obs", "na.or.complete","pairwise.complete.obs"),
             tags = "filter"),
           ParamFct$new("method", default = "pearson",
-            values = c("pearson", "kendall", "spearman"), tags = "filter"),
+            levels = c("pearson", "kendall", "spearman"), tags = "filter"),
           ParamInt$new("abs", lower = 1, tags = "generic"),
           ParamDbl$new("perc", lower = 0, upper = 1, tags = "generic"),
           ParamDbl$new("thresh", tags = "generic")
