@@ -5,8 +5,9 @@
 #' @include Filter.R
 #'
 #' @description Gain Ratio filter. Calls [FSelectorRcpp::information_gain()].
-#' The target variable of regression tasks is automatically binned (argument
-#' `equal` in [FSelectorRcpp::information_gain()]).
+#' The target variable is automatically binned (argument
+#' `equal` in [FSelectorRcpp::information_gain()]). You might want to turn this
+#' setting of for classification tasks.
 #'
 #' @family Filter
 #' @export
