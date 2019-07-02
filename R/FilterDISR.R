@@ -21,7 +21,7 @@
 #' as.data.table(filter)[1:3]
 FilterDISR = R6Class("FilterDISR", inherit = Filter,
   public = list(
-    initialize = function(id = "disr") {
+    initialize = function(id = "disr", param_vals = list()) {
       super$initialize(
         id = id,
         packages = "praznik",
