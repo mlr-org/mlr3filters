@@ -5,10 +5,12 @@
 #' @include Filter.R
 #'
 #' @description Minimal conditional mutual information maximisation filter.
-#' Calls [praznik::CMIM()].
+#'   Calls [praznik::CMIM()].
 #'
 #' @details This filter supports partial scoring via hyperparameter `k`. To use
-#' it, set `k` during construction via `param_vals.`
+#'   it, set `k` during construction via `param_vals.` By default all filter
+#'   scores are calculated and the default of `k = 3` in the ParamSet does not
+#'   apply.
 #'
 #' @family Filter
 #' @export

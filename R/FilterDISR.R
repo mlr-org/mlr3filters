@@ -66,7 +66,7 @@ FilterDISR = R6Class("FilterDISR", inherit = Filter,
 
       X = task$data(cols = task$feature_names)
       Y = task$truth()
-      praznik::DISR(X = X, Y = Y, k = ncol(X))$score
+      praznik::DISR(X = X, Y = Y, k = k, threads = threads)$score
     }
   )
 )
