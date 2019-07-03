@@ -69,10 +69,10 @@
 #'   Filters the [Task] by reference, keeps `frac` fracent of the features
 #'   (rounded via [base::round()]).
 #'
-#'   * `filter_thresh(task, thresh)`\cr
+#'   * `filter_cutoff(task, cutoff)`\cr
 #'   ([Task], `numeric(1)`) -> [Task]\cr
 #'   Filters the [Task] by reference, keeps features whose filter score values
-#'   exceeds `thresh`.
+#'   exceeds `cutoff`.
 #'
 #' @family Filter
 #' @export
@@ -175,24 +175,24 @@ Filter = R6Class("Filter",
       filter_n(self, task, round(task$ncol * frac))
     },
 
-    filter_thresh = function(task, threshold) {
+    filter_cutoff = function(task, cutoff) {
 
-      # check if thresh was supplied in any way
-      if (is.null(self$param_set$values$thresh) && missing(thresh)) {
-        stopf("No 'thresh' supplied. Either pass 'thresh' directly or define it during construction in the ParamSet.")
+      # check if cutoff was supplied in any way
+      if (is.null(self$param_set$values$cutoff) && missing(cutoff)) {
+        stopf("No 'cutoff' supplied. Either pass 'cutoff' directly or define it during construction in the ParamSet.")
       }
-      # check if thresh was supplied during construction AND in the function call
-      else if (!is.null(self$param_set$values$thresh) && !missing(thresh)) {
-        warningf("Taking the user supplied value of 'thresh' and ignoring the value set during construction.")
+      # check if cutoff was supplied during construction AND in the function call
+      else if (!is.null(self$param_set$values$cutoff) && !missing(cutoff)) {
+        warningf("Taking the user supplied value of 'cutoff' and ignoring the value set during construction.")
       }
-      # if construction value is missing and thresh is supplied, take thresh
-      else if (!is.null(self$param_set$values$thresh) && missing(thresh)) {
-        thresh = self$param_set$values$thresh
+      # if construction value is missing and cutoff is supplied, take cutoff
+      else if (!is.null(self$param_set$values$cutoff) && missing(cutoff)) {
+        cutoff = self$param_set$values$cutoff
       }
 
       assert_task(task)
-      assert_number(threshold)
-      filter_n(self, task, sum(self$scores > threshold))
+      assert_number(cutoffold)
+      filter_n(self, task, sum(self$scores > cutoffold))
     }
   )
 )
