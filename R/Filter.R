@@ -60,9 +60,9 @@
 #'   and stores them in field `scores`. Some filter support partial scoring via
 #'   argument `n`.
 #'
-#'   * `filter_abs(task, abs)`\cr
+#'   * `filter_nfeat(task, nfeat)`\cr
 #'   ([Task], `integer(1)`) -> [Task]\cr
-#'   Filters the [Task] by reference, keeps up to `abs` features.
+#'   Filters the [Task] by reference, keeps up to `nfeat` features.
 #'
 #'   * `filter_perc(task, perc)`\cr
 #'   ([Task], `numeric(1)`) -> [Task]\cr
@@ -135,24 +135,24 @@ Filter = R6Class("Filter",
       invisible(self)
     },
 
-    filter_abs = function(task, abs) {
+    filter_nfeat = function(task, nfeat) {
 
-      # check if abs was supplied in any way
-      if (is.null(self$param_set$values$abs) && missing(abs)) {
-        stopf("No 'abs' supplied. Either pass 'abs' directly or define it during construction in the ParamSet.")
+      # check if nfeat was supplied in any way
+      if (is.null(self$param_set$values$nfeat) && missing(nfeat)) {
+        stopf("No 'nfeat' supplied. Either pass 'nfeat' directly or define it during construction in the ParamSet.")
       }
-      # check if abs was supplied during construction AND in the function call
-      else if (!is.null(self$param_set$values$abs) && !missing(abs)) {
-        warningf("Taking the user supplied value of 'abs' and ignoring the value set during construction.")
+      # check if nfeat was supplied during construction AND in the function call
+      else if (!is.null(self$param_set$values$nfeat) && !missing(nfeat)) {
+        warningf("Taking the user supplied value of 'nfeat' and ignoring the value set during construction.")
       }
-      # if construction value is missing and abs is supplied, take abs
-      else if (!is.null(self$param_set$values$abs) && missing(abs)) {
-        abs = self$param_set$values$abs
+      # if construction value is missing and nfeat is supplied, take nfeat
+      else if (!is.null(self$param_set$values$nfeat) && missing(nfeat)) {
+        nfeat = self$param_set$values$nfeat
       }
 
       assert_task(task)
-      assert_count(abs)
-      filter_n(self, task, abs)
+      assert_count(nfeat)
+      filter_n(self, task, nfeat)
     },
 
     filter_perc = function(task, perc) {

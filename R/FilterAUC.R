@@ -25,7 +25,7 @@ FilterAUC = R6Class("FilterAUC", inherit = Filter,
         task_type = "classif",
         task_properties = "twoclass",
         param_set = ParamSet$new(list(
-          ParamInt$new("abs", lower = 1, tags = "generic"),
+          ParamInt$new("nfeat", lower = 1, tags = "generic"),
           ParamDbl$new("perc", lower = 0, upper = 1, tags = "generic"),
           ParamDbl$new("thresh", tags = "generic")
         )),
