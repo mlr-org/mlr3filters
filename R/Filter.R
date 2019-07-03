@@ -64,9 +64,9 @@
 #'   ([Task], `integer(1)`) -> [Task]\cr
 #'   Filters the [Task] by reference, keeps up to `nfeat` features.
 #'
-#'   * `filter_perc(task, perc)`\cr
+#'   * `filter_frac(task, frac)`\cr
 #'   ([Task], `numeric(1)`) -> [Task]\cr
-#'   Filters the [Task] by reference, keeps `perc` percent of the features
+#'   Filters the [Task] by reference, keeps `frac` fracent of the features
 #'   (rounded via [base::round()]).
 #'
 #'   * `filter_thresh(task, thresh)`\cr
@@ -155,24 +155,24 @@ Filter = R6Class("Filter",
       filter_n(self, task, nfeat)
     },
 
-    filter_perc = function(task, perc) {
+    filter_frac = function(task, frac) {
 
-      # check if perc was supplied in any way
-      if (is.null(self$param_set$values$perc) && missing(perc)) {
-        stopf("No 'perc' supplied. Either pass 'perc' directly or define it during construction in the ParamSet.")
+      # check if frac was supplied in any way
+      if (is.null(self$param_set$values$frac) && missing(frac)) {
+        stopf("No 'frac' supplied. Either pass 'frac' directly or define it during construction in the ParamSet.")
       }
-      # check if perc was supplied during construction AND in the function call
-      else if (!is.null(self$param_set$values$perc) && !missing(perc)) {
-        warningf("Taking the user supplied value of 'perc' and ignoring the value set during construction.")
+      # check if frac was supplied during construction AND in the function call
+      else if (!is.null(self$param_set$values$frac) && !missing(frac)) {
+        warningf("Taking the user supplied value of 'frac' and ignoring the value set during construction.")
       }
-      # if construction value is missing and perc is supplied, take perc
-      else if (!is.null(self$param_set$values$perc) && missing(perc)) {
-        perc = self$param_set$values$perc
+      # if construction value is missing and frac is supplied, take frac
+      else if (!is.null(self$param_set$values$frac) && missing(frac)) {
+        frac = self$param_set$values$frac
       }
 
       assert_task(task)
-      assert_number(perc, lower = 0, upper = 1)
-      filter_n(self, task, round(task$ncol * perc))
+      assert_number(frac, lower = 0, upper = 1)
+      filter_n(self, task, round(task$ncol * frac))
     },
 
     filter_thresh = function(task, threshold) {
