@@ -32,7 +32,7 @@ FilterVariance = R6Class("FilterVariance", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task, n = NULL) {
+    .calculate = function(task, nfeat = NULL) {
       # setting params
       na.rm = self$param_set$values$na.rm
 

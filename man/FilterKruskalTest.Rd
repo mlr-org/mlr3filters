@@ -16,7 +16,7 @@ Kruskal-Wallis rank sum test filter. Calls
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterKruskalTest$new()
-filter$calculate(task)
+filter$filter_nfeat(task, 2)
 as.data.table(filter)[1:3]
 }
 \seealso{

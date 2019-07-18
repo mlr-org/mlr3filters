@@ -7,10 +7,10 @@
 #' @description Minimal conditional mutual information maximisation filter.
 #'   Calls [praznik::CMIM()].
 #'
-#' @details This filter supports partial scoring via hyperparameter `k`. To use
-#'   it, set `k` during construction via `param_vals.` By default all filter
-#'   scores are calculated and the default of `k = 3` in the ParamSet does not
-#'   apply.
+#' @details This filter supports partial scoring via hyperparameter `k`. For
+#'   internal reasons, `k` is not exposed in the ParamSet. Instead, the generic
+#'   hyperparameter `n` will be populated to the filter for partial scoring
+#'   calculation. By default all filter values are calculated (`n = 1`).
 #'
 #' @family Filter
 #' @export
@@ -18,6 +18,11 @@
 #' task = mlr3::mlr_tasks$get("iris")
 #' filter = FilterCMIM$new()
 #' filter$calculate(task)
+#'
+#' ## get names of n best features
+#' filter$get_best(2)
+#'
+#' ## get numeric filter scores
 #' as.data.table(filter)[1:3]
 FilterCMIM = R6Class("FilterCMIM", inherit = Filter,
   public = list(
@@ -28,7 +33,6 @@ FilterCMIM = R6Class("FilterCMIM", inherit = Filter,
         feature_types = c("integer", "numeric", "factor", "ordered"),
         task_type = c("classif", "regr"),
         param_set = ParamSet$new(list(
-          ParamInt$new("k", lower = 1L, default = 3L, tags = "filter"),
           ParamInt$new("threads", lower = 0L, default = 0L, tags = "filter")
         )),
         param_vals = param_vals
@@ -37,32 +41,19 @@ FilterCMIM = R6Class("FilterCMIM", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task, n = NULL) {
+    .calculate = function(task, nfeat) {
 
-      # setting params
-      k = self$param_set$values$k
-      threads = self$param_set$values$threads
-
-      if (is.null(k)) {
-        # by default we calculate all scores
-        # partial scoring need to be specifically requested by setting k during construction
-        k = length(task$feature_names)
-      }
-      if (is.null(threads)) {
+      if (!is.null(self$param_set$get_values()$threads)) {
+        threads = self$param_set$get_values()$threads
+      } else {
         threads = self$param_set$default$threads
-      }
-
-      # n overwrites any param_vals
-      if (!is.null(n)) {
-        if (!is.null(k)) {
-          warningf("Overwriting hyperparameter 'k' with the value given in `$filter_*().")
-        }
-        k = n
       }
 
       X = task$data(cols = task$feature_names)
       Y = task$truth()
-      praznik::CMIM(X = X, Y = Y, k = k, threads = threads)$score
+
+      praznik::CMIM(X = X, Y = Y, k = nfeat, threads = threads)$score
+
     }
   )
 )

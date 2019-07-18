@@ -6,3 +6,6 @@ old_opts = options(
 lg = lgr::get_logger("mlr3")
 old_threshold = lg$threshold
 lg$set_threshold("warn")
+
+task = mlr3::mlr_tasks$get("mtcars")
+task_bh = mlr3::mlr_tasks$get("boston_housing")

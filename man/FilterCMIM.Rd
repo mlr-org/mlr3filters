@@ -14,15 +14,20 @@ Minimal conditional mutual information maximisation filter.
 Calls \code{\link[praznik:CMIM]{praznik::CMIM()}}.
 }
 \details{
-This filter supports partial scoring via hyperparameter \code{k}. To use
-it, set \code{k} during construction via \code{param_vals.} By default all filter
-scores are calculated and the default of \code{k = 3} in the ParamSet does not
-apply.
+This filter supports partial scoring via hyperparameter \code{k}. For
+internal reasons, \code{k} is not exposed in the ParamSet. Instead, the generic
+hyperparameter \code{n} will be populated to the filter for partial scoring
+calculation. By default all filter values are calculated (\code{n = 1}).
 }
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterCMIM$new()
 filter$calculate(task)
+
+## get names of n best features
+filter$get_best(2)
+
+## get numeric filter scores
 as.data.table(filter)[1:3]
 }
 \seealso{

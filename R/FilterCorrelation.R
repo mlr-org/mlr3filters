@@ -12,6 +12,8 @@
 #' task = mlr3::mlr_tasks$get("mtcars")
 #' filter = FilterCorrelation$new()
 #' filter$calculate(task)
+#' filter$get_best(2)
+#' filter$get_best(0.6, type = "frac")
 #' as.data.table(filter)[1:3]
 FilterCorrelation = R6Class("FilterCorrelation", inherit = Filter,
   public = list(
