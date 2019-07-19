@@ -32,7 +32,7 @@ FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task, n = NULL) {
+    .calculate = function(task, nfeat = NULL) {
 
       # setting params
       na.action = self$param_set$values$na.action

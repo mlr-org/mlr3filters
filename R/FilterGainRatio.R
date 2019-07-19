@@ -35,7 +35,7 @@ FilterGainRatio = R6Class("FilterGainRatio", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task, n = NULL) {
+    .calculate = function(task, nfeat = NULL) {
 
       # setting params
       equal = self$param_set$values$equal

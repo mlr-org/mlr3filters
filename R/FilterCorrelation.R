@@ -36,7 +36,7 @@ FilterCorrelation = R6Class("FilterCorrelation", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task, n = NULL) {
+    .calculate = function(task, nfeat = NULL) {
 
       # setting params
       use = self$param_set$values$use

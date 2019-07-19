@@ -37,32 +37,18 @@ FilterJMIM = R6Class("FilterJMIM", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task, n = NULL) {
+    .calculate = function(task, nfeat = NULL) {
 
-      # setting params
-      k = self$param_set$values$k
-      threads = self$param_set$values$threads
-
-      if (is.null(k)) {
-        # by default we calculate all scores
-        # partial scoring need to be specifically requested by setting k during construction
-        k = length(task$feature_names)
-      }
-      if (is.null(threads)) {
+      if (!is.null(self$param_set$get_values()$threads)) {
+        threads = self$param_set$get_values()$threads
+      } else {
         threads = self$param_set$default$threads
-      }
-
-      # n overwrites any param_vals
-      if (!is.null(n)) {
-        if (!is.null(k)) {
-          warningf("Overwriting hyperparameter 'k' with the value given in `$filter_*().")
-        }
-        k = n
       }
 
       X = task$data(cols = task$feature_names)
       Y = task$truth()
-      praznik::JMIM(X = X, Y = Y, k = k, threads = threads)$score
+
+      praznik::JMIM(X = X, Y = Y, k = nfeat, threads = threads)$score
     }
   )
 )

@@ -33,7 +33,7 @@ FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task, n = NULL) {
+    .calculate = function(task, nfeat = NULL) {
 
       # FIXME task splitting should really be easier
       data = as.data.table(task)

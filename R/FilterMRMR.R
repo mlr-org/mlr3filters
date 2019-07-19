@@ -37,7 +37,7 @@ FilterMRMR = R6Class("FilterMRMR", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task, n = NULL) {
+    .calculate = function(task, nfeat = NULL) {
 
       # setting params
       k = self$param_set$values$k

@@ -43,7 +43,7 @@
 #'
 #' @section Methods:
 #'
-#'   * `calculate(task, n = NULL)`\cr ([Task], `numeric(1)`) -> [Filter]\cr
+#'   * `calculate(task, nfeat = NULL)`\cr ([Task], `numeric(1)`) -> [Filter]\cr
 #'   Calculates the filter score values for the provided [Task] and stores them
 #'   in field `scores`. Some filter support partial scoring via argument `n`.
 #'
@@ -88,7 +88,8 @@ Filter = R6Class("Filter",
 
     calculate = function(task, nfeat) {
 
-      assert_task(task, feature_types = self$feature_types, task_properties = self$task_properties)
+      assert_task(task, feature_types = self$feature_types,
+        task_properties = self$task_properties)
       assert_filter_result(self, task)
       require_namespaces(self$packages)
       fn = task$feature_names
@@ -97,7 +98,7 @@ Filter = R6Class("Filter",
       if (!is.null(self$param_set$get_values()$nfeat)) {
         nfeat = self$param_set$get_values()$nfeat
       } else {
-        nfeat = self$param_set$default$n
+        nfeat = self$param_set$default$nfeat
       }
       # check if type was given by the user or not
       if (!is.null(self$param_set$get_values()$type)) {

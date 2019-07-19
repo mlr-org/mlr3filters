@@ -36,7 +36,7 @@ FilterEmbedded = R6Class("FilterEmbedded", inherit = Filter,
   ),
 
   private = list(
-    .calculate = function(task, n = NULL) {
+    .calculate = function(task, nfeat = NULL) {
       learner = self$learner$clone(deep = TRUE)
       learner = learner$train(task = task)
       importance = learner$importance()

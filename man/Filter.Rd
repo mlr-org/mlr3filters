@@ -44,7 +44,7 @@ in a random order.
 \section{Methods}{
 
 \itemize{
-\item \code{calculate(task, n = NULL)}\cr (\link{Task}, \code{numeric(1)}) -> \link{Filter}\cr
+\item \code{calculate(task, nfeat = NULL)}\cr (\link{Task}, \code{numeric(1)}) -> \link{Filter}\cr
 Calculates the filter score values for the provided \link{Task} and stores them
 in field \code{scores}. Some filter support partial scoring via argument \code{n}.
 }
