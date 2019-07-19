@@ -8,7 +8,8 @@
 \description{
 Base class for filters. Predefined filters are stored in
 \link{mlr_filters}. Filters calculate a score for each feature of a dataset and
-return a ranked scoring.
+return a ranked scoring. By default filter values for all features will be
+calculated unless set differently during Filter construction.
 }
 \section{Construction}{
 \preformatted{f = Filter$new(id, task_type, param_set, param_vals, feature_types, packages)

@@ -1,7 +1,6 @@
 context("regr")
 
 test_that("all regr filters return correct filter values", {
-
   filter_all_regr = create_filters_custom("regr")
 
   foo = map(filter_all_regr, function(.x) {
@@ -10,11 +9,9 @@ test_that("all regr filters return correct filter values", {
     expect_equal(ncol(.x$scores), 2)
     expect_named(.x$scores, c("score", "feature"))
   })
-
 })
 
 test_that("'nfeat' argument works correctly with different values of 'type'", {
-
   filter_all_regr = create_filters_custom("regr", param_vals = list(nfeat = 0.5))
 
   foo = map(filter_all_regr, function(.x) {
@@ -27,7 +24,6 @@ test_that("'nfeat' argument works correctly with different values of 'type'", {
     expect_warning(.x$get_best(7, type = "abs"))
     expect_error(.x$get_best(7, type = "frac"))
   })
-
 })
 
 test_that("Errors for unsupported features", {
@@ -35,7 +31,7 @@ test_that("Errors for unsupported features", {
   # list filters that only support "numeric" features
   filters = mlr_filters$mget(mlr_filters$keys())
   filters = Filter(function(x) all(grepl(paste(c("numeric", "integer"),
-    collapse="|"), x$feature_types)), filters)
+      collapse = "|"), x$feature_types)), filters)
   filters = filters[lengths(filters) != 0]
 
   # supported: numeric, integer

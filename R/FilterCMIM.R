@@ -42,7 +42,6 @@ FilterCMIM = R6Class("FilterCMIM", inherit = Filter,
 
   private = list(
     .calculate = function(task, nfeat) {
-
       if (!is.null(self$param_set$get_values()$threads)) {
         threads = self$param_set$get_values()$threads
       } else {

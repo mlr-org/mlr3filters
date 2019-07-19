@@ -5,7 +5,8 @@
 #'
 #' @description Base class for filters. Predefined filters are stored in
 #'   [mlr_filters]. Filters calculate a score for each feature of a dataset and
-#'   return a ranked scoring.
+#'   return a ranked scoring. By default filter values for all features will be
+#'   calculated unless set differently during Filter construction.
 #'
 #' @section Construction:
 #'
@@ -65,8 +66,8 @@ Filter = R6Class("Filter",
 
       # add generic hyperpars to param_set of filter
       param_set$add(ParamSet$new(list(
-          ParamDbl$new("nfeat", lower = 0, default = 1),
-          ParamFct$new("type", levels = c("abs", "frac", "cutoff"), default = "frac")
+        ParamDbl$new("nfeat", lower = 0, default = 1),
+        ParamFct$new("type", levels = c("abs", "frac", "cutoff"), default = "frac")
       )))
 
       self$id = assert_string(id)
@@ -136,7 +137,7 @@ Filter = R6Class("Filter",
 
       if (type == "frac") {
         assert_numeric(nfeat, lower = 0, upper = 1)
-        nfeat = length(fn) * nfeat
+        nfeat = round(nrow(self$scores) * nfeat)
       } else if (type == "cutoff") {
         nfeat = names(scores > cutoff)
       } else {

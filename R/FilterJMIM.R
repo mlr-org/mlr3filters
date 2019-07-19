@@ -38,7 +38,6 @@ FilterJMIM = R6Class("FilterJMIM", inherit = Filter,
 
   private = list(
     .calculate = function(task, nfeat = NULL) {
-
       if (!is.null(self$param_set$get_values()$threads)) {
         threads = self$param_set$get_values()$threads
       } else {
