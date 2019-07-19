@@ -14,10 +14,10 @@ Double input symmetrical relevance filter. Calls
 \code{\link[praznik:DISR]{praznik::DISR()}}.
 }
 \details{
-This filter supports partial scoring via hyperparameter \code{k}. To use
-it, set \code{k} during construction via \code{param_vals.} By default all filter
-scores are calculated and the default of \code{k = 3} in the ParamSet does not
-apply.
+This filter supports partial scoring via hyperparameter \code{k}. For
+internal reasons, \code{k} is not exposed in the ParamSet. Instead, the generic
+hyperparameter \code{nfeat} will be populated to the filter for partial scoring
+calculation. By default all filter values are calculated (\code{nfeat = 1})
 }
 \examples{
 task = mlr3::mlr_tasks$get("iris")

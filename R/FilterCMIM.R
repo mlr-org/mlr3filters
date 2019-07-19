@@ -9,8 +9,8 @@
 #'
 #' @details This filter supports partial scoring via hyperparameter `k`. For
 #'   internal reasons, `k` is not exposed in the ParamSet. Instead, the generic
-#'   hyperparameter `n` will be populated to the filter for partial scoring
-#'   calculation. By default all filter values are calculated (`n = 1`).
+#'   hyperparameter `nfeat` will be populated to the filter for partial scoring
+#'   calculation. By default all filter values are calculated (`nfeat = 1`).
 #'
 #' @family Filter
 #' @export

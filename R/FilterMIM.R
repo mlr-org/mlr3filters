@@ -7,10 +7,10 @@
 #' @description Conditional mutual information based feature selection filter.
 #'   Calls [praznik::MIM()].
 #'
-#' @details This filter supports partial scoring via hyperparameter `k`. To use
-#'   it, set `k` during construction via `param_vals.` By default all filter
-#'   scores are calculated and the default of `k = 3` in the ParamSet does not
-#'   apply.
+#' @details This filter supports partial scoring via hyperparameter `k`. For
+#'   internal reasons, `k` is not exposed in the ParamSet. Instead, the generic
+#'   hyperparameter `nfeat` will be populated to the filter for partial scoring
+#'   calculation. By default all filter values are calculated (`nfeat = 1`)
 #'
 #' @family Filter
 #' @export

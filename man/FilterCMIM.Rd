@@ -16,8 +16,8 @@ Calls \code{\link[praznik:CMIM]{praznik::CMIM()}}.
 \details{
 This filter supports partial scoring via hyperparameter \code{k}. For
 internal reasons, \code{k} is not exposed in the ParamSet. Instead, the generic
-hyperparameter \code{n} will be populated to the filter for partial scoring
-calculation. By default all filter values are calculated (\code{n = 1}).
+hyperparameter \code{nfeat} will be populated to the filter for partial scoring
+calculation. By default all filter values are calculated (\code{nfeat = 1}).
 }
 \examples{
 task = mlr3::mlr_tasks$get("iris")
