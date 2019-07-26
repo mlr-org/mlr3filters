@@ -4,7 +4,9 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description Correlation filter. Calls [stats::cor()].
+#' @description
+#' Simple correlation filter calling [stats::cor()].
+#' The filter score is the absolute value of the correlation.
 #'
 #' @family Filter
 #' @export
@@ -12,50 +14,37 @@
 #' task = mlr3::mlr_tasks$get("mtcars")
 #' filter = FilterCorrelation$new()
 #' filter$calculate(task)
-#' as.data.table(filter)[1:3]
+#' as.data.table(filter)
 FilterCorrelation = R6Class("FilterCorrelation", inherit = Filter,
   public = list(
-    initialize = function(id = "correlation", param_vals = list()) {
+    initialize = function(id = "correlation") {
       super$initialize(
         id = id,
         packages = "stats",
         feature_types = c("integer", "numeric"),
         task_type = "regr",
         param_set = ParamSet$new(list(
-          ParamFct$new("use", default = "everything", levels = c("everything",
-            "all.obs", "complete.obs", "na.or.complete", "pairwise.complete.obs"),
-          tags = "filter"),
+          ParamFct$new("use", default = "everything",
+            levels = c("everything", "all.obs", "complete.obs", "na.or.complete", "pairwise.complete.obs")),
           ParamFct$new("method", default = "pearson",
-            levels = c("pearson", "kendall", "spearman"), tags = "filter")
-        )),
-        param_vals = param_vals
+            levels = c("pearson", "kendall", "spearman"))
+        ))
       )
     }
   ),
 
   private = list(
-    .calculate = function(task, n = NULL) {
-
-      # setting params
-      use = self$param_set$values$use
-      method = self$param_set$values$method
-
-      if (is.null(use)) {
-        use = self$param_set$default$use
-      }
-      if (is.null(method)) {
-        method = self$param_set$default$method
-      }
-
+    .calculate = function(task, nfeat) {
       fn = task$feature_names
-      score = abs(stats::cor(
-        x = as.matrix(task$data(cols = task$feature_names)),
-        y = as.matrix(task$data(cols = task$target_names)),
-        use = use,
-        method = method)[, 1L])
-      set_names(score, fn)
+      pv = self$param_set$values
+      score = invoke(stats::cor,
+        x = as.matrix(task$data(cols = fn)),
+        y = as.matrix(task$truth()),
+        .args = pv)[, 1L]
+      set_names(abs(score), fn)
     }
   )
 )
 
-register_filter("correlation", FilterCorrelation)
+#' @include mlr_filters.R
+mlr_filters$add("correlation", FilterCorrelation)

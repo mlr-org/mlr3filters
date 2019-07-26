@@ -4,20 +4,25 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description Filter `carscore` determines the Correlation-Adjusted (marginal)
-#' coRelation scores (short CAR scores). The CAR scores for a set of features
-#' are defined as the correlations between the target and the decorrelated
-#' features.
+#' @description
+#' Calculates the Correlation-Adjusted (marginal) coRelation scores (short CAR scores)
+#' implemented in [care::carscore()] in package \CRANpkg{care}.
+#' The CAR scores for a set of features are defined as the correlations between the target
+#' and the decorrelated features. The filter returns the absolute value of the calculated scores.
+#'
+#' Argument `verbose` defaults to `FALSE`.
 #'
 #' @family Filter
+#' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("mtcars")
 #' filter = FilterCarScore$new()
 #' filter$calculate(task)
-#' @export
+#' head(filter$scores, 3)
+#' as.data.table(filter)
 FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
   public = list(
-    initialize = function(id = "carscore", param_vals = list()) {
+    initialize = function(id = "carscore") {
       super$initialize(
         id = id,
         packages = "care",
@@ -26,47 +31,23 @@ FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
         param_set = ParamSet$new(list(
           ParamDbl$new("lambda", lower = 0, upper = 1, default = NO_DEF),
           ParamLgl$new("diagonal", default = FALSE),
-          ParamLgl$new("verbose", default = FALSE))),
-        param_vals = param_vals
+          ParamLgl$new("verbose", default = TRUE))),
+        param_vals = list(verbose = FALSE)
       )
     }
   ),
 
   private = list(
-    .calculate = function(task, n = NULL) {
+    .calculate = function(task, nfeat) {
+      target = task$truth()
+      features = task$data(cols = task$feature_names)
 
-      # FIXME task splitting should really be easier
-      data = as.data.table(task)
-      target = task$target_names
-      target = data[, ..target]
-
-      features = task$feature_names
-      features = as.data.frame(data[, ..features])
-
-      # setting params
-      lambda = self$param_set$values$lambda
-      diagonal = self$param_set$values$diagonal
-      verbose = self$param_set$values$verbose
-
-      if (is.null(diagonal)) {
-        diagonal = self$param_set$default$diagonal
-      }
-      if (is.null(verbose)) {
-        verbose = self$param_set$default$verbose
-      }
-
-      # since lambda has no default, we need to split the execution on it
-      if (is.null(lambda)) {
-        y = care::carscore(Xtrain = features, Ytrain = target,
-          diagonal = diagonal, verbose = verbose)^2
-      } else {
-        y = care::carscore(Xtrain = features, Ytrain = target, lambda = lambda,
-          diagonal = diagonal, verbose = verbose)^2
-      }
-
-      setNames(as.double(y), names(y))
+      pv = self$param_set$values
+      scores = invoke(care::carscore, Xtrain = features, Ytrain = target, .args = pv)
+      set_names(abs(scores), names(scores))
     }
   )
 )
 
-register_filter("carscore", FilterCarScore)
+#' @include mlr_filters.R
+mlr_filters$add("carscore", FilterCarScore)

@@ -6,69 +6,61 @@
 \title{Filter Base Class}
 \format{\link[R6:R6Class]{R6::R6Class} object.}
 \description{
-This is the base class for filters. Predefined filters are
-stored in \link{mlr_filters}.
+Base class for filters. Predefined filters are stored in the \link[mlr3misc:Dictionary]{mlr3misc::Dictionary} \link{mlr_filters}.
+A Filter calculates a score for each feature of a task where important features get a large value and unimportant features get a small value.
+Note that filter scores may also be negative.
 }
 \section{Construction}{
- \code{f = Filter$new(id, task_type, param_set, param_vals, feature_types, packages)}
+\preformatted{f = Filter$new(id, task_type, param_set, param_vals, feature_types, packages)
+}
 \itemize{
-\item \code{id} :: \code{character(1)}\cr Identifier for the filter.
-\item \code{task_type} :: \code{character(1)}\cr Type of the task the filter can operator
-on. E.g., \code{"classif"} or \code{"regr"}.
-\item \code{param_set} :: \link[paradox:ParamSet]{paradox::ParamSet}\cr Set of hyperparameters.
-\item \code{param_vals} :: named \code{list()}\cr Named list of hyperparameter settings.
-\item \code{feature_types} :: \code{character()}\cr Feature types the filter operates on.
-Must be a subset of
-\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.
-\item \code{task_properties} :: \code{character()}\cr Required task properties, see
-\link[mlr3:Task]{mlr3::Task}. Must be a subset of
-\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_properties}}.
-\item \code{packages} :: \code{character()}\cr Set of required packages. Note that these
-packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and are not attached.
+\item \code{id} :: \code{character(1)}\cr
+Identifier for the filter.
+\item \code{task_type} :: \code{character(1)}\cr
+Type of the task the filter can operator on. E.g., \code{"classif"} or \code{"regr"}.
+\item \code{param_set} :: \link[paradox:ParamSet]{paradox::ParamSet}\cr
+Set of hyperparameters.
+\item \code{param_vals} :: named \code{list()}\cr
+Named list of hyperparameter settings.
+\item \code{feature_types} :: \code{character()}\cr
+Feature types the filter operates on.
+Must be a subset of \code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.
+\item \code{task_properties} :: \code{character()}\cr
+Required task properties, see \link[mlr3:Task]{mlr3::Task}.
+Must be a subset of \code{\link[mlr3:mlr_reflections]{mlr_reflections$task_properties}}.
+\item \code{packages} :: \code{character()}\cr
+Set of required packages.
+Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and are not attached.
 }
 }
 
 \section{Fields}{
 
+
+All arguments passed to the constructor are available as fields, and additionally:
 \itemize{
-\item \code{id} :: \code{character(1)}\cr Stores the identifier of the filter.
-\item \code{task_type} :: \code{character(1)}\cr Stores the type of class this filter can
-operate on, e.g. \code{"classif"} or \code{"regr"}. A complete list of task types is
-stored in \code{\link[mlr3:mlr_reflections]{mlr_reflections$task_types}}.
-\item \code{param_set} :: \link[paradox:ParamSet]{paradox::ParamSet}\cr Description of available
-hyperparameters and hyperparameter settings.
-\item \code{feature_types} :: \code{character()}\cr Stores the feature types the filter
-can handle, e.g. \code{"logical"}, \code{"numeric"}, or \code{"factor"}. A complete list
-of candidate feature types, grouped by task type, is stored in
-\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.
-\item \code{packages} :: \code{character()}\cr Stores the names of required packages.
-\item \code{scores} :: \code{numeric()}\cr Stores the calculated filter score values as
-named numeric vector. The scores are sorted in decreasing order, with tied
-values in a random order.
+\item \code{scores} :: named \code{numeric()}\cr
+Stores the calculated filter score values as named numeric vector.
+The vector is sorted in decreasing order with possible \code{NA} values last.
+Tied values appear in a random, non-deterministic order.
 }
 }
 
 \section{Methods}{
 
 \itemize{
-\item \code{calculate(task, n = NULL)}\cr
-\link{Task} -> \code{numeric()}\cr
-\code{n} ->\code{integer()}\cr
-Calculates the filter score values for the provided \link{Task}
-and stores them in field \code{scores}. Some filter support partial scoring via
-argument \code{n}.
-\item \code{filter_nfeat(task, nfeat)}\cr
-(\link{Task}, \code{integer(1)}) -> \link{Task}\cr
-Filters the \link{Task} by reference, keeps up to \code{nfeat} features.
-\item \code{filter_frac(task, frac)}\cr
-(\link{Task}, \code{numeric(1)}) -> \link{Task}\cr
-Filters the \link{Task} by reference, keeps \code{frac} fracent of the features
-(rounded via \code{\link[base:round]{base::round()}}).
-\item \code{filter_cutoff(task, cutoff)}\cr
-(\link{Task}, \code{numeric(1)}) -> \link{Task}\cr
-Filters the \link{Task} by reference, keeps features whose filter score values
-exceeds \code{cutoff}.
+\item \code{calculate(task, nfeat = NULL)}\cr
+(\link[mlr3:Task]{mlr3::Task}, \code{integer(1)}) -> \link{Filter} \cr
+Calculates the filter score values for the provided \link[mlr3:Task]{mlr3::Task} and stores them in field \code{scores}.
+\code{nfeat} determines the minimum number of features to score (see "Partial Scoring").
 }
+}
+
+\section{Partial Scoring}{
+
+Some features support partial scoring of the feature set:
+If \code{nfeat} is not \code{NULL}, only the best \code{nfeat} features are guaranteed to get a score.
+Additional features are ignored for computational reasons, and are scored with \code{NA}.
 }
 
 \seealso{

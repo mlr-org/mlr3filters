@@ -10,13 +10,14 @@
 FilterCorrelation
 }
 \description{
-Correlation filter. Calls \code{\link[stats:cor]{stats::cor()}}.
+Simple correlation filter calling \code{\link[stats:cor]{stats::cor()}}.
+The filter score is the absolute value of the correlation.
 }
 \examples{
 task = mlr3::mlr_tasks$get("mtcars")
 filter = FilterCorrelation$new()
 filter$calculate(task)
-as.data.table(filter)[1:3]
+as.data.table(filter)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},

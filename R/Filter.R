@@ -3,76 +3,61 @@
 #' @usage NULL
 #' @format [R6::R6Class] object.
 #'
-#' @description This is the base class for filters. Predefined filters are
-#' stored in [mlr_filters].
+#' @description
+#' Base class for filters. Predefined filters are stored in the [mlr3misc::Dictionary] [mlr_filters].
+#' A Filter calculates a score for each feature of a task where important features get a large value and unimportant features get a small value.
+#' Note that filter scores may also be negative.
 #'
-#' @section Construction: ``` f = Filter$new(id, task_type, param_set,
-#'   param_vals, feature_types, packages) ```
+#' @section Construction:
 #'
-#'   * `id` :: `character(1)`\cr Identifier for the filter.
+#'   ```
+#'   f = Filter$new(id, task_type, param_set, param_vals, feature_types, packages)
+#'   ```
 #'
-#'   * `task_type` :: `character(1)`\cr Type of the task the filter can operator
-#'   on. E.g., `"classif"` or `"regr"`.
+#'   * `id` :: `character(1)`\cr
+#'     Identifier for the filter.
 #'
-#'   * `param_set` :: [paradox::ParamSet]\cr Set of hyperparameters.
+#'   * `task_type` :: `character(1)`\cr
+#'     Type of the task the filter can operator on. E.g., `"classif"` or `"regr"`.
 #'
-#'   * `param_vals` :: named `list()`\cr Named list of hyperparameter settings.
+#'   * `param_set` :: [paradox::ParamSet]\cr
+#'     Set of hyperparameters.
 #'
-#'   * `feature_types` :: `character()`\cr Feature types the filter operates on.
-#'   Must be a subset of
-#'   [`mlr_reflections$task_feature_types`][mlr3::mlr_reflections].
+#'   * `param_vals` :: named `list()`\cr
+#'     Named list of hyperparameter settings.
 #'
-#'   * `task_properties` :: `character()`\cr Required task properties, see
-#'   [mlr3::Task]. Must be a subset of
-#'   [`mlr_reflections$task_properties`][mlr3::mlr_reflections].
+#'   * `feature_types` :: `character()`\cr
+#'     Feature types the filter operates on.
+#'     Must be a subset of [`mlr_reflections$task_feature_types`][mlr3::mlr_reflections].
 #'
-#'   * `packages` :: `character()`\cr Set of required packages. Note that these
-#'   packages will be loaded via [requireNamespace()], and are not attached.
+#'   * `task_properties` :: `character()`\cr
+#'     Required task properties, see [mlr3::Task].
+#'     Must be a subset of [`mlr_reflections$task_properties`][mlr3::mlr_reflections].
+#'
+#'   * `packages` :: `character()`\cr
+#'     Set of required packages.
+#'     Note that these packages will be loaded via [requireNamespace()], and are not attached.
 #'
 #' @section Fields:
 #'
-#'   * `id` :: `character(1)`\cr Stores the identifier of the filter.
+#'   All arguments passed to the constructor are available as fields, and additionally:
 #'
-#'   * `task_type` :: `character(1)`\cr Stores the type of class this filter can
-#'   operate on, e.g. `"classif"` or `"regr"`. A complete list of task types is
-#'   stored in [`mlr_reflections$task_types`][mlr3::mlr_reflections].
-#'
-#'   * `param_set` :: [paradox::ParamSet]\cr Description of available
-#'   hyperparameters and hyperparameter settings.
-#'
-#'   * `feature_types` :: `character()`\cr Stores the feature types the filter
-#'   can handle, e.g. `"logical"`, `"numeric"`, or `"factor"`. A complete list
-#'   of candidate feature types, grouped by task type, is stored in
-#'   [`mlr_reflections$task_feature_types`][mlr3::mlr_reflections].
-#'
-#'   * `packages` :: `character()`\cr Stores the names of required packages.
-#'
-#'   * `scores` :: `numeric()`\cr Stores the calculated filter score values as
-#'   named numeric vector. The scores are sorted in decreasing order, with tied
-#'   values in a random order.
+#'   * `scores` :: named `numeric()`\cr
+#'   Stores the calculated filter score values as named numeric vector.
+#'   The vector is sorted in decreasing order with possible `NA` values last.
+#'   Tied values appear in a random, non-deterministic order.
 #'
 #' @section Methods:
 #'
-#'   * `calculate(task, n = NULL)`\cr
-#'   [Task] -> `numeric()`\cr
-#'   `n` ->`integer()`\cr
-#'   Calculates the filter score values for the provided [Task]
-#'   and stores them in field `scores`. Some filter support partial scoring via
-#'   argument `n`.
+#'   * `calculate(task, nfeat = NULL)`\cr
+#'     ([mlr3::Task], `integer(1)`) -> [Filter] \cr
+#'     Calculates the filter score values for the provided [mlr3::Task] and stores them in field `scores`.
+#'     `nfeat` determines the minimum number of features to score (see "Partial Scoring").
 #'
-#'   * `filter_nfeat(task, nfeat)`\cr
-#'   ([Task], `integer(1)`) -> [Task]\cr
-#'   Filters the [Task] by reference, keeps up to `nfeat` features.
-#'
-#'   * `filter_frac(task, frac)`\cr
-#'   ([Task], `numeric(1)`) -> [Task]\cr
-#'   Filters the [Task] by reference, keeps `frac` fracent of the features
-#'   (rounded via [base::round()]).
-#'
-#'   * `filter_cutoff(task, cutoff)`\cr
-#'   ([Task], `numeric(1)`) -> [Task]\cr
-#'   Filters the [Task] by reference, keeps features whose filter score values
-#'   exceeds `cutoff`.
+#' @section Partial Scoring:
+#' Some features support partial scoring of the feature set:
+#' If `nfeat` is not `NULL`, only the best `nfeat` features are guaranteed to get a score.
+#' Additional features are ignored for computational reasons, and are scored with `NA`.
 #'
 #' @family Filter
 #' @export
@@ -86,24 +71,17 @@ Filter = R6Class("Filter",
     packages = NULL,
     scores = NULL,
 
-    initialize = function(id, task_type, task_properties = character(),
-      param_set = list(), param_vals = list(), feature_types = character(),
-      packages = character()) {
-
-      # add generic hyperpars to param_set of filter
-      param_set$add(ParamSet$new(list(
-        ParamDbl$new("frac", lower = 0, upper = 1, tags = "generic"),
-        ParamDbl$new("cutoff", tags = "generic"),
-        ParamInt$new("nfeat", lower = 1, tags = "generic")
-      )))
+    initialize = function(id, task_type, task_properties = character(), param_set = ParamSet$new(), param_vals = list(),
+      feature_types = character(), packages = character()) {
 
       self$id = assert_string(id)
       self$task_type = assert_subset(task_type, mlr_reflections$task_types, empty.ok = FALSE)
       self$task_properties = assert_subset(task_properties, unlist(mlr_reflections$task_properties, use.names = FALSE))
       self$param_set = assert_param_set(param_set)
-      self$param_set$values = param_vals
+      self$param_set$values = insert_named(self$param_set$values, param_vals)
       self$feature_types = assert_subset(feature_types, mlr_reflections$task_feature_types)
       self$packages = assert_character(packages, any.missing = FALSE, unique = TRUE)
+      self$scores = set_names(numeric(), character())
     },
 
     format = function() {
@@ -111,120 +89,38 @@ Filter = R6Class("Filter",
     },
 
     print = function() {
-      filter_print(self)
+      catf(format(self))
+      catf(str_indent("Task Types:", self$task_type))
+      catf(str_indent("Task Properties:", self$task_properties))
+      catf(str_indent("Packages:", self$packages))
+      catf(str_indent("Feature types:", self$feature_types))
     },
 
-    calculate = function(task, n = NULL) {
-
-      assert_task(task, feature_types = self$feature_types, task_properties = self$task_properties)
-      assert_filter_result(self, task)
-      require_namespaces(self$packages)
+    calculate = function(task, nfeat = NULL) {
+      task = assert_task(task, feature_types = self$feature_types, task_properties = self$task_properties)
       fn = task$feature_names
-
-      fv = private$.calculate(task, n)
-
-      # if 'n' is given (e.g. for praznik filter), we only get 'n' scores back
-      if (is.null(n)) {
-        assert_numeric(fv, len = length(fn), any.missing = FALSE)
-        assert_names(names(fv), permutation.of = fn)
+      if (is.null(nfeat)) {
+        nfeat = length(fn)
       } else {
-        assert_numeric(fv, len = n, any.missing = FALSE)
-        # no name assertion possible here because we do not know which features
-        # will be returned
+        nfeat = assert_count(nfeat, coerce = TRUE)
       }
 
+      # calculate filter values using the dedicated filter
+      require_namespaces(self$packages)
+      scores = private$.calculate(task, nfeat)
 
-      self$scores = data.table(score = fv, feature = fn, method = self$id)[order(method, -score)]
+      # check result, re-order with correction for ties
+      assert_numeric(scores, any.missing = FALSE, names = "unique")
+      assert_names(names(scores), subset.of = fn)
+      scores = insert_named(set_names(rep(NA_real_, length(fn)), fn), scores)
+      self$scores = scores[order(scores, runif(length(scores)), decreasing = TRUE, na.last = TRUE)]
 
       invisible(self)
-    },
-
-    combine = function(fr) {
-      assert_filter_result(fr)
-      self$scores = rbindlist(list(self$scores, fr$scores))
-      invisible(self)
-    },
-
-    filter_nfeat = function(task, nfeat) {
-      # check if nfeat was supplied in any way
-      if (is.null(self$param_set$values$nfeat) && missing(nfeat)) {
-        stopf("No 'nfeat' supplied. Either pass 'nfeat' directly or define it during construction in the ParamSet.")
-      }
-      # check if nfeat was supplied during construction AND in the function call
-      else if (!is.null(self$param_set$values$nfeat) && !missing(nfeat)) {
-        warningf("Taking the user supplied value of 'nfeat' and ignoring the value set during construction.")
-      }
-      # if construction value is missing and nfeat is supplied, take nfeat
-      else if (!is.null(self$param_set$values$nfeat) && missing(nfeat)) {
-        nfeat = self$param_set$values$nfeat
-      }
-
-      assert_task(task)
-      assert_count(nfeat)
-      filter_n(self, task, nfeat)
-    },
-
-    filter_frac = function(task, frac) {
-      # check if frac was supplied in any way
-      if (is.null(self$param_set$values$frac) && missing(frac)) {
-        stopf("No 'frac' supplied. Either pass 'frac' directly or define it during construction in the ParamSet.")
-      }
-      # check if frac was supplied during construction AND in the function call
-      else if (!is.null(self$param_set$values$frac) && !missing(frac)) {
-        warningf("Taking the user supplied value of 'frac' and ignoring the value set during construction.")
-      }
-      # if construction value is missing and frac is supplied, take frac
-      else if (!is.null(self$param_set$values$frac) && missing(frac)) {
-        frac = self$param_set$values$frac
-      }
-
-      assert_task(task)
-      assert_number(frac, lower = 0, upper = 1)
-      filter_n(self, task, round(task$ncol * frac))
-    },
-
-    filter_cutoff = function(task, cutoff) {
-      # check if cutoff was supplied in any way
-      if (is.null(self$param_set$values$cutoff) && missing(cutoff)) {
-        stopf("No 'cutoff' supplied. Either pass 'cutoff' directly or define it during construction in the ParamSet.")
-      }
-      # check if cutoff was supplied during construction AND in the function call
-      else if (!is.null(self$param_set$values$cutoff) && !missing(cutoff)) {
-        warningf("Taking the user supplied value of 'cutoff' and ignoring the value set during construction.")
-      }
-      # if construction value is missing and cutoff is supplied, take cutoff
-      else if (!is.null(self$param_set$values$cutoff) && missing(cutoff)) {
-        cutoff = self$param_set$values$cutoff
-      }
-
-      assert_task(task)
-      assert_number(cutoffold)
-      filter_n(self, task, sum(self$scores > cutoffold))
     }
   )
 )
 
-filter_n = function(self, task, n) {
-  if (is.null(self$scores)) {
-    self$calculate(task, n)
-  }
-  keep = head(self$scores$feature, n)
-  task$select(keep)
-}
-
 #' @export
 as.data.table.Filter = function(x, ...) {
-  fv = x$scores
-  if (is.null(fv)) {
-    stopf("No filter data available")
-  }
-  return(fv)
-}
-
-filter_print = function(self) {
-  catf(format(self))
-  catf(str_indent("Task Types:", self$task_type))
-  catf(str_indent("Task Properties:", self$task_properties))
-  catf(str_indent("Packages:", self$packages))
-  catf(str_indent("Feature types:", self$feature_types))
+  enframe(x$scores, name = "feature", value = "score")
 }

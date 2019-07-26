@@ -19,28 +19,6 @@ toc:
 navbar:
   title:
   type: default
-  left:
-  #- icon: fa-home
-  #  href: index.html
-  #- text: Basics
-  #  menu:
-  #  - text: Tasks
-  #    href: articles/basic-01-tasks.html
-  #  - text: Train, predict, score
-  #    href: articles/basic-02-train-predict-score.html
-  #  - text: Resampling
-  #    href: articles/basic-03-resample.html
-  #  - text: Parallelization
-  #    href: articles/basic-04-parallelization.html
-  #  - text: Error handling
-  #    href: articles/basic-05-error-handling.html
-
-  - text: Appendix
-    menu:
-    - text: Function Reference
-      href: reference/index.html
-    - text: News
-      href: news/index.html
 
   right:
   - icon: fa-github fa-lg
@@ -48,6 +26,6 @@ navbar:
   - icon: fa-slack
     href: https://mlr-org.slack.com
   - icon: fa-stack-overflow
-    href: https://stackoverflow.com/questions/tagged/mlr
+    href: https://stackoverflow.com/questions/tagged/mlr3
   - icon: fa-rss
-    href: https://mlr-web.com/
+    href: https://mlr-org.com/

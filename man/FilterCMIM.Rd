@@ -10,20 +10,17 @@
 FilterCMIM
 }
 \description{
-Minimal conditional mutual information maximisation filter.
-Calls \code{\link[praznik:CMIM]{praznik::CMIM()}}.
-}
-\details{
-This filter supports partial scoring via hyperparameter \code{k}. To use
-it, set \code{k} during construction via \code{param_vals.} By default all filter
-scores are calculated and the default of \code{k = 3} in the ParamSet does not
-apply.
+Minimal conditional mutual information maximisation filter calling \code{\link[praznik:CMIM]{praznik::CMIM()}} from package \CRANpkg{praznik}.
+
+This filter supports partial scoring (see \link{Filter}).
 }
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterCMIM$new()
-filter$calculate(task)
-as.data.table(filter)[1:3]
+filter$calculate(task, nfeat = 2)
+
+head(filter$scores, 2)
+as.data.table(filter)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},

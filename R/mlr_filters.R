@@ -18,13 +18,25 @@
 #' mlr_filters$get("mim")
 NULL
 
-DictionaryFilter = R6Class("DictionaryFilter",
-  inherit = mlr3misc::Dictionary,
-  cloneable = FALSE
-)
-
 #' @export
-mlr_filters = NULL
+mlr_filters = DictionaryFilter = R6Class("DictionaryFilter",
+  inherit = mlr3misc::Dictionary,
+  cloneable = FALSE,
+  public = list(
+    get = function(key, id = NULL, param_vals = NULL) {
+      obj = super$get(key)
+      if (!is.null(id)) {
+        obj$id = id
+      }
+      if (!is.null(param_vals)) {
+        obj$param_set$values = insert_named(obj$param_set$values, param_vals)
+      }
+      obj
+    }
+
+  )
+)$new()
+
 
 #' @export
 as.data.table.DictionaryFilter = function(x, ...) {
@@ -40,28 +52,3 @@ as.data.table.DictionaryFilter = function(x, ...) {
     )
   }), "key")[]
 }
-
-# We would like to have the filters in the "mlr_filters" Dictionary, but adding
-# them at build time is apparently not a good idea. On the other hand we would
-# like to register filters near their definition to prevent confusing
-# dependencies throughout the codebase. Therefore we register the filters using
-# "register_filter()" below their definition and call
-# "publish_registered_filters()" in .onLoad. (adapted from mlr3pipelines)
-mlr_filter_register = new.env(parent = emptyenv())
-
-# nocov start
-register_filter = function(key, value) {
-  m = match.call(expand.dots = FALSE)
-  mlr_filter_register[[key]] = m
-}
-
-publish_registered_filters = function() {
-  mlr_filters <<- DictionaryFilter$new()
-
-  for (registercall in as.list(mlr_filter_register)) {
-    registercall[[1]] = quote(mlr_filters$add)
-    eval(registercall, envir = parent.env(environment()))
-  }
-  rm("mlr_filter_register", envir = parent.env(environment()))
-}
-# nocov end

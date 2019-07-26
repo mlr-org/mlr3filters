@@ -4,8 +4,10 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description Kruskal-Wallis rank sum test filter. Calls
-#'   [stats::kruskal.test()].
+#' @description
+#' Kruskal-Wallis rank sum test filter calling [stats::kruskal.test()].
+#' The filter value is `-log10(p)` where `p` is the p-value.
+#' This transformation is necessary to ensure numerical stability for very small p-values.
 #'
 #' @family Filter
 #' @export
@@ -13,10 +15,13 @@
 #' task = mlr3::mlr_tasks$get("iris")
 #' filter = FilterKruskalTest$new()
 #' filter$calculate(task)
-#' as.data.table(filter)[1:3]
+#' as.data.table(filter)
+#'
+#' # transform to p-value
+#' 10^(-filter$scores)
 FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
   public = list(
-    initialize = function(id = "kruskal_test", param_vals = list()) {
+    initialize = function(id = "kruskal_test") {
       super$initialize(
         id = id,
         packages = "stats",
@@ -24,32 +29,29 @@ FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
         task_type = "classif",
         param_set = ParamSet$new(list(
           ParamFct$new("na.action", default = "na.omit",
-            levels = c("na.omit", "na.fail", "na.exclude", "na.pass"), tags = "filter")
-        )),
-        param_vals = param_vals
+            levels = c("na.omit", "na.fail", "na.exclude", "na.pass")),
+          ParamFct$new("score", default = "statistic", levels = c("statistic", "p_value"))
+        ))
       )
     }
   ),
 
   private = list(
-    .calculate = function(task, n = NULL) {
-
-      # setting params
-      na.action = self$param_set$values$na.action
-
-      if (is.null(na.action)) {
-        na.action = self$param_set$default$na.action
-      }
+    .calculate = function(task, nfeat) {
+      pv = self$param_set$values
+      na.action = pv$na.action %??% self$param_set$default$na.action
+      extract = self$param_set
 
       data = task$data(cols = task$feature_names)
       g = task$truth()
 
-      scores = map_dbl(data, function(x) {
-        kruskal.test(x = x, g = g, na.action = na.action)$statistic
-      })
-      replace(scores, is.nan(scores), 0) # FIXME: this is a technical fix, need to report
+
+      -log10(map_dbl(data, function(x) {
+        kruskal.test(x = x, g = g, na.action = na.action)$p.value
+      }))
     }
   )
 )
 
-register_filter("kruskal_test", FilterKruskalTest)
+#' @include mlr_filters.R
+mlr_filters$add("kruskal_test", FilterKruskalTest)

@@ -10,14 +10,16 @@
 FilterVariance
 }
 \description{
-Variance filter.
-Calls \code{\link[stats:var]{stats::var()}}. Argument \code{na.rm} defaults to \code{TRUE} here.
+Variance filter calling \code{\link[stats:var]{stats::var()}}.
+
+Argument \code{na.rm} defaults to \code{TRUE} here.
 }
 \examples{
 task = mlr3::mlr_tasks$get("mtcars")
 filter = FilterVariance$new()
 filter$calculate(task)
-as.data.table(filter)[1:3]
+head(filter$scores, 3)
+as.data.table(filter)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},

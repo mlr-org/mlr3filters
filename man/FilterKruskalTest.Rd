@@ -10,14 +10,18 @@
 FilterKruskalTest
 }
 \description{
-Kruskal-Wallis rank sum test filter. Calls
-\code{\link[stats:kruskal.test]{stats::kruskal.test()}}.
+Kruskal-Wallis rank sum test filter calling \code{\link[stats:kruskal.test]{stats::kruskal.test()}}.
+The filter value is \code{-log10(p)} where \code{p} is the p-value.
+This transformation is necessary to ensure numerical stability for very small p-values.
 }
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterKruskalTest$new()
 filter$calculate(task)
-as.data.table(filter)[1:3]
+as.data.table(filter)
+
+# transform to p-value
+10^(-filter$scores)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},
