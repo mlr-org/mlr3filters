@@ -5,8 +5,9 @@
 #' @include Filter.R
 #'
 #' @description
-#' Variance filter.
-#' Calls [stats::var()]. Argument `na.rm` defaults to `TRUE` here.
+#' Variance filter calling [stats::var()].
+#'
+#' Argument `na.rm` defaults to `TRUE` here.
 #'
 #' @family Filter
 #' @export
@@ -14,37 +15,31 @@
 #' task = mlr3::mlr_tasks$get("mtcars")
 #' filter = FilterVariance$new()
 #' filter$calculate(task)
-#' as.data.table(filter)[1:3]
+#' head(filter$scores, 3)
+#' as.data.table(filter)
 FilterVariance = R6Class("FilterVariance", inherit = Filter,
   public = list(
-    initialize = function(id = "variance", param_vals = list(na.rm = TRUE)) {
+    initialize = function(id = "variance") {
       super$initialize(
         id = id,
         packages = "stats",
         feature_types = c("integer", "numeric"),
         task_type = c("classif", "regr"),
         param_set = ParamSet$new(list(
-          ParamLgl$new("na.rm", default = TRUE, tags = "required")
+          ParamLgl$new("na.rm", default = TRUE)
         )),
-        param_vals = param_vals
+        param_vals = list(na.rm = TRUE)
       )
     }
   ),
 
   private = list(
-    .calculate = function(task, nfeat = NULL) {
-      # setting params
-      na.rm = self$param_set$values$na.rm
-
-      if (is.null(na.rm)) {
-        na.rm = self$param_set$default$na.rm
-      }
-
-      map_dbl(task$data(cols = task$feature_names), function(x) {
-        var(x, na.rm = na.rm)
-      })
+    .calculate = function(task, nfeat) {
+      na.rm = self$param_set$values$na.rm %??% TRUE
+      map_dbl(task$data(cols = task$feature_names), var, na.rm = na.rm)
     }
   )
 )
 
-register_filter("variance", FilterVariance)
+#' @include mlr_filters.R
+mlr_filters$add("variance", FilterVariance)

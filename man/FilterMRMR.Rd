@@ -3,27 +3,23 @@
 \docType{data}
 \name{FilterMRMR}
 \alias{FilterMRMR}
-\alias{mlr_filters_MRMR}
+\alias{mlr_filters_mrmr}
 \title{Minimum redundancy maximal relevancy filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
 \usage{
 FilterMRMR
 }
 \description{
-Minimum redundancy maximal relevancy filter. Calls
-\code{\link[praznik:MRMR]{praznik::MRMR()}}.
-}
-\details{
-This filter supports partial scoring via hyperparameter \code{k}. For
-internal reasons, \code{k} is not exposed in the ParamSet. Instead, the generic
-hyperparameter \code{nfeat} will be populated to the filter for partial scoring
-calculation. By default all filter values are calculated (\code{nfeat = 1})
+Minimum redundancy maximal relevancy filter calling \code{\link[praznik:MRMR]{praznik::MRMR()}} in package \CRANpkg{praznik}.
+
+This filter supports partial scoring (see \link{Filter}).
 }
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterMRMR$new()
-filter$calculate(task)
-head(as.data.table(filter), 3)
+filter$calculate(task, nfeat = 2)
+head(filter$scores, 2)
+as.data.table(filter)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},

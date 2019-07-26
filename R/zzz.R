@@ -1,4 +1,4 @@
-#' @rawNamespace import(data.table, except = transpose)
+#' @import data.table
 #' @import checkmate
 #' @import paradox
 #' @import mlr3misc
@@ -10,10 +10,4 @@
 .onLoad = function(libname, pkgname) {
   # nocov start
   backports::import(pkgname)
-
-  # this is to silence note "publish_registered_filters: no visible binding for global variable ‘mlr_filter_register’" during R CMD check
-  utils::globalVariables("mlr_filter_register")
-
-  publish_registered_filters() # create and fill mlr_filters Dictionary
-
 } # nocov end

@@ -10,20 +10,16 @@
 FilterMIM
 }
 \description{
-Conditional mutual information based feature selection filter.
-Calls \code{\link[praznik:MIM]{praznik::MIM()}}.
-}
-\details{
-This filter supports partial scoring via hyperparameter \code{k}. For
-internal reasons, \code{k} is not exposed in the ParamSet. Instead, the generic
-hyperparameter \code{nfeat} will be populated to the filter for partial scoring
-calculation. By default all filter values are calculated (\code{nfeat = 1})
+Conditional mutual information based feature selection filter calling \code{\link[praznik:MIM]{praznik::MIM()}} in package \CRANpkg{praznik}.
+
+This filter supports partial scoring (see \link{Filter}).
 }
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterMIM$new()
-filter$calculate(task)
-as.data.table(filter)[1:3]
+filter$calculate(task, nfeat = 2)
+head(filter$scores, 2)
+as.data.table(filter)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},

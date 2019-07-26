@@ -8,7 +8,6 @@ feature selection methods of algorithms to *mlr3*.
 status](https://travis-ci.org/mlr-org/mlr3featsel.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3featsel)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/mlr3featsel)](https://cran.r-project.org/package=mlr3featsel)
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Coverage
 status](https://codecov.io/gh/mlr-org/mlr3featsel/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3featsel?branch=master)
 
@@ -20,39 +19,51 @@ remotes::install_github("mlr-org/mlr3featsel")
 
 ## Filters
 
-### Public Methods
+### Filter Example
 
-  - `.$calculate()`: Calculates Filter values
+``` r
+library("mlr3")
+library("mlr3featsel")
 
-  - `.$filter_*()`: filters the task by a given criterion
+task = mlr_tasks$get("pima")
+filter = mlr_filters$get("auc")
+as.data.table(filter$calculate(task))
+```
 
-  - `.$scores`: Filter score values
+    ##         score  feature method
+    ##         <num>   <char> <char>
+    ## 1: 0.28961567  glucose    auc
+    ## 2: 0.18694030      age    auc
+    ## 3: 0.17702985     mass    auc
+    ## 4: 0.11951493 pregnant    auc
+    ## 5: 0.10810075 pressure    auc
+    ## 6: 0.10620149 pedigree    auc
+    ## 7: 0.10125373  triceps    auc
+    ## 8: 0.07975746  insulin    auc
 
-  - `.$filtered_task`: Filtered task
+### Implemented Filters
 
-### Generic Filters
-
-| Name                     | Task Type      | Task Properties | Param Set     | Feature Types                                         | Package         |
-| :----------------------- | :------------- | :-------------- | :------------ | :---------------------------------------------------- | :-------------- |
-| auc                      | Classif        | twoclass        | <environment> | Integer, Numeric                                      | *Metrics*       |
-| disr                     | Classif        | character(0)    | <environment> | Integer, Numeric, Factor, Ordered                     | *praznik*       |
-| embedded                 | Classif        | character(0)    | <environment> | Logical, Integer, Numeric, Character, Factor, Ordered | *rpart*         |
-| jmi                      | Classif        | character(0)    | <environment> | Integer, Numeric, Factor, Ordered                     | *praznik*       |
-| kruskal\_test            | Classif        | character(0)    | <environment> | Integer, Numeric                                      | *stats*         |
-| mim                      | Classif        | character(0)    | <environment> | Integer, Numeric, Factor, Ordered                     | *praznik*       |
-| njmim                    | Classif        | character(0)    | <environment> | Integer, Numeric, Factor, Ordered                     | *praznik*       |
-| cmim                     | Classif & Regr | character(0)    | <environment> | Integer, Numeric, Factor, Ordered                     | *praznik*       |
-| gain\_ratio              | Classif & Regr | character(0)    | <environment> | Integer, Numeric, Factor, Ordered                     | *FSelectorRcpp* |
-| information\_gain        | Classif & Regr | character(0)    | <environment> | Integer, Numeric, Factor, Ordered                     | *FSelectorRcpp* |
-| symmetrical\_uncertainty | Classif & Regr | character(0)    | <environment> | Integer, Numeric, Factor, Ordered                     | *FSelectorRcpp* |
-| variance                 | Classif & Regr | character(0)    | <environment> | Integer, Numeric                                      | *stats*         |
-| carscore                 | Regr           | character(0)    | <environment> | Numeric                                               | *care*          |
-| correlation              | Regr           | character(0)    | <environment> | Integer, Numeric                                      | *stats*         |
+| Name                     | Task Type      | Feature Types                                         | Package                                                           |
+| :----------------------- | :------------- | :---------------------------------------------------- | :---------------------------------------------------------------- |
+| auc                      | Classif        | Integer, Numeric                                      | [Metrics](https://cran.r-project.org/package=Metrics)             |
+| carscore                 | Regr           | Numeric                                               | [care](https://cran.r-project.org/package=care)                   |
+| cmim                     | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| correlation              | Regr           | Integer, Numeric                                      | stats                                                             |
+| disr                     | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| embedded                 | Classif        | Logical, Integer, Numeric, Character, Factor, Ordered | [rpart](https://cran.r-project.org/package=rpart)                 |
+| gain\_ratio              | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
+| information\_gain        | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
+| jmi                      | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| kruskal\_test            | Classif        | Integer, Numeric                                      | stats                                                             |
+| mim                      | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| njmim                    | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| symmetrical\_uncertainty | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
+| variance                 | Classif & Regr | Integer, Numeric                                      | stats                                                             |
 
 ### Embedded Filters
 
 The following learners have embedded filter methods which are supported
-via class `FilterVariableImportance`:
+via class `FilterEmbedded`:
 
     ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
     ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
@@ -78,9 +89,10 @@ head(as.data.table(filter), 3)
 ```
 
     ##        score      feature   method
-    ## 1: 44.226483 Petal.Length embedded
-    ## 2: 43.186325  Petal.Width embedded
-    ## 3:  9.610886 Sepal.Length embedded
+    ##        <num>       <char>   <char>
+    ## 1: 44.143769  Petal.Width embedded
+    ## 2: 43.361287 Petal.Length embedded
+    ## 3:  9.582207 Sepal.Length embedded
 
 ## “Wrapper” Methods
 

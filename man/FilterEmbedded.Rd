@@ -10,17 +10,16 @@
 FilterEmbedded
 }
 \description{
-Variable Importance filter using learner embedded methods. Takes
-a \link[mlr3:Learner]{mlr3::Learner} which supports retrieving the variable importance
-(property "importance"), fits the model and uses the importance values as
-filter scores.
+Variable Importance filter using embedded feature selection of machine learning algorithms.
+Takes a \link[mlr3:Learner]{mlr3::Learner} which is capable of extracting the variable importance (property "importance"),
+fits the model and uses the importance values as filter scores.
 }
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 learner = mlr3::mlr_learners$get("classif.rpart")
 filter = FilterEmbedded$new(learner = learner)
 filter$calculate(task)
-as.data.table(filter)[1:3]
+as.data.table(filter)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},

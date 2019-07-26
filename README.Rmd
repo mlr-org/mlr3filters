@@ -8,7 +8,6 @@ _mlr3featsel_ adds filters, feature selection methods and embedded feature selec
 
 [![Travis build status](https://travis-ci.org/mlr-org/mlr3featsel.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3featsel)
 [![CRAN status](https://www.r-pkg.org/badges/version/mlr3featsel)](https://cran.r-project.org/package=mlr3featsel)
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Coverage status](https://codecov.io/gh/mlr-org/mlr3featsel/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3featsel?branch=master)
 
 ## Installation
@@ -17,17 +16,21 @@ _mlr3featsel_ adds filters, feature selection methods and embedded feature selec
 remotes::install_github("mlr-org/mlr3featsel")
 ```
 
-## Filters 
+## Filters
 
-### Public Methods
+### Filter Example
 
-* `.$calculate()`: Calculates Filter values
-* `.$filter_*()`: filters the task by a given criterion
+```{r}
+library("mlr3")
+library("mlr3featsel")
 
-* `.$scores`: Filter score values
-* `.$filtered_task`: Filtered task
+task = mlr_tasks$get("pima")
+filter = mlr_filters$get("auc")
+as.data.table(filter$calculate(task))
+```
 
-### Generic Filters
+
+### Implemented Filters
 
 ```{r echo = FALSE, message=FALSE}
 library("mlr3featsel")
@@ -38,15 +41,18 @@ capitalize <- function(x) {
   x
 }
 
-tab = as.data.table(mlr_filters)
+link_cran = function(x) {
+  ifelse(x %in% getOption("defaultPackages"), x, sprintf("[%1$s](https://cran.r-project.org/package=%1$s)", x))
+}
+
+tab = as.data.table(mlr_filters)[, !c("param_set", "task_properties")]
 tab[, task_type := sapply(task_type, function(x) paste(capitalize(x), collapse = " & "))]
 tab[, feature_types := sapply(feature_types, function(x) paste(capitalize(x), collapse = ", "))]
-setorderv(tab, "task_type")
-tab[, packages := sprintf("*%s*", packages)]
-setnames(tab, 
-  old = c("key", "task_type", "task_properties", "param_set", "feature_types", "packages"), 
-  new = c("Name", "Task Type", "Task Properties", "Param Set", "Feature Types", "Package"))
-knitr::kable(tab, escape = F, format = "markdown")
+tab[, packages := link_cran(packages)]
+setnames(tab,
+  old = c("key", "task_type", "feature_types", "packages"),
+  new = c("Name", "Task Type", "Feature Types", "Package"))
+knitr::kable(tab[order(Name)], escape = F, format = "markdown")
 ```
 
 ### Embedded Filters
@@ -55,16 +61,11 @@ The following learners have embedded filter methods which are supported via clas
 
 ```{r echo=FALSE}
 library("mlr3learners")
-# library("mlr3extralearners")
-library("mlr3")
-library("magrittr")
-all_learners = mlr_learners$mget(mlr_learners$keys())
-purrr::keep(all_learners, ~ "importance" %in% .x$properties, "importance") %>% 
-  purrr::map(~ .x$id) %>% 
-  purrr::flatten_chr()
+tab = as.data.table(mlr_learners)
+tab[sapply(properties, is.element, el = "importance"), key]
 ```
 
-If your learner is listed here, the reason is most likely that it is not integrated into [mlr3learners](https://github.com/mlr-org/mlr3learners) or [mlr3extralearners](https://github.com/mlr-org/mlr3extralearners). 
+If your learner is listed here, the reason is most likely that it is not integrated into [mlr3learners](https://github.com/mlr-org/mlr3learners) or [mlr3extralearners](https://github.com/mlr-org/mlr3extralearners).
 Please open an issue so we can add your package.
 
 Some learners need to have their variable importance measure "activated" during learner creation.

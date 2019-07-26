@@ -74,7 +74,5 @@ Collate:
     'FilterNJMIM.R'
     'FilterSymmetricalUncertainty.R'
     'FilterVariance.R'
-    'helper_expectations.R'
-    'helpers.R'
     'reexports.R'
     'zzz.R'

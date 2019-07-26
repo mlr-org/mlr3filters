@@ -3,10 +3,10 @@
 #' @usage NULL
 #' @format [R6::R6Class] object.
 #'
-#' @description Base class for filters. Predefined filters are stored in
-#'   [mlr_filters]. Filters calculate a score for each feature of a dataset and
-#'   return a ranked scoring. By default filter values for all features will be
-#'   calculated unless set differently during Filter construction.
+#' @description
+#' Base class for filters. Predefined filters are stored in the [mlr3misc::Dictionary] [mlr_filters].
+#' A Filter calculates a score for each feature of a task where important features get a large value and unimportant features get a small value.
+#' Note that filter scores may also be negative.
 #'
 #' @section Construction:
 #'
@@ -14,39 +14,50 @@
 #'   f = Filter$new(id, task_type, param_set, param_vals, feature_types, packages)
 #'   ```
 #'
-#'   * `id` :: `character(1)`\cr Identifier for the filter.
+#'   * `id` :: `character(1)`\cr
+#'     Identifier for the filter.
 #'
-#'   * `task_type` :: `character(1)`\cr Type of the task the filter can operator
-#'   on. E.g., `"classif"` or `"regr"`.
+#'   * `task_type` :: `character(1)`\cr
+#'     Type of the task the filter can operator on. E.g., `"classif"` or `"regr"`.
 #'
-#'   * `param_set` :: [paradox::ParamSet]\cr Set of hyperparameters.
+#'   * `param_set` :: [paradox::ParamSet]\cr
+#'     Set of hyperparameters.
 #'
-#'   * `param_vals` :: named `list()`\cr Named list of hyperparameter settings.
+#'   * `param_vals` :: named `list()`\cr
+#'     Named list of hyperparameter settings.
 #'
-#'   * `feature_types` :: `character()`\cr Feature types the filter operates on.
-#'   Must be a subset of
-#'   [`mlr_reflections$task_feature_types`][mlr3::mlr_reflections].
+#'   * `feature_types` :: `character()`\cr
+#'     Feature types the filter operates on.
+#'     Must be a subset of [`mlr_reflections$task_feature_types`][mlr3::mlr_reflections].
 #'
-#'   * `task_properties` :: `character()`\cr Required task properties, see
-#'   [mlr3::Task]. Must be a subset of
-#'   [`mlr_reflections$task_properties`][mlr3::mlr_reflections].
+#'   * `task_properties` :: `character()`\cr
+#'     Required task properties, see [mlr3::Task].
+#'     Must be a subset of [`mlr_reflections$task_properties`][mlr3::mlr_reflections].
 #'
-#'   * `packages` :: `character()`\cr Set of required packages. Note that these
-#'   packages will be loaded via [requireNamespace()], and are not attached.
+#'   * `packages` :: `character()`\cr
+#'     Set of required packages.
+#'     Note that these packages will be loaded via [requireNamespace()], and are not attached.
 #'
 #' @section Fields:
 #'
-#'   All fields from the Constructor and
+#'   All arguments passed to the constructor are available as fields, and additionally:
 #'
-#'   * `scores` :: [data.table::data.table]\cr Stores the calculated filter
-#'   score values. The scores are sorted in decreasing order, with tied values
-#'   in a random order.
+#'   * `scores` :: named `numeric()`\cr
+#'   Stores the calculated filter score values as named numeric vector.
+#'   The vector is sorted in decreasing order with possible `NA` values last.
+#'   Tied values appear in a random, non-deterministic order.
 #'
 #' @section Methods:
 #'
-#'   * `calculate(task, nfeat = NULL)`\cr ([Task], `numeric(1)`) -> [Filter]\cr
-#'   Calculates the filter score values for the provided [Task] and stores them
-#'   in field `scores`. Some filter support partial scoring via argument `n`.
+#'   * `calculate(task, nfeat = NULL)`\cr
+#'     ([mlr3::Task], `integer(1)`) -> [Filter] \cr
+#'     Calculates the filter score values for the provided [mlr3::Task] and stores them in field `scores`.
+#'     `nfeat` determines the minimum number of features to score (see "Partial Scoring").
+#'
+#' @section Partial Scoring:
+#' Some features support partial scoring of the feature set:
+#' If `nfeat` is not `NULL`, only the best `nfeat` features are guaranteed to get a score.
+#' Additional features are ignored for computational reasons, and are scored with `NA`.
 #'
 #' @family Filter
 #' @export
@@ -60,15 +71,8 @@ Filter = R6Class("Filter",
     packages = NULL,
     scores = NULL,
 
-    initialize = function(id, task_type, task_properties = character(),
-      param_set = list(), param_vals = list(), feature_types = character(),
-      packages = character()) {
-
-      # add generic hyperpars to param_set of filter
-      param_set$add(ParamSet$new(list(
-        ParamDbl$new("nfeat", lower = 0, default = 1),
-        ParamFct$new("type", levels = c("abs", "frac", "cutoff"), default = "frac")
-      )))
+    initialize = function(id, task_type, task_properties = character(), param_set = ParamSet$new(), param_vals = list(),
+      feature_types = character(), packages = character()) {
 
       self$id = assert_string(id)
       self$task_type = assert_subset(task_type, mlr_reflections$task_types, empty.ok = FALSE)
@@ -77,6 +81,7 @@ Filter = R6Class("Filter",
       self$param_set$values = insert_named(self$param_set$values, param_vals)
       self$feature_types = assert_subset(feature_types, mlr_reflections$task_feature_types)
       self$packages = assert_character(packages, any.missing = FALSE, unique = TRUE)
+      self$scores = set_names(numeric(), character())
     },
 
     format = function() {
@@ -84,95 +89,38 @@ Filter = R6Class("Filter",
     },
 
     print = function() {
-      filter_print(self)
+      catf(format(self))
+      catf(str_indent("Task Types:", self$task_type))
+      catf(str_indent("Task Properties:", self$task_properties))
+      catf(str_indent("Packages:", self$packages))
+      catf(str_indent("Feature types:", self$feature_types))
     },
 
-    calculate = function(task, nfeat) {
-
-      assert_task(task, feature_types = self$feature_types,
-        task_properties = self$task_properties)
-      assert_filter_result(self, task)
-      require_namespaces(self$packages)
+    calculate = function(task, nfeat = NULL) {
+      task = assert_task(task, feature_types = self$feature_types, task_properties = self$task_properties)
       fn = task$feature_names
-
-      # check if n was given by the user or not
-      if (!is.null(self$param_set$get_values()$nfeat)) {
-        nfeat = self$param_set$get_values()$nfeat
+      if (is.null(nfeat)) {
+        nfeat = length(fn)
       } else {
-        nfeat = self$param_set$default$nfeat
-      }
-      # check if type was given by the user or not
-      if (!is.null(self$param_set$get_values()$type)) {
-        type = self$param_set$get_values()$type
-      } else {
-        type = self$param_set$default$type
-      }
-
-      # adjust n according to arg 'type'
-      if (type == "frac") {
-        assert_numeric(nfeat, lower = 0, upper = 1)
-        nfeat = length(fn) * nfeat
-      } else if (type == "cutoff") {
-        nfeat = names(scores > cutoff)
-      } else {
-        assert_count(nfeat)
+        nfeat = assert_count(nfeat, coerce = TRUE)
       }
 
       # calculate filter values using the dedicated filter
-      fv = private$.calculate(task, nfeat)
+      require_namespaces(self$packages)
+      scores = private$.calculate(task, nfeat)
 
-      self$scores = data.table(score = fv, feature = names(fv))[order(-score)]
-
-      # subset result to given 'n'
-      # this is done to stay consistent with partial scoring filter which only
-      # return partial values
-      self$scores = self$scores[1:nfeat, ]
-
-      assert_numeric(self$scores$score, len = nfeat, any.missing = FALSE)
+      # check result, re-order with correction for ties
+      assert_numeric(scores, any.missing = FALSE, names = "unique")
+      assert_names(names(scores), subset.of = fn)
+      scores = insert_named(set_names(rep(NA_real_, length(fn)), fn), scores)
+      self$scores = scores[order(scores, runif(length(scores)), decreasing = TRUE, na.last = TRUE)]
 
       invisible(self)
-    },
-
-    get_best = function(nfeat, type = "abs") {
-
-      if (type == "frac") {
-        assert_numeric(nfeat, lower = 0, upper = 1)
-        nfeat = round(nrow(self$scores) * nfeat)
-      } else if (type == "cutoff") {
-        nfeat = names(scores > cutoff)
-      } else {
-        assert_count(nfeat)
-      }
-
-      if (is.null(self$scores)) {
-        stopf("Filter values have not been calculated yet.")
-      }
-
-      if (nfeat > nrow(self$scores)) {
-        warningf("'n' exceeds the number of stored filter values. Returning all feature names.")
-        nfeat = nrow(self$scores)
-      }
-
-      # return best n features
-      keep = head(self$scores$feature, nfeat)
-      return(keep)
     }
   )
 )
 
 #' @export
 as.data.table.Filter = function(x, ...) {
-  fv = x$scores
-  if (is.null(fv)) {
-    stopf("No filter data available")
-  }
-  return(fv)
-}
-
-filter_print = function(self) {
-  catf(format(self))
-  catf(str_indent("Task Types:", self$task_type))
-  catf(str_indent("Task Properties:", self$task_properties))
-  catf(str_indent("Packages:", self$packages))
-  catf(str_indent("Feature types:", self$feature_types))
+  enframe(x$scores, name = "feature", value = "score")
 }

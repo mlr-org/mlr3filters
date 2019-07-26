@@ -10,16 +10,15 @@
 FilterSymmetricalUncertainty
 }
 \description{
-Symmetrical uncertainty filter. Calls
-\code{\link[FSelectorRcpp:information_gain]{FSelectorRcpp::information_gain()}}. The target variable is automatically
-binned (argument \code{equal} in \code{\link[FSelectorRcpp:information_gain]{FSelectorRcpp::information_gain()}}). You might
-want to turn this setting of for classification tasks.
+Symmetrical uncertainty filter calling \code{\link[FSelectorRcpp:information_gain]{FSelectorRcpp::information_gain()}} from package \CRANpkg{FSelectorRcpp}.
+Argument \code{equal} defaults to \code{FALSE} for classification tasks, and to \code{TRUE} for regression tasks.
 }
 \examples{
-task = mlr3::mlr_tasks$get("sonar")
+task = mlr3::mlr_tasks$get("pima")
 filter = FilterSymmetricalUncertainty$new()
 filter$calculate(task)
-as.data.table(filter)[1:3]
+head(filter$scores, 3)
+as.data.table(filter)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},
