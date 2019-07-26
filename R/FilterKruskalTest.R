@@ -29,8 +29,7 @@ FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
         task_type = "classif",
         param_set = ParamSet$new(list(
           ParamFct$new("na.action", default = "na.omit",
-            levels = c("na.omit", "na.fail", "na.exclude", "na.pass")),
-          ParamFct$new("score", default = "statistic", levels = c("statistic", "p_value"))
+            levels = c("na.omit", "na.fail", "na.exclude", "na.pass"))
         ))
       )
     }
@@ -38,14 +37,10 @@ FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
 
   private = list(
     .calculate = function(task, nfeat) {
-      pv = self$param_set$values
-      na.action = pv$na.action %??% self$param_set$default$na.action
-      extract = self$param_set
+      na.action = self$param_set$values$na.action %??% self$param_set$default$na.action
 
       data = task$data(cols = task$feature_names)
       g = task$truth()
-
-
       -log10(map_dbl(data, function(x) {
         kruskal.test(x = x, g = g, na.action = na.action)$p.value
       }))
