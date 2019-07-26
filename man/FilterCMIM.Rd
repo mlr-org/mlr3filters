@@ -24,7 +24,7 @@ as.data.table(filter)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},
-  \code{\link{FilterCarScore}},
+  \code{\link{FilterAnova}}, \code{\link{FilterCarScore}},
   \code{\link{FilterCorrelation}},
   \code{\link{FilterDISR}}, \code{\link{FilterEmbedded}},
   \code{\link{FilterGainRatio}},

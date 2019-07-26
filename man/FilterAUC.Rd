@@ -21,8 +21,8 @@ head(filter$scores, 3)
 as.data.table(filter)
 }
 \seealso{
-Other Filter: \code{\link{FilterCMIM}},
-  \code{\link{FilterCarScore}},
+Other Filter: \code{\link{FilterAnova}},
+  \code{\link{FilterCMIM}}, \code{\link{FilterCarScore}},
   \code{\link{FilterCorrelation}},
   \code{\link{FilterDISR}}, \code{\link{FilterEmbedded}},
   \code{\link{FilterGainRatio}},

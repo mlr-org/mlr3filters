@@ -65,7 +65,8 @@ Additional features are ignored for computational reasons, and are scored with \
 
 \seealso{
 Other Filter: \code{\link{FilterAUC}},
-  \code{\link{FilterCMIM}}, \code{\link{FilterCarScore}},
+  \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
+  \code{\link{FilterCarScore}},
   \code{\link{FilterCorrelation}},
   \code{\link{FilterDISR}}, \code{\link{FilterEmbedded}},
   \code{\link{FilterGainRatio}},

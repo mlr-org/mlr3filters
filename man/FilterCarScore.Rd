@@ -26,7 +26,7 @@ as.data.table(filter)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},
-  \code{\link{FilterCMIM}},
+  \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCorrelation}},
   \code{\link{FilterDISR}}, \code{\link{FilterEmbedded}},
   \code{\link{FilterGainRatio}},

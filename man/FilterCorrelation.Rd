@@ -21,8 +21,9 @@ as.data.table(filter)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},
-  \code{\link{FilterCMIM}}, \code{\link{FilterCarScore}},
-  \code{\link{FilterDISR}}, \code{\link{FilterEmbedded}},
+  \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
+  \code{\link{FilterCarScore}}, \code{\link{FilterDISR}},
+  \code{\link{FilterEmbedded}},
   \code{\link{FilterGainRatio}},
   \code{\link{FilterInformationGain}},
   \code{\link{FilterJMIM}}, \code{\link{FilterJMI}},
