@@ -91,11 +91,11 @@ head(as.data.table(filter), 3)
 ```
 
     ##         feature     score
-    ## 1: Petal.Length 46.270396
-    ## 2:  Petal.Width 40.545615
-    ## 3: Sepal.Length  9.993732
+    ## 1:  Petal.Width 44.610856
+    ## 2: Petal.Length 43.503414
+    ## 3: Sepal.Length  8.835956
 
-## Performance Filter
+### Performance Filter
 
 `FilterPerformance` is a univariate filter method which calls
 `resample()` with every predictor variable in the dataset and ranks the
