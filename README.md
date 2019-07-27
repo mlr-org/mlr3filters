@@ -30,21 +30,21 @@ filter = mlr_filters$get("auc")
 as.data.table(filter$calculate(task))
 ```
 
-    ##         score  feature method
-    ##         <num>   <char> <char>
-    ## 1: 0.28961567  glucose    auc
-    ## 2: 0.18694030      age    auc
-    ## 3: 0.17702985     mass    auc
-    ## 4: 0.11951493 pregnant    auc
-    ## 5: 0.10810075 pressure    auc
-    ## 6: 0.10620149 pedigree    auc
-    ## 7: 0.10125373  triceps    auc
-    ## 8: 0.07975746  insulin    auc
+    ##     feature      score
+    ## 1:  glucose 0.28961567
+    ## 2:      age 0.18694030
+    ## 3:     mass 0.17702985
+    ## 4: pregnant 0.11951493
+    ## 5: pressure 0.10810075
+    ## 6: pedigree 0.10620149
+    ## 7:  triceps 0.10125373
+    ## 8:  insulin 0.07975746
 
 ### Implemented Filters
 
 | Name                     | Task Type      | Feature Types                                         | Package                                                           |
 | :----------------------- | :------------- | :---------------------------------------------------- | :---------------------------------------------------------------- |
+| anova                    | Classif        | Integer, Numeric                                      | stats                                                             |
 | auc                      | Classif        | Integer, Numeric                                      | [Metrics](https://cran.r-project.org/package=Metrics)             |
 | carscore                 | Regr           | Numeric                                               | [care](https://cran.r-project.org/package=care)                   |
 | cmim                     | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
@@ -54,8 +54,10 @@ as.data.table(filter$calculate(task))
 | gain\_ratio              | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
 | information\_gain        | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
 | jmi                      | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| jmim                     | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
 | kruskal\_test            | Classif        | Integer, Numeric                                      | stats                                                             |
 | mim                      | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| mrmr                     | Classif & Regr | Numeric, Factor, Integer, Character, Logical          | [praznik](https://cran.r-project.org/package=praznik)             |
 | njmim                    | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
 | symmetrical\_uncertainty | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
 | variance                 | Classif & Regr | Integer, Numeric                                      | stats                                                             |
@@ -88,12 +90,14 @@ filter$calculate(task)
 head(as.data.table(filter), 3)
 ```
 
-    ##        score      feature   method
-    ##        <num>       <char>   <char>
-    ## 1: 44.143769  Petal.Width embedded
-    ## 2: 43.361287 Petal.Length embedded
-    ## 3:  9.582207 Sepal.Length embedded
+    ##         feature     score
+    ## 1: Petal.Length 46.270396
+    ## 2:  Petal.Width 40.545615
+    ## 3: Sepal.Length  9.993732
 
-## “Wrapper” Methods
+## Performance Filter
 
-Work in progress.
+`FilterPerformance` is a univariate filter method which calls
+`resample()` with every predictor variable in the dataset and ranks the
+final outcome using the supplied measure. Any learner can be passed to
+this filter with `classif.rpart` being the default.
