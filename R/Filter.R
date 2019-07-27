@@ -97,6 +97,7 @@ Filter = R6Class("Filter",
     },
 
     calculate = function(task, nfeat = NULL) {
+
       task = assert_task(task, feature_types = self$feature_types, task_properties = self$task_properties)
       fn = task$feature_names
       if (is.null(nfeat)) {

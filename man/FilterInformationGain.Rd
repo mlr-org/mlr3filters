@@ -30,6 +30,7 @@ Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterJMI}}, \code{\link{FilterKruskalTest}},
   \code{\link{FilterMIM}}, \code{\link{FilterMRMR}},
   \code{\link{FilterNJMIM}},
+  \code{\link{FilterPerformance}},
   \code{\link{FilterSymmetricalUncertainty}},
   \code{\link{FilterVariance}}, \code{\link{Filter}},
   \code{\link{mlr_filters}}

@@ -73,6 +73,7 @@ Collate:
     'FilterMIM.R'
     'FilterMRMR.R'
     'FilterNJMIM.R'
+    'FilterPerformance.R'
     'FilterSymmetricalUncertainty.R'
     'FilterVariance.R'
     'reexports.R'

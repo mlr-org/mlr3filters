@@ -29,7 +29,6 @@ filter = mlr_filters$get("auc")
 as.data.table(filter$calculate(task))
 ```
 
-
 ### Implemented Filters
 
 ```{r echo = FALSE, message=FALSE}
@@ -81,6 +80,7 @@ filter$calculate(task)
 head(as.data.table(filter), 3)
 ```
 
-## "Wrapper" Methods
+### Performance Filter
 
-Work in progress.
+`FilterPerformance` is a univariate filter method which calls `resample()` with every predictor variable in the dataset and ranks the final outcome using the supplied measure. 
+Any learner can be passed to this filter with `classif.rpart` being the default.

@@ -50,4 +50,3 @@ FilterAnova = R6Class("FilterAnova", inherit = Filter,
 
 #' @include mlr_filters.R
 mlr_filters$add("anova", FilterAnova)
-
