@@ -1,4 +1,4 @@
-url: https://mlr3featsel.mlr-org.com
+url: https://mlr3filters.mlr-org.com
 
 template:
   params:
@@ -22,7 +22,7 @@ navbar:
 
   right:
   - icon: fa-github fa-lg
-    href: https://github.com/mlr-org/mlr3featsel
+    href: https://github.com/mlr-org/mlr3filters
   - icon: fa-slack
     href: https://mlr-org.slack.com
   - icon: fa-stack-overflow

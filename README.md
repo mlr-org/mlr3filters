@@ -1,20 +1,20 @@
 
-# mlr3featsel
+# mlr3filters
 
-*mlr3featsel* adds filters, feature selection methods and embedded
+*mlr3filters* adds filters, feature selection methods and embedded
 feature selection methods of algorithms to *mlr3*.
 
 [![Travis build
-status](https://travis-ci.org/mlr-org/mlr3featsel.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3featsel)
+status](https://travis-ci.org/mlr-org/mlr3filters.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3filters)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/mlr3featsel)](https://cran.r-project.org/package=mlr3featsel)
+status](https://www.r-pkg.org/badges/version/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
 [![Coverage
-status](https://codecov.io/gh/mlr-org/mlr3featsel/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3featsel?branch=master)
+status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
 
 ## Installation
 
 ``` r
-remotes::install_github("mlr-org/mlr3featsel")
+remotes::install_github("mlr-org/mlr3filters")
 ```
 
 ## Filters
@@ -23,7 +23,7 @@ remotes::install_github("mlr-org/mlr3featsel")
 
 ``` r
 library("mlr3")
-library("mlr3featsel")
+library("mlr3filters")
 
 task = mlr_tasks$get("pima")
 filter = mlr_filters$get("auc")
@@ -59,6 +59,7 @@ as.data.table(filter$calculate(task))
 | mim                      | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
 | mrmr                     | Classif & Regr | Numeric, Factor, Integer, Character, Logical          | [praznik](https://cran.r-project.org/package=praznik)             |
 | njmim                    | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| performance              | Classif        | Logical, Integer, Numeric, Character, Factor, Ordered | [rpart](https://cran.r-project.org/package=rpart)                 |
 | symmetrical\_uncertainty | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
 | variance                 | Classif & Regr | Integer, Numeric                                      | stats                                                             |
 
@@ -91,9 +92,9 @@ head(as.data.table(filter), 3)
 ```
 
     ##         feature     score
-    ## 1:  Petal.Width 44.610856
-    ## 2: Petal.Length 43.503414
-    ## 3: Sepal.Length  8.835956
+    ## 1:  Petal.Width 46.018653
+    ## 2: Petal.Length 41.367300
+    ## 3: Sepal.Length  9.524415
 
 ### Performance Filter
 

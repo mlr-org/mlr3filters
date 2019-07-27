@@ -2,18 +2,18 @@
 output: github_document
 ---
 
-# mlr3featsel
+# mlr3filters
 
-_mlr3featsel_ adds filters, feature selection methods and embedded feature selection methods of algorithms to _mlr3_.
+_mlr3filters_ adds filters, feature selection methods and embedded feature selection methods of algorithms to _mlr3_.
 
-[![Travis build status](https://travis-ci.org/mlr-org/mlr3featsel.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3featsel)
-[![CRAN status](https://www.r-pkg.org/badges/version/mlr3featsel)](https://cran.r-project.org/package=mlr3featsel)
-[![Coverage status](https://codecov.io/gh/mlr-org/mlr3featsel/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3featsel?branch=master)
+[![Travis build status](https://travis-ci.org/mlr-org/mlr3filters.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3filters)
+[![CRAN status](https://www.r-pkg.org/badges/version/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
+[![Coverage status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
 
 ## Installation
 
 ```{r eval = FALSE}
-remotes::install_github("mlr-org/mlr3featsel")
+remotes::install_github("mlr-org/mlr3filters")
 ```
 
 ## Filters
@@ -22,7 +22,7 @@ remotes::install_github("mlr-org/mlr3featsel")
 
 ```{r}
 library("mlr3")
-library("mlr3featsel")
+library("mlr3filters")
 
 task = mlr_tasks$get("pima")
 filter = mlr_filters$get("auc")
@@ -32,7 +32,7 @@ as.data.table(filter$calculate(task))
 ### Implemented Filters
 
 ```{r echo = FALSE, message=FALSE}
-library("mlr3featsel")
+library("mlr3filters")
 library("data.table")
 
 capitalize <- function(x) {

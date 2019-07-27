@@ -1,4 +1,4 @@
 library(testthat)
-library(mlr3featsel)
+library(mlr3filters)
 
-test_check("mlr3featsel")
+test_check("mlr3filters")
