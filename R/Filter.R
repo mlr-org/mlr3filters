@@ -17,8 +17,8 @@
 #'   * `id` :: `character(1)`\cr
 #'     Identifier for the filter.
 #'
-#'   * `task_type` :: `character(1)`\cr
-#'     Type of the task the filter can operator on. E.g., `"classif"` or `"regr"`.
+#'   * `task_type` :: `character()`\cr
+#'     Types of the task the filter can operator on. E.g., `"classif"` or `"regr"`.
 #'
 #'   * `param_set` :: [paradox::ParamSet]\cr
 #'     Set of hyperparameters.
@@ -50,7 +50,7 @@
 #' @section Methods:
 #'
 #'   * `calculate(task, nfeat = NULL)`\cr
-#'     ([mlr3::Task], `integer(1)`) -> [Filter] \cr
+#'     ([mlr3::Task], `integer(1)`) -> `self`\cr
 #'     Calculates the filter score values for the provided [mlr3::Task] and stores them in field `scores`.
 #'     `nfeat` determines the minimum number of features to score (see "Partial Scoring").
 #'

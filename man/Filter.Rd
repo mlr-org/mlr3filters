@@ -16,8 +16,8 @@ Note that filter scores may also be negative.
 \itemize{
 \item \code{id} :: \code{character(1)}\cr
 Identifier for the filter.
-\item \code{task_type} :: \code{character(1)}\cr
-Type of the task the filter can operator on. E.g., \code{"classif"} or \code{"regr"}.
+\item \code{task_type} :: \code{character()}\cr
+Types of the task the filter can operator on. E.g., \code{"classif"} or \code{"regr"}.
 \item \code{param_set} :: \link[paradox:ParamSet]{paradox::ParamSet}\cr
 Set of hyperparameters.
 \item \code{param_vals} :: named \code{list()}\cr
@@ -50,7 +50,7 @@ Tied values appear in a random, non-deterministic order.
 
 \itemize{
 \item \code{calculate(task, nfeat = NULL)}\cr
-(\link[mlr3:Task]{mlr3::Task}, \code{integer(1)}) -> \link{Filter} \cr
+(\link[mlr3:Task]{mlr3::Task}, \code{integer(1)}) -> \code{self}\cr
 Calculates the filter score values for the provided \link[mlr3:Task]{mlr3::Task} and stores them in field \code{scores}.
 \code{nfeat} determines the minimum number of features to score (see "Partial Scoring").
 }
