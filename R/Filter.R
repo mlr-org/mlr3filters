@@ -104,6 +104,9 @@ Filter = R6Class("Filter",
       catf(str_indent("Task Properties:", self$task_properties))
       catf(str_indent("Packages:", self$packages))
       catf(str_indent("Feature types:", self$feature_types))
+      if (length(self$scores)) {
+        print(as.data.table(self), nrows = 10L, topn = 5L, class = FALSE, row.names = TRUE, print.keys = FALSE)
+      }
     },
 
     calculate = function(task, nfeat = NULL) {
