@@ -32,11 +32,9 @@ FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
             levels = c("na.omit", "na.fail", "na.exclude", "na.pass"))
         ))
       )
-    }
-  ),
+    },
 
-  private = list(
-    .calculate = function(task, nfeat) {
+    calculate_internal = function(task, nfeat) {
       na.action = self$param_set$values$na.action %??% self$param_set$default$na.action
 
       data = task$data(cols = task$feature_names)

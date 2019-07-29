@@ -6,8 +6,9 @@
 \title{Filter Base Class}
 \format{\link[R6:R6Class]{R6::R6Class} object.}
 \description{
-Base class for filters. Predefined filters are stored in the \link[mlr3misc:Dictionary]{mlr3misc::Dictionary} \link{mlr_filters}.
-A Filter calculates a score for each feature of a task where important features get a large value and unimportant features get a small value.
+Base class for filters. Predefined filters are stored in the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters}.
+A Filter calculates a score for each feature of a task.
+Important features get a large value and unimportant features get a small value.
 Note that filter scores may also be negative.
 }
 \section{Construction}{
@@ -42,7 +43,7 @@ All arguments passed to the constructor are available as fields, and additionall
 \item \code{scores} :: named \code{numeric()}\cr
 Stores the calculated filter score values as named numeric vector.
 The vector is sorted in decreasing order with possible \code{NA} values last.
-Tied values appear in a random, non-deterministic order.
+Tied values (this includes \code{NA} values) appear in a random, non-deterministic order.
 }
 }
 
@@ -52,7 +53,14 @@ Tied values appear in a random, non-deterministic order.
 \item \code{calculate(task, nfeat = NULL)}\cr
 (\link[mlr3:Task]{mlr3::Task}, \code{integer(1)}) -> \code{self}\cr
 Calculates the filter score values for the provided \link[mlr3:Task]{mlr3::Task} and stores them in field \code{scores}.
-\code{nfeat} determines the minimum number of features to score (see "Partial Scoring").
+\code{nfeat} determines the minimum number of features to score (see "Partial Scoring"), and defaults to the number of features in \code{task}.
+Loads required packages and then calls \code{$calculate_internal()}.
+\item \code{calculate_internal(task, nfeat)}\cr
+(\link[mlr3:Task]{mlr3::Task}, \code{integer(1)}) -> named \code{numeric()}\cr
+Internal worker function. Each child class muss implement this method.
+Takes a task and the minimum number of features to score, and must return a named numeric with scores.
+The higher the score, the more important the feature.
+The calling function (\code{calculate()}) ensures that the returned vector gets sorted and that missing feature scores get a score value of \code{NA}.
 }
 }
 
@@ -60,7 +68,7 @@ Calculates the filter score values for the provided \link[mlr3:Task]{mlr3::Task}
 
 Some features support partial scoring of the feature set:
 If \code{nfeat} is not \code{NULL}, only the best \code{nfeat} features are guaranteed to get a score.
-Additional features are ignored for computational reasons, and are scored with \code{NA}.
+Additional features may be ignored for computational reasons, and then get a score value of \code{NA}.
 }
 
 \seealso{
@@ -68,8 +76,8 @@ Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCarScore}},
   \code{\link{FilterCorrelation}},
-  \code{\link{FilterDISR}}, \code{\link{FilterEmbedded}},
-  \code{\link{FilterGainRatio}},
+  \code{\link{FilterDISR}}, \code{\link{FilterGainRatio}},
+  \code{\link{FilterImportance}},
   \code{\link{FilterInformationGain}},
   \code{\link{FilterJMIM}}, \code{\link{FilterJMI}},
   \code{\link{FilterKruskalTest}}, \code{\link{FilterMIM}},

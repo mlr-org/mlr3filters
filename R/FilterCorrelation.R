@@ -30,11 +30,9 @@ FilterCorrelation = R6Class("FilterCorrelation", inherit = Filter,
             levels = c("pearson", "kendall", "spearman"))
         ))
       )
-    }
-  ),
+    },
 
-  private = list(
-    .calculate = function(task, nfeat) {
+    calculate_internal = function(task, nfeat) {
       fn = task$feature_names
       pv = self$param_set$values
       score = invoke(stats::cor,

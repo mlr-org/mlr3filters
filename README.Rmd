@@ -54,9 +54,9 @@ setnames(tab,
 knitr::kable(tab[order(Name)], escape = F, format = "markdown")
 ```
 
-### Embedded Filters
+### Variable Importance Filters
 
-The following learners have embedded filter methods which are supported via class `FilterEmbedded`:
+The following learners allow the extraction of variable importance and therefore are supported by `FilterImportance`:
 
 ```{r echo=FALSE}
 library("mlr3learners")
@@ -75,12 +75,12 @@ task = mlr_tasks$get("iris")
 lrn = mlr_learners$get("classif.ranger",
   param_vals = list(importance = "impurity"))
 
-filter = FilterEmbedded$new(learner = lrn)
+filter = FilterImportance$new(learner = lrn)
 filter$calculate(task)
 head(as.data.table(filter), 3)
 ```
 
 ### Performance Filter
 
-`FilterPerformance` is a univariate filter method which calls `resample()` with every predictor variable in the dataset and ranks the final outcome using the supplied measure. 
+`FilterPerformance` is a univariate filter method which calls `resample()` with every predictor variable in the dataset and ranks the final outcome using the supplied measure.
 Any learner can be passed to this filter with `classif.rpart` being the default.

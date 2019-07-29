@@ -30,11 +30,9 @@ FilterSymmetricalUncertainty = R6Class("FilterSymmetricalUncertainty", inherit =
           ParamInt$new("threads", lower = 0L, default = 1L)
         ))
       )
-    }
-  ),
+    },
 
-  private = list(
-    .calculate = function(task, nfeat) {
+    calculate_internal = function(task, nfeat) {
       pv = self$param_set$values
       pv$equal = pv$equal %??% task$task_type == "regr"
 

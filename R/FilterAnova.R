@@ -30,11 +30,9 @@ FilterAnova = R6Class("FilterAnova", inherit = Filter,
         feature_types = c("integer", "numeric"),
         task_type = "classif"
       )
-    }
-  ),
+    },
 
-  private = list(
-    .calculate = function(task, nfeat) {
+    calculate_internal = function(task, nfeat) {
       data = task$data()
       target = task$target_names
       features = task$feature_names

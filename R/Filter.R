@@ -4,8 +4,9 @@
 #' @format [R6::R6Class] object.
 #'
 #' @description
-#' Base class for filters. Predefined filters are stored in the [mlr3misc::Dictionary] [mlr_filters].
-#' A Filter calculates a score for each feature of a task where important features get a large value and unimportant features get a small value.
+#' Base class for filters. Predefined filters are stored in the [dictionary][mlr3misc::Dictionary] [mlr_filters].
+#' A Filter calculates a score for each feature of a task.
+#' Important features get a large value and unimportant features get a small value.
 #' Note that filter scores may also be negative.
 #'
 #' @section Construction:
@@ -45,19 +46,27 @@
 #'   * `scores` :: named `numeric()`\cr
 #'   Stores the calculated filter score values as named numeric vector.
 #'   The vector is sorted in decreasing order with possible `NA` values last.
-#'   Tied values appear in a random, non-deterministic order.
+#'   Tied values (this includes `NA` values) appear in a random, non-deterministic order.
 #'
 #' @section Methods:
 #'
 #'   * `calculate(task, nfeat = NULL)`\cr
 #'     ([mlr3::Task], `integer(1)`) -> `self`\cr
 #'     Calculates the filter score values for the provided [mlr3::Task] and stores them in field `scores`.
-#'     `nfeat` determines the minimum number of features to score (see "Partial Scoring").
+#'     `nfeat` determines the minimum number of features to score (see "Partial Scoring"), and defaults to the number of features in `task`.
+#'     Loads required packages and then calls `$calculate_internal()`.
+#'
+#'   * `calculate_internal(task, nfeat)`\cr
+#'     ([mlr3::Task], `integer(1)`) -> named `numeric()`\cr
+#'     Internal worker function. Each child class muss implement this method.
+#'     Takes a task and the minimum number of features to score, and must return a named numeric with scores.
+#'     The higher the score, the more important the feature.
+#'     The calling function (`calculate()`) ensures that the returned vector gets sorted and that missing feature scores get a score value of `NA`.
 #'
 #' @section Partial Scoring:
 #' Some features support partial scoring of the feature set:
 #' If `nfeat` is not `NULL`, only the best `nfeat` features are guaranteed to get a score.
-#' Additional features are ignored for computational reasons, and are scored with `NA`.
+#' Additional features may be ignored for computational reasons, and then get a score value of `NA`.
 #'
 #' @family Filter
 #' @export
@@ -108,7 +117,7 @@ Filter = R6Class("Filter",
 
       # calculate filter values using the dedicated filter
       require_namespaces(self$packages)
-      scores = private$.calculate(task, nfeat)
+      scores = self$calculate_internal(task, nfeat)
 
       # check result, re-order with correction for ties
       assert_numeric(scores, any.missing = FALSE, names = "unique")

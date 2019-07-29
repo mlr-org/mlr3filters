@@ -34,11 +34,9 @@ FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
           ParamLgl$new("verbose", default = TRUE))),
         param_vals = list(verbose = FALSE)
       )
-    }
-  ),
+    },
 
-  private = list(
-    .calculate = function(task, nfeat) {
+    calculate_internal = function(task, nfeat) {
       target = task$truth()
       features = task$data(cols = task$feature_names)
 

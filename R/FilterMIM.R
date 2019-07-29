@@ -29,11 +29,9 @@ FilterMIM = R6Class("FilterMIM", inherit = Filter,
           ParamInt$new("threads", lower = 0L, default = 0L)
         ))
       )
-    }
-  ),
+    },
 
-  private = list(
-    .calculate = function(task, nfeat) {
+    calculate_internal = function(task, nfeat) {
       threads = self$param_set$values$threads %??% 0L
       X = task$data(cols = task$feature_names)
       Y = task$truth()

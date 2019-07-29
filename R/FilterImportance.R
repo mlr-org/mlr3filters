@@ -1,4 +1,4 @@
-#' @title Filter for Embedded Feature Selection
+#' @title Filter for Embedded Feature Selection via Variable Importance
 #'
 #' @aliases mlr_filters_variable_importance
 #' @format [R6::R6Class] inheriting from [Filter].
@@ -7,20 +7,20 @@
 #' @description
 #' Variable Importance filter using embedded feature selection of machine learning algorithms.
 #' Takes a [mlr3::Learner] which is capable of extracting the variable importance (property "importance"),
-#' fits the model and uses the importance values as filter scores.
+#' fits the model and extracts the importance values to use as filter scores.
 #'
 #' @family Filter
 #' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("iris")
 #' learner = mlr3::mlr_learners$get("classif.rpart")
-#' filter = FilterEmbedded$new(learner = learner)
+#' filter = FilterImportance$new(learner = learner)
 #' filter$calculate(task)
 #' as.data.table(filter)
-FilterEmbedded = R6Class("FilterEmbedded", inherit = Filter,
+FilterImportance = R6Class("FilterImportance", inherit = Filter,
   public = list(
     learner = NULL,
-    initialize = function(id = "embedded", learner = "classif.rpart") {
+    initialize = function(id = "importance", learner = "classif.rpart") {
       self$learner = learner = assert_learner(learner, properties = "importance")
 
       super$initialize(
@@ -29,11 +29,9 @@ FilterEmbedded = R6Class("FilterEmbedded", inherit = Filter,
         feature_types = learner$feature_types,
         task_type = learner$task_type
       )
-    }
-  ),
+    },
 
-  private = list(
-    .calculate = function(task, nfeat) {
+    calculate_internal = function(task, nfeat) {
       learner = self$learner$clone(deep = TRUE)
       learner = learner$train(task = task)
       learner$importance()
@@ -42,4 +40,4 @@ FilterEmbedded = R6Class("FilterEmbedded", inherit = Filter,
 )
 
 #' @include mlr_filters.R
-mlr_filters$add("embedded", FilterEmbedded)
+mlr_filters$add("importance", FilterImportance)

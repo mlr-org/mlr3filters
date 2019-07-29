@@ -3,7 +3,7 @@
 \docType{data}
 \name{FilterPerformance}
 \alias{FilterPerformance}
-\alias{mlr_filters_variable_importance}
+\alias{mlr_filters_performance}
 \title{Predictive Performance Filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
 \usage{
@@ -26,8 +26,8 @@ Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCarScore}},
   \code{\link{FilterCorrelation}},
-  \code{\link{FilterDISR}}, \code{\link{FilterEmbedded}},
-  \code{\link{FilterGainRatio}},
+  \code{\link{FilterDISR}}, \code{\link{FilterGainRatio}},
+  \code{\link{FilterImportance}},
   \code{\link{FilterInformationGain}},
   \code{\link{FilterJMIM}}, \code{\link{FilterJMI}},
   \code{\link{FilterKruskalTest}}, \code{\link{FilterMIM}},

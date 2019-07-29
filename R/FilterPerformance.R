@@ -1,6 +1,6 @@
 #' @title Predictive Performance Filter
 #'
-#' @aliases mlr_filters_variable_importance
+#' @aliases mlr_filters_performance
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
@@ -34,11 +34,9 @@ FilterPerformance = R6Class("FilterPerformance", inherit = Filter,
         feature_types = learner$feature_types,
         task_type = learner$task_type
       )
-    }
-  ),
+    },
 
-  private = list(
-    .calculate = function(task, nfeat) {
+    calculate_internal = function(task, nfeat) {
       task = task$clone()
       fn = task$feature_names
 
