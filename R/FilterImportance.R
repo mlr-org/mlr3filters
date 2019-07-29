@@ -21,11 +21,12 @@ FilterImportance = R6Class("FilterImportance", inherit = Filter,
   public = list(
     learner = NULL,
     initialize = function(id = "importance", learner = "classif.rpart") {
-      self$learner = learner = assert_learner(learner, properties = "importance")
+      self$learner = learner = assert_learner(learner, properties = "importance", clone = TRUE)
 
       super$initialize(
         id = id,
         packages = learner$packages,
+        param_set = learner$param_set,
         feature_types = learner$feature_types,
         task_type = learner$task_type
       )
