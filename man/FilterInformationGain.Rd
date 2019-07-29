@@ -11,6 +11,8 @@ FilterInformationGain
 }
 \description{
 Information gain filter calling \code{\link[FSelectorRcpp:information_gain]{FSelectorRcpp::information_gain()}} in package \CRANpkg{FSelectorRcpp}.
+Set parameter \code{"type"} to \code{"gainratio"} to calculate the gain ratio, or set to \code{"symuncert"} to calculate the symmetrical uncertainty (see \code{\link[FSelectorRcpp:information_gain]{FSelectorRcpp::information_gain()}}). Default is \code{"infogain"}.
+
 Argument \code{equal} defaults to \code{FALSE} for classification tasks, and to \code{TRUE} for regression tasks.
 }
 \examples{
@@ -25,13 +27,11 @@ Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCarScore}},
   \code{\link{FilterCorrelation}},
-  \code{\link{FilterDISR}}, \code{\link{FilterGainRatio}},
-  \code{\link{FilterImportance}}, \code{\link{FilterJMIM}},
-  \code{\link{FilterJMI}}, \code{\link{FilterKruskalTest}},
-  \code{\link{FilterMIM}}, \code{\link{FilterMRMR}},
-  \code{\link{FilterNJMIM}},
+  \code{\link{FilterDISR}}, \code{\link{FilterImportance}},
+  \code{\link{FilterJMIM}}, \code{\link{FilterJMI}},
+  \code{\link{FilterKruskalTest}}, \code{\link{FilterMIM}},
+  \code{\link{FilterMRMR}}, \code{\link{FilterNJMIM}},
   \code{\link{FilterPerformance}},
-  \code{\link{FilterSymmetricalUncertainty}},
   \code{\link{FilterVariance}}, \code{\link{Filter}},
   \code{\link{mlr_filters}}
 }

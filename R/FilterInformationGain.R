@@ -6,6 +6,8 @@
 #'
 #' @description
 #' Information gain filter calling [FSelectorRcpp::information_gain()] in package \CRANpkg{FSelectorRcpp}.
+#' Set parameter `"type"` to `"gainratio"` to calculate the gain ratio, or set to `"symuncert"` to calculate the symmetrical uncertainty (see [FSelectorRcpp::information_gain()]). Default is `"infogain"`.
+#'
 #' Argument `equal` defaults to `FALSE` for classification tasks, and to `TRUE` for regression tasks.
 #'
 #' @family Filter
@@ -25,6 +27,7 @@ FilterInformationGain = R6Class("FilterInformationGain", inherit = Filter,
         feature_types = c("integer", "numeric", "factor", "ordered"),
         task_type = c("classif", "regr"),
         param_set = ParamSet$new(list(
+          ParamFct$new("type", levels = c("infogain", "gainratio", "symuncert"), default = "infogain"),
           ParamLgl$new("equal", default = FALSE),
           ParamLgl$new("discIntegers", default = TRUE),
           ParamInt$new("threads", lower = 0L, default = 1L)
@@ -34,11 +37,12 @@ FilterInformationGain = R6Class("FilterInformationGain", inherit = Filter,
 
     calculate_internal = function(task, nfeat) {
       pv = self$param_set$values
+      pv$type = pv$type %??% "infogain"
       pv$equal = pv$equal %??% task$task_type == "regr"
 
       x = setDF(task$data(cols = task$feature_names))
       y = task$truth()
-      scores = invoke(FSelectorRcpp::information_gain, x = x, y = y, type = "infogain", .args = pv)
+      scores = invoke(FSelectorRcpp::information_gain, x = x, y = y, .args = pv)
       set_names(scores$importance, scores$attributes)
     }
   )

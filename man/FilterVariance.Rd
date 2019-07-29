@@ -26,15 +26,13 @@ Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCarScore}},
   \code{\link{FilterCorrelation}},
-  \code{\link{FilterDISR}}, \code{\link{FilterGainRatio}},
-  \code{\link{FilterImportance}},
+  \code{\link{FilterDISR}}, \code{\link{FilterImportance}},
   \code{\link{FilterInformationGain}},
   \code{\link{FilterJMIM}}, \code{\link{FilterJMI}},
   \code{\link{FilterKruskalTest}}, \code{\link{FilterMIM}},
   \code{\link{FilterMRMR}}, \code{\link{FilterNJMIM}},
-  \code{\link{FilterPerformance}},
-  \code{\link{FilterSymmetricalUncertainty}},
-  \code{\link{Filter}}, \code{\link{mlr_filters}}
+  \code{\link{FilterPerformance}}, \code{\link{Filter}},
+  \code{\link{mlr_filters}}
 }
 \concept{Filter}
 \keyword{datasets}
