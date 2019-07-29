@@ -55,6 +55,7 @@ Tied values (this includes \code{NA} values) appear in a random, non-determinist
 Calculates the filter score values for the provided \link[mlr3:Task]{mlr3::Task} and stores them in field \code{scores}.
 \code{nfeat} determines the minimum number of features to score (see "Partial Scoring"), and defaults to the number of features in \code{task}.
 Loads required packages and then calls \code{$calculate_internal()}.
+If the task has no rows, each feature gets the score \code{NA}.
 \item \code{calculate_internal(task, nfeat)}\cr
 (\link[mlr3:Task]{mlr3::Task}, \code{integer(1)}) -> named \code{numeric()}\cr
 Internal worker function. Each child class muss implement this method.

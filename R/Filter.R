@@ -55,6 +55,7 @@
 #'     Calculates the filter score values for the provided [mlr3::Task] and stores them in field `scores`.
 #'     `nfeat` determines the minimum number of features to score (see "Partial Scoring"), and defaults to the number of features in `task`.
 #'     Loads required packages and then calls `$calculate_internal()`.
+#'     If the task has no rows, each feature gets the score `NA`.
 #'
 #'   * `calculate_internal(task, nfeat)`\cr
 #'     ([mlr3::Task], `integer(1)`) -> named `numeric()`\cr
@@ -109,21 +110,28 @@ Filter = R6Class("Filter",
 
       task = assert_task(task, feature_types = self$feature_types, task_properties = self$task_properties)
       fn = task$feature_names
-      if (is.null(nfeat)) {
-        nfeat = length(fn)
+
+      if (task$nrow == 0L) {
+        self$scores = shuffle(set_names(rep.int(NA_real_, length(fn)), fn))
+      } else if (task$ncol == 0L) {
+        self$scores = set_names(numeric(), character())
       } else {
-        nfeat = assert_count(nfeat, coerce = TRUE)
+        if (is.null(nfeat)) {
+          nfeat = length(fn)
+        } else {
+          nfeat = assert_count(nfeat, coerce = TRUE)
+        }
+
+        # calculate filter values using the dedicated filter
+        require_namespaces(self$packages)
+        scores = self$calculate_internal(task, nfeat)
+
+        # check result, re-order with correction for ties
+        assert_numeric(scores, any.missing = FALSE, names = "unique")
+        assert_names(names(scores), subset.of = fn)
+        scores = insert_named(set_names(rep(NA_real_, length(fn)), fn), scores)
+        self$scores = scores[order(scores, runif(length(scores)), decreasing = TRUE, na.last = TRUE)]
       }
-
-      # calculate filter values using the dedicated filter
-      require_namespaces(self$packages)
-      scores = self$calculate_internal(task, nfeat)
-
-      # check result, re-order with correction for ties
-      assert_numeric(scores, any.missing = FALSE, names = "unique")
-      assert_names(names(scores), subset.of = fn)
-      scores = insert_named(set_names(rep(NA_real_, length(fn)), fn), scores)
-      self$scores = scores[order(scores, runif(length(scores)), decreasing = TRUE, na.last = TRUE)]
 
       invisible(self)
     }
