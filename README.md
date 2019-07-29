@@ -31,6 +31,7 @@ as.data.table(filter$calculate(task))
 ```
 
     ##     feature      score
+    ##      <char>      <num>
     ## 1:  glucose 0.28961567
     ## 2:      age 0.18694030
     ## 3:     mass 0.17702985
@@ -50,8 +51,8 @@ as.data.table(filter$calculate(task))
 | cmim                     | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
 | correlation              | Regr           | Integer, Numeric                                      | stats                                                             |
 | disr                     | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
-| embedded                 | Classif        | Logical, Integer, Numeric, Character, Factor, Ordered | [rpart](https://cran.r-project.org/package=rpart)                 |
 | gain\_ratio              | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
+| importance               | Classif        | Logical, Integer, Numeric, Character, Factor, Ordered | [rpart](https://cran.r-project.org/package=rpart)                 |
 | information\_gain        | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
 | jmi                      | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
 | jmim                     | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
@@ -63,10 +64,10 @@ as.data.table(filter$calculate(task))
 | symmetrical\_uncertainty | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
 | variance                 | Classif & Regr | Integer, Numeric                                      | stats                                                             |
 
-### Embedded Filters
+### Variable Importance Filters
 
-The following learners have embedded filter methods which are supported
-via class `FilterEmbedded`:
+The following learners allow the extraction of variable importance and
+therefore are supported by `FilterImportance`:
 
     ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
     ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
@@ -86,15 +87,16 @@ task = mlr_tasks$get("iris")
 lrn = mlr_learners$get("classif.ranger",
   param_vals = list(importance = "impurity"))
 
-filter = FilterEmbedded$new(learner = lrn)
+filter = FilterImportance$new(learner = lrn)
 filter$calculate(task)
 head(as.data.table(filter), 3)
 ```
 
     ##         feature     score
-    ## 1:  Petal.Width 46.018653
-    ## 2: Petal.Length 41.367300
-    ## 3: Sepal.Length  9.524415
+    ##          <char>     <num>
+    ## 1:  Petal.Width 45.977676
+    ## 2: Petal.Length 41.064991
+    ## 3: Sepal.Length  9.733556
 
 ### Performance Filter
 
