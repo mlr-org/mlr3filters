@@ -4,15 +4,15 @@
 \name{mlr3filters-package}
 \alias{mlr3filters}
 \alias{mlr3filters-package}
-\title{mlr3filters: Filter based feature selection for 'mlr3'}
+\title{mlr3filters: Filter Based Feature Selection for 'mlr3'}
 \description{
-Implements methods for feature selection and
+Implements methods for feature selection via
     filtering in 'mlr3'.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/mlr-org/mlr3filters}
+  \item \url{https://mlr3filters.mlr-org.com}
   \item Report bugs at \url{https://github.com/mlr-org/mlr3filters/issues}
 }
 
