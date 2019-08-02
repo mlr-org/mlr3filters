@@ -36,12 +36,7 @@ Suggests:
     care,
     FSelectorRcpp,
     lgr,
-    magrittr,
-    Metrics,
-    mlbench,
-    mlr3learners,
     praznik,
-    purrr,
     rpart,
     testthat
 Remotes:
