@@ -10,6 +10,7 @@ status](https://travis-ci.org/mlr-org/mlr3filters.svg?branch=master)](https://tr
 status](https://www.r-pkg.org/badges/version/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
 [![Coverage
 status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
+[![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 
 ## Installation
 
@@ -69,8 +70,8 @@ as.data.table(filter$calculate(task))
 The following learners allow the extraction of variable importance and
 therefore are supported by `FilterImportance`:
 
-    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
-    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
+    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"
+    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"
     ## [7] "regr.rpart"          "regr.xgboost"
 
 If your learner is listed here, the reason is most likely that it is not
