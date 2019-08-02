@@ -36,6 +36,7 @@ Suggests:
     care,
     FSelectorRcpp,
     lgr,
+    mlr3learners,
     praznik,
     rpart,
     testthat
