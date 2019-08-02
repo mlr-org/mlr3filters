@@ -1,9 +1,6 @@
 
 # mlr3filters
 
-*mlr3filters* adds filters, feature selection methods and embedded
-feature selection methods of algorithms to *mlr3*.
-
 [![Travis build
 status](https://travis-ci.org/mlr-org/mlr3filters.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3filters)
 [![CRAN
@@ -11,6 +8,9 @@ status](https://www.r-pkg.org/badges/version/mlr3filters)](https://cran.r-projec
 [![Coverage
 status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
+
+*mlr3filters* adds filters, feature selection methods and embedded
+feature selection methods of algorithms to *mlr3*.
 
 ## Installation
 
@@ -44,34 +44,32 @@ as.data.table(filter$calculate(task))
 
 ### Implemented Filters
 
-| Name                     | Task Type      | Feature Types                                         | Package                                                           |
-| :----------------------- | :------------- | :---------------------------------------------------- | :---------------------------------------------------------------- |
-| anova                    | Classif        | Integer, Numeric                                      | stats                                                             |
-| auc                      | Classif        | Integer, Numeric                                      | [Metrics](https://cran.r-project.org/package=Metrics)             |
-| carscore                 | Regr           | Numeric                                               | [care](https://cran.r-project.org/package=care)                   |
-| cmim                     | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
-| correlation              | Regr           | Integer, Numeric                                      | stats                                                             |
-| disr                     | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
-| gain\_ratio              | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
-| importance               | Classif        | Logical, Integer, Numeric, Character, Factor, Ordered | [rpart](https://cran.r-project.org/package=rpart)                 |
-| information\_gain        | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
-| jmi                      | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
-| jmim                     | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
-| kruskal\_test            | Classif        | Integer, Numeric                                      | stats                                                             |
-| mim                      | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
-| mrmr                     | Classif & Regr | Numeric, Factor, Integer, Character, Logical          | [praznik](https://cran.r-project.org/package=praznik)             |
-| njmim                    | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
-| performance              | Classif        | Logical, Integer, Numeric, Character, Factor, Ordered | [rpart](https://cran.r-project.org/package=rpart)                 |
-| symmetrical\_uncertainty | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
-| variance                 | Classif & Regr | Integer, Numeric                                      | stats                                                             |
+| Name              | Task Type      | Feature Types                                         | Package                                                           |
+| :---------------- | :------------- | :---------------------------------------------------- | :---------------------------------------------------------------- |
+| anova             | Classif        | Integer, Numeric                                      | stats                                                             |
+| auc               | Classif        | Integer, Numeric                                      | [Metrics](https://cran.r-project.org/package=Metrics)             |
+| carscore          | Regr           | Numeric                                               | [care](https://cran.r-project.org/package=care)                   |
+| cmim              | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| correlation       | Regr           | Integer, Numeric                                      | stats                                                             |
+| disr              | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| importance        | Classif        | Logical, Integer, Numeric, Character, Factor, Ordered | [rpart](https://cran.r-project.org/package=rpart)                 |
+| information\_gain | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
+| jmi               | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| jmim              | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| kruskal\_test     | Classif        | Integer, Numeric                                      | stats                                                             |
+| mim               | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| mrmr              | Classif & Regr | Numeric, Factor, Integer, Character, Logical          | [praznik](https://cran.r-project.org/package=praznik)             |
+| njmim             | Classif        | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
+| performance       | Classif        | Logical, Integer, Numeric, Character, Factor, Ordered | [rpart](https://cran.r-project.org/package=rpart)                 |
+| variance          | Classif & Regr | Integer, Numeric                                      | stats                                                             |
 
 ### Variable Importance Filters
 
 The following learners allow the extraction of variable importance and
 therefore are supported by `FilterImportance`:
 
-    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"
-    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"
+    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
+    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
     ## [7] "regr.rpart"          "regr.xgboost"
 
 If your learner is listed here, the reason is most likely that it is not
@@ -95,9 +93,9 @@ head(as.data.table(filter), 3)
 
     ##         feature     score
     ##          <char>     <num>
-    ## 1:  Petal.Width 45.977676
-    ## 2: Petal.Length 41.064991
-    ## 3: Sepal.Length  9.733556
+    ## 1: Petal.Length 45.485274
+    ## 2:  Petal.Width 41.726822
+    ## 3: Sepal.Length  9.550267
 
 ### Performance Filter
 
