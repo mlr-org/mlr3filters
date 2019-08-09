@@ -15,7 +15,6 @@
 #' task = mlr3::mlr_tasks$get("iris")
 #' filter = FilterMRMR$new()
 #' filter$calculate(task, nfeat = 2)
-#' head(filter$scores, 2)
 #' as.data.table(filter)
 FilterMRMR = R6Class("FilterMRMR", inherit = Filter,
   public = list(

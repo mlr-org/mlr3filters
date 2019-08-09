@@ -16,6 +16,7 @@
 #' @family Filter
 #' @export
 #' @examples
+#' ## InfoGain (default)
 #' task = mlr3::mlr_tasks$get("pima")
 #' filter = FilterInformationGain$new()
 #' filter$calculate(task)
@@ -25,6 +26,8 @@
 #' ## GainRatio
 #'
 #' filterGR = FilterInformationGain$new(param_vals = list("type" = "gainratio"))
+#' filterGR$calculate(task)
+#' head(as.data.table(filterGR), 3)
 #'
 FilterInformationGain = R6Class("FilterInformationGain", inherit = Filter,
   public = list(

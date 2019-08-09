@@ -18,11 +18,15 @@
 #' task = mlr3::mlr_tasks$get("mtcars")
 #' filter = FilterCarScore$new()
 #' filter$calculate(task)
-#' head(filter$scores, 3)
-#' as.data.table(filter)
+#' head(as.data.table(filterGR), 3)
+#'
+#' ## changing filter settings
+#' filter = FilterCarScore$new(param_vals = list("diagonal" = TRUE))
+#' filter$calculate(task)
+#' head(as.data.table(filter), 3)
 FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
   public = list(
-    initialize = function(id = "carscore",  param_vals = list(verbose = FALSE) {
+    initialize = function(id = "carscore",  param_vals = list(verbose = FALSE)) {
       super$initialize(
         id = id,
         packages = "care",
