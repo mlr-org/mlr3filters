@@ -21,7 +21,7 @@
 #' 10^(-filter$scores)
 FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
   public = list(
-    initialize = function(id = "kruskal_test") {
+    initialize = function(id = "kruskal_test", param_vals = list()) {
       super$initialize(
         id = id,
         packages = "stats",
@@ -30,7 +30,8 @@ FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
         param_set = ParamSet$new(list(
           ParamFct$new("na.action", default = "na.omit",
             levels = c("na.omit", "na.fail", "na.exclude", "na.pass"))
-        ))
+        )),
+        param_vals = param_vals
       )
     },
 

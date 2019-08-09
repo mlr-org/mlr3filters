@@ -19,7 +19,7 @@
 #' as.data.table(filter)
 FilterDISR = R6Class("FilterDISR", inherit = Filter,
   public = list(
-    initialize = function(id = "disr") {
+    initialize = function(id = "disr", param_vals = list()) {
       super$initialize(
         id = id,
         packages = "praznik",
@@ -27,7 +27,8 @@ FilterDISR = R6Class("FilterDISR", inherit = Filter,
         task_type = "classif",
         param_set = ParamSet$new(list(
           ParamInt$new("threads", lower = 0L, default = 0L)
-        ))
+        )),
+        param_vals = param_vals
       )
     },
 

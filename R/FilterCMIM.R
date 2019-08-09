@@ -20,7 +20,7 @@
 #' as.data.table(filter)
 FilterCMIM = R6Class("FilterCMIM", inherit = Filter,
   public = list(
-    initialize = function(id = "cmim") {
+    initialize = function(id = "cmim", param_vals = list()) {
       super$initialize(
         id = id,
         packages = "praznik",
@@ -28,7 +28,8 @@ FilterCMIM = R6Class("FilterCMIM", inherit = Filter,
         task_type = c("classif", "regr"),
         param_set = ParamSet$new(list(
           ParamInt$new("threads", lower = 0L, default = 0L)
-        ))
+        )),
+        param_vals = param_vals
       )
     },
 

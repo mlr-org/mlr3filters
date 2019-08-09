@@ -22,7 +22,7 @@
 #' as.data.table(filter)
 FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
   public = list(
-    initialize = function(id = "carscore") {
+    initialize = function(id = "carscore",  param_vals = list(verbose = FALSE) {
       super$initialize(
         id = id,
         packages = "care",
@@ -32,7 +32,7 @@ FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
           ParamDbl$new("lambda", lower = 0, upper = 1, default = NO_DEF),
           ParamLgl$new("diagonal", default = FALSE),
           ParamLgl$new("verbose", default = TRUE))),
-        param_vals = list(verbose = FALSE)
+        param_vals = param_vals
       )
     },
 
