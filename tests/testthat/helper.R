@@ -10,7 +10,7 @@ expect_filter = function(f, task = NULL) {
   )
 
   expect_character(f$packages, any.missing = FALSE, unique = TRUE)
-  expect_subset(f$task_type, mlr_reflections$task_types$type)
+  expect_subset(f$task_type, mlr_reflections$task_types)
   expect_subset(f$feature_types, mlr_reflections$task_feature_types)
   expect_class(f$param_set, "ParamSet")
   expect_function(f$calculate_internal, args = c("task", "nfeat"), ordered = TRUE)
