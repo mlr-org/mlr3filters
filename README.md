@@ -83,8 +83,8 @@ Random Forest via the *ranger* package:
 
 ``` r
 task = mlr_tasks$get("iris")
-lrn = mlr_learners$get("classif.ranger",
-  param_vals = list(importance = "impurity"))
+lrn = mlr_learners$get("classif.ranger")
+lrn$param_set$values = list(importance = "impurity")
 
 filter = FilterImportance$new(learner = lrn)
 filter$calculate(task)
@@ -93,9 +93,9 @@ head(as.data.table(filter), 3)
 
     ##         feature     score
     ##          <char>     <num>
-    ## 1: Petal.Length 45.485274
-    ## 2:  Petal.Width 41.726822
-    ## 3: Sepal.Length  9.550267
+    ## 1:  Petal.Width 44.588117
+    ## 2: Petal.Length 42.501367
+    ## 3: Sepal.Length  9.898418
 
 ### Performance Filter
 
