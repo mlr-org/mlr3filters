@@ -37,6 +37,7 @@ as.data.table(filter$calculate(task))
 ### Implemented Filters
 
 ```{r echo = FALSE, message=FALSE}
+set.seed(1)
 library("mlr3filters")
 library("data.table")
 
@@ -77,8 +78,8 @@ For example, to use the "impurity" measure of Random Forest via the _ranger_ pac
 
 ```{r }
 task = mlr_tasks$get("iris")
-lrn = mlr_learners$get("classif.ranger",
-  param_vals = list(importance = "impurity"))
+lrn = mlr_learners$get("classif.ranger")
+lrn$param_set$values = list(importance = "impurity")
 
 filter = FilterImportance$new(learner = lrn)
 filter$calculate(task)

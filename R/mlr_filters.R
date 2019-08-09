@@ -11,30 +11,14 @@
 #'
 #' @family Dictionary
 #' @family Filter
-#' @name mlr_filters
+#' @export
 #' @examples
 #' mlr_filters$keys()
 #' as.data.table(mlr_filters)
 #' mlr_filters$get("mim")
-NULL
-
-#' @export
 mlr_filters = DictionaryFilter = R6Class("DictionaryFilter",
   inherit = mlr3misc::Dictionary,
   cloneable = FALSE,
-  public = list(
-    get = function(key, ..., id = NULL, param_vals = NULL) {
-      obj = super$get(key, ...)
-      if (!is.null(id)) {
-        obj$id = id
-      }
-      if (!is.null(param_vals)) {
-        obj$param_set$values = insert_named(obj$param_set$values, param_vals)
-      }
-      obj
-    }
-
-  )
 )$new()
 
 
