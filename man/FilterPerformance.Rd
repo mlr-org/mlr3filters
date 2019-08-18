@@ -13,6 +13,7 @@ FilterPerformance
 Filter which uses the predictive performance of a \link[mlr3:Learner]{mlr3::Learner} as filter score.
 Performs a \code{\link[mlr3:resample]{mlr3::resample()}} for each feature separately.
 The filter score is the aggregated performance of the \link[mlr3:Measure]{mlr3::Measure}, or the negated aggregated performance if the measure which are to be minimized.
+The measure default to the first default measure of the learner, see \code{\link[mlr3:default_measures]{mlr3::default_measures()}}.
 }
 \examples{
 task = mlr3::mlr_tasks$get("iris")
