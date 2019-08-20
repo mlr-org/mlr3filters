@@ -9,4 +9,4 @@ if (ci_on_travis()) {
 }
 
 get_stage("after_success") %>%
-  add_code_step(system("bash  <(curl -s https://raw.githubusercontent.com/mlr-org/mlr3orga/master/trigger-mlr3book.sh)"))
+  add_code_step(system("curl -s https://raw.githubusercontent.com/mlr-org/mlr3orga/master/trigger-mlr3book.sh | bash"))
