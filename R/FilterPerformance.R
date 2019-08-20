@@ -28,7 +28,7 @@ FilterPerformance = R6Class("FilterPerformance", inherit = Filter,
       self$learner = learner = assert_learner(learner, properties = "importance", clone = TRUE)
       self$resampling = assert_resampling(resampling)
       if (is.null(measure))
-        measure = head(default_measures(learner), 1L)
+        measure = head(default_measures(learner$task_type), 1L)
       self$measure = assert_measure(measure, learner = learner)
 
       super$initialize(

@@ -11,8 +11,8 @@ flt(.key, ...)
 Key passed to the respective \link[mlr3misc:Dictionary]{mlr3misc::Dictionary} to retrieve the object.}
 
 \item{...}{:: named \code{list()}\cr
-Parameter values are added to the \link[paradox:ParamSet]{paradox::ParamSet} of the object if applicable.
-Additional parameters are assigned to the respective field of the object.}
+Named arguments passed to the constructor, to be set as parameters in the \link[paradox:ParamSet]{paradox::ParamSet}, or to be set as public field.
+See \code{\link[mlr3misc:dictionary_sugar]{mlr3misc::dictionary_sugar()}} for more details.}
 }
 \value{
 \link{Filter}.
