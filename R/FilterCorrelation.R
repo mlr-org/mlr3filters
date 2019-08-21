@@ -23,7 +23,7 @@
 #' as.data.table(filter)
 FilterCorrelation = R6Class("FilterCorrelation", inherit = Filter,
   public = list(
-    initialize = function(id = "correlation", param_vals = list()) {
+    initialize = function(id = "correlation") {
       super$initialize(
         id = id,
         packages = "stats",
@@ -34,8 +34,7 @@ FilterCorrelation = R6Class("FilterCorrelation", inherit = Filter,
             levels = c("everything", "all.obs", "complete.obs", "na.or.complete", "pairwise.complete.obs")),
           ParamFct$new("method", default = "pearson",
             levels = c("pearson", "kendall", "spearman"))
-        )),
-        param_vals = param_vals
+        ))
       )
     },
 

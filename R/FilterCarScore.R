@@ -18,15 +18,16 @@
 #' task = mlr3::mlr_tasks$get("mtcars")
 #' filter = FilterCarScore$new()
 #' filter$calculate(task)
-#' head(as.data.table(filterGR), 3)
+#' head(as.data.table(filter), 3)
 #'
 #' ## changing filter settings
-#' filter = FilterCarScore$new(param_vals = list("diagonal" = TRUE))
+#' filter = FilterCarScore$new()
+#' filter$param_set$values = list("diagonal" = TRUE))
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
 FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
   public = list(
-    initialize = function(id = "carscore",  param_vals = list(verbose = FALSE)) {
+    initialize = function(id = "carscore") {
       super$initialize(
         id = id,
         packages = "care",
@@ -35,9 +36,9 @@ FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
         param_set = ParamSet$new(list(
           ParamDbl$new("lambda", lower = 0, upper = 1, default = NO_DEF),
           ParamLgl$new("diagonal", default = FALSE),
-          ParamLgl$new("verbose", default = TRUE))),
-        param_vals = param_vals
+          ParamLgl$new("verbose", default = TRUE)))
       )
+      self$param_set$values = list(verbose = FALSE)
     },
 
     calculate_internal = function(task, nfeat) {

@@ -27,9 +27,9 @@ FilterVariance = R6Class("FilterVariance", inherit = Filter,
         task_type = c("classif", "regr"),
         param_set = ParamSet$new(list(
           ParamLgl$new("na.rm", default = TRUE)
-        )),
-        param_vals = list(na.rm = TRUE)
+        ))
       )
+      self$param_set$values = list(na.rm = TRUE)
     },
 
     calculate_internal = function(task, nfeat) {

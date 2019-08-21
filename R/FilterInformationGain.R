@@ -25,13 +25,14 @@
 #'
 #' ## GainRatio
 #'
-#' filterGR = FilterInformationGain$new(param_vals = list("type" = "gainratio"))
+#' filterGR = FilterInformationGain$new()
+#' filterGR$param_set$values = list("type" = "gainratio")
 #' filterGR$calculate(task)
 #' head(as.data.table(filterGR), 3)
 #'
 FilterInformationGain = R6Class("FilterInformationGain", inherit = Filter,
   public = list(
-    initialize = function(id = "information_gain", param_vals = list()) {
+    initialize = function(id = "information_gain") {
       super$initialize(
         id = id,
         packages = "FSelectorRcpp",
@@ -42,8 +43,7 @@ FilterInformationGain = R6Class("FilterInformationGain", inherit = Filter,
           ParamLgl$new("equal", default = FALSE),
           ParamLgl$new("discIntegers", default = TRUE),
           ParamInt$new("threads", lower = 0L, default = 1L)
-        )),
-        param_vals = param_vals
+        ))
       )
     },
 
