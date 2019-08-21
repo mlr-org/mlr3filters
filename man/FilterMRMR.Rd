@@ -10,7 +10,8 @@
 FilterMRMR
 }
 \description{
-Minimum redundancy maximal relevancy filter calling \code{\link[praznik:MRMR]{praznik::MRMR()}} in package \CRANpkg{praznik}.
+Minimum redundancy maximal relevancy filter calling
+\code{\link[praznik:MRMR]{praznik::MRMR()}} in package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }

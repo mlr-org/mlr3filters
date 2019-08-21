@@ -10,7 +10,8 @@
 FilterCMIM
 }
 \description{
-Minimal conditional mutual information maximisation filter calling \code{\link[praznik:CMIM]{praznik::CMIM()}} from package \CRANpkg{praznik}.
+Minimal conditional mutual information maximisation filter
+calling \code{\link[praznik:CMIM]{praznik::CMIM()}} from package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }

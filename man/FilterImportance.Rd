@@ -10,9 +10,10 @@
 FilterImportance
 }
 \description{
-Variable Importance filter using embedded feature selection of machine learning algorithms.
-Takes a \link[mlr3:Learner]{mlr3::Learner} which is capable of extracting the variable importance (property "importance"),
-fits the model and extracts the importance values to use as filter scores.
+Variable Importance filter using embedded feature selection of
+machine learning algorithms. Takes a \link[mlr3:Learner]{mlr3::Learner} which is capable of
+extracting the variable importance (property "importance"), fits the model
+and extracts the importance values to use as filter scores.
 }
 \examples{
 task = mlr3::mlr_tasks$get("iris")

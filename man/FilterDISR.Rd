@@ -10,7 +10,8 @@
 FilterDISR
 }
 \description{
-Double input symmetrical relevance filter calling \code{\link[praznik:DISR]{praznik::DISR()}} from package \CRANpkg{praznik}.
+Double input symmetrical relevance filter calling
+\code{\link[praznik:DISR]{praznik::DISR()}} from package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }

@@ -10,7 +10,8 @@
 FilterJMI
 }
 \description{
-Joint mutual information filter calling \code{\link[praznik:JMI]{praznik::JMI()}} in package \CRANpkg{praznik}.
+Joint mutual information filter calling \code{\link[praznik:JMI]{praznik::JMI()}} in
+package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }

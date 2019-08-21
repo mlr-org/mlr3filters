@@ -10,8 +10,9 @@
 FilterAUC
 }
 \description{
-Area under the (ROC) Curve filter calling \code{\link[Metrics:auc]{Metrics::auc()}} from package \CRANpkg{Metrics}.
-Returns the absolute value of the difference between the AUC and 0.5.
+Area under the (ROC) Curve filter calling \code{\link[Metrics:auc]{Metrics::auc()}} from
+package \CRANpkg{Metrics}. Returns the absolute value of the difference
+between the AUC and 0.5.
 }
 \examples{
 task = mlr3::mlr_tasks$get("pima")

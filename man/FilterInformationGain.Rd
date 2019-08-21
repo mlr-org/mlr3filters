@@ -16,8 +16,8 @@ parameter \code{"type"} to \code{"gainratio"} to calculate the gain ratio, or se
 \code{"symuncert"} to calculate the symmetrical uncertainty (see
 \code{\link[FSelectorRcpp:information_gain]{FSelectorRcpp::information_gain()}}). Default is \code{"infogain"}.
 
-Argument \code{equal} defaults to \code{FALSE} for classification tasks, and to \code{TRUE}
-for regression tasks.
+Argument \code{equal} defaults to \code{FALSE} for classification tasks, and to
+\code{TRUE} for regression tasks.
 }
 \examples{
 ## InfoGain (default)

@@ -10,7 +10,8 @@
 FilterMIM
 }
 \description{
-Conditional mutual information based feature selection filter calling \code{\link[praznik:MIM]{praznik::MIM()}} in package \CRANpkg{praznik}.
+Conditional mutual information based feature selection filter
+calling \code{\link[praznik:MIM]{praznik::MIM()}} in package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }

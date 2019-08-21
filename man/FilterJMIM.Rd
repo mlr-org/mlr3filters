@@ -10,7 +10,8 @@
 FilterJMIM
 }
 \description{
-Minimal joint mutual information maximisation filter calling \code{\link[praznik:JMIM]{praznik::JMIM()}} in package \CRANpkg{praznik}.
+Minimal joint mutual information maximisation filter calling
+\code{\link[praznik:JMIM]{praznik::JMIM()}} in package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }
