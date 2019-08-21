@@ -85,7 +85,7 @@ Filter = R6Class("Filter",
       feature_types = character(), packages = character()) {
 
       self$id = assert_string(id)
-      self$task_type = assert_subset(task_type, mlr_reflections$task_types$type, empty.ok = FALSE)
+      self$task_type = assert_subset(task_type, mlr_reflections$task_types, empty.ok = FALSE)
       self$task_properties = assert_subset(task_properties, unlist(mlr_reflections$task_properties, use.names = FALSE))
       self$param_set = assert_param_set(param_set)
       self$param_set$values = insert_named(self$param_set$values, param_vals)
