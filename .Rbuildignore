@@ -11,3 +11,4 @@
 ^\.ignore$
 ^docs$
 ^pkgdown$
+.pre-commit-config.yaml
