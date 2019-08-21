@@ -25,3 +25,7 @@ test_that("as.data.table conversion works", {
 
   expect_silent(as.data.table(filter))
 })
+
+test_that("mlr3sugar creation works", {
+  expect_silent(flt("correlation", method = "kendall"))
+})
