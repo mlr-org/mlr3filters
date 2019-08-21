@@ -43,9 +43,8 @@ Suggests:
     rpart,
     testthat
 Remotes:
-    mlr-org/mlr3,
-    mlr-org/mlr3learners,
-    mlr-org/mlr3misc
+    mlr-org/mlr3misc,
+    mlr-org/mlr3
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE)
@@ -69,5 +68,6 @@ Collate:
     'FilterNJMIM.R'
     'FilterPerformance.R'
     'FilterVariance.R'
+    'flt.R'
     'reexports.R'
     'zzz.R'
