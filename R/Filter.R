@@ -3,11 +3,11 @@
 #' @usage NULL
 #' @format [R6::R6Class] object.
 #'
-#' @description
-#' Base class for filters. Predefined filters are stored in the [dictionary][mlr3misc::Dictionary] [mlr_filters].
-#' A Filter calculates a score for each feature of a task.
-#' Important features get a large value and unimportant features get a small value.
-#' Note that filter scores may also be negative.
+#' @description Base class for filters. Predefined filters are stored in the
+#' [dictionary][mlr3misc::Dictionary] [mlr_filters]. A Filter calculates a score
+#' for each feature of a task. Important features get a large value and
+#' unimportant features get a small value. Note that filter scores may also be
+#' negative.
 #'
 #' @section Construction:
 #'
@@ -95,17 +95,17 @@ Filter = R6Class("Filter",
     },
 
     format = function() {
-      sprintf("<%s:%s>", class(self)[1L], self$id)
+      sprintf("<%s:%s>", class(self)[1L], self$id) # nocov
     },
 
     print = function() {
-      catf(format(self))
+      catf(format(self)) # nocov start
       catf(str_indent("Task Types:", self$task_type))
       catf(str_indent("Task Properties:", self$task_properties))
       catf(str_indent("Packages:", self$packages))
       catf(str_indent("Feature types:", self$feature_types))
       if (length(self$scores)) {
-        print(as.data.table(self), nrows = 10L, topn = 5L, class = FALSE, row.names = TRUE, print.keys = FALSE)
+        print(as.data.table(self), nrows = 10L, topn = 5L, class = FALSE, row.names = TRUE, print.keys = FALSE) # nocov end
       }
     },
 
@@ -116,8 +116,6 @@ Filter = R6Class("Filter",
 
       if (task$nrow == 0L) {
         self$scores = shuffle(set_names(rep.int(NA_real_, length(fn)), fn))
-      } else if (task$ncol == 0L) {
-        self$scores = set_names(numeric(), character())
       } else {
         if (is.null(nfeat)) {
           nfeat = length(fn)

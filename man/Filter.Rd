@@ -6,10 +6,11 @@
 \title{Filter Base Class}
 \format{\link[R6:R6Class]{R6::R6Class} object.}
 \description{
-Base class for filters. Predefined filters are stored in the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters}.
-A Filter calculates a score for each feature of a task.
-Important features get a large value and unimportant features get a small value.
-Note that filter scores may also be negative.
+Base class for filters. Predefined filters are stored in the
+\link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters}. A Filter calculates a score
+for each feature of a task. Important features get a large value and
+unimportant features get a small value. Note that filter scores may also be
+negative.
 }
 \section{Construction}{
 \preformatted{f = Filter$new(id, task_type, param_set, param_vals, feature_types, packages)
