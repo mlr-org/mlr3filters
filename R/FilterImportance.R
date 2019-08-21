@@ -21,7 +21,7 @@ FilterImportance = R6Class("FilterImportance", inherit = Filter,
   public = list(
     learner = NULL,
     initialize = function(id = "importance", learner = "classif.rpart") {
-      self$learner = learner = assert_learner(learner, properties = "importance", clone = TRUE)
+      self$learner = learner = assert_learner(as_learner(learner, clone = TRUE), properties = "importance")
 
       super$initialize(
         id = id,

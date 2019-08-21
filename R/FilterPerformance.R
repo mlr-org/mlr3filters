@@ -25,11 +25,9 @@ FilterPerformance = R6Class("FilterPerformance", inherit = Filter,
     measure = NULL,
 
     initialize = function(id = "performance", learner = "classif.rpart", resampling = "holdout", measure = NULL) {
-      self$learner = learner = assert_learner(learner, properties = "importance", clone = TRUE)
-      self$resampling = assert_resampling(resampling)
-      if (is.null(measure))
-        measure = head(default_measures(learner$task_type), 1L)
-      self$measure = assert_measure(measure, learner = learner)
+      self$learner = learner = assert_learner(as_learner(learner, clone = TRUE), properties = "importance")
+      self$resampling = assert_resampling(as_resampling(resampling))
+      self$measure = assert_measure(as_measure(measure, task_type = learner$task_type, clone = TRUE), learner = learner)
 
       super$initialize(
         id = id,
