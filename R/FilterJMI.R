@@ -4,8 +4,8 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Joint mutual information filter calling [praznik::JMI()] in package \CRANpkg{praznik}.
+#' @description Joint mutual information filter calling [praznik::JMI()] in
+#' package \CRANpkg{praznik}.
 #'
 #' This filter supports partial scoring (see [Filter]).
 #'

@@ -4,8 +4,8 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Conditional mutual information based feature selection filter calling [praznik::MIM()] in package \CRANpkg{praznik}.
+#' @description Conditional mutual information based feature selection filter
+#' calling [praznik::MIM()] in package \CRANpkg{praznik}.
 #'
 #' This filter supports partial scoring (see [Filter]).
 #'

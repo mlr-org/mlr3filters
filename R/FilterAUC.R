@@ -4,9 +4,9 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Area under the (ROC) Curve filter calling [Metrics::auc()] from package \CRANpkg{Metrics}.
-#' Returns the absolute value of the difference between the AUC and 0.5.
+#' @description Area under the (ROC) Curve filter calling [Metrics::auc()] from
+#' package \CRANpkg{Metrics}. Returns the absolute value of the difference
+#' between the AUC and 0.5.
 #'
 #' @family Filter
 #' @export

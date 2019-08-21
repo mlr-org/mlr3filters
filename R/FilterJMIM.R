@@ -4,8 +4,8 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Minimal joint mutual information maximisation filter calling [praznik::JMIM()] in package \CRANpkg{praznik}.
+#' @description Minimal joint mutual information maximisation filter calling
+#' [praznik::JMIM()] in package \CRANpkg{praznik}.
 #'
 #' This filter supports partial scoring (see [Filter]).
 #'

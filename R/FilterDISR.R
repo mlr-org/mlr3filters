@@ -4,8 +4,8 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Double input symmetrical relevance filter calling [praznik::DISR()] from package \CRANpkg{praznik}.
+#' @description Double input symmetrical relevance filter calling
+#' [praznik::DISR()] from package \CRANpkg{praznik}.
 #'
 #' This filter supports partial scoring (see [Filter]).
 #'

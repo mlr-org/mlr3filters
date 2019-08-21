@@ -4,10 +4,11 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Filter which uses the predictive performance of a [mlr3::Learner] as filter score.
-#' Performs a [mlr3::resample()] for each feature separately.
-#' The filter score is the aggregated performance of the [mlr3::Measure], or the negated aggregated performance if the measure which are to be minimized.
+#' @description Filter which uses the predictive performance of a
+#' [mlr3::Learner] as filter score. Performs a [mlr3::resample()] for each
+#' feature separately. The filter score is the aggregated performance of the
+#' [mlr3::Measure], or the negated aggregated performance if the measure which
+#' are to be minimized.
 #'
 #' @family Filter
 #' @export

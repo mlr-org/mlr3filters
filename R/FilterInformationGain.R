@@ -5,13 +5,13 @@
 #' @include Filter.R
 #'
 #' @description Information gain filter calling
-#' [FSelectorRcpp::information_gain()] in package \CRANpkg{FSelectorRcpp}. Set
-#' parameter `"type"` to `"gainratio"` to calculate the gain ratio, or set to
-#' `"symuncert"` to calculate the symmetrical uncertainty (see
-#' [FSelectorRcpp::information_gain()]). Default is `"infogain"`.
+#'   [FSelectorRcpp::information_gain()] in package \CRANpkg{FSelectorRcpp}. Set
+#'   parameter `"type"` to `"gainratio"` to calculate the gain ratio, or set to
+#'   `"symuncert"` to calculate the symmetrical uncertainty (see
+#'   [FSelectorRcpp::information_gain()]). Default is `"infogain"`.
 #'
-#' Argument `equal` defaults to `FALSE` for classification tasks, and to `TRUE`
-#' for regression tasks.
+#'   Argument `equal` defaults to `FALSE` for classification tasks, and to
+#'   `TRUE` for regression tasks.
 #'
 #' @family Filter
 #' @export

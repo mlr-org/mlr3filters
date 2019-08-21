@@ -4,8 +4,7 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Variance filter calling [stats::var()].
+#' @description Variance filter calling [stats::var()].
 #'
 #' Argument `na.rm` defaults to `TRUE` here.
 #'

@@ -4,12 +4,11 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' ANOVA F-Test filter calling [stats::aov()].
-#' Note that this is equivalent to a t-test for binary classification.
+#' @description ANOVA F-Test filter calling [stats::aov()]. Note that this is
+#' equivalent to a t-test for binary classification.
 #'
-#' The filter value is `-log10(p)` where `p` is the p-value.
-#' This transformation is necessary to ensure numerical stability for very small p-values.
+#' The filter value is `-log10(p)` where `p` is the p-value. This transformation
+#' is necessary to ensure numerical stability for very small p-values.
 #'
 #' @family Filter
 #' @export
