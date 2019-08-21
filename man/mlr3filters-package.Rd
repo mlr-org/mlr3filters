@@ -14,8 +14,7 @@ Extends mlr3 with filter methods for feature
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://mlr3filters.mlr-org.com
-    https://github.com/mlr-org/mlr3filters}
+  \item \url{https://mlr3filters.mlr-org.com https://github.com/mlr-org/mlr3filters}
   \item Report bugs at \url{https://github.com/mlr-org/mlr3filters/issues}
 }
 
