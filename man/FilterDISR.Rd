@@ -10,7 +10,8 @@
 FilterDISR
 }
 \description{
-Double input symmetrical relevance filter calling \code{\link[praznik:DISR]{praznik::DISR()}} from package \CRANpkg{praznik}.
+Double input symmetrical relevance filter calling
+\code{\link[praznik:DISR]{praznik::DISR()}} from package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }
@@ -18,7 +19,6 @@ This filter supports partial scoring (see \link{Filter}).
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterDISR$new()
 filter$calculate(task, nfeat = 2)
-head(filter$scores, 2)
 as.data.table(filter)
 }
 \seealso{

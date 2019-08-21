@@ -10,15 +10,15 @@
 FilterAUC
 }
 \description{
-Area under the (ROC) Curve filter calling \code{\link[Metrics:auc]{Metrics::auc()}} from package \CRANpkg{Metrics}.
-Returns the absolute value of the difference between the AUC and 0.5.
+Area under the (ROC) Curve filter calling \code{\link[Metrics:auc]{Metrics::auc()}} from
+package \CRANpkg{Metrics}. Returns the absolute value of the difference
+between the AUC and 0.5.
 }
 \examples{
 task = mlr3::mlr_tasks$get("pima")
 filter = FilterAUC$new()
 filter$calculate(task)
-head(filter$scores, 3)
-as.data.table(filter)
+head(as.data.table(filter), 3)
 }
 \seealso{
 Other Filter: \code{\link{FilterAnova}},

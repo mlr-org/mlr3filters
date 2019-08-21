@@ -4,20 +4,32 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Information gain filter calling [FSelectorRcpp::information_gain()] in package \CRANpkg{FSelectorRcpp}.
-#' Set parameter `"type"` to `"gainratio"` to calculate the gain ratio, or set to `"symuncert"` to calculate the symmetrical uncertainty (see [FSelectorRcpp::information_gain()]). Default is `"infogain"`.
+#' @description Information gain filter calling
+#'   [FSelectorRcpp::information_gain()] in package \CRANpkg{FSelectorRcpp}. Set
+#'   parameter `"type"` to `"gainratio"` to calculate the gain ratio, or set to
+#'   `"symuncert"` to calculate the symmetrical uncertainty (see
+#'   [FSelectorRcpp::information_gain()]). Default is `"infogain"`.
 #'
-#' Argument `equal` defaults to `FALSE` for classification tasks, and to `TRUE` for regression tasks.
+#'   Argument `equal` defaults to `FALSE` for classification tasks, and to
+#'   `TRUE` for regression tasks.
 #'
 #' @family Filter
 #' @export
 #' @examples
+#' ## InfoGain (default)
 #' task = mlr3::mlr_tasks$get("pima")
 #' filter = FilterInformationGain$new()
 #' filter$calculate(task)
 #' head(filter$scores, 3)
 #' as.data.table(filter)
+#'
+#' ## GainRatio
+#'
+#' filterGR = FilterInformationGain$new()
+#' filterGR$param_set$values = list("type" = "gainratio")
+#' filterGR$calculate(task)
+#' head(as.data.table(filterGR), 3)
+#'
 FilterInformationGain = R6Class("FilterInformationGain", inherit = Filter,
   public = list(
     initialize = function(id = "information_gain") {

@@ -17,8 +17,10 @@ Authors@R:
              role = "aut",
              email = "bernd_bischl@gmx.net",
              comment = c(ORCID = "0000-0001-6002-6980")))
-Description: Implements methods for feature selection via
-    filtering in 'mlr3'.
+Description: Extends mlr3 with filter methods for feature
+    selection.  Besides standalone filter methods (for example MRMR, CMIM)
+    built-in methods of any machine-learning algorithm are supported.
+    Partial scoring of multivariate filter methods is supported.
 License: LGPL-3
 URL: https://mlr3filters.mlr-org.com, https://github.com/mlr-org/mlr3filters
 BugReports: https://github.com/mlr-org/mlr3filters/issues

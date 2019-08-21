@@ -57,6 +57,9 @@ tab[, packages := link_cran(packages)]
 setnames(tab,
   old = c("key", "task_type", "feature_types", "packages"),
   new = c("Name", "Task Type", "Feature Types", "Package"))
+# manually change the task type for filter "performance"
+tab[Name == "performance", `Task Type` := "Universal"]
+tab[Name == "importance", `Task Type` := "Universal"]
 knitr::kable(tab[order(Name)], escape = F, format = "markdown")
 ```
 
@@ -70,7 +73,7 @@ tab = as.data.table(mlr_learners)
 tab[sapply(properties, is.element, el = "importance"), key]
 ```
 
-If your learner is listed here, the reason is most likely that it is not integrated into [mlr3learners](https://github.com/mlr-org/mlr3learners) or [mlr3extralearners](https://github.com/mlr-org/mlr3extralearners).
+If your learner is not listed here but capable of extracting variable importance from the fitted model, the reason is most likely that it is not yet integrated in [mlr3learners](https://github.com/mlr-org/mlr3learners) or [mlr3extralearners](https://github.com/mlr-org/mlr3extralearners).
 Please open an issue so we can add your package.
 
 Some learners need to have their variable importance measure "activated" during learner creation.
@@ -90,3 +93,4 @@ head(as.data.table(filter), 3)
 
 `FilterPerformance` is a univariate filter method which calls `resample()` with every predictor variable in the dataset and ranks the final outcome using the supplied measure.
 Any learner can be passed to this filter with `classif.rpart` being the default.
+Of course, also regression learners can be passed if the task is of type "regr".

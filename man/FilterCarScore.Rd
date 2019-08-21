@@ -10,10 +10,11 @@
 FilterCarScore
 }
 \description{
-Calculates the Correlation-Adjusted (marginal) coRelation scores (short CAR scores)
-implemented in \code{\link[care:carscore]{care::carscore()}} in package \CRANpkg{care}.
-The CAR scores for a set of features are defined as the correlations between the target
-and the decorrelated features. The filter returns the absolute value of the calculated scores.
+Calculates the Correlation-Adjusted (marginal) coRelation scores
+(short CAR scores) implemented in \code{\link[care:carscore]{care::carscore()}} in package
+\CRANpkg{care}. The CAR scores for a set of features are defined as the
+correlations between the target and the decorrelated features. The filter
+returns the absolute value of the calculated scores.
 
 Argument \code{verbose} defaults to \code{FALSE}.
 }
@@ -21,8 +22,13 @@ Argument \code{verbose} defaults to \code{FALSE}.
 task = mlr3::mlr_tasks$get("mtcars")
 filter = FilterCarScore$new()
 filter$calculate(task)
-head(filter$scores, 3)
-as.data.table(filter)
+head(as.data.table(filter), 3)
+
+## changing filter settings
+filter = FilterCarScore$new()
+filter$param_set$values = list("diagonal" = TRUE)
+filter$calculate(task)
+head(as.data.table(filter), 3)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},

@@ -10,7 +10,8 @@
 FilterJMI
 }
 \description{
-Joint mutual information filter calling \code{\link[praznik:JMI]{praznik::JMI()}} in package \CRANpkg{praznik}.
+Joint mutual information filter calling \code{\link[praznik:JMI]{praznik::JMI()}} in
+package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }
@@ -18,7 +19,6 @@ This filter supports partial scoring (see \link{Filter}).
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterJMI$new()
 filter$calculate(task, nfeat = 2)
-head(filter$scores, 2)
 as.data.table(filter)
 }
 \seealso{

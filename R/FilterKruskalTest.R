@@ -4,10 +4,10 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Kruskal-Wallis rank sum test filter calling [stats::kruskal.test()].
-#' The filter value is `-log10(p)` where `p` is the p-value.
-#' This transformation is necessary to ensure numerical stability for very small p-values.
+#' @description Kruskal-Wallis rank sum test filter calling
+#' [stats::kruskal.test()]. The filter value is `-log10(p)` where `p` is the
+#' p-value. This transformation is necessary to ensure numerical stability for
+#' very small p-values.
 #'
 #' @family Filter
 #' @export

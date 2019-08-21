@@ -4,11 +4,11 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Filter which uses the predictive performance of a [mlr3::Learner] as filter score.
-#' Performs a [mlr3::resample()] for each feature separately.
-#' The filter score is the aggregated performance of the [mlr3::Measure], or the negated aggregated performance if the measure which are to be minimized.
-#' The measure default to the first default measure of the learner, see [mlr3::default_measures()].
+#' @description Filter which uses the predictive performance of a
+#' [mlr3::Learner] as filter score. Performs a [mlr3::resample()] for each
+#' feature separately. The filter score is the aggregated performance of the
+#' [mlr3::Measure], or the negated aggregated performance if the measure which
+#' are to be minimized.
 #'
 #' @family Filter
 #' @export
@@ -24,7 +24,7 @@ FilterPerformance = R6Class("FilterPerformance", inherit = Filter,
     resampling = NULL,
     measure = NULL,
 
-    initialize = function(id = "performance", learner = "classif.rpart", resampling = "holdout", measure = NULL) {
+    initialize = function(id = "performance", learner = "classif.rpart", resampling = "holdout", measure = "classif.ce") {
       self$learner = learner = assert_learner(as_learner(learner, clone = TRUE), properties = "importance")
       self$resampling = assert_resampling(as_resampling(resampling))
       self$measure = assert_measure(as_measure(measure, task_type = learner$task_type, clone = TRUE), learner = learner)

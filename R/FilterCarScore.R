@@ -4,11 +4,11 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Calculates the Correlation-Adjusted (marginal) coRelation scores (short CAR scores)
-#' implemented in [care::carscore()] in package \CRANpkg{care}.
-#' The CAR scores for a set of features are defined as the correlations between the target
-#' and the decorrelated features. The filter returns the absolute value of the calculated scores.
+#' @description Calculates the Correlation-Adjusted (marginal) coRelation scores
+#' (short CAR scores) implemented in [care::carscore()] in package
+#' \CRANpkg{care}. The CAR scores for a set of features are defined as the
+#' correlations between the target and the decorrelated features. The filter
+#' returns the absolute value of the calculated scores.
 #'
 #' Argument `verbose` defaults to `FALSE`.
 #'
@@ -18,8 +18,13 @@
 #' task = mlr3::mlr_tasks$get("mtcars")
 #' filter = FilterCarScore$new()
 #' filter$calculate(task)
-#' head(filter$scores, 3)
-#' as.data.table(filter)
+#' head(as.data.table(filter), 3)
+#'
+#' ## changing filter settings
+#' filter = FilterCarScore$new()
+#' filter$param_set$values = list("diagonal" = TRUE)
+#' filter$calculate(task)
+#' head(as.data.table(filter), 3)
 FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
   public = list(
     initialize = function(id = "carscore") {
@@ -31,9 +36,9 @@ FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
         param_set = ParamSet$new(list(
           ParamDbl$new("lambda", lower = 0, upper = 1, default = NO_DEF),
           ParamLgl$new("diagonal", default = FALSE),
-          ParamLgl$new("verbose", default = TRUE))),
-        param_vals = list(verbose = FALSE)
+          ParamLgl$new("verbose", default = TRUE)))
       )
+      self$param_set$values = list(verbose = FALSE)
     },
 
     calculate_internal = function(task, nfeat) {

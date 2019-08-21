@@ -4,8 +4,7 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Variance filter calling [stats::var()].
+#' @description Variance filter calling [stats::var()].
 #'
 #' Argument `na.rm` defaults to `TRUE` here.
 #'
@@ -27,9 +26,9 @@ FilterVariance = R6Class("FilterVariance", inherit = Filter,
         task_type = c("classif", "regr"),
         param_set = ParamSet$new(list(
           ParamLgl$new("na.rm", default = TRUE)
-        )),
-        param_vals = list(na.rm = TRUE)
+        ))
       )
+      self$param_set$values = list(na.rm = TRUE)
     },
 
     calculate_internal = function(task, nfeat) {

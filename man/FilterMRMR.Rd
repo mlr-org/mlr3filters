@@ -10,7 +10,8 @@
 FilterMRMR
 }
 \description{
-Minimum redundancy maximal relevancy filter calling \code{\link[praznik:MRMR]{praznik::MRMR()}} in package \CRANpkg{praznik}.
+Minimum redundancy maximal relevancy filter calling
+\code{\link[praznik:MRMR]{praznik::MRMR()}} in package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }
@@ -18,7 +19,6 @@ This filter supports partial scoring (see \link{Filter}).
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterMRMR$new()
 filter$calculate(task, nfeat = 2)
-head(filter$scores, 2)
 as.data.table(filter)
 }
 \seealso{

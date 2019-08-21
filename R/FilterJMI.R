@@ -4,8 +4,8 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Joint mutual information filter calling [praznik::JMI()] in package \CRANpkg{praznik}.
+#' @description Joint mutual information filter calling [praznik::JMI()] in
+#' package \CRANpkg{praznik}.
 #'
 #' This filter supports partial scoring (see [Filter]).
 #'
@@ -15,7 +15,6 @@
 #' task = mlr3::mlr_tasks$get("iris")
 #' filter = FilterJMI$new()
 #' filter$calculate(task, nfeat = 2)
-#' head(filter$scores, 2)
 #' as.data.table(filter)
 FilterJMI = R6Class("FilterJMI", inherit = Filter,
   public = list(

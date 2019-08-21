@@ -4,10 +4,10 @@
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Variable Importance filter using embedded feature selection of machine learning algorithms.
-#' Takes a [mlr3::Learner] which is capable of extracting the variable importance (property "importance"),
-#' fits the model and extracts the importance values to use as filter scores.
+#' @description Variable Importance filter using embedded feature selection of
+#' machine learning algorithms. Takes a [mlr3::Learner] which is capable of
+#' extracting the variable importance (property "importance"), fits the model
+#' and extracts the importance values to use as filter scores.
 #'
 #' @family Filter
 #' @export

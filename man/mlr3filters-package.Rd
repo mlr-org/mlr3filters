@@ -6,14 +6,15 @@
 \alias{mlr3filters-package}
 \title{mlr3filters: Filter Based Feature Selection for 'mlr3'}
 \description{
-Implements methods for feature selection via
-    filtering in 'mlr3'.
+Extends mlr3 with filter methods for feature
+    selection.  Besides standalone filter methods (for example MRMR, CMIM)
+    built-in methods of any machine-learning algorithm are supported.
+    Partial scoring of multivariate filter methods is supported.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://mlr3filters.mlr-org.com}
-  \item \url{https://github.com/mlr-org/mlr3filters}
+  \item \url{https://mlr3filters.mlr-org.com https://github.com/mlr-org/mlr3filters}
   \item Report bugs at \url{https://github.com/mlr-org/mlr3filters/issues}
 }
 
