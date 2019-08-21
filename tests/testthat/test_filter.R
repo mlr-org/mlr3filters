@@ -17,3 +17,11 @@ test_that("Filtering an empty Task (#39)", {
   expect_numeric(f$scores, names = "unique", len = length(task$feature_names))
   expect_true(allMissing(f$scores))
 })
+
+test_that("as.data.table conversion works", {
+  task = mlr_tasks$get("pima")
+  filter = mlr_filters$get("auc")
+  filter$calculate(task)
+
+  expect_silent(as.data.table(filter))
+})
