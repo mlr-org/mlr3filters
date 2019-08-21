@@ -22,7 +22,7 @@
 #'
 #' ## changing filter settings
 #' filter = FilterCarScore$new()
-#' filter$param_set$values = list("diagonal" = TRUE))
+#' filter$param_set$values = list("diagonal" = TRUE)
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
 FilterCarScore = R6Class("FilterCarScore", inherit = Filter,

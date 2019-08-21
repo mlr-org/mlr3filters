@@ -18,7 +18,8 @@
 #' as.data.table(filter)
 #'
 #' ## Spearman
-#' filter = FilterCorrelation$new(param_vals = list("method" = "spearman"))
+#' filter = FilterCorrelation$new()
+#' filter$param_set$values = list("method" = "spearman")
 #' filter$calculate(task)
 #' as.data.table(filter)
 FilterCorrelation = R6Class("FilterCorrelation", inherit = Filter,

@@ -21,8 +21,13 @@ Argument \code{verbose} defaults to \code{FALSE}.
 task = mlr3::mlr_tasks$get("mtcars")
 filter = FilterCarScore$new()
 filter$calculate(task)
-head(filter$scores, 3)
-as.data.table(filter)
+head(as.data.table(filter), 3)
+
+## changing filter settings
+filter = FilterCarScore$new()
+filter$param_set$values = list("diagonal" = TRUE)
+filter$calculate(task)
+head(as.data.table(filter), 3)
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},

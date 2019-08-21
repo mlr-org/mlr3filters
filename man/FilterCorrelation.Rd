@@ -14,8 +14,15 @@ Simple correlation filter calling \code{\link[stats:cor]{stats::cor()}}.
 The filter score is the absolute value of the correlation.
 }
 \examples{
+## Pearson (default)
 task = mlr3::mlr_tasks$get("mtcars")
 filter = FilterCorrelation$new()
+filter$calculate(task)
+as.data.table(filter)
+
+## Spearman
+filter = FilterCorrelation$new()
+filter$param_set$values = list("method" = "spearman")
 filter$calculate(task)
 as.data.table(filter)
 }

@@ -10,17 +10,30 @@
 FilterInformationGain
 }
 \description{
-Information gain filter calling \code{\link[FSelectorRcpp:information_gain]{FSelectorRcpp::information_gain()}} in package \CRANpkg{FSelectorRcpp}.
-Set parameter \code{"type"} to \code{"gainratio"} to calculate the gain ratio, or set to \code{"symuncert"} to calculate the symmetrical uncertainty (see \code{\link[FSelectorRcpp:information_gain]{FSelectorRcpp::information_gain()}}). Default is \code{"infogain"}.
+Information gain filter calling
+\code{\link[FSelectorRcpp:information_gain]{FSelectorRcpp::information_gain()}} in package \CRANpkg{FSelectorRcpp}. Set
+parameter \code{"type"} to \code{"gainratio"} to calculate the gain ratio, or set to
+\code{"symuncert"} to calculate the symmetrical uncertainty (see
+\code{\link[FSelectorRcpp:information_gain]{FSelectorRcpp::information_gain()}}). Default is \code{"infogain"}.
 
-Argument \code{equal} defaults to \code{FALSE} for classification tasks, and to \code{TRUE} for regression tasks.
+Argument \code{equal} defaults to \code{FALSE} for classification tasks, and to \code{TRUE}
+for regression tasks.
 }
 \examples{
+## InfoGain (default)
 task = mlr3::mlr_tasks$get("pima")
 filter = FilterInformationGain$new()
 filter$calculate(task)
 head(filter$scores, 3)
 as.data.table(filter)
+
+## GainRatio
+
+filterGR = FilterInformationGain$new()
+filterGR$param_set$values = list("type" = "gainratio")
+filterGR$calculate(task)
+head(as.data.table(filterGR), 3)
+
 }
 \seealso{
 Other Filter: \code{\link{FilterAUC}},
