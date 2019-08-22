@@ -11,4 +11,5 @@
 ^\.ignore$
 ^docs$
 ^pkgdown$
+^man-roxygen$
 .pre-commit-config.yaml
