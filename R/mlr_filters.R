@@ -5,6 +5,9 @@
 #' A simple [Dictionary] storing objects of class [Filter].
 #' Each Filter has an associated help page, see `mlr_filters_[id]`.
 #'
+#' This dictionary can get populated with additional filters by add-on packages.
+#'
+#' For a more convenient way to retrieve and construct filters, see [flt()].
 #' @section Usage:
 #'
 #' See [Dictionary].
@@ -16,6 +19,7 @@
 #' mlr_filters$keys()
 #' as.data.table(mlr_filters)
 #' mlr_filters$get("mim")
+#' flt("anova")
 mlr_filters = DictionaryFilter = R6Class("DictionaryFilter",
   inherit = mlr3misc::Dictionary,
   cloneable = FALSE,

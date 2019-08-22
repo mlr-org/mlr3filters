@@ -6,9 +6,6 @@
 \alias{mlr_filters_information_gain}
 \title{Information Gain Filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
-\usage{
-FilterInformationGain
-}
 \description{
 Information gain filter calling
 \code{\link[FSelectorRcpp:information_gain]{FSelectorRcpp::information_gain()}} in package \CRANpkg{FSelectorRcpp}. Set
@@ -19,6 +16,13 @@ parameter \code{"type"} to \code{"gainratio"} to calculate the gain ratio, or se
 Argument \code{equal} defaults to \code{FALSE} for classification tasks, and to
 \code{TRUE} for regression tasks.
 }
+\section{Construction}{
+\preformatted{FilterInformationGain$new()
+mlr_filters$get("information_gain")
+flt("information_gain")
+}
+}
+
 \examples{
 ## InfoGain (default)
 task = mlr3::mlr_tasks$get("pima")
@@ -36,6 +40,8 @@ head(as.data.table(filterGR), 3)
 
 }
 \seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+
 Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCarScore}},

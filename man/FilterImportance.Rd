@@ -6,15 +6,23 @@
 \alias{mlr_filters_variable_importance}
 \title{Filter for Embedded Feature Selection via Variable Importance}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
-\usage{
-FilterImportance
-}
 \description{
 Variable Importance filter using embedded feature selection of
 machine learning algorithms. Takes a \link[mlr3:Learner]{mlr3::Learner} which is capable of
 extracting the variable importance (property "importance"), fits the model
 and extracts the importance values to use as filter scores.
 }
+\section{Construction}{
+\preformatted{FilterImportance$new(learner = mlr3::lrn("classif.rpart"))
+mlr_filters$get("importance")
+flt("importance")
+}
+\itemize{
+\item \code{learner} :: \link[mlr3:Learner]{mlr3::Learner}\cr
+Learner to extract the importance values from.
+}
+}
+
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 learner = mlr3::mlr_learners$get("classif.rpart")
@@ -23,6 +31,8 @@ filter$calculate(task)
 as.data.table(filter)
 }
 \seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+
 Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCarScore}},

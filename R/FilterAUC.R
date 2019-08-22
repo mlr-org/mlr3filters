@@ -1,14 +1,23 @@
 #' @title AUC Filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_auc
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
+#'
+#' @section Construction:
+#' ```
+#' FilterAUC$new()
+#' mlr_filters$get("auc")
+#' flt("auc")
+#' ```
 #'
 #' @description Area under the (ROC) Curve filter calling [Metrics::auc()] from
 #' package \CRANpkg{Metrics}. Returns the absolute value of the difference
 #' between the AUC and 0.5.
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("pima")
@@ -17,9 +26,9 @@
 #' head(as.data.table(filter), 3)
 FilterAUC = R6Class("FilterAUC", inherit = Filter,
   public = list(
-    initialize = function(id = "auc") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "auc",
         packages = "Metrics",
         feature_types = c("integer", "numeric"),
         task_type = "classif",

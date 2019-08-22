@@ -1,8 +1,16 @@
 #' @title Minimal Normalised Joint Mutual Information Maximisation Filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_njmim
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
+#'
+#' @section Construction:
+#' ```
+#' FilterNJMIM$new()
+#' mlr_filters$get("njmim")
+#' flt("njmim")
+#' ```
 #'
 #' @description Minimal normalised joint mutual information maximisation filter
 #' calling [praznik::NJMIM()] from package \CRANpkg{praznik}.
@@ -10,6 +18,7 @@
 #' This filter supports partial scoring (see [Filter]).
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("iris")
@@ -18,9 +27,9 @@
 #' as.data.table(filter)
 FilterNJMIM = R6Class("FilterNJMIM", inherit = Filter,
   public = list(
-    initialize = function(id = "njmim") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "njmim",
         packages = "praznik",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         task_type = "classif",

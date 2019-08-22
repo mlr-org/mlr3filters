@@ -1,8 +1,16 @@
 #' @title Minimum redundancy maximal relevancy filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_mrmr
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
+#'
+#' @section Construction:
+#' ```
+#' FilterMRMR$new()
+#' mlr_filters$get("mrmr")
+#' flt("mrmr")
+#' ```
 #'
 #' @description Minimum redundancy maximal relevancy filter calling
 #' [praznik::MRMR()] in package \CRANpkg{praznik}.
@@ -10,6 +18,7 @@
 #' This filter supports partial scoring (see [Filter]).
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("iris")
@@ -18,9 +27,9 @@
 #' as.data.table(filter)
 FilterMRMR = R6Class("FilterMRMR", inherit = Filter,
   public = list(
-    initialize = function(id = "mrmr") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "mrmr",
         packages = "praznik",
         feature_types = c("numeric", "factor", "integer", "character", "logical"),
         task_type = c("classif", "regr"),

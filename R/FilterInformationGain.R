@@ -1,8 +1,16 @@
 #' @title Information Gain Filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_information_gain
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
+#'
+#' @section Construction:
+#' ```
+#' FilterInformationGain$new()
+#' mlr_filters$get("information_gain")
+#' flt("information_gain")
+#' ```
 #'
 #' @description Information gain filter calling
 #'   [FSelectorRcpp::information_gain()] in package \CRANpkg{FSelectorRcpp}. Set
@@ -14,6 +22,7 @@
 #'   `TRUE` for regression tasks.
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
 #' ## InfoGain (default)
@@ -32,9 +41,9 @@
 #'
 FilterInformationGain = R6Class("FilterInformationGain", inherit = Filter,
   public = list(
-    initialize = function(id = "information_gain") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "information_gain",
         packages = "FSelectorRcpp",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         task_type = c("classif", "regr"),

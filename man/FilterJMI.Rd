@@ -6,15 +6,19 @@
 \alias{mlr_filters_jmi}
 \title{Joint Mutual Information Filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
-\usage{
-FilterJMI
-}
 \description{
 Joint mutual information filter calling \code{\link[praznik:JMI]{praznik::JMI()}} in
 package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }
+\section{Construction}{
+\preformatted{FilterJMI$new()
+mlr_filters$get("jmi")
+flt("jmi")
+}
+}
+
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterJMI$new()
@@ -22,6 +26,8 @@ filter$calculate(task, nfeat = 2)
 as.data.table(filter)
 }
 \seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+
 Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCarScore}},

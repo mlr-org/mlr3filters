@@ -3,7 +3,6 @@ library(mlr3)
 lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
 expect_filter = function(f, task = NULL) {
-
   expect_r6(f, "Filter",
     public = c("packages", "feature_types", "task_type", "param_set", "scores",
       "calculate", "calculate_internal")
@@ -18,7 +17,6 @@ expect_filter = function(f, task = NULL) {
   if (!is.null(task)) {
     expect_names(names(f$scores), permutation.of = task$feature_names)
   }
-
 }
 
 # create_filters_custom = function(task_type, param_vals = NULL) {

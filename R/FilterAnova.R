@@ -1,8 +1,16 @@
 #' @title ANOVA F-Test Filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_anova
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
+#'
+#' @section Construction:
+#' ```
+#' FilterAnova$new()
+#' mlr_filters$get("anova")
+#' flt("anova")
+#' ```
 #'
 #' @description ANOVA F-Test filter calling [stats::aov()]. Note that this is
 #' equivalent to a t-test for binary classification.
@@ -11,6 +19,7 @@
 #' is necessary to ensure numerical stability for very small p-values.
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("iris")
@@ -22,9 +31,9 @@
 #' 10^(-filter$scores)
 FilterAnova = R6Class("FilterAnova", inherit = Filter,
   public = list(
-    initialize = function(id = "anova") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "anova",
         packages = "stats",
         feature_types = c("integer", "numeric"),
         task_type = "classif"

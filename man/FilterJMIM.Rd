@@ -6,15 +6,19 @@
 \alias{mlr_filters_jmim}
 \title{Minimal Joint Mutual Information Maximisation Filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
-\usage{
-FilterJMIM
-}
 \description{
 Minimal joint mutual information maximisation filter calling
 \code{\link[praznik:JMIM]{praznik::JMIM()}} in package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }
+\section{Construction}{
+\preformatted{FilterJMIM$new()
+mlr_filters$get("jmim")
+flt("jmim")
+}
+}
+
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterJMIM$new()
@@ -22,6 +26,8 @@ filter$calculate(task, nfeat = 2)
 as.data.table(filter)
 }
 \seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+
 Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCarScore}},

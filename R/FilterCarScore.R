@@ -1,8 +1,16 @@
 #' @title Conditional Mutual Information Based Feature Selection Filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_carscore
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
+#'
+#' @section Construction:
+#' ```
+#' FilterCarScore$new()
+#' mlr_filters$get("carscore")
+#' flt("carscore")
+#' ```
 #'
 #' @description Calculates the Correlation-Adjusted (marginal) coRelation scores
 #' (short CAR scores) implemented in [care::carscore()] in package
@@ -13,6 +21,7 @@
 #' Argument `verbose` defaults to `FALSE`.
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("mtcars")
@@ -27,9 +36,9 @@
 #' head(as.data.table(filter), 3)
 FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
   public = list(
-    initialize = function(id = "carscore") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "carscore",
         packages = "care",
         feature_types = c("numeric"),
         task_type = "regr",

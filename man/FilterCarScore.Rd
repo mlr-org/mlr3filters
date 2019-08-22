@@ -6,9 +6,6 @@
 \alias{mlr_filters_carscore}
 \title{Conditional Mutual Information Based Feature Selection Filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
-\usage{
-FilterCarScore
-}
 \description{
 Calculates the Correlation-Adjusted (marginal) coRelation scores
 (short CAR scores) implemented in \code{\link[care:carscore]{care::carscore()}} in package
@@ -18,6 +15,13 @@ returns the absolute value of the calculated scores.
 
 Argument \code{verbose} defaults to \code{FALSE}.
 }
+\section{Construction}{
+\preformatted{FilterCarScore$new()
+mlr_filters$get("carscore")
+flt("carscore")
+}
+}
+
 \examples{
 task = mlr3::mlr_tasks$get("mtcars")
 filter = FilterCarScore$new()
@@ -31,6 +35,8 @@ filter$calculate(task)
 head(as.data.table(filter), 3)
 }
 \seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+
 Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCorrelation}},

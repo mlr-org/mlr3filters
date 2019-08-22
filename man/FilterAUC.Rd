@@ -6,14 +6,18 @@
 \alias{mlr_filters_auc}
 \title{AUC Filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
-\usage{
-FilterAUC
-}
 \description{
 Area under the (ROC) Curve filter calling \code{\link[Metrics:auc]{Metrics::auc()}} from
 package \CRANpkg{Metrics}. Returns the absolute value of the difference
 between the AUC and 0.5.
 }
+\section{Construction}{
+\preformatted{FilterAUC$new()
+mlr_filters$get("auc")
+flt("auc")
+}
+}
+
 \examples{
 task = mlr3::mlr_tasks$get("pima")
 filter = FilterAUC$new()
@@ -21,6 +25,8 @@ filter$calculate(task)
 head(as.data.table(filter), 3)
 }
 \seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+
 Other Filter: \code{\link{FilterAnova}},
   \code{\link{FilterCMIM}}, \code{\link{FilterCarScore}},
   \code{\link{FilterCorrelation}},
