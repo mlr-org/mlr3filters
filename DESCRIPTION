@@ -30,7 +30,7 @@ Imports:
     backports,
     checkmate,
     data.table,
-    mlr3,
+    mlr3 (>= 0.1.2),
     mlr3misc,
     paradox,
     R6
