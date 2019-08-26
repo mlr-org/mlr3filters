@@ -116,7 +116,7 @@ Filter = R6Class("Filter",
 
       if (task$nrow == 0L) {
         self$scores = shuffle(set_names(rep.int(NA_real_, length(fn)), fn))
-      } else if (task$feature_names == 0L) {
+      } else if (length(task$feature_names) == 0L) {
         self$scores = set_names(numeric(), character())
       } else {
         if (is.null(nfeat)) {
