@@ -1,28 +1,49 @@
 #' @title Information Gain Filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_information_gain
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Information gain filter calling [FSelectorRcpp::information_gain()] in package \CRANpkg{FSelectorRcpp}.
-#' Set parameter `"type"` to `"gainratio"` to calculate the gain ratio, or set to `"symuncert"` to calculate the symmetrical uncertainty (see [FSelectorRcpp::information_gain()]). Default is `"infogain"`.
+#' @section Construction:
+#' ```
+#' FilterInformationGain$new()
+#' mlr_filters$get("information_gain")
+#' flt("information_gain")
+#' ```
 #'
-#' Argument `equal` defaults to `FALSE` for classification tasks, and to `TRUE` for regression tasks.
+#' @description Information gain filter calling
+#'   [FSelectorRcpp::information_gain()] in package \CRANpkg{FSelectorRcpp}. Set
+#'   parameter `"type"` to `"gainratio"` to calculate the gain ratio, or set to
+#'   `"symuncert"` to calculate the symmetrical uncertainty (see
+#'   [FSelectorRcpp::information_gain()]). Default is `"infogain"`.
+#'
+#'   Argument `equal` defaults to `FALSE` for classification tasks, and to
+#'   `TRUE` for regression tasks.
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
+#' ## InfoGain (default)
 #' task = mlr3::mlr_tasks$get("pima")
 #' filter = FilterInformationGain$new()
 #' filter$calculate(task)
 #' head(filter$scores, 3)
 #' as.data.table(filter)
+#'
+#' ## GainRatio
+#'
+#' filterGR = FilterInformationGain$new()
+#' filterGR$param_set$values = list("type" = "gainratio")
+#' filterGR$calculate(task)
+#' head(as.data.table(filterGR), 3)
+#'
 FilterInformationGain = R6Class("FilterInformationGain", inherit = Filter,
   public = list(
-    initialize = function(id = "information_gain") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "information_gain",
         packages = "FSelectorRcpp",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         task_type = c("classif", "regr"),

@@ -1,27 +1,35 @@
 #' @title Conditional Mutual Information Based Feature Selection Filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_mim
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Conditional mutual information based feature selection filter calling [praznik::MIM()] in package \CRANpkg{praznik}.
+#' @section Construction:
+#' ```
+#' FilterMIM$new()
+#' mlr_filters$get("mim")
+#' flt("mim")
+#' ```
+#'
+#' @description Conditional mutual information based feature selection filter
+#' calling [praznik::MIM()] in package \CRANpkg{praznik}.
 #'
 #' This filter supports partial scoring (see [Filter]).
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("iris")
 #' filter = FilterMIM$new()
 #' filter$calculate(task, nfeat = 2)
-#' head(filter$scores, 2)
 #' as.data.table(filter)
 FilterMIM = R6Class("FilterMIM", inherit = Filter,
   public = list(
-    initialize = function(id = "mim") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "mim",
         packages = "praznik",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         task_type = "classif",

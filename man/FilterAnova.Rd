@@ -6,26 +6,32 @@
 \alias{mlr_filters_anova}
 \title{ANOVA F-Test Filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
-\usage{
-FilterAnova
-}
 \description{
-ANOVA F-Test filter calling \code{\link[stats:aov]{stats::aov()}}.
-Note that this is equivalent to a t-test for binary classification.
+ANOVA F-Test filter calling \code{\link[stats:aov]{stats::aov()}}. Note that this is
+equivalent to a t-test for binary classification.
 
-The filter value is \code{-log10(p)} where \code{p} is the p-value.
-This transformation is necessary to ensure numerical stability for very small p-values.
+The filter value is \code{-log10(p)} where \code{p} is the p-value. This transformation
+is necessary to ensure numerical stability for very small p-values.
 }
+\section{Construction}{
+\preformatted{FilterAnova$new()
+mlr_filters$get("anova")
+flt("anova")
+}
+}
+
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterAnova$new()
 filter$calculate(task)
-as.data.table(filter)
+head(as.data.table(filter), 3)
 
 # transform to p-value
 10^(-filter$scores)
 }
 \seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+
 Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterCMIM}}, \code{\link{FilterCarScore}},
   \code{\link{FilterCorrelation}},

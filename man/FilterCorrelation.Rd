@@ -6,20 +6,33 @@
 \alias{mlr_filters_correlation}
 \title{Correlation Filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
-\usage{
-FilterCorrelation
-}
 \description{
 Simple correlation filter calling \code{\link[stats:cor]{stats::cor()}}.
 The filter score is the absolute value of the correlation.
 }
+\section{Construction}{
+\preformatted{FilterCorrelation$new()
+mlr_filters$get("correlation")
+flt("correlation")
+}
+}
+
 \examples{
+## Pearson (default)
 task = mlr3::mlr_tasks$get("mtcars")
 filter = FilterCorrelation$new()
 filter$calculate(task)
 as.data.table(filter)
+
+## Spearman
+filter = FilterCorrelation$new()
+filter$param_set$values = list("method" = "spearman")
+filter$calculate(task)
+as.data.table(filter)
 }
 \seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+
 Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCarScore}}, \code{\link{FilterDISR}},

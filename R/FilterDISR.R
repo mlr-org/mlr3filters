@@ -1,27 +1,35 @@
 #' @title Double Input Symmetrical Relevance Filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_disr
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Double input symmetrical relevance filter calling [praznik::DISR()] from package \CRANpkg{praznik}.
+#' @section Construction:
+#' ```
+#' FilterDISR$new()
+#' mlr_filters$get("disc")
+#' flt("disc")
+#' ```
+#'
+#' @description Double input symmetrical relevance filter calling
+#' [praznik::DISR()] from package \CRANpkg{praznik}.
 #'
 #' This filter supports partial scoring (see [Filter]).
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("iris")
 #' filter = FilterDISR$new()
 #' filter$calculate(task, nfeat = 2)
-#' head(filter$scores, 2)
 #' as.data.table(filter)
 FilterDISR = R6Class("FilterDISR", inherit = Filter,
   public = list(
-    initialize = function(id = "disr") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "disr",
         packages = "praznik",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         task_type = "classif",

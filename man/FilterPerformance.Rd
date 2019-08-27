@@ -6,14 +6,26 @@
 \alias{mlr_filters_performance}
 \title{Predictive Performance Filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
-\usage{
-FilterPerformance
-}
 \description{
-Filter which uses the predictive performance of a \link[mlr3:Learner]{mlr3::Learner} as filter score.
-Performs a \code{\link[mlr3:resample]{mlr3::resample()}} for each feature separately.
-The filter score is the aggregated performance of the \link[mlr3:Measure]{mlr3::Measure}, or the negated aggregated performance if the measure which are to be minimized.
+Filter which uses the predictive performance of a
+\link[mlr3:Learner]{mlr3::Learner} as filter score. Performs a \code{\link[mlr3:resample]{mlr3::resample()}} for each
+feature separately. The filter score is the aggregated performance of the
+\link[mlr3:Measure]{mlr3::Measure}, or the negated aggregated performance if the measure has
+to be minimized.
 }
+\section{Construction}{
+\preformatted{FilterPerformance$new(learner = mlr3::lrn("classif.rpart"),
+  resampling = mlr3::rsmp("holdout"), measure = mlr3::msr("classif.ce"))
+mlr_filters$get("performance")
+flt("performance")
+}
+\itemize{
+\item \code{learner} :: \link[mlr3:Learner]{mlr3::Learner}.
+\item \code{resampling} :: \link[mlr3:Resampling]{mlr3::Resampling}.
+\item \code{measure} :: \link[mlr3:Measure]{mlr3::Measure}.
+}
+}
+
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 learner = mlr3::mlr_learners$get("classif.rpart")
@@ -22,6 +34,8 @@ filter$calculate(task)
 as.data.table(filter)
 }
 \seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+
 Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCarScore}},

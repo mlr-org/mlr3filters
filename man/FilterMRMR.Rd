@@ -6,22 +6,28 @@
 \alias{mlr_filters_mrmr}
 \title{Minimum redundancy maximal relevancy filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
-\usage{
-FilterMRMR
-}
 \description{
-Minimum redundancy maximal relevancy filter calling \code{\link[praznik:MRMR]{praznik::MRMR()}} in package \CRANpkg{praznik}.
+Minimum redundancy maximal relevancy filter calling
+\code{\link[praznik:MRMR]{praznik::MRMR()}} in package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }
+\section{Construction}{
+\preformatted{FilterMRMR$new()
+mlr_filters$get("mrmr")
+flt("mrmr")
+}
+}
+
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterMRMR$new()
 filter$calculate(task, nfeat = 2)
-head(filter$scores, 2)
 as.data.table(filter)
 }
 \seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+
 Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCarScore}},

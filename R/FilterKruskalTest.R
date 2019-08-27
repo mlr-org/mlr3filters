@@ -1,15 +1,24 @@
 #' @title Kruskal-Wallis Test Filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_kruskal_test
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Kruskal-Wallis rank sum test filter calling [stats::kruskal.test()].
-#' The filter value is `-log10(p)` where `p` is the p-value.
-#' This transformation is necessary to ensure numerical stability for very small p-values.
+#' @section Construction:
+#' ```
+#' FilterKruskalTest$new()
+#' mlr_filters$get("kruskal_test")
+#' flt("kruskal_test")
+#' ```
+#'
+#' @description Kruskal-Wallis rank sum test filter calling
+#' [stats::kruskal.test()]. The filter value is `-log10(p)` where `p` is the
+#' p-value. This transformation is necessary to ensure numerical stability for
+#' very small p-values.
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("iris")
@@ -21,9 +30,9 @@
 #' 10^(-filter$scores)
 FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
   public = list(
-    initialize = function(id = "kruskal_test") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "kruskal_test",
         packages = "stats",
         feature_types = c("integer", "numeric"),
         task_type = "classif",

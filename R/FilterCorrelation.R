@@ -1,25 +1,41 @@
 #' @title Correlation Filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_correlation
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
+#'
+#' @section Construction:
+#' ```
+#' FilterCorrelation$new()
+#' mlr_filters$get("correlation")
+#' flt("correlation")
+#' ```
 #'
 #' @description
 #' Simple correlation filter calling [stats::cor()].
 #' The filter score is the absolute value of the correlation.
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
+#' ## Pearson (default)
 #' task = mlr3::mlr_tasks$get("mtcars")
 #' filter = FilterCorrelation$new()
 #' filter$calculate(task)
 #' as.data.table(filter)
+#'
+#' ## Spearman
+#' filter = FilterCorrelation$new()
+#' filter$param_set$values = list("method" = "spearman")
+#' filter$calculate(task)
+#' as.data.table(filter)
 FilterCorrelation = R6Class("FilterCorrelation", inherit = Filter,
   public = list(
-    initialize = function(id = "correlation") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "correlation",
         packages = "stats",
         feature_types = c("integer", "numeric"),
         task_type = "regr",

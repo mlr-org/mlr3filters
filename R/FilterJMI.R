@@ -1,27 +1,35 @@
 #' @title Joint Mutual Information Filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_jmi
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Joint mutual information filter calling [praznik::JMI()] in package \CRANpkg{praznik}.
+#' @section Construction:
+#' ```
+#' FilterJMI$new()
+#' mlr_filters$get("jmi")
+#' flt("jmi")
+#' ```
+#'
+#' @description Joint mutual information filter calling [praznik::JMI()] in
+#' package \CRANpkg{praznik}.
 #'
 #' This filter supports partial scoring (see [Filter]).
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("iris")
 #' filter = FilterJMI$new()
 #' filter$calculate(task, nfeat = 2)
-#' head(filter$scores, 2)
 #' as.data.table(filter)
 FilterJMI = R6Class("FilterJMI", inherit = Filter,
   public = list(
-    initialize = function(id = "jmi") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "jmi",
         packages = "praznik",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         task_type = "classif",

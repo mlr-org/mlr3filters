@@ -1,28 +1,35 @@
 #' @title Minimal Conditional Mutual Information Filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_cmim
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Minimal conditional mutual information maximisation filter calling [praznik::CMIM()] from package \CRANpkg{praznik}.
+#' @section Construction:
+#' ```
+#' FilterCMIM$new()
+#' mlr_filters$get("cmim")
+#' flt("cmim")
+#' ```
+#'
+#' @description Minimal conditional mutual information maximisation filter
+#' calling [praznik::CMIM()] from package \CRANpkg{praznik}.
 #'
 #' This filter supports partial scoring (see [Filter]).
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("iris")
 #' filter = FilterCMIM$new()
 #' filter$calculate(task, nfeat = 2)
-#'
-#' head(filter$scores, 2)
 #' as.data.table(filter)
 FilterCMIM = R6Class("FilterCMIM", inherit = Filter,
   public = list(
-    initialize = function(id = "cmim") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "cmim",
         packages = "praznik",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         task_type = c("classif", "regr"),

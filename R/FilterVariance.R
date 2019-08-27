@@ -1,15 +1,23 @@
 #' @title Variance Filter
 #'
+#' @usage NULL
 #' @aliases mlr_filters_variance
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
-#' @description
-#' Variance filter calling [stats::var()].
+#' @section Construction:
+#' ```
+#' FilterVariance$new()
+#' mlr_filters$get("variance")
+#' flt("variance")
+#' ```
+#'
+#' @description Variance filter calling [stats::var()].
 #'
 #' Argument `na.rm` defaults to `TRUE` here.
 #'
 #' @family Filter
+#' @template seealso_filter
 #' @export
 #' @examples
 #' task = mlr3::mlr_tasks$get("mtcars")
@@ -19,17 +27,17 @@
 #' as.data.table(filter)
 FilterVariance = R6Class("FilterVariance", inherit = Filter,
   public = list(
-    initialize = function(id = "variance") {
+    initialize = function() {
       super$initialize(
-        id = id,
+        id = "variance",
         packages = "stats",
         feature_types = c("integer", "numeric"),
         task_type = c("classif", "regr"),
         param_set = ParamSet$new(list(
           ParamLgl$new("na.rm", default = TRUE)
-        )),
-        param_vals = list(na.rm = TRUE)
+        ))
       )
+      self$param_set$values = list(na.rm = TRUE)
     },
 
     calculate_internal = function(task, nfeat) {

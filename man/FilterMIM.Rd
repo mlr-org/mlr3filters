@@ -6,22 +6,28 @@
 \alias{mlr_filters_mim}
 \title{Conditional Mutual Information Based Feature Selection Filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
-\usage{
-FilterMIM
-}
 \description{
-Conditional mutual information based feature selection filter calling \code{\link[praznik:MIM]{praznik::MIM()}} in package \CRANpkg{praznik}.
+Conditional mutual information based feature selection filter
+calling \code{\link[praznik:MIM]{praznik::MIM()}} in package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }
+\section{Construction}{
+\preformatted{FilterMIM$new()
+mlr_filters$get("mim")
+flt("mim")
+}
+}
+
 \examples{
 task = mlr3::mlr_tasks$get("iris")
 filter = FilterMIM$new()
 filter$calculate(task, nfeat = 2)
-head(filter$scores, 2)
 as.data.table(filter)
 }
 \seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+
 Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCarScore}},
