@@ -36,6 +36,7 @@ as.data.table(filter)
 Other Filter: \code{\link{FilterAUC}},
   \code{\link{FilterAnova}}, \code{\link{FilterCMIM}},
   \code{\link{FilterCarScore}}, \code{\link{FilterDISR}},
+  \code{\link{FilterDistinctValues}},
   \code{\link{FilterImportance}},
   \code{\link{FilterInformationGain}},
   \code{\link{FilterJMIM}}, \code{\link{FilterJMI}},
