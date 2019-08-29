@@ -21,8 +21,8 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::mlr_tasks$get("iris")
-#' filter = FilterDISR$new()
+#' task = tsk("iris")
+#' filter = flt("disr")
 #' filter$calculate(task, nfeat = 2)
 #' as.data.table(filter)
 FilterDISR = R6Class("FilterDISR", inherit = Filter,

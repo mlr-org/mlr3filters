@@ -20,8 +20,8 @@ flt("mim")
 }
 
 \examples{
-task = mlr3::mlr_tasks$get("iris")
-filter = FilterMIM$new()
+task = tsk("iris")
+filter = flt("mim")
 filter$calculate(task, nfeat = 2)
 as.data.table(filter)
 }

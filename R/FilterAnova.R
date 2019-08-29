@@ -22,8 +22,8 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::mlr_tasks$get("iris")
-#' filter = FilterAnova$new()
+#' task = mlr3::tsk("iris")
+#' filter = flt("anova")
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
 #'

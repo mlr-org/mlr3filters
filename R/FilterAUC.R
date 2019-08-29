@@ -20,8 +20,8 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::mlr_tasks$get("pima")
-#' filter = FilterAUC$new()
+#' task = tsk("pima")
+#' filter = flt("auc")
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
 FilterAUC = R6Class("FilterAUC", inherit = Filter,

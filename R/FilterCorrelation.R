@@ -21,8 +21,8 @@
 #' @export
 #' @examples
 #' ## Pearson (default)
-#' task = mlr3::mlr_tasks$get("mtcars")
-#' filter = FilterCorrelation$new()
+#' task = tsk("mtcars")
+#' filter = flt("correlation")
 #' filter$calculate(task)
 #' as.data.table(filter)
 #'

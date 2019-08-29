@@ -24,9 +24,9 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::mlr_tasks$get("iris")
-#' learner = mlr3::mlr_learners$get("classif.rpart")
-#' filter = FilterImportance$new(learner = learner)
+#' task = tsk("iris")
+#' learner = lrn("classif.rpart")
+#' filter = flt("importance", learner = lrn)
 #' filter$calculate(task)
 #' as.data.table(filter)
 FilterImportance = R6Class("FilterImportance", inherit = Filter,

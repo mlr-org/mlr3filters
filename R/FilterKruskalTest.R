@@ -21,8 +21,8 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::mlr_tasks$get("iris")
-#' filter = FilterKruskalTest$new()
+#' task = tsk("iris")
+#' filter = flt("kruskal_test")
 #' filter$calculate(task)
 #' as.data.table(filter)
 #'

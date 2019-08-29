@@ -24,13 +24,13 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::mlr_tasks$get("mtcars")
-#' filter = FilterCarScore$new()
+#' task = tsk("mtcars")
+#' filter = flt("carscore")
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
 #'
 #' ## changing filter settings
-#' filter = FilterCarScore$new()
+#' filter = flt("carscore")
 #' filter$param_set$values = list("diagonal" = TRUE)
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)

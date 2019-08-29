@@ -20,8 +20,8 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::mlr_tasks$get("mtcars")
-#' filter = FilterVariance$new()
+#' task = tsk("mtcars")
+#' filter = flt("variance")
 #' filter$calculate(task)
 #' head(filter$scores, 3)
 #' as.data.table(filter)

@@ -21,8 +21,8 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::mlr_tasks$get("iris")
-#' filter = FilterJMI$new()
+#' task = tsk("iris")
+#' filter = flt("jmi")
 #' filter$calculate(task, nfeat = 2)
 #' as.data.table(filter)
 FilterJMI = R6Class("FilterJMI", inherit = Filter,
