@@ -26,8 +26,8 @@ remotes::install_github("mlr-org/mlr3filters")
 library("mlr3")
 library("mlr3filters")
 
-task = mlr_tasks$get("pima")
-filter = mlr_filters$get("auc")
+task = tsk("pima")
+filter = flt("auc")
 as.data.table(filter$calculate(task))
 ```
 
@@ -84,11 +84,11 @@ during learner creation. For example, to use the “impurity” measure of
 Random Forest via the *ranger* package:
 
 ``` r
-task = mlr_tasks$get("iris")
-lrn = mlr_learners$get("classif.ranger")
+task = tsk("iris")
+lrn = lrn("classif.ranger")
 lrn$param_set$values = list(importance = "impurity")
 
-filter = FilterImportance$new(learner = lrn)
+filter = flt("importance", learner = lrn)
 filter$calculate(task)
 head(as.data.table(filter), 3)
 ```
