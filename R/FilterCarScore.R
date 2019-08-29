@@ -24,7 +24,7 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = tsk("mtcars")
+#' task = mlr3::tsk("mtcars")
 #' filter = flt("carscore")
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)

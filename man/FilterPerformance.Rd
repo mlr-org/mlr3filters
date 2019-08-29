@@ -27,8 +27,8 @@ flt("performance")
 }
 
 \examples{
-task = tsk("iris")
-learner = lrn("classif.rpart")
+task = mlr3::tsk("iris")
+learner = mlr3::lrn("classif.rpart")
 filter = flt("performance", learner = learner)
 filter$calculate(task)
 as.data.table(filter)

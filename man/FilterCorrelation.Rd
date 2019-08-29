@@ -19,7 +19,7 @@ flt("correlation")
 
 \examples{
 ## Pearson (default)
-task = tsk("mtcars")
+task = mlr3::tsk("mtcars")
 filter = flt("correlation")
 filter$calculate(task)
 as.data.table(filter)

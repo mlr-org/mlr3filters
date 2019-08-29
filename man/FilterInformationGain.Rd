@@ -25,15 +25,15 @@ flt("information_gain")
 
 \examples{
 ## InfoGain (default)
-task = mlr3::mlr_tasks$get("pima")
-filter = FilterInformationGain$new()
+task = mlr3::tsk("pima")
+filter = flt("information_gain")
 filter$calculate(task)
 head(filter$scores, 3)
 as.data.table(filter)
 
 ## GainRatio
 
-filterGR = FilterInformationGain$new()
+filterGR = flt("information_gain")
 filterGR$param_set$values = list("type" = "gainratio")
 filterGR$calculate(task)
 head(as.data.table(filterGR), 3)

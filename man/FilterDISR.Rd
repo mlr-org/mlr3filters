@@ -20,7 +20,7 @@ flt("disc")
 }
 
 \examples{
-task = tsk("iris")
+task = mlr3::tsk("iris")
 filter = flt("disr")
 filter$calculate(task, nfeat = 2)
 as.data.table(filter)

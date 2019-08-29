@@ -20,7 +20,7 @@ flt("njmim")
 }
 
 \examples{
-task = tsk("iris")
+task = mlr3::tsk("iris")
 filter = flt("njmim")
 filter$calculate(task, nfeat = 2)
 as.data.table(filter)

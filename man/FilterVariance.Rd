@@ -19,7 +19,7 @@ flt("variance")
 }
 
 \examples{
-task = tsk("mtcars")
+task = mlr3::tsk("mtcars")
 filter = flt("variance")
 filter$calculate(task)
 head(filter$scores, 3)

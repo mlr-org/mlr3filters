@@ -20,7 +20,7 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = tsk("pima")
+#' task = mlr3::tsk("pima")
 #' filter = flt("auc")
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
