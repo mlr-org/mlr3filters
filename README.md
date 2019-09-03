@@ -3,8 +3,11 @@
 
 [![Travis build
 status](https://travis-ci.org/mlr-org/mlr3filters.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3filters)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version-ago/mlr3filtersspatiotemporal)](https://cran.r-project.org/package=mlr3filtersspatiotemporal)
+[![cran
+checks](https://cranchecks.info/badges/worst/mlr3filtersspatiotemporal)](https://cran.r-project.org/web/checks/check_results_mlr3filtersspatiotemporal.html)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
+Downloads](https://cranlogs.r-pkg.org/badges/mlr3filtersspatiotemporal)](https://cran.rstudio.com/web/packages/mlr3filtersspatiotemporal/index.html)
 [![Coverage
 status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
@@ -65,8 +68,7 @@ as.data.table(filter$calculate(task))
 ### Variable Importance Filters
 
 The following learners allow the extraction of variable importance and
-therefore are supported by
-    `FilterImportance`:
+therefore are supported by `FilterImportance`:
 
     ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
     ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
@@ -94,9 +96,9 @@ head(as.data.table(filter), 3)
 ```
 
     ##         feature     score
-    ## 1:  Petal.Width 45.865850
-    ## 2: Petal.Length 41.033283
-    ## 3: Sepal.Length  9.929504
+    ## 1:  Petal.Width 44.588117
+    ## 2: Petal.Length 42.501367
+    ## 3: Sepal.Length  9.898418
 
 ### Performance Filter
 
