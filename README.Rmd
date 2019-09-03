@@ -5,9 +5,9 @@ output: github_document
 # mlr3filters
 
 [![Travis build status](https://travis-ci.org/mlr-org/mlr3filters.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3filters)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version-ago/mlr3filtersspatiotemporal)](https://cran.r-project.org/package=mlr3filtersspatiotemporal)
-[![cran checks](https://cranchecks.info/badges/worst/mlr3filtersspatiotemporal)](https://cran.r-project.org/web/checks/check_results_mlr3filtersspatiotemporal.html)
-[![CRAN Downloads](https://cranlogs.r-pkg.org/badges/mlr3filtersspatiotemporal)](https://cran.rstudio.com/web/packages/mlr3filtersspatiotemporal/index.html)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
+[![cran checks](https://cranchecks.info/badges/worst/mlr3filters)](https://cran.r-project.org/web/checks/check_results_mlr3filters.html)
+[![CRAN Downloads](https://cranlogs.r-pkg.org/badges/mlr3filters)](https://cran.rstudio.com/web/packages/mlr3filters/index.html)
 [![Coverage status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 
