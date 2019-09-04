@@ -12,7 +12,7 @@
 #' @section Construction:
 #'
 #'   ```
-#'   f = Filter$new(id, task_type, param_set, param_vals, feature_types, packages)
+#'   f = Filter$new(id, task_type, param_set, feature_types, packages)
 #'   ```
 #'
 #'   * `id` :: `character(1)`\cr
@@ -23,9 +23,6 @@
 #'
 #'   * `param_set` :: [paradox::ParamSet]\cr
 #'     Set of hyperparameters.
-#'
-#'   * `param_vals` :: named `list()`\cr
-#'     Named list of hyperparameter settings.
 #'
 #'   * `feature_types` :: `character()`\cr
 #'     Feature types the filter operates on.
@@ -81,14 +78,13 @@ Filter = R6Class("Filter",
     packages = NULL,
     scores = NULL,
 
-    initialize = function(id, task_type, task_properties = character(), param_set = ParamSet$new(), param_vals = list(),
+    initialize = function(id, task_type, task_properties = character(), param_set = ParamSet$new(),
       feature_types = character(), packages = character()) {
 
       self$id = assert_string(id)
       self$task_type = assert_subset(task_type, mlr_reflections$task_types$type, empty.ok = FALSE)
       self$task_properties = assert_subset(task_properties, unlist(mlr_reflections$task_properties, use.names = FALSE))
       self$param_set = assert_param_set(param_set)
-      self$param_set$values = insert_named(self$param_set$values, param_vals)
       self$feature_types = assert_subset(feature_types, mlr_reflections$task_feature_types)
       self$packages = assert_character(packages, any.missing = FALSE, unique = TRUE)
       self$scores = set_names(numeric(), character())

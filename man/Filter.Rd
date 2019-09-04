@@ -13,7 +13,7 @@ unimportant features get a small value. Note that filter scores may also be
 negative.
 }
 \section{Construction}{
-\preformatted{f = Filter$new(id, task_type, param_set, param_vals, feature_types, packages)
+\preformatted{f = Filter$new(id, task_type, param_set, feature_types, packages)
 }
 \itemize{
 \item \code{id} :: \code{character(1)}\cr
@@ -22,8 +22,6 @@ Identifier for the filter.
 Types of the task the filter can operator on. E.g., \code{"classif"} or \code{"regr"}.
 \item \code{param_set} :: \link[paradox:ParamSet]{paradox::ParamSet}\cr
 Set of hyperparameters.
-\item \code{param_vals} :: named \code{list()}\cr
-Named list of hyperparameter settings.
 \item \code{feature_types} :: \code{character()}\cr
 Feature types the filter operates on.
 Must be a subset of \code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.
