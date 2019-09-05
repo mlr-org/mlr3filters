@@ -17,6 +17,14 @@ feature selection methods of algorithms to *mlr3*.
 
 ## Installation
 
+CRAN version
+
+``` r
+install.packages("mlr3filters")
+```
+
+Development version
+
 ``` r
 remotes::install_github("mlr-org/mlr3filters")
 ```

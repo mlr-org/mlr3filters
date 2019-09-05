@@ -15,7 +15,15 @@ _mlr3filters_ adds filters, feature selection methods and embedded feature selec
 
 ## Installation
 
+CRAN version
+
 ```{r eval = FALSE}
+install.packages("mlr3filters")
+```
+
+Development version
+
+```{r, eval = FALSE}
 remotes::install_github("mlr-org/mlr3filters")
 ```
 
