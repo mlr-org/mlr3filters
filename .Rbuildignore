@@ -13,5 +13,5 @@
 ^pkgdown$
 ^man-roxygen$
 .pre-commit-config.yaml
-^cran.comments.md
+^cran-comments.md
 ^CRAN-RELEASE$
