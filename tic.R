@@ -1,4 +1,4 @@
-do_package_checks(error_on = "error")
+do_package_checks(error_on = "warning")
 
 # install ranger for README
 get_stage("install") %>%
