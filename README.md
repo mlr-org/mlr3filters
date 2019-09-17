@@ -3,7 +3,8 @@
 
 [![Travis build
 status](https://travis-ci.org/mlr-org/mlr3filters.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3filters)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
+[![CRAN Status
+Badge](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
 [![cran
 checks](https://cranchecks.info/badges/worst/mlr3filters)](https://cran.r-project.org/web/checks/check_results_mlr3filters.html)
 [![CRAN
@@ -43,6 +44,7 @@ as.data.table(filter$calculate(task))
 ```
 
     ##     feature      score
+    ##      <char>      <num>
     ## 1:  glucose 0.28961567
     ## 2:      age 0.18694030
     ## 3:     mass 0.17702985
@@ -76,8 +78,7 @@ as.data.table(filter$calculate(task))
 ### Variable Importance Filters
 
 The following learners allow the extraction of variable importance and
-therefore are supported by
-    `FilterImportance`:
+therefore are supported by `FilterImportance`:
 
     ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
     ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
@@ -105,9 +106,10 @@ head(as.data.table(filter), 3)
 ```
 
     ##         feature     score
-    ## 1:  Petal.Width 45.865850
-    ## 2: Petal.Length 41.033283
-    ## 3: Sepal.Length  9.929504
+    ##          <char>     <num>
+    ## 1:  Petal.Width 44.588117
+    ## 2: Petal.Length 42.501367
+    ## 3: Sepal.Length  9.898418
 
 ### Performance Filter
 
