@@ -1,6 +1,6 @@
 /* import fonts font */
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,300);
 @import url(https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400);
-@import url(https://fonts.googleapis.com/css?family=Crimson+Text:400);
 
 /* link coloring */
 a {
@@ -13,8 +13,18 @@ code,
 kbd,
 pre,
 samp {
-  font-family: IBM Plex Mono;
-  font-size: 0.8em;
+  font-family: IBM Plex Mono, monospace;
+  font-size: 0.9em;
+}
+
+/* headers */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Montserrat", sans;
+}
+
+/* navbar */
+.navbar {
+    font-weight: 400;
 }
 
 /* no uppercase package title */
@@ -24,8 +34,9 @@ samp {
 
 /* body font */
 body {
-  font-family: Crimson Text, serif;
-  font-size: 18px;
+  /* font-family: Crimson Text, serif; */
+  font-family: "Montserrat" , sans;
+  font-size: 15px;
   font-weight: 400;
   color: black;
 }
@@ -59,13 +70,6 @@ body {
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: .8em; /* default: .25*/
-}
-
-#sidebar {
-  margin-top: 30px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 70px;
 }
 
 .contents .page-header {
