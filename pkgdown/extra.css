@@ -1,0 +1,82 @@
+/* import fonts font */
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,300);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400);
+@import url(https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400);
+@import url(https://fonts.googleapis.com/css?family=Lora:300,300i,400,400i);
+@import url(https://fonts.googleapis.com/css?family=Crimson+Text);
+
+/* link coloring */
+a {
+  color: #03638e;
+    text-decoration: none;
+}
+
+/* code font */
+code,
+kbd,
+pre,
+samp {
+  font-family: IBM Plex Mono;
+}
+
+/* no uppercase package title */
+.navbar-brand {
+    text-transform: none;
+}
+
+/* body font */
+body {
+  font-family: Work Sans, 'Palatino Linotype', 'Book Antiqua', Palatino, 'Microsoft YaHei', 'Songti SC', serif;
+  font-weight: 400;
+  color: black;
+}
+
+
+/* syntax highlighting */
+.sourceCode.r .kw, .fu, .cf,   /* function names */
+    .sourceCode a:link,
+    .sourceCode a:active,
+    .sourceCode a:visited {color:darkred;}
+
+/* this moves the h1 so much to the top that we can get rid of it */
+.contents h1 {
+    padding-top: 40px;
+}
+
+/* reduce paddint-top a bit (default 60px) */
+.contents h2, .contents h3, .contents h4 {
+    padding-top: 50px;
+}
+
+/* color pkg name in "mlr blue" */
+.navbar-default .navbar-link {
+    color: #03638e;
+}
+
+/* reduce size of "version label" padding */
+.label {
+    display: inline;
+    padding: .1em .3em .1em; /* default: .2 - .6 - .3 */
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .8em; /* default: .25*/
+}
+
+#sidebar {
+  margin-top: 30px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 70px;
+}
+
+/* reposition navbar-right so that it aligns with the sidebar */
+.navbar-right {
+    position: absolute;
+    left: 65.5%;
+    float: left !important;
+}
