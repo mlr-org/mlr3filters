@@ -1,5 +1,5 @@
 /* import fonts font */
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,300);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
 @import url(https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400);
 
 /* link coloring */
@@ -19,7 +19,7 @@ samp {
 
 /* headers */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: "Montserrat", sans;
+    font-family: "Roboto", sans;
 }
 
 /* navbar */
@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 /* body font */
 body {
   /* font-family: Crimson Text, serif; */
-  font-family: "Montserrat" , sans;
+  font-family: "Roboto" , sans;
   font-size: 15px;
   font-weight: 400;
   color: black;
