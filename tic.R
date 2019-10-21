@@ -5,7 +5,7 @@ get_stage("install") %>%
   add_step(step_install_cran("ranger"))
 
 if (ci_on_travis()) {
-  do_pkgdown(orphan = TRUE, install = TRUE)
+  do_pkgdown(orphan = TRUE)
 }
 
 get_stage("after_success") %>%

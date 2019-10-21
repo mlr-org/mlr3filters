@@ -1,6 +1,9 @@
 
 # mlr3filters
 
+*mlr3filters* adds filters, feature selection methods and embedded
+feature selection methods of algorithms to *mlr3*.
+
 [![Travis build
 status](https://travis-ci.org/mlr-org/mlr3filters.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3filters)
 [![CRAN Status
@@ -12,9 +15,6 @@ Downloads](https://cranlogs.r-pkg.org/badges/mlr3filters)](https://cran.rstudio.
 [![Coverage
 status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
-
-*mlr3filters* adds filters, feature selection methods and embedded
-feature selection methods of algorithms to *mlr3*.
 
 ## Installation
 
@@ -44,7 +44,6 @@ as.data.table(filter$calculate(task))
 ```
 
     ##     feature      score
-    ##      <char>      <num>
     ## 1:  glucose 0.28961567
     ## 2:      age 0.18694030
     ## 3:     mass 0.17702985
@@ -106,7 +105,6 @@ head(as.data.table(filter), 3)
 ```
 
     ##         feature     score
-    ##          <char>     <num>
     ## 1:  Petal.Width 44.588117
     ## 2: Petal.Length 42.501367
     ## 3: Sepal.Length  9.898418
