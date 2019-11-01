@@ -58,7 +58,7 @@ as.data.table(filter$calculate(task))
 | Name              | Task Type      | Feature Types                                         | Package                                                           |
 | :---------------- | :------------- | :---------------------------------------------------- | :---------------------------------------------------------------- |
 | anova             | Classif        | Integer, Numeric                                      | stats                                                             |
-| auc               | Classif        | Integer, Numeric                                      | [Metrics](https://cran.r-project.org/package=Metrics)             |
+| auc               | Classif        | Integer, Numeric                                      | [mlr3measures](https://cran.r-project.org/package=mlr3measures)   |
 | carscore          | Regr           | Numeric                                               | [care](https://cran.r-project.org/package=care)                   |
 | cmim              | Classif & Regr | Integer, Numeric, Factor, Ordered                     | [praznik](https://cran.r-project.org/package=praznik)             |
 | correlation       | Regr           | Integer, Numeric                                      | stats                                                             |
@@ -79,8 +79,8 @@ as.data.table(filter$calculate(task))
 The following learners allow the extraction of variable importance and
 therefore are supported by `FilterImportance`:
 
-    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
-    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
+    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"
+    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"
     ## [7] "regr.rpart"          "regr.xgboost"
 
 If your learner is not listed here but capable of extracting variable

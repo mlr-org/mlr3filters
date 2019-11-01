@@ -7,9 +7,10 @@
 \title{AUC Filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
 \description{
-Area under the (ROC) Curve filter calling \code{\link[Metrics:auc]{Metrics::auc()}} from
-package \CRANpkg{Metrics}. Returns the absolute value of the difference
-between the AUC and 0.5.
+Area under the (ROC) Curve filter, analogously to \code{\link[mlr3measures:auc]{mlr3measures::auc()}} from \CRANpkg{mlr3meaures}.
+Missing values of the features are removed before calculating the AUC.
+If the AUC is undefined for the input, it is set to 0.5 (random classifier).
+The absolute value of the difference between the AUC and 0.5 is used as final filter value.
 }
 \section{Construction}{
 \preformatted{FilterAUC$new()

@@ -39,6 +39,7 @@ Suggests:
     care,
     FSelectorRcpp,
     lgr,
+    mlr3measures,
     mlr3learners,
     praznik,
     rpart,
