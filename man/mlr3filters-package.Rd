@@ -21,12 +21,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Patrick Schratz \email{patrick.schratz@gmail.com} (0000-0003-0748-6624)
+\strong{Maintainer}: Patrick Schratz \email{patrick.schratz@gmail.com} (\href{https://orcid.org/0000-0003-0748-6624}{ORCID})
 
 Authors:
 \itemize{
-  \item Michel Lang \email{michellang@gmail.com} (0000-0001-9754-0393)
-  \item Bernd Bischl \email{bernd_bischl@gmx.net} (0000-0001-6002-6980)
+  \item Michel Lang \email{michellang@gmail.com} (\href{https://orcid.org/0000-0001-9754-0393}{ORCID})
+  \item Bernd Bischl \email{bernd_bischl@gmx.net} (\href{https://orcid.org/0000-0001-6002-6980}{ORCID})
 }
 
 }
