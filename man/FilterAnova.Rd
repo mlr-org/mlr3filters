@@ -7,10 +7,10 @@
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
 \description{
 ANOVA F-Test filter calling \code{\link[stats:aov]{stats::aov()}}. Note that this is
-equivalent to a t-test for binary classification.
+equivalent to a \eqn{t}-test for binary classification.
 
-The filter value is \code{-log10(p)} where \code{p} is the p-value. This transformation
-is necessary to ensure numerical stability for very small p-values.
+The filter value is \code{-log10(p)} where \code{p} is the \eqn{p}-value. This transformation
+is necessary to ensure numerical stability for very small \eqn{p}-values.
 }
 \section{Construction}{
 \preformatted{FilterAnova$new()

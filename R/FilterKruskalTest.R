@@ -12,10 +12,10 @@
 #' flt("kruskal_test")
 #' ```
 #'
-#' @description Kruskal-Wallis rank sum test filter calling
-#' [stats::kruskal.test()]. The filter value is `-log10(p)` where `p` is the
-#' p-value. This transformation is necessary to ensure numerical stability for
-#' very small p-values.
+#' @description Kruskal-Wallis rank sum test filter calling [stats::kruskal.test()].
+#'
+#' The filter value is `-log10(p)` where `p` is the \eqn{p}-value. This transformation
+#' is necessary to ensure numerical stability for very small \eqn{p}-values.
 #'
 #' @family Filter
 #' @template seealso_filter

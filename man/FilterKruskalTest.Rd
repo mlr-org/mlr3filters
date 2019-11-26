@@ -6,10 +6,10 @@
 \title{Kruskal-Wallis Test Filter}
 \format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
 \description{
-Kruskal-Wallis rank sum test filter calling
-\code{\link[stats:kruskal.test]{stats::kruskal.test()}}. The filter value is \code{-log10(p)} where \code{p} is the
-p-value. This transformation is necessary to ensure numerical stability for
-very small p-values.
+Kruskal-Wallis rank sum test filter calling \code{\link[stats:kruskal.test]{stats::kruskal.test()}}.
+
+The filter value is \code{-log10(p)} where \code{p} is the \eqn{p}-value. This transformation
+is necessary to ensure numerical stability for very small \eqn{p}-values.
 }
 \section{Construction}{
 \preformatted{FilterKruskalTest$new()

@@ -13,10 +13,10 @@
 #' ```
 #'
 #' @description ANOVA F-Test filter calling [stats::aov()]. Note that this is
-#' equivalent to a t-test for binary classification.
+#' equivalent to a \eqn{t}-test for binary classification.
 #'
-#' The filter value is `-log10(p)` where `p` is the p-value. This transformation
-#' is necessary to ensure numerical stability for very small p-values.
+#' The filter value is `-log10(p)` where `p` is the \eqn{p}-value. This transformation
+#' is necessary to ensure numerical stability for very small \eqn{p}-values.
 #'
 #' @family Filter
 #' @template seealso_filter
