@@ -8,8 +8,7 @@ _mlr3filters_ adds filters, feature selection methods and embedded feature selec
 
 [![Travis build status](https://travis-ci.org/mlr-org/mlr3filters.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3filters)
 [![CRAN Status Badge](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
-[![cran checks](https://cranchecks.info/badges/worst/mlr3filters)](https://cran.r-project.org/web/checks/check_results_mlr3filters.html)
-[![CRAN Downloads](https://cranlogs.r-pkg.org/badges/mlr3filters)](https://cran.rstudio.com/web/packages/mlr3filters/index.html)
+[![CRAN checks](https://cranchecks.info/badges/worst/mlr3filters)](https://cran.r-project.org/web/checks/check_results_mlr3filters.html)
 [![Coverage status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 
@@ -79,7 +78,7 @@ tab = as.data.table(mlr_learners)
 tab[sapply(properties, is.element, el = "importance"), key]
 ```
 
-If your learner is not listed here but capable of extracting variable importance from the fitted model, the reason is most likely that it is not yet integrated in [mlr3learners](https://github.com/mlr-org/mlr3learners) or [mlr3extralearners](https://github.com/mlr-org/mlr3extralearners).
+If your learner is not listed here but capable of extracting variable importance from the fitted model, the reason is most likely that it is not yet integrated in the package [mlr3learners](https://github.com/mlr-org/mlr3learners) or the [extra learner organization](https://github.com/mlr3learners).
 Please open an issue so we can add your package.
 
 Some learners need to have their variable importance measure "activated" during learner creation.

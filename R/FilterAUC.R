@@ -13,7 +13,7 @@
 #' ```
 #'
 #' @description
-#' Area under the (ROC) Curve filter, analogously to [mlr3measures::auc()] from \CRANpkg{mlr3meaures}.
+#' Area under the (ROC) Curve filter, analogously to [mlr3measures::auc()] from \CRANpkg{mlr3measures}.
 #' Missing values of the features are removed before calculating the AUC.
 #' If the AUC is undefined for the input, it is set to 0.5 (random classifier).
 #' The absolute value of the difference between the AUC and 0.5 is used as final filter value.

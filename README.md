@@ -8,10 +8,8 @@ feature selection methods of algorithms to *mlr3*.
 status](https://travis-ci.org/mlr-org/mlr3filters.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3filters)
 [![CRAN Status
 Badge](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
-[![cran
-checks](https://cranchecks.info/badges/worst/mlr3filters)](https://cran.r-project.org/web/checks/check_results_mlr3filters.html)
 [![CRAN
-Downloads](https://cranlogs.r-pkg.org/badges/mlr3filters)](https://cran.rstudio.com/web/packages/mlr3filters/index.html)
+checks](https://cranchecks.info/badges/worst/mlr3filters)](https://cran.r-project.org/web/checks/check_results_mlr3filters.html)
 [![Coverage
 status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
@@ -43,15 +41,16 @@ filter = flt("auc")
 as.data.table(filter$calculate(task))
 ```
 
-    ##     feature      score
-    ## 1:  glucose 0.28961567
-    ## 2:      age 0.18694030
-    ## 3:     mass 0.17702985
-    ## 4: pregnant 0.11951493
-    ## 5: pressure 0.10810075
-    ## 6: pedigree 0.10620149
-    ## 7:  triceps 0.10125373
-    ## 8:  insulin 0.07975746
+    ##     feature     score
+    ##      <char>     <num>
+    ## 1:  glucose 0.2927906
+    ## 2:  insulin 0.2316288
+    ## 3:     mass 0.1870358
+    ## 4:      age 0.1869403
+    ## 5:  triceps 0.1625115
+    ## 6: pregnant 0.1195149
+    ## 7: pressure 0.1075760
+    ## 8: pedigree 0.1062015
 
 ### Implemented Filters
 
@@ -79,16 +78,16 @@ as.data.table(filter$calculate(task))
 The following learners allow the extraction of variable importance and
 therefore are supported by `FilterImportance`:
 
-    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"
-    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"
-    ## [7] "regr.rpart"          "regr.xgboost"
+    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
+    ## [4] "classif.xgboost"     "regr.featureless"    "regr.lm"            
+    ## [7] "regr.ranger"         "regr.rpart"          "regr.xgboost"
 
 If your learner is not listed here but capable of extracting variable
 importance from the fitted model, the reason is most likely that it is
-not yet integrated in
-[mlr3learners](https://github.com/mlr-org/mlr3learners) or
-[mlr3extralearners](https://github.com/mlr-org/mlr3extralearners).
-Please open an issue so we can add your package.
+not yet integrated in the package
+[mlr3learners](https://github.com/mlr-org/mlr3learners) or the [extra
+learner organization](https://github.com/mlr3learners). Please open an
+issue so we can add your package.
 
 Some learners need to have their variable importance measure “activated”
 during learner creation. For example, to use the “impurity” measure of
@@ -105,6 +104,7 @@ head(as.data.table(filter), 3)
 ```
 
     ##         feature     score
+    ##          <char>     <num>
     ## 1:  Petal.Width 44.588117
     ## 2: Petal.Length 42.501367
     ## 3: Sepal.Length  9.898418
