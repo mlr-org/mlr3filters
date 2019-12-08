@@ -15,8 +15,10 @@ test_that("all regr filters return correct filter values", {
 test_that("Errors for unsupported features", {
   # list filters that only support "numeric" features
   filters = mlr_filters$mget(mlr_filters$keys())
-  filters = Filter(function(x) all(grepl(paste(c("numeric", "integer"),
-      collapse = "|"), x$feature_types)), filters)
+  filters = Filter(function(x) {
+    all(grepl(paste(c("numeric", "integer"),
+      collapse = "|"), x$feature_types))
+  }, filters)
   filters = filters[lengths(filters) != 0]
 
   # supported: numeric, integer

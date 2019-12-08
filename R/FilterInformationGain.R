@@ -38,7 +38,6 @@
 #' filterGR$param_set$values = list("type" = "gainratio")
 #' filterGR$calculate(task)
 #' head(as.data.table(filterGR), 3)
-#'
 FilterInformationGain = R6Class("FilterInformationGain", inherit = Filter,
   public = list(
     initialize = function() {

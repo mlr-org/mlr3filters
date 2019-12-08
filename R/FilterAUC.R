@@ -54,11 +54,12 @@ FilterAUC = R6Class("FilterAUC", inherit = Filter,
 mlr_filters$add("auc", FilterAUC)
 
 
-auc = function (truth, prob) {
+auc = function(truth, prob) {
   n_pos = sum(truth)
   n_neg = length(truth) - n_pos
-  if (n_pos == 0L || n_neg == 0L)
+  if (n_pos == 0L || n_neg == 0L) {
     return(0.5)
+  }
   r = rank(prob, ties.method = "average")
-  (sum(r[truth]) - n_pos * (n_pos + 1L)/2L)/(n_pos * n_neg)
+  (sum(r[truth]) - n_pos * (n_pos + 1L) / 2L) / (n_pos * n_neg)
 }

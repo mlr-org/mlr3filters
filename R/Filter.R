@@ -80,7 +80,6 @@ Filter = R6Class("Filter",
 
     initialize = function(id, task_type, task_properties = character(), param_set = ParamSet$new(),
       feature_types = character(), packages = character()) {
-
       self$id = assert_string(id)
       self$task_type = assert_subset(task_type, mlr_reflections$task_types$type, empty.ok = FALSE)
       self$task_properties = assert_subset(task_properties, unlist(mlr_reflections$task_properties, use.names = FALSE))
@@ -106,7 +105,6 @@ Filter = R6Class("Filter",
     },
 
     calculate = function(task, nfeat = NULL) {
-
       task = assert_task(as_task(task), feature_types = self$feature_types, task_properties = self$task_properties)
       fn = task$feature_names
 

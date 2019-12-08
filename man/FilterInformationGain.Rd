@@ -36,7 +36,6 @@ filterGR = flt("information_gain")
 filterGR$param_set$values = list("type" = "gainratio")
 filterGR$calculate(task)
 head(as.data.table(filterGR), 3)
-
 }
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
