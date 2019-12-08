@@ -1,6 +1,6 @@
 Package: mlr3filters
 Title: Filter Based Feature Selection for 'mlr3'
-Version: 0.1.1
+Version: 0.1.1.9000
 Authors@R:
     c(person(given = "Patrick",
              family = "Schratz",
