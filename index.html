@@ -43,17 +43,28 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">mlr3filters</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Development version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="reference/index.html">
+    <span class="fa fa fa fa-file-alt"></span>
+     
+    Reference
+  </a>
 </li>
 <li>
   <a href="news/index.html">Changelog</a>
+</li>
+<li>
+  <a href="https://mlr3book.mlr-org.com">
+    <span class="fa fa fa fa-link"></span>
+     
+    mlr3book
+  </a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -102,15 +113,16 @@
 <div id="mlr3filters" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#mlr3filters" class="anchor"></a>mlr3filters</h1></div>
+<p>Package website: <a href="https://mlr3filters.mlr-org.com/">release</a> | <a href="https://mlr3filters.mlr-org.com/dev">dev</a></p>
 <p><em>mlr3filters</em> adds filters, feature selection methods and embedded feature selection methods of algorithms to <em>mlr3</em>.</p>
 <p><a href="https://travis-ci.org/mlr-org/mlr3filters"><img src="https://travis-ci.org/mlr-org/mlr3filters.svg?branch=master" alt="Travis build status"></a> <a href="https://cran.r-project.org/package=mlr3filters"><img src="https://www.r-pkg.org/badges/version-ago/mlr3filters" alt="CRAN Status Badge"></a> <a href="https://cran.r-project.org/web/checks/check_results_mlr3filters.html"><img src="https://cranchecks.info/badges/worst/mlr3filters" alt="CRAN checks"></a> <a href="https://codecov.io/github/mlr-org/mlr3filters?branch=master"><img src="https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg" alt="Coverage status"></a> <a href="https://stackoverflow.com/questions/tagged/mlr3"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>CRAN version</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"mlr3filters"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"mlr3filters"</span>)</span></code></pre></div>
 <p>Development version</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"mlr-org/mlr3filters"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"mlr-org/mlr3filters"</span>)</span></code></pre></div>
 </div>
 <div id="filters" class="section level2">
 <h2 class="hasAnchor">
@@ -118,32 +130,31 @@
 <div id="filter-example" class="section level3">
 <h3 class="hasAnchor">
 <a href="#filter-example" class="anchor"></a>Filter Example</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"mlr3"</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"mlr3filters"</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">task =<span class="st"> </span><span class="kw"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span>(<span class="st">"pima"</span>)</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">filter =<span class="st"> </span><span class="kw"><a href="reference/flt.html">flt</a></span>(<span class="st">"auc"</span>)</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw"><a href="reference/as.data.table.html">as.data.table</a></span>(filter<span class="op">$</span><span class="kw">calculate</span>(task))</a></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">##     feature     score</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">##      &lt;char&gt;     &lt;num&gt;</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">## 1:  glucose 0.2927906</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">## 2:  insulin 0.2316288</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">## 3:     mass 0.1870358</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">## 4:      age 0.1869403</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">## 5:  triceps 0.1625115</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">## 6: pregnant 0.1195149</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">## 7: pressure 0.1075760</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">## 8: pedigree 0.1062015</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"mlr3"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"mlr3filters"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>task =<span class="st"> </span><span class="kw"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span>(<span class="st">"pima"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>filter =<span class="st"> </span><span class="kw"><a href="reference/flt.html">flt</a></span>(<span class="st">"auc"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="kw"><a href="reference/as.data.table.html">as.data.table</a></span>(filter<span class="op">$</span><span class="kw">calculate</span>(task))</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">##     feature     score</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">## 1:  glucose 0.2927906</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">## 2:  insulin 0.2316288</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">## 3:     mass 0.1870358</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">## 4:      age 0.1869403</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">## 5:  triceps 0.1625115</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">## 6: pregnant 0.1195149</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">## 7: pressure 0.1075760</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">## 8: pedigree 0.1062015</span></span></code></pre></div>
 </div>
 <div id="implemented-filters" class="section level3">
 <h3 class="hasAnchor">
 <a href="#implemented-filters" class="anchor"></a>Implemented Filters</h3>
 <table class="table">
 <colgroup>
-<col width="11%">
-<col width="9%">
-<col width="35%">
-<col width="43%">
+<col width="12%">
+<col width="10%">
+<col width="31%">
+<col width="46%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">Name</th>
@@ -191,7 +202,7 @@
 <tr class="odd">
 <td align="left">importance</td>
 <td align="left">Universal</td>
-<td align="left">Logical, Integer, Numeric, Character, Factor, Ordered</td>
+<td align="left">Logical, Integer, Numeric, Factor, Ordered</td>
 <td align="left"><a href="https://cran.r-project.org/package=rpart">rpart</a></td>
 </tr>
 <tr class="even">
@@ -239,7 +250,7 @@
 <tr class="odd">
 <td align="left">performance</td>
 <td align="left">Universal</td>
-<td align="left">Logical, Integer, Numeric, Character, Factor, Ordered</td>
+<td align="left">Logical, Integer, Numeric, Factor, Ordered</td>
 <td align="left"><a href="https://cran.r-project.org/package=rpart">rpart</a></td>
 </tr>
 <tr class="even">
@@ -255,23 +266,23 @@
 <h3 class="hasAnchor">
 <a href="#variable-importance-filters" class="anchor"></a>Variable Importance Filters</h3>
 <p>The following learners allow the extraction of variable importance and therefore are supported by <code>FilterImportance</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      </a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">## [4] "classif.xgboost"     "regr.featureless"    "regr.lm"            </a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">## [7] "regr.ranger"         "regr.rpart"          "regr.xgboost"</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">## [1] "classif.featureless" "classif.ranger"     </span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co">## [3] "classif.rpart"       "classif.xgboost"    </span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">## [5] "regr.featureless"    "regr.ranger"        </span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">## [7] "regr.rpart"          "regr.xgboost"</span></span></code></pre></div>
 <p>If your learner is not listed here but capable of extracting variable importance from the fitted model, the reason is most likely that it is not yet integrated in the package <a href="https://github.com/mlr-org/mlr3learners">mlr3learners</a> or the <a href="https://github.com/mlr3learners">extra learner organization</a>. Please open an issue so we can add your package.</p>
 <p>Some learners need to have their variable importance measure “activated” during learner creation. For example, to use the “impurity” measure of Random Forest via the <em>ranger</em> package:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">task =<span class="st"> </span><span class="kw"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span>(<span class="st">"iris"</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">lrn =<span class="st"> </span><span class="kw"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span>(<span class="st">"classif.ranger"</span>)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">lrn<span class="op">$</span>param_set<span class="op">$</span>values =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">importance =</span> <span class="st">"impurity"</span>)</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">filter =<span class="st"> </span><span class="kw"><a href="reference/flt.html">flt</a></span>(<span class="st">"importance"</span>, <span class="dt">learner =</span> lrn)</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">filter<span class="op">$</span><span class="kw">calculate</span>(task)</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw"><a href="reference/as.data.table.html">as.data.table</a></span>(filter), <span class="dv">3</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">##         feature     score</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">##          &lt;char&gt;     &lt;num&gt;</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">## 1:  Petal.Width 44.588117</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">## 2: Petal.Length 42.501367</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">## 3: Sepal.Length  9.898418</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>task =<span class="st"> </span><span class="kw"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span>(<span class="st">"iris"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>lrn =<span class="st"> </span><span class="kw"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span>(<span class="st">"classif.ranger"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>lrn<span class="op">$</span>param_set<span class="op">$</span>values =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">importance =</span> <span class="st">"impurity"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a>filter =<span class="st"> </span><span class="kw"><a href="reference/flt.html">flt</a></span>(<span class="st">"importance"</span>, <span class="dt">learner =</span> lrn)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>filter<span class="op">$</span><span class="kw">calculate</span>(task)</span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw"><a href="reference/as.data.table.html">as.data.table</a></span>(filter), <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">##         feature     score</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">## 1:  Petal.Width 45.865850</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">## 2: Petal.Length 41.033283</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">## 3: Sepal.Length  9.929504</span></span></code></pre></div>
 </div>
 <div id="performance-filter" class="section level3">
 <h3 class="hasAnchor">
