@@ -41,9 +41,10 @@ navbar:
 reference:
   - title: Filters
     contents:
-      - starts_with("Filter")
+      - starts_with("mlr_filters_")
   - title: General
     contents:
+      - Filter
       - flt
       - mlr3filters-package
       - mlr_filters
