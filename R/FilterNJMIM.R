@@ -1,7 +1,7 @@
 #' @title Minimal Normalised Joint Mutual Information Maximisation Filter
 #'
 #' @usage NULL
-#' @aliases mlr_filters_njmim
+#' @name mlr_filters_njmim
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'

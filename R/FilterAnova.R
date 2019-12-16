@@ -1,7 +1,7 @@
 #' @title ANOVA F-Test Filter
 #'
 #' @usage NULL
-#' @aliases mlr_filters_anova
+#' @name mlr_filters_anova
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'

@@ -1,7 +1,7 @@
 #' @title Kruskal-Wallis Test Filter
 #'
 #' @usage NULL
-#' @aliases mlr_filters_kruskal_test
+#' @name mlr_filters_kruskal_test
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'

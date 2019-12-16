@@ -1,7 +1,7 @@
 #' @title Predictive Performance Filter
 #'
 #' @usage NULL
-#' @aliases mlr_filters_performance
+#' @name mlr_filters_performance
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'

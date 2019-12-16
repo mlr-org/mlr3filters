@@ -1,7 +1,7 @@
 #' @title Correlation Filter
 #'
 #' @usage NULL
-#' @aliases mlr_filters_correlation
+#' @name mlr_filters_correlation
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'

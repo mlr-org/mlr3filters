@@ -1,7 +1,7 @@
 #' @title Joint Mutual Information Filter
 #'
 #' @usage NULL
-#' @aliases mlr_filters_jmi
+#' @name mlr_filters_jmi
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'

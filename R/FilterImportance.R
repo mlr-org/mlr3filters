@@ -1,7 +1,7 @@
 #' @title Filter for Embedded Feature Selection via Variable Importance
 #'
 #' @usage NULL
-#' @aliases mlr_filters_variable_importance
+#' @name mlr_filters_variable_importance
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'

@@ -1,7 +1,7 @@
 #' @title Minimum redundancy maximal relevancy filter
 #'
 #' @usage NULL
-#' @aliases mlr_filters_mrmr
+#' @name mlr_filters_mrmr
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'

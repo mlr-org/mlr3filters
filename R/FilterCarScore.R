@@ -1,7 +1,7 @@
 #' @title Conditional Mutual Information Based Feature Selection Filter
 #'
 #' @usage NULL
-#' @aliases mlr_filters_carscore
+#' @name mlr_filters_carscore
 #' @format [R6::R6Class] inheriting from [Filter].
 #' @include Filter.R
 #'
