@@ -7,8 +7,10 @@ Package website: [release](https://mlr3filters.mlr-org.com/) |
 *mlr3filters* adds filters, feature selection methods and embedded
 feature selection methods of algorithms to *mlr3*.
 
-[![Travis build
-status](https://travis-ci.org/mlr-org/mlr3filters.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3filters)
+<!-- badges: start -->
+
+[![Build
+Status](https://img.shields.io/travis/mlr-org/mlr3filters/master?label=Linux&logo=travis&style=flat-square)](https://travis-ci.org/mlr-org/mlr3filters)
 [![CRAN Status
 Badge](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
 [![CRAN
@@ -16,6 +18,7 @@ checks](https://cranchecks.info/badges/worst/mlr3filters)](https://cran.r-projec
 [![Coverage
 status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
+<!-- badges: end -->
 
 ## Installation
 
@@ -80,9 +83,8 @@ as.data.table(filter$calculate(task))
 The following learners allow the extraction of variable importance and
 therefore are supported by `FilterImportance`:
 
-    ## [1] "classif.featureless" "classif.ranger"     
-    ## [3] "classif.rpart"       "classif.xgboost"    
-    ## [5] "regr.featureless"    "regr.ranger"        
+    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
+    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
     ## [7] "regr.rpart"          "regr.xgboost"
 
 If your learner is not listed here but capable of extracting variable

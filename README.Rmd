@@ -8,11 +8,13 @@ Package website: [release](https://mlr3filters.mlr-org.com/) | [dev](https://mlr
 
 _mlr3filters_ adds filters, feature selection methods and embedded feature selection methods of algorithms to _mlr3_.
 
-[![Travis build status](https://travis-ci.org/mlr-org/mlr3filters.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3filters)
+<!-- badges: start -->
+[![Build Status](https://img.shields.io/travis/mlr-org/mlr3filters/master?label=Linux&logo=travis&style=flat-square)](https://travis-ci.org/mlr-org/mlr3filters)
 [![CRAN Status Badge](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
 [![CRAN checks](https://cranchecks.info/badges/worst/mlr3filters)](https://cran.r-project.org/web/checks/check_results_mlr3filters.html)
 [![Coverage status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
+<!-- badges: end -->
 
 ## Installation
 
