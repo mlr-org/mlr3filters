@@ -43,7 +43,8 @@ Suggests:
     mlr3measures,
     praznik,
     rpart,
-    testthat
+    testthat,
+    caret
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = FALSE)
