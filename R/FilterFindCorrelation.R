@@ -68,8 +68,8 @@ FilterFindCorrelation = R6Class("FilterFindCorrelation", inherit = Filter,
       # Rows / Columns of cm are now ordered by correlation mean, highest first.
       # A feature i is excluded as soon as a lower-average-correlation feature has correlation with i > cutoff.
       # This means the cutoff at which i is excluded is the max of the correlation with all lower-avg-cor features.
-      # Therefore we look for the lowest feature correlation col-wise in the lower triangle of the ordered cm.
-      cm[upper.tri(cm, diag = TRUE)] = 0  # the lowest avg col feature is never removed, so its cutoff is 0.
+      # Therefore we look for the highest feature correlation col-wise in the lower triangle of the ordered cm.
+      cm[upper.tri(cm, diag = TRUE)] = 0  # the lowest avg col feature is never removed by caret, so its cutoff is 0.
       -apply(cm, 2, max)  # this has the correct names and values, BUT we need negative scores!
     }
   )
