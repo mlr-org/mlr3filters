@@ -11,7 +11,7 @@ test_that("Filtering an empty Task (#39)", {
   f$calculate(task)
   expect_numeric(f$scores, names = "unique", len = 0)
 
-  task = mlr_tasks$get("mtcars")$filter(character())
+  task = mlr_tasks$get("mtcars")$filter(integer())
   f = mlr_filters$get("variance")
   f$calculate(task)
   expect_numeric(f$scores, names = "unique", len = length(task$feature_names))
