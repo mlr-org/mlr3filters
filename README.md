@@ -4,13 +4,13 @@
 Package website: [release](https://mlr3filters.mlr-org.com/) |
 [dev](https://mlr3filters.mlr-org.com/dev)
 
-*mlr3filters* adds filters, feature selection methods and embedded
-feature selection methods of algorithms to *mlr3*.
+{mlr3filters} adds filters, feature selection methods and embedded
+feature selection methods of algorithms to {mlr3}.
 
 <!-- badges: start -->
 
-[![Build
-Status](https://img.shields.io/travis/mlr-org/mlr3filters/master?label=Linux&logo=travis&style=flat-square)](https://travis-ci.org/mlr-org/mlr3filters)
+![R CMD Check via
+{tic}](https://github.com/mlr-org/mlr3filters/workflows/R%20CMD%20Check%20via%20%7Btic%7D/badge.svg)
 [![CRAN Status
 Badge](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
 [![CRAN
@@ -67,6 +67,7 @@ as.data.table(filter$calculate(task))
 | cmim              | Classif & Regr | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
 | correlation       | Regr           | Integer, Numeric                             | stats                                                             |
 | disr              | Classif        | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
+| findcorrelation   | Classif & Regr | Integer, Numeric                             | stats                                                             |
 | importance        | Universal      | Logical, Integer, Numeric, Factor, Ordered   | [rpart](https://cran.r-project.org/package=rpart)                 |
 | information\_gain | Classif & Regr | Integer, Numeric, Factor, Ordered            | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
 | jmi               | Classif        | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
@@ -96,7 +97,7 @@ issue so we can add your package.
 
 Some learners need to have their variable importance measure “activated”
 during learner creation. For example, to use the “impurity” measure of
-Random Forest via the *ranger* package:
+Random Forest via the {ranger} package:
 
 ``` r
 task = tsk("iris")

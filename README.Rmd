@@ -6,10 +6,10 @@ output: github_document
 
 Package website: [release](https://mlr3filters.mlr-org.com/) | [dev](https://mlr3filters.mlr-org.com/dev)
 
-_mlr3filters_ adds filters, feature selection methods and embedded feature selection methods of algorithms to _mlr3_.
+{mlr3filters} adds filters, feature selection methods and embedded feature selection methods of algorithms to {mlr3}.
 
 <!-- badges: start -->
-[![Build Status](https://img.shields.io/travis/mlr-org/mlr3filters/master?label=Linux&logo=travis&style=flat-square)](https://travis-ci.org/mlr-org/mlr3filters)
+![R CMD Check via {tic}](https://github.com/mlr-org/mlr3filters/workflows/R%20CMD%20Check%20via%20%7Btic%7D/badge.svg)
 [![CRAN Status Badge](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
 [![CRAN checks](https://cranchecks.info/badges/worst/mlr3filters)](https://cran.r-project.org/web/checks/check_results_mlr3filters.html)
 [![Coverage status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
@@ -86,7 +86,7 @@ If your learner is not listed here but capable of extracting variable importance
 Please open an issue so we can add your package.
 
 Some learners need to have their variable importance measure "activated" during learner creation.
-For example, to use the "impurity" measure of Random Forest via the _ranger_ package:
+For example, to use the "impurity" measure of Random Forest via the {ranger} package:
 
 ```{r }
 task = tsk("iris")
