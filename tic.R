@@ -2,7 +2,8 @@ do_package_checks(error_on = "warning")
 
 # install ranger for README
 get_stage("install") %>%
-  add_step(step_install_cran("ranger"))
+  add_step(step_install_cran("ranger")) %>%
+  add_step(step_install_github("mlr-org/mlr3pkgdowntemplate"))
 
 do_pkgdown()
 
