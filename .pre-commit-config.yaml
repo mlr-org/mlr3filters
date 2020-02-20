@@ -1,0 +1,11 @@
+repos:
+-   repo: https://github.com/lorenzwalthert/precommit
+    rev: v0.0.0.9027
+    hooks:
+    -   id: style-files
+        args: [--style_fun=mlr_style]
+    -   id: parsable-R
+    -   id: no-browser-statement
+    -   id: readme-rmd-rendered
+    -   id: roxygenize
+    -   id: use-tidy-description
