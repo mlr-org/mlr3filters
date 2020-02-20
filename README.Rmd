@@ -9,7 +9,7 @@ Package website: [release](https://mlr3filters.mlr-org.com/) | [dev](https://mlr
 {mlr3filters} adds filters, feature selection methods and embedded feature selection methods of algorithms to {mlr3}.
 
 <!-- badges: start -->
-![R CMD Check via {tic}](https://github.com/mlr-org/mlr3filters/workflows/R%20CMD%20Check%20via%20%7Btic%7D/badge.svg)
+[![R CMD Check via {tic}](https://img.shields.io/github/workflow/status/mlr-org/mlr3filters/R%20CMD%20Check%20via%20%7Btic%7D?logo=github&label=R CMD Check via {tic}&style=flat-square)](https://github.com/mlr-org/mlr3filters/actions)
 [![CRAN Status Badge](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
 [![CRAN checks](https://cranchecks.info/badges/worst/mlr3filters)](https://cran.r-project.org/web/checks/check_results_mlr3filters.html)
 [![Coverage status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
