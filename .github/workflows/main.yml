@@ -144,12 +144,6 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
-      - uses: chrnorm/deployment-action@v1.1.1
-        name: Create GitHub deployment
-        id: deployment
-        with:
-          token: "${{ github.token }}"
-          environment: production
 
       - name: "[Stage] Before Deploy"
         if: runner.os != 'Windows'
