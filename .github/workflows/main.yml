@@ -129,7 +129,7 @@ jobs:
         env:
           pkgType: source
         run: |
-          echo - 'options("pkgType" = "source")' > $HOME/.Rprofile
+          echo -e 'options("pkgType" = "source")' > $HOME/.Rprofile
           Rscript -e "if (!requireNamespace('remotes')) {install.packages('remotes')}"
           Rscript -e "if (getRversion() < '3.2' && !requireNamespace('curl')) {install.packages('curl')}"
           Rscript -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
