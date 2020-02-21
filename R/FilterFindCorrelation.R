@@ -15,11 +15,12 @@
 #' @description
 #' Simple filter emulating `caret::findCorrelation(exact = FALSE_)`.
 #' 
-#' This gives each feature a score that is the *negative* of the cutoff value
+#' This gives each feature a score between 0 and 1 that is *one minus* the cutoff value
 #' for which it is excluded when using `caret::findCorrelation()`. The negative
 #' is used because `caret::findCorrelation()` excludes everything *above* a cutoff,
-#' while filters exclude everything below a cutoff. Therefore, `caret::findCorrelation(cutoff = 0.9)`
-#' lists the same features that are excluded with `FilterFindCorrelation` at score -0.9.
+#' while filters exclude everything below a cutoff; this is shifted by +1 to get
+#' positive values for aesthetics. Therefore, `caret::findCorrelation(cutoff = 0.9)`
+#' lists the same features that are excluded with `FilterFindCorrelation` at score 0.1 ( = 1 - 0.9).
 #'
 #' @family Filter
 #' @template seealso_filter
@@ -70,7 +71,8 @@ FilterFindCorrelation = R6Class("FilterFindCorrelation", inherit = Filter,
       # This means the cutoff at which i is excluded is the max of the correlation with all lower-avg-cor features.
       # Therefore we look for the highest feature correlation col-wise in the lower triangle of the ordered cm.
       cm[upper.tri(cm, diag = TRUE)] = 0  # the lowest avg col feature is never removed by caret, so its cutoff is 0.
-      -apply(cm, 2, max)  # this has the correct names and values, BUT we need negative scores!
+      # The following has the correct names and values, BUT we need scores in reverse order. Shift by 1 to get +ve values.
+      1 - apply(cm, 2, max)
     }
   )
 )
