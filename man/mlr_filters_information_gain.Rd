@@ -48,6 +48,7 @@ Other Filter:
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},
+\code{\link{mlr_filters_find_correlation}},
 \code{\link{mlr_filters_jmim}},
 \code{\link{mlr_filters_jmi}},
 \code{\link{mlr_filters_kruskal_test}},
