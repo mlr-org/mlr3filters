@@ -10,7 +10,7 @@ test_that("FilterImportance", {
   remove_caret = lapply(checkpoints, caret::findCorrelation, x = cm, exact = FALSE)
   f = FilterFindCorrelation$new()
   f$calculate(task)
-  remove_filter = lapply(checkpoints, function(cutoff) match(names(f$scores)[f$scores < -cutoff], task$feature_names))
+  remove_filter = lapply(checkpoints, function(cutoff) match(names(f$scores)[f$scores < 1 - cutoff], task$feature_names))
   mapply(expect_set_equal, remove_caret, remove_filter)
 
 })
