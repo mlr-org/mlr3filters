@@ -16,7 +16,11 @@ Authors@R:
              family = "Bischl",
              role = "aut",
              email = "bernd_bischl@gmx.net",
-             comment = c(ORCID = "0000-0001-6002-6980")))
+             comment = c(ORCID = "0000-0001-6002-6980")),
+      person(given = "Martin",
+             family = "Binder",
+             role = "aut",
+             email = "mlr.developer@mb706.com"))
 Description: Extends 'mlr3' with filter methods for feature
     selection. Besides standalone filter methods built-in methods of any
     machine-learning algorithm are supported.  Partial scoring of
@@ -37,6 +41,7 @@ Imports:
     R6
 Suggests:
     care,
+    caret,
     FSelectorRcpp,
     lgr,
     mlr3learners,
@@ -57,6 +62,7 @@ Collate:
     'FilterCarScore.R'
     'FilterCorrelation.R'
     'FilterDISR.R'
+    'FilterFindCorrelation.R'
     'FilterImportance.R'
     'FilterInformationGain.R'
     'FilterJMI.R'
