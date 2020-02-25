@@ -7,7 +7,9 @@ get_stage("install") %>%
 
 do_pkgdown()
 
-do_readme_rmd()
+if (Sys.info()["sysname"] == "Linux") {
+  do_readme_rmd()
+}
 
 get_stage("after_success") %>%
   add_code_step(system("curl -s https://raw.githubusercontent.com/mlr-org/mlr3orga/master/trigger-mlr3book.sh | bash"))
