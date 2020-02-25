@@ -110,10 +110,10 @@ filter$calculate(task)
 head(as.data.table(filter), 3)
 ```
 
-    ##         feature    score
-    ## 1:  Petal.Width 43.66496
-    ## 2: Petal.Length 43.10837
-    ## 3: Sepal.Length 10.21944
+    ##         feature     score
+    ## 1:  Petal.Width 44.224198
+    ## 2: Petal.Length 43.303520
+    ## 3: Sepal.Length  9.618601
 
 ### Performance Filter
 
