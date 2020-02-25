@@ -133,9 +133,9 @@ head(as.data.table(filter), 3)
 ```
 
     ##         feature     score
-    ## 1:  Petal.Width 44.588117
-    ## 2: Petal.Length 42.501367
-    ## 3: Sepal.Length  9.898418
+    ## 1:  Petal.Width 45.865850
+    ## 2: Petal.Length 41.033283
+    ## 3: Sepal.Length  9.929504
 
 ### Performance Filter
 
