@@ -1,6 +1,6 @@
 Package: mlr3filters
 Title: Filter Based Feature Selection for 'mlr3'
-Version: 0.1.1.9001
+Version: 0.1.1.9002
 Authors@R:
     c(person(given = "Patrick",
              family = "Schratz",
@@ -51,7 +51,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 NeedsCompilation: no
-Roxygen: list(markdown = TRUE, r6 = FALSE)
+Roxygen: list(markdown = TRUE, r6 = TRUE)
 RoxygenNote: 7.0.2
 Collate:
     'Filter.R'

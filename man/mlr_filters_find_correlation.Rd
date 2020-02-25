@@ -4,7 +4,6 @@
 \alias{mlr_filters_find_correlation}
 \alias{FilterFindCorrelation}
 \title{Correlation Filter}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
 \description{
 Simple filter emulating \code{caret::findCorrelation(exact = FALSE)}.
 
@@ -18,22 +17,15 @@ with the way other filters work.
 Subsequently \code{caret::findCorrelation(cutoff = 0.9)} lists the same features
 that are excluded with \code{FilterFindCorrelation} at score 0.1 (= 1 - 0.9).
 }
-\section{Construction}{
-\preformatted{FilterFindCorrelation$new()
-mlr_filters$get("findCorrelation")
-flt("findCorrelation")
-}
-}
-
 \examples{
 ## Pearson (default)
 task = mlr3::tsk("mtcars")
-filter = flt("findCorrelation")
+filter = flt("find_correlation")
 filter$calculate(task)
 as.data.table(filter)
 
 ## Spearman
-filter = flt("findCorrelation", method = "spearman")
+filter = flt("find_correlation", method = "spearman")
 filter$calculate(task)
 as.data.table(filter)
 }
@@ -61,3 +53,82 @@ Other Filter:
 \code{\link{mlr_filters}}
 }
 \concept{Filter}
+\section{Super class}{
+\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{FilterFindCorrelation}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{FilterFindCorrelation$new()}}
+\item \href{#method-clone}{\code{FilterFindCorrelation$clone()}}
+}
+}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate">}\href{../../mlr3filters/html/Filter.html#method-calculate}{\code{mlr3filters::Filter$calculate()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format">}\href{../../mlr3filters/html/Filter.html#method-format}{\code{mlr3filters::Filter$format()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print">}\href{../../mlr3filters/html/Filter.html#method-print}{\code{mlr3filters::Filter$print()}}\out{</span>}
+}
+\out{</details>}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\subsection{Method \code{new()}}{
+Create a FilterFindCorrelation object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FilterFindCorrelation$new(
+  id = "find_correlation",
+  task_type = c("classif", "regr"),
+  param_set = ParamSet$new(list(ParamFct$new("use", default = "everything", levels =
+    c("everything", "all.obs", "complete.obs", "na.or.complete",
+    "pairwise.complete.obs")), ParamFct$new("method", default = "pearson", levels =
+    c("pearson", "kendall", "spearman")))),
+  packages = "stats",
+  feature_types = c("integer", "numeric")
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{(\code{character(1)})\cr
+Identifier for the filter.}
+
+\item{\code{task_type}}{(\code{character()})\cr
+Types of the task the filter can operator on. E.g., \code{"classif"} or
+\code{"regr"}.}
+
+\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
+Set of hyperparameters.}
+
+\item{\code{packages}}{(\code{character()})\cr
+Set of required packages.
+Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
+are not attached.}
+
+\item{\code{feature_types}}{(\code{character()})\cr
+Feature types the filter operates on.
+Must be a subset of
+\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FilterFindCorrelation$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

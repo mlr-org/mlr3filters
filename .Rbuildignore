@@ -16,3 +16,5 @@
 ^cran-comments.md
 ^CRAN-RELEASE$
 ^\.ccache$
+^codemeta\.json$
+^\.pre-commit-config\.yaml$

@@ -4,7 +4,6 @@
 \alias{mlr_filters_performance}
 \alias{FilterPerformance}
 \title{Predictive Performance Filter}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
 \description{
 Filter which uses the predictive performance of a
 \link[mlr3:Learner]{mlr3::Learner} as filter score. Performs a \code{\link[mlr3:resample]{mlr3::resample()}} for each
@@ -12,19 +11,6 @@ feature separately. The filter score is the aggregated performance of the
 \link[mlr3:Measure]{mlr3::Measure}, or the negated aggregated performance if the measure has
 to be minimized.
 }
-\section{Construction}{
-\preformatted{FilterPerformance$new(learner = mlr3::lrn("classif.rpart"),
-  resampling = mlr3::rsmp("holdout"), measure = mlr3::msr("classif.ce"))
-mlr_filters$get("performance")
-flt("performance")
-}
-\itemize{
-\item \code{learner} :: \link[mlr3:Learner]{mlr3::Learner}.
-\item \code{resampling} :: \link[mlr3:Resampling]{mlr3::Resampling}.
-\item \code{measure} :: \link[mlr3:Measure]{mlr3::Measure}.
-}
-}
-
 \examples{
 task = mlr3::tsk("iris")
 learner = mlr3::lrn("classif.rpart")
@@ -56,3 +42,102 @@ Other Filter:
 \code{\link{mlr_filters}}
 }
 \concept{Filter}
+\section{Super class}{
+\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{FilterPerformance}
+}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr}
+
+\item{\code{resampling}}{(\link[mlr3:Resampling]{mlr3::Resampling})\cr}
+
+\item{\code{measure}}{(\link[mlr3:Measure]{mlr3::Measure})\cr}
+}
+\if{html}{\out{</div>}}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{FilterPerformance$new()}}
+\item \href{#method-clone}{\code{FilterPerformance$clone()}}
+}
+}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate">}\href{../../mlr3filters/html/Filter.html#method-calculate}{\code{mlr3filters::Filter$calculate()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format">}\href{../../mlr3filters/html/Filter.html#method-format}{\code{mlr3filters::Filter$format()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print">}\href{../../mlr3filters/html/Filter.html#method-print}{\code{mlr3filters::Filter$print()}}\out{</span>}
+}
+\out{</details>}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\subsection{Method \code{new()}}{
+Create a FilterDISR object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FilterPerformance$new(
+  id = "performance",
+  task_type = learner$task_type,
+  param_set = learner$param_set,
+  feature_types = learner$feature_types,
+  learner = mlr3::lrn("classif.rpart"),
+  resampling = mlr3::rsmp("holdout"),
+  measure = mlr3::msr("classif.ce"),
+  packages = learner$packages
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{(\code{character(1)})\cr
+Identifier for the filter.}
+
+\item{\code{task_type}}{(\code{character()})\cr
+Types of the task the filter can operator on. E.g., \code{"classif"} or
+\code{"regr"}.}
+
+\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
+Set of hyperparameters.}
+
+\item{\code{feature_types}}{(\code{character()})\cr
+Feature types the filter operates on.
+Must be a subset of
+\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.}
+
+\item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr
+\link[mlr3:Learner]{mlr3::Learner} to use for model fitting.}
+
+\item{\code{resampling}}{(\link[mlr3:Resampling]{mlr3::Resampling})\cr
+\link[mlr3:Resampling]{mlr3::Resampling} to be used within resampling.}
+
+\item{\code{measure}}{(\link[mlr3:Measure]{mlr3::Measure})\cr
+\link[mlr3:Measure]{mlr3::Measure} to be used for evaluating the performance.}
+
+\item{\code{packages}}{(\code{character()})\cr
+Set of required packages.
+Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
+are not attached.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FilterPerformance$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

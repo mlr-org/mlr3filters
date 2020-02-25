@@ -4,20 +4,13 @@
 \alias{mlr_filters_auc}
 \alias{FilterAUC}
 \title{AUC Filter}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
 \description{
-Area under the (ROC) Curve filter, analogously to \code{\link[mlr3measures:auc]{mlr3measures::auc()}} from \CRANpkg{mlr3measures}.
-Missing values of the features are removed before calculating the AUC.
-If the AUC is undefined for the input, it is set to 0.5 (random classifier).
-The absolute value of the difference between the AUC and 0.5 is used as final filter value.
+Area under the (ROC) Curve filter, analogously to \code{\link[mlr3measures:auc]{mlr3measures::auc()}} from
+\CRANpkg{mlr3measures}. Missing values of the features are removed before
+calculating the AUC. If the AUC is undefined for the input, it is set to 0.5
+(random classifier). The absolute value of the difference between the AUC and
+0.5 is used as final filter value.
 }
-\section{Construction}{
-\preformatted{FilterAUC$new()
-mlr_filters$get("auc")
-flt("auc")
-}
-}
-
 \examples{
 task = mlr3::tsk("pima")
 filter = flt("auc")
@@ -48,3 +41,85 @@ Other Filter:
 \code{\link{mlr_filters}}
 }
 \concept{Filter}
+\section{Super class}{
+\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{FilterAUC}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{FilterAUC$new()}}
+\item \href{#method-clone}{\code{FilterAUC$clone()}}
+}
+}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate">}\href{../../mlr3filters/html/Filter.html#method-calculate}{\code{mlr3filters::Filter$calculate()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format">}\href{../../mlr3filters/html/Filter.html#method-format}{\code{mlr3filters::Filter$format()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print">}\href{../../mlr3filters/html/Filter.html#method-print}{\code{mlr3filters::Filter$print()}}\out{</span>}
+}
+\out{</details>}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\subsection{Method \code{new()}}{
+Create a FilterAUC object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FilterAUC$new(
+  id = "auc",
+  task_type = "classif",
+  task_properties = "twoclass",
+  param_set = ParamSet$new(),
+  packages = "mlr3measures",
+  feature_types = c("integer", "numeric")
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{(\code{character(1)})\cr
+Identifier for the filter.}
+
+\item{\code{task_type}}{(\code{character()})\cr
+Types of the task the filter can operator on. E.g., \code{"classif"} or
+\code{"regr"}.}
+
+\item{\code{task_properties}}{(\code{character()})\cr
+Required task properties, see \link[mlr3:Task]{mlr3::Task}.
+Must be a subset of
+\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_properties}}.}
+
+\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
+Set of hyperparameters.}
+
+\item{\code{packages}}{(\code{character()})\cr
+Set of required packages.
+Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
+are not attached.}
+
+\item{\code{feature_types}}{(\code{character()})\cr
+Feature types the filter operates on.
+Must be a subset of
+\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FilterAUC$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

@@ -3,7 +3,6 @@
 \name{Filter}
 \alias{Filter}
 \title{Filter Base Class}
-\format{\link[R6:R6Class]{R6::R6Class} object.}
 \description{
 Base class for filters. Predefined filters are stored in the
 \link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters}. A Filter calculates a score
@@ -11,65 +10,12 @@ for each feature of a task. Important features get a large value and
 unimportant features get a small value. Note that filter scores may also be
 negative.
 }
-\section{Construction}{
-\preformatted{f = Filter$new(id, task_type, param_set, feature_types, packages)
-}
-\itemize{
-\item \code{id} :: \code{character(1)}\cr
-Identifier for the filter.
-\item \code{task_type} :: \code{character()}\cr
-Types of the task the filter can operator on. E.g., \code{"classif"} or \code{"regr"}.
-\item \code{param_set} :: \link[paradox:ParamSet]{paradox::ParamSet}\cr
-Set of hyperparameters.
-\item \code{feature_types} :: \code{character()}\cr
-Feature types the filter operates on.
-Must be a subset of \code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.
-\item \code{task_properties} :: \code{character()}\cr
-Required task properties, see \link[mlr3:Task]{mlr3::Task}.
-Must be a subset of \code{\link[mlr3:mlr_reflections]{mlr_reflections$task_properties}}.
-\item \code{packages} :: \code{character()}\cr
-Set of required packages.
-Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and are not attached.
-}
-}
-
-\section{Fields}{
-
-
-All arguments passed to the constructor are available as fields, and additionally:
-\itemize{
-\item \code{scores} :: named \code{numeric()}\cr
-Stores the calculated filter score values as named numeric vector.
-The vector is sorted in decreasing order with possible \code{NA} values last.
-Tied values (this includes \code{NA} values) appear in a random, non-deterministic order.
-}
-}
-
-\section{Methods}{
-
-\itemize{
-\item \code{calculate(task, nfeat = NULL)}\cr
-(\link[mlr3:Task]{mlr3::Task}, \code{integer(1)}) -> \code{self}\cr
-Calculates the filter score values for the provided \link[mlr3:Task]{mlr3::Task} and stores them in field \code{scores}.
-\code{nfeat} determines the minimum number of features to score (see "Partial Scoring"), and defaults to the number of features in \code{task}.
-Loads required packages and then calls \verb{$calculate_internal()}.
-If the task has no rows, each feature gets the score \code{NA}.
-\item \code{calculate_internal(task, nfeat)}\cr
-(\link[mlr3:Task]{mlr3::Task}, \code{integer(1)}) -> named \code{numeric()}\cr
-Internal worker function. Each child class muss implement this method.
-Takes a task and the minimum number of features to score, and must return a named numeric with scores.
-The higher the score, the more important the feature.
-The calling function (\code{calculate()}) ensures that the returned vector gets sorted and that missing feature scores get a score value of \code{NA}.
-}
-}
-
-\section{Partial Scoring}{
-
+\details{
 Some features support partial scoring of the feature set:
-If \code{nfeat} is not \code{NULL}, only the best \code{nfeat} features are guaranteed to get a score.
-Additional features may be ignored for computational reasons, and then get a score value of \code{NA}.
+If \code{nfeat} is not \code{NULL}, only the best \code{nfeat} features are guaranteed to
+get a score. Additional features may be ignored for computational reasons,
+and then get a score value of \code{NA}.
 }
-
 \seealso{
 Other Filter: 
 \code{\link{mlr_filters_anova}},
@@ -92,3 +38,151 @@ Other Filter:
 \code{\link{mlr_filters}}
 }
 \concept{Filter}
+\section{Public fields}{
+\if{html}{\out{<div class="r6-fields">}}
+\describe{
+\item{\code{id}}{(\code{character(1)})\cr
+Identifier of the object.
+Used in tables, plot and text output.}
+
+\item{\code{task_type}}{(\code{character(1)})\cr
+Task type, e.g. \code{"classif"} or \code{"regr"}.
+
+For a complete list of possible task types (depending on the loaded packages),
+see \code{\link[=mlr_reflections]{mlr_reflections$task_types$type}}.}
+
+\item{\code{task_properties}}{(\code{character()})\cr
+\link[mlr3:Task]{mlr3::Task}task properties.}
+
+\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
+Set of hyperparameters.}
+
+\item{\code{feature_types}}{(\code{character()})\cr
+Feature types of the filter.}
+
+\item{\code{packages}}{(\code{\link[=character]{character()}})\cr
+Packages which this filter is relying on.}
+
+\item{\code{scores}}{Stores the calculated filter score values as named numeric vector.
+The vector is sorted in decreasing order with possible \code{NA} values
+last. Tied values (this includes \code{NA} values) appear in a random,
+non-deterministic order.}
+}
+\if{html}{\out{</div>}}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{Filter$new()}}
+\item \href{#method-format}{\code{Filter$format()}}
+\item \href{#method-print}{\code{Filter$print()}}
+\item \href{#method-calculate}{\code{Filter$calculate()}}
+\item \href{#method-clone}{\code{Filter$clone()}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\subsection{Method \code{new()}}{
+Create a Filter object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Filter$new(
+  id,
+  task_type,
+  task_properties = character(),
+  param_set = ParamSet$new(),
+  feature_types = character(),
+  packages = character()
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{(\code{character(1)})\cr
+Identifier for the filter.}
+
+\item{\code{task_type}}{(\code{character()})\cr
+Types of the task the filter can operator on. E.g., \code{"classif"} or
+\code{"regr"}.}
+
+\item{\code{task_properties}}{(\code{character()})\cr
+Required task properties, see \link[mlr3:Task]{mlr3::Task}.
+Must be a subset of
+\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_properties}}.}
+
+\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
+Set of hyperparameters.}
+
+\item{\code{feature_types}}{(\code{character()})\cr
+Feature types the filter operates on.
+Must be a subset of
+\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.}
+
+\item{\code{packages}}{(\code{character()})\cr
+Set of required packages.
+Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
+are not attached.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-format"></a>}}
+\subsection{Method \code{format()}}{
+Format helper for Filter class
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Filter$format()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-print"></a>}}
+\subsection{Method \code{print()}}{
+Printer for Filter class
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Filter$print()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-calculate"></a>}}
+\subsection{Method \code{calculate()}}{
+Calculates the filter score values for the provided \link[mlr3:Task]{mlr3::Task} and
+stores them in field \code{scores}. \code{nfeat} determines the minimum number of
+features to score (see details), and defaults to the number
+of features in \code{task}. Loads required packages and then calls
+\code{private$.calculate()} of the respective subclass.
+If the task has no rows, each feature gets the score \code{NA}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Filter$calculate(task, nfeat = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{task}}{(\link[mlr3:Task]{mlr3::Task})\cr
+\link[mlr3:Task]{mlr3::Task} to calculate the filter scores for.}
+
+\item{\code{nfeat}}{(\code{\link[=integer]{integer()}})\cr
+THe minimum number of features to calculate filter scores for.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Filter$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}
