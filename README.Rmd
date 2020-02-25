@@ -35,6 +35,7 @@ remotes::install_github("mlr-org/mlr3filters")
 ### Filter Example
 
 ```{r}
+set.seed(1)
 library("mlr3")
 library("mlr3filters")
 
@@ -46,7 +47,6 @@ as.data.table(filter$calculate(task))
 ### Implemented Filters
 
 ```{r echo = FALSE, message=FALSE}
-set.seed(1)
 library("mlr3filters")
 library("data.table")
 
@@ -76,7 +76,7 @@ knitr::kable(tab[order(Name)], escape = F, format = "markdown")
 
 The following learners allow the extraction of variable importance and therefore are supported by `FilterImportance`:
 
-```{r echo=FALSE}
+```{r echo=FALSE, warning=FALSE}
 library("mlr3learners")
 tab = as.data.table(mlr_learners)
 tab[sapply(properties, is.element, el = "importance"), key]
