@@ -1,0 +1,288 @@
+{
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
+  "@type": "SoftwareSourceCode",
+  "identifier": "mlr3filters",
+  "description": "Extends 'mlr3' with filter methods for feature\n    selection. Besides standalone filter methods built-in methods of any\n    machine-learning algorithm are supported.  Partial scoring of\n    multivariate filter methods is supported.",
+  "name": "mlr3filters: Filter Based Feature Selection for 'mlr3'",
+  "codeRepository": "https://github.com/mlr-org/mlr3filters",
+  "relatedLink": [
+    "https://mlr3filters.mlr-org.com",
+    "https://CRAN.R-project.org/package=mlr3filters"
+  ],
+  "issueTracker": "https://github.com/mlr-org/mlr3filters/issues",
+  "license": "https://spdx.org/licenses/LGPL-3.0",
+  "version": "0.1.1.9002",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "version": "3.6.2",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 3.6.2 (2019-12-12)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Patrick",
+      "familyName": "Schratz",
+      "email": "patrick.schratz@gmail.com",
+      "@id": "https://orcid.org/0000-0003-0748-6624"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Michel",
+      "familyName": "Lang",
+      "email": "michellang@gmail.com",
+      "@id": "https://orcid.org/0000-0001-9754-0393"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Bernd",
+      "familyName": "Bischl",
+      "email": "bernd_bischl@gmx.net",
+      "@id": "https://orcid.org/0000-0001-6002-6980"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Martin",
+      "familyName": "Binder",
+      "email": "mlr.developer@mb706.com"
+    }
+  ],
+  "contributor": {},
+  "copyrightHolder": {},
+  "funder": {},
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Patrick",
+      "familyName": "Schratz",
+      "email": "patrick.schratz@gmail.com",
+      "@id": "https://orcid.org/0000-0003-0748-6624"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "care",
+      "name": "care",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=care"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "caret",
+      "name": "caret",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=caret"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "FSelectorRcpp",
+      "name": "FSelectorRcpp",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=FSelectorRcpp"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "lgr",
+      "name": "lgr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lgr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "mlr3learners",
+      "name": "mlr3learners",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=mlr3learners"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "mlr3measures",
+      "name": "mlr3measures",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=mlr3measures"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "praznik",
+      "name": "praznik",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=praznik"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rpart",
+      "name": "rpart",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rpart"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    }
+  ],
+  "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": ">= 3.1.0"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "backports",
+      "name": "backports",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=backports"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "checkmate",
+      "name": "checkmate",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=checkmate"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "data.table",
+      "name": "data.table",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=data.table"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "mlr3",
+      "name": "mlr3",
+      "version": ">= 0.1.2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=mlr3"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "mlr3misc",
+      "name": "mlr3misc",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=mlr3misc"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "paradox",
+      "name": "paradox",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=paradox"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "R6",
+      "name": "R6",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=R6"
+    }
+  ],
+  "releaseNotes": "https://github.com/mlr-org/mlr3filters/blob/master/NEWS.md",
+  "readme": "https://github.com/mlr-org/mlr3filters/blob/master/README.md",
+  "fileSize": "22.613KB",
+  "contIntegration": "https://codecov.io/github/mlr-org/mlr3filters?branch=master",
+  "keywords": [
+    "filter",
+    "mlr",
+    "r",
+    "filters",
+    "mlr3",
+    "feature-selection",
+    "variable-importance"
+  ]
+}
