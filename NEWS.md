@@ -1,3 +1,16 @@
+# mlr3filters 0.2.0
+
+## Internal
+
+* Use `private$.calculate` instead of public "calculate" method for Filters 
+* switch from Travis to GitHub Actions
+* Use Roxygen R6 notation for docs
+
+## Enhancements
+
+* new filter `FilterFindCorrelation` (#62, @mb706)
+
+
 # mlr3filters 0.1.1.9002
 
 * Use `private$.calculate` instead of public calculate method for Filters 
