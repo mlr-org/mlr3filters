@@ -1,16 +1,6 @@
 #' @title Correlation Filter
 #'
-#' @usage NULL
 #' @name mlr_filters_find_correlation
-#' @format [R6::R6Class] inheriting from [Filter].
-#' @include Filter.R
-#'
-#' @section Construction:
-#' ```
-#' FilterFindCorrelation$new()
-#' mlr_filters$get("findCorrelation")
-#' flt("findCorrelation")
-#' ```
 #'
 #' @description
 #' Simple filter emulating `caret::findCorrelation(exact = FALSE)`.
@@ -31,32 +21,58 @@
 #' @examples
 #' ## Pearson (default)
 #' task = mlr3::tsk("mtcars")
-#' filter = flt("findCorrelation")
+#' filter = flt("find_correlation")
 #' filter$calculate(task)
 #' as.data.table(filter)
 #'
 #' ## Spearman
-#' filter = flt("findCorrelation", method = "spearman")
+#' filter = flt("find_correlation", method = "spearman")
 #' filter$calculate(task)
 #' as.data.table(filter)
 FilterFindCorrelation = R6Class("FilterFindCorrelation", inherit = Filter,
-  public = list(
-    initialize = function() {
-      super$initialize(
-        id = "findCorrelation",
-        packages = "stats",
-        feature_types = c("integer", "numeric"),
-        task_type = mlr_reflections$task_types$type, # basically any task
-        param_set = ParamSet$new(list(
-          ParamFct$new("use", default = "everything",
-            levels = c("everything", "all.obs", "complete.obs", "na.or.complete", "pairwise.complete.obs")),
-          ParamFct$new("method", default = "pearson",
-            levels = c("pearson", "kendall", "spearman"))
-        ))
-      )
-    },
 
-    calculate_internal = function(task, nfeat) {
+  public = list(
+
+    #' @description Create a FilterFindCorrelation object.
+    #' @param id (`character(1)`)\cr
+    #'   Identifier for the filter.
+    #' @param task_type (`character()`)\cr
+    #'   Types of the task the filter can operator on. E.g., `"classif"` or
+    #'   `"regr"`.
+    #' @param param_set ([paradox::ParamSet])\cr
+    #'   Set of hyperparameters.
+    #' @param feature_types (`character()`)\cr
+    #'   Feature types the filter operates on.
+    #'   Must be a subset of
+    #'   [`mlr_reflections$task_feature_types`][mlr3::mlr_reflections].
+    #' @param packages (`character()`)\cr
+    #'   Set of required packages.
+    #'   Note that these packages will be loaded via [requireNamespace()], and
+    #'   are not attached.
+    initialize = function(id = "find_correlation",
+      task_type = c("classif", "regr"),
+      param_set = ParamSet$new(list(
+        ParamFct$new("use", default = "everything",
+          levels = c("everything", "all.obs", "complete.obs", "na.or.complete",
+            "pairwise.complete.obs")),
+        ParamFct$new("method", default = "pearson",
+          levels = c("pearson", "kendall", "spearman"))
+      )),
+      packages = "stats",
+      feature_types = c("integer", "numeric")) {
+      super$initialize(
+        id = id,
+        task_type = task_type,
+        param_set = param_set,
+        feature_types = feature_types,
+        packages = packages
+      )
+    }
+  ),
+
+  private = list(
+
+    .calculate = function(task, nfeat) {
 
       fn = task$feature_names
       pv = self$param_set$values
@@ -88,4 +104,4 @@ FilterFindCorrelation = R6Class("FilterFindCorrelation", inherit = Filter,
 )
 
 #' @include mlr_filters.R
-mlr_filters$add("findCorrelation", FilterFindCorrelation)
+mlr_filters$add("find_correlation", FilterFindCorrelation)
