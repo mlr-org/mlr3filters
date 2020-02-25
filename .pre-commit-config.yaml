@@ -9,3 +9,4 @@ repos:
     -   id: readme-rmd-rendered
     -   id: roxygenize
     -   id: use-tidy-description
+    -   id: codemeta-description-updated
