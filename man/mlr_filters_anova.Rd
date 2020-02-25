@@ -4,21 +4,14 @@
 \alias{mlr_filters_anova}
 \alias{FilterAnova}
 \title{ANOVA F-Test Filter}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
 \description{
 ANOVA F-Test filter calling \code{\link[stats:aov]{stats::aov()}}. Note that this is
 equivalent to a \eqn{t}-test for binary classification.
 
-The filter value is \code{-log10(p)} where \code{p} is the \eqn{p}-value. This transformation
-is necessary to ensure numerical stability for very small \eqn{p}-values.
+The filter value is \code{-log10(p)} where \code{p} is the \eqn{p}-value. This
+transformation is necessary to ensure numerical stability for very small
+\eqn{p}-values.
 }
-\section{Construction}{
-\preformatted{FilterAnova$new()
-mlr_filters$get("anova")
-flt("anova")
-}
-}
-
 \examples{
 task = mlr3::tsk("iris")
 filter = flt("anova")
@@ -52,3 +45,85 @@ Other Filter:
 \code{\link{mlr_filters}}
 }
 \concept{Filter}
+\section{Super class}{
+\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{FilterAnova}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{FilterAnova$new()}}
+\item \href{#method-clone}{\code{FilterAnova$clone()}}
+}
+}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate">}\href{../../mlr3filters/html/Filter.html#method-calculate}{\code{mlr3filters::Filter$calculate()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format">}\href{../../mlr3filters/html/Filter.html#method-format}{\code{mlr3filters::Filter$format()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print">}\href{../../mlr3filters/html/Filter.html#method-print}{\code{mlr3filters::Filter$print()}}\out{</span>}
+}
+\out{</details>}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\subsection{Method \code{new()}}{
+Create a FilterAnova object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FilterAnova$new(
+  id = "anova",
+  task_type = "classif",
+  task_properties = character(),
+  param_set = ParamSet$new(),
+  feature_types = c("integer", "numeric"),
+  packages = "stats"
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{(\code{character(1)})\cr
+Identifier for the filter.}
+
+\item{\code{task_type}}{(\code{character()})\cr
+Types of the task the filter can operator on. E.g., \code{"classif"} or
+\code{"regr"}.}
+
+\item{\code{task_properties}}{(\code{character()})\cr
+Required task properties, see \link[mlr3:Task]{mlr3::Task}.
+Must be a subset of
+\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_properties}}.}
+
+\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
+Set of hyperparameters.}
+
+\item{\code{feature_types}}{(\code{character()})\cr
+Feature types the filter operates on.
+Must be a subset of
+\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.}
+
+\item{\code{packages}}{(\code{character()})\cr
+Set of required packages.
+Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
+are not attached.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FilterAnova$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

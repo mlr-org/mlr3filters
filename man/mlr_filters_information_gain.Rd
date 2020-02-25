@@ -4,7 +4,6 @@
 \alias{mlr_filters_information_gain}
 \alias{FilterInformationGain}
 \title{Information Gain Filter}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
 \description{
 Information gain filter calling
 \code{\link[FSelectorRcpp:information_gain]{FSelectorRcpp::information_gain()}} in package \CRANpkg{FSelectorRcpp}. Set
@@ -15,13 +14,6 @@ parameter \code{"type"} to \code{"gainratio"} to calculate the gain ratio, or se
 Argument \code{equal} defaults to \code{FALSE} for classification tasks, and to
 \code{TRUE} for regression tasks.
 }
-\section{Construction}{
-\preformatted{FilterInformationGain$new()
-mlr_filters$get("information_gain")
-flt("information_gain")
-}
-}
-
 \examples{
 ## InfoGain (default)
 task = mlr3::tsk("pima")
@@ -61,3 +53,82 @@ Other Filter:
 \code{\link{mlr_filters}}
 }
 \concept{Filter}
+\section{Super class}{
+\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{FilterInformationGain}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{FilterInformationGain$new()}}
+\item \href{#method-clone}{\code{FilterInformationGain$clone()}}
+}
+}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate">}\href{../../mlr3filters/html/Filter.html#method-calculate}{\code{mlr3filters::Filter$calculate()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format">}\href{../../mlr3filters/html/Filter.html#method-format}{\code{mlr3filters::Filter$format()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print">}\href{../../mlr3filters/html/Filter.html#method-print}{\code{mlr3filters::Filter$print()}}\out{</span>}
+}
+\out{</details>}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\subsection{Method \code{new()}}{
+Create a FilterInformationGain object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FilterInformationGain$new(
+  id = "information_gain",
+  task_type = c("classif", "regr"),
+  param_set = ParamSet$new(list(ParamFct$new("type", levels = c("infogain", "gainratio",
+    "symuncert"), default = "infogain"), ParamLgl$new("equal", default = FALSE),
+    ParamLgl$new("discIntegers", default = TRUE), ParamInt$new("threads", lower = 0L,
+    default = 1L))),
+  packages = "FSelectorRcpp",
+  feature_types = c("integer", "numeric", "factor", "ordered")
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{(\code{character(1)})\cr
+Identifier for the filter.}
+
+\item{\code{task_type}}{(\code{character()})\cr
+Types of the task the filter can operator on. E.g., \code{"classif"} or
+\code{"regr"}.}
+
+\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
+Set of hyperparameters.}
+
+\item{\code{packages}}{(\code{character()})\cr
+Set of required packages.
+Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
+are not attached.}
+
+\item{\code{feature_types}}{(\code{character()})\cr
+Feature types the filter operates on.
+Must be a subset of
+\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FilterInformationGain$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

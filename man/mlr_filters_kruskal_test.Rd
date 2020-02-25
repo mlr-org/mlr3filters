@@ -4,20 +4,14 @@
 \alias{mlr_filters_kruskal_test}
 \alias{FilterKruskalTest}
 \title{Kruskal-Wallis Test Filter}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{Filter}.}
 \description{
-Kruskal-Wallis rank sum test filter calling \code{\link[stats:kruskal.test]{stats::kruskal.test()}}.
+Kruskal-Wallis rank sum test filter calling
+\code{\link[stats:kruskal.test]{stats::kruskal.test()}}.
 
-The filter value is \code{-log10(p)} where \code{p} is the \eqn{p}-value. This transformation
-is necessary to ensure numerical stability for very small \eqn{p}-values.
+The filter value is \code{-log10(p)} where \code{p} is the \eqn{p}-value. This
+transformation is necessary to ensure numerical stability for very small
+\eqn{p}-values.
 }
-\section{Construction}{
-\preformatted{FilterKruskalTest$new()
-mlr_filters$get("kruskal_test")
-flt("kruskal_test")
-}
-}
-
 \examples{
 task = mlr3::tsk("iris")
 filter = flt("kruskal_test")
@@ -51,3 +45,80 @@ Other Filter:
 \code{\link{mlr_filters}}
 }
 \concept{Filter}
+\section{Super class}{
+\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{FilterKruskalTest}
+}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{FilterKruskalTest$new()}}
+\item \href{#method-clone}{\code{FilterKruskalTest$clone()}}
+}
+}
+\if{html}{
+\out{<details open ><summary>Inherited methods</summary>}
+\itemize{
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate">}\href{../../mlr3filters/html/Filter.html#method-calculate}{\code{mlr3filters::Filter$calculate()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format">}\href{../../mlr3filters/html/Filter.html#method-format}{\code{mlr3filters::Filter$format()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print">}\href{../../mlr3filters/html/Filter.html#method-print}{\code{mlr3filters::Filter$print()}}\out{</span>}
+}
+\out{</details>}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\subsection{Method \code{new()}}{
+Create a FilterKruskalTest object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FilterKruskalTest$new(
+  id = "kruskal_test",
+  task_type = "classif",
+  param_set = ParamSet$new(list(ParamFct$new("na.action", default = "na.omit", levels =
+    c("na.omit", "na.fail", "na.exclude", "na.pass")))),
+  packages = "stats",
+  feature_types = c("integer", "numeric")
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{id}}{(\code{character(1)})\cr
+Identifier for the filter.}
+
+\item{\code{task_type}}{(\code{character()})\cr
+Types of the task the filter can operator on. E.g., \code{"classif"} or
+\code{"regr"}.}
+
+\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
+Set of hyperparameters.}
+
+\item{\code{packages}}{(\code{character()})\cr
+Set of required packages.
+Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
+are not attached.}
+
+\item{\code{feature_types}}{(\code{character()})\cr
+Feature types the filter operates on.
+Must be a subset of
+\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{FilterKruskalTest$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}
