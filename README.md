@@ -59,29 +59,53 @@ as.data.table(filter$calculate(task))
 
 ### Implemented Filters
 
-| Name              | Task Type      | Feature Types                                | Package                                                           |
-| :---------------- | :------------- | :------------------------------------------- | :---------------------------------------------------------------- |
-| anova             | Classif        | Integer, Numeric                             | stats                                                             |
-| auc               | Classif        | Integer, Numeric                             | [mlr3measures](https://cran.r-project.org/package=mlr3measures)   |
-| carscore          | Regr           | Numeric                                      | [care](https://cran.r-project.org/package=care)                   |
-| cmim              | Classif & Regr | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
-| correlation       | Regr           | Integer, Numeric                             | stats                                                             |
-| disr              | Classif        | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
-| importance        | Universal      | Logical, Integer, Numeric, Factor, Ordered   | [rpart](https://cran.r-project.org/package=rpart)                 |
-| information\_gain | Classif & Regr | Integer, Numeric, Factor, Ordered            | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
-| jmi               | Classif        | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
-| jmim              | Classif        | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
-| kruskal\_test     | Classif        | Integer, Numeric                             | stats                                                             |
-| mim               | Classif        | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
-| mrmr              | Classif & Regr | Numeric, Factor, Integer, Character, Logical | [praznik](https://cran.r-project.org/package=praznik)             |
-| njmim             | Classif        | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
-| performance       | Universal      | Logical, Integer, Numeric, Factor, Ordered   | [rpart](https://cran.r-project.org/package=rpart)                 |
-| variance          | Classif & Regr | Integer, Numeric                             | stats                                                             |
+| Name              | Task Type      | Feature Types                              | Package                                                           |
+| :---------------- | :------------- | :----------------------------------------- | :---------------------------------------------------------------- |
+| anova             | Classif        | Integer, Numeric                           | stats                                                             |
+| auc               | Classif        | Integer, Numeric                           | [mlr3measures](https://cran.r-project.org/package=mlr3measures)   |
+| carscore          | Regr           | Numeric                                    | [care](https://cran.r-project.org/package=care)                   |
+| cmim              | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| correlation       | Regr           | Integer, Numeric                           | stats                                                             |
+| disr              | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| find\_correlation | Classif & Regr | Integer, Numeric                           | stats                                                             |
+| importance        | Universal      | Logical, Integer, Numeric, Factor, Ordered | [rpart](https://cran.r-project.org/package=rpart)                 |
+| information\_gain | Classif & Regr | Integer, Numeric, Factor, Ordered          | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
+| jmi               | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| jmim              | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| kruskal\_test     | Classif        | Integer, Numeric                           | stats                                                             |
+| mim               | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| mrmr              | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| njmim             | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| performance       | Universal      | Logical, Integer, Numeric, Factor, Ordered | [character(0)](https://cran.r-project.org/package=character\(0\)) |
+| variance          | Classif & Regr | Integer, Numeric                           | stats                                                             |
 
 ### Variable Importance Filters
 
 The following learners allow the extraction of variable importance and
 therefore are supported by `FilterImportance`:
+
+    ## Warning: Package 'glmnet' required but not installed for Learner
+    ## 'classif.glmnet'
+
+    ## Warning: Package 'kknn' required but not installed for Learner 'classif.kknn'
+
+    ## Warning: Package 'e1071' required but not installed for Learner
+    ## 'classif.naive_bayes'
+
+    ## Warning: Package 'e1071' required but not installed for Learner 'classif.svm'
+
+    ## Warning: Package 'xgboost' required but not installed for Learner
+    ## 'classif.xgboost'
+
+    ## Warning: Package 'glmnet' required but not installed for Learner 'regr.glmnet'
+
+    ## Warning: Package 'kknn' required but not installed for Learner 'regr.kknn'
+
+    ## Warning: Package 'DiceKriging' required but not installed for Learner 'regr.km'
+
+    ## Warning: Package 'e1071' required but not installed for Learner 'regr.svm'
+
+    ## Warning: Package 'xgboost' required but not installed for Learner 'regr.xgboost'
 
     ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
     ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
@@ -109,9 +133,9 @@ head(as.data.table(filter), 3)
 ```
 
     ##         feature     score
-    ## 1:  Petal.Width 45.865850
-    ## 2: Petal.Length 41.033283
-    ## 3: Sepal.Length  9.929504
+    ## 1:  Petal.Width 44.588117
+    ## 2: Petal.Length 42.501367
+    ## 3: Sepal.Length  9.898418
 
 ### Performance Filter
 
