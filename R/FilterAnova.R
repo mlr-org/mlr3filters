@@ -59,7 +59,7 @@ FilterAnova = R6Class("FilterAnova", inherit = Filter,
     }
   ),
 
-  privat = list(
+  private = list(
 
     .calculate = function(task, nfeat) {
       data = task$data()
