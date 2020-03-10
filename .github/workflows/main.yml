@@ -22,7 +22,7 @@ jobs:
           - { os: windows-latest, r: "release" }
           - { os: macOS-latest, r: "release" }
           - { os: macOS-latest, r: "devel" }
-          - { os: ubuntu-18.04, r: "release" }
+          - { os: ubuntu-latest, r: "release" }
 
     env:
       # otherwise remotes::fun() errors cause the build to fail. Example: Unavailability of binaries
@@ -36,8 +36,6 @@ jobs:
       CCACHE_SLOPPINESS: include_file_ctime
       # make sure to run `tic::use_ghactions_deploy()` to set up deployment
       TIC_DEPLOY_KEY: ${{ secrets.TIC_DEPLOY_KEY }}
-      # codecov API KEY to upload covr results. Query repo-specific token via https://codecov.io/gh/<owner>/<repo>/settings
-      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       # prevent rgl issues because no X11 display is available
       RGL_USE_NULL: true
 
@@ -73,6 +71,7 @@ jobs:
         run: echo "::set-output name=datew::$(date '+%Y-%V')"
 
       - name: "[Cache] Cache R packages"
+        if: runner.os != 'Windows'
         uses: pat-s/always-upload-cache@v1.1.4
         with:
           path: ${{ env.R_LIBS_USER }}
@@ -80,11 +79,12 @@ jobs:
           restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
 
       - name: "[Cache] Cache ccache"
+        if: runner.os != 'Windows'
         uses: pat-s/always-upload-cache@v1.1.4
         with:
           path: ${{ env.CCACHE_DIR}}
-          key: ${{ runner.os }}-r-${{ matrix.config.r }}-ccache-test6-${{steps.datew.outputs.datew}}
-          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-ccache-test6-${{steps.datew.outputs.datew}}
+          key: ${{ runner.os }}-r-${{ matrix.config.r }}-ccache-${{steps.datew.outputs.datew}}
+          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-ccache-${{steps.datew.outputs.datew}}
 
       # install ccache and write config file
       - name: "[Linux] ccache"
@@ -102,6 +102,7 @@ jobs:
           wget https://cran.r-project.org/bin/macosx/tools/clang-7.0.0.pkg
           sudo installer -package clang-7.0.0.pkg -target /
           mkdir -p ~/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache /usr/local/clang7/bin/clang\nCC11=ccache /usr/local/clang7/bin/clang\nCC14=ccache /usr/local/clang7/bin/clang\nCXX=ccache /usr/local/clang7/bin/clang++\nCXX11=ccache /usr/local/clang7/bin/clang++\nCXX14=ccache /usr/local/clang7/bin/clang++\nC11=ccache /usr/local/clang7/bin/clang++\nC14=ccache /usr/local/clang7/bin/clang++\nF77=ccache gfortran/nCFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\nCXXFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\nCCFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\nCFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk' > $HOME/.R/Makevars
+          R CMD javareconf
 
       # install ccache and write config file
       # mirror the setup described in https://github.com/rmacoslib/r-macos-rtools
@@ -112,17 +113,17 @@ jobs:
           wget https://cran.r-project.org/bin/macosx/tools/clang-8.0.0.pkg
           sudo installer -package clang-8.0.0.pkg -target /
           mkdir -p ~/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache /usr/local/clang8/bin/clang\nCC11=ccache /usr/local/clang8/bin/clang\nCC14=ccache /usr/local/clang8/bin/clang\nCXX=ccache /usr/local/clang8/bin/clang++\nCXX11=ccache /usr/local/clang8/bin/clang++\nCXX14=ccache /usr/local/clang8/bin/clang++\nC11=ccache /usr/local/clang8/bin/clang++\nC14=ccache /usr/local/clang8/bin/clang++\nF88=ccache gfortran/nCFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\nCXXFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\nCCFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\nCFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk' > $HOME/.R/Makevars
+          R CMD javareconf
 
       # for some strange Windows reason this step and the next one need to be decoupled
       - name: "[Stage] Prepare"
         run: |
           Rscript -e "if (!requireNamespace('remotes')) install.packages('remotes', type = 'source')"
-          Rscript -e "if (getRversion() < '3.2' && !requireNamespace('curl')) install.packages('curl')"
+          Rscript -e "if (getRversion() < '3.2' && !requireNamespace('curl')) install.packages('curl', type = 'source')"
 
       - name: "[Stage] Install"
         if: matrix.config.os != 'macOS-latest' || matrix.config.r != 'devel'
-        run: |
-          Rscript -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
+        run: Rscript -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
 
       # macOS devel needs its own stage because we need to work with an options to suppress the usage of binaries
       - name: "[Stage] Prepare & Install (macOS-devel)"
@@ -144,16 +145,16 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
-
       - name: "[Stage] Before Deploy"
-        if: runner.os != 'Windows'
+        if: matrix.config.os == 'macOS-latest' && matrix.config.r == 'release'
         run: |
           Rscript -e "tic::before_deploy()"
 
       - name: "[Stage] Deploy"
-        if: runner.os != 'Windows'
+        if: matrix.config.os == 'macOS-latest' && matrix.config.r == 'release'
         run: Rscript -e "tic::deploy()"
 
       - name: "[Stage] After Deploy"
-        if: runner.os != 'Windows'
+        if: matrix.config.os == 'macOS-latest' && matrix.config.r == 'release'
         run: Rscript -e "tic::after_deploy()"
+

@@ -19,3 +19,5 @@
 ^codemeta\.json$
 ^\.pre-commit-config\.yaml$
 ^clang-.*$
+^revdep$
+^clang-.*
