@@ -40,6 +40,7 @@ Other Filter:
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},
+\code{\link{mlr_filters_importance}},
 \code{\link{mlr_filters_information_gain}},
 \code{\link{mlr_filters_jmim}},
 \code{\link{mlr_filters_jmi}},
@@ -48,7 +49,6 @@ Other Filter:
 \code{\link{mlr_filters_mrmr}},
 \code{\link{mlr_filters_njmim}},
 \code{\link{mlr_filters_performance}},
-\code{\link{mlr_filters_variable_importance}},
 \code{\link{mlr_filters_variance}},
 \code{\link{mlr_filters}}
 }
