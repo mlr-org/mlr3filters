@@ -55,7 +55,8 @@ FilterImportance = R6Class("FilterImportance", inherit = Filter,
         task_type = task_type,
         feature_types = feature_types,
         packages = packages,
-        param_set = param_set
+        param_set = param_set,
+        man = "mlr3filters::mlr_filters_importance"
       )
     }
   ),

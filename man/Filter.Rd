@@ -63,6 +63,10 @@ Feature types of the filter.}
 \item{\code{packages}}{(\code{\link[=character]{character()}})\cr
 Packages which this filter is relying on.}
 
+\item{\code{man}}{(\code{character(1)})\cr
+String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.
+Defaults to \code{NA}, but can be set by child classes.}
+
 \item{\code{scores}}{Stores the calculated filter score values as named numeric vector.
 The vector is sorted in decreasing order with possible \code{NA} values
 last. Tied values (this includes \code{NA} values) appear in a random,
@@ -76,6 +80,7 @@ non-deterministic order.}
 \item \href{#method-new}{\code{Filter$new()}}
 \item \href{#method-format}{\code{Filter$format()}}
 \item \href{#method-print}{\code{Filter$print()}}
+\item \href{#method-help}{\code{Filter$help()}}
 \item \href{#method-calculate}{\code{Filter$calculate()}}
 \item \href{#method-clone}{\code{Filter$clone()}}
 }
@@ -91,7 +96,8 @@ Create a Filter object.
   task_properties = character(),
   param_set = ParamSet$new(),
   feature_types = character(),
-  packages = character()
+  packages = character(),
+  man = NA_character_
 )}\if{html}{\out{</div>}}
 }
 
@@ -122,6 +128,10 @@ Must be a subset of
 Set of required packages.
 Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
 are not attached.}
+
+\item{\code{man}}{(\code{character(1)})\cr
+String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.
+The referenced help package can be opened via method \verb{$help()}.}
 }
 \if{html}{\out{</div>}}
 }
@@ -141,6 +151,15 @@ Format helper for Filter class
 Printer for Filter class
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Filter$print()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-help"></a>}}
+\subsection{Method \code{help()}}{
+Opens the corresponding help page referenced by field \verb{$man}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Filter$help()}\if{html}{\out{</div>}}
 }
 
 }

@@ -54,7 +54,8 @@ FilterAnova = R6Class("FilterAnova", inherit = Filter,
         id = id,
         packages = packages,
         feature_types = feature_types,
-        task_type = task_type
+        task_type = task_type,
+        man = "mlr3filters::mlr_filters_anova"
       )
     }
   ),

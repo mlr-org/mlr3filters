@@ -68,6 +68,7 @@ Other Filter:
 \itemize{
 \item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate">}\href{../../mlr3filters/html/Filter.html#method-calculate}{\code{mlr3filters::Filter$calculate()}}\out{</span>}
 \item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format">}\href{../../mlr3filters/html/Filter.html#method-format}{\code{mlr3filters::Filter$format()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help">}\href{../../mlr3filters/html/Filter.html#method-help}{\code{mlr3filters::Filter$help()}}\out{</span>}
 \item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print">}\href{../../mlr3filters/html/Filter.html#method-print}{\code{mlr3filters::Filter$print()}}\out{</span>}
 }
 \out{</details>}
@@ -84,8 +85,7 @@ Create a FilterDISR object.
   feature_types = learner$feature_types,
   learner = mlr3::lrn("classif.rpart"),
   resampling = mlr3::rsmp("holdout"),
-  measure = mlr3::msr("classif.ce"),
-  packages = learner$packages
+  measure = mlr3::msr("classif.ce")
 )}\if{html}{\out{</div>}}
 }
 
@@ -115,11 +115,6 @@ Must be a subset of
 
 \item{\code{measure}}{(\link[mlr3:Measure]{mlr3::Measure})\cr
 \link[mlr3:Measure]{mlr3::Measure} to be used for evaluating the performance.}
-
-\item{\code{packages}}{(\code{character()})\cr
-Set of required packages.
-Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
-are not attached.}
 }
 \if{html}{\out{</div>}}
 }

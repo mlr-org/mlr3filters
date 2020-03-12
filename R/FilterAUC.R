@@ -52,7 +52,8 @@ FilterAUC = R6Class("FilterAUC", inherit = Filter,
         task_type = task_type,
         task_properties = task_properties,
         feature_types = feature_types,
-        packages = packages
+        packages = packages,
+        man = "mlr3filters::mlr_filters_anova"
       )
     }
   ),
