@@ -60,25 +60,24 @@ as.data.table(filter$calculate(task))
 
 ### Implemented Filters
 
-| Name              | Task Type      | Feature Types                              | Package                                                           |
-| :---------------- | :------------- | :----------------------------------------- | :---------------------------------------------------------------- |
-| anova             | Classif        | Integer, Numeric                           | stats                                                             |
-| auc               | Classif        | Integer, Numeric                           | [mlr3measures](https://cran.r-project.org/package=mlr3measures)   |
-| carscore          | Regr           | Numeric                                    | [care](https://cran.r-project.org/package=care)                   |
-| cmim              | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
-| correlation       | Regr           | Integer, Numeric                           | stats                                                             |
-| disr              | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
-| find\_correlation | Classif & Regr | Integer, Numeric                           | stats                                                             |
-| importance        | Universal      | Logical, Integer, Numeric, Factor, Ordered | [rpart](https://cran.r-project.org/package=rpart)                 |
-| information\_gain | Classif & Regr | Integer, Numeric, Factor, Ordered          | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
-| jmi               | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
-| jmim              | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
-| kruskal\_test     | Classif        | Integer, Numeric                           | stats                                                             |
-| mim               | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
-| mrmr              | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
-| njmim             | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
-| performance       | Universal      | Logical, Integer, Numeric, Factor, Ordered | [character(0)](https://cran.r-project.org/package=character\(0\)) |
-| variance          | Classif & Regr | Integer, Numeric                           | stats                                                             |
+| Name              | Task Type      | Feature Types                                | Package                                                           |
+| :---------------- | :------------- | :------------------------------------------- | :---------------------------------------------------------------- |
+| anova             | Classif        | Integer, Numeric                             | stats                                                             |
+| auc               | Classif        | Integer, Numeric                             | [mlr3measures](https://cran.r-project.org/package=mlr3measures)   |
+| carscore          | Regr           | Numeric                                      | [care](https://cran.r-project.org/package=care)                   |
+| cmim              | Classif & Regr | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
+| correlation       | Regr           | Integer, Numeric                             | stats                                                             |
+| disr              | Classif        | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
+| importance        | Universal      | Logical, Integer, Numeric, Factor, Ordered   | [rpart](https://cran.r-project.org/package=rpart)                 |
+| information\_gain | Classif & Regr | Integer, Numeric, Factor, Ordered            | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
+| jmi               | Classif        | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
+| jmim              | Classif        | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
+| kruskal\_test     | Classif        | Integer, Numeric                             | stats                                                             |
+| mim               | Classif        | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
+| mrmr              | Classif & Regr | Numeric, Factor, Integer, Character, Logical | [praznik](https://cran.r-project.org/package=praznik)             |
+| njmim             | Classif        | Integer, Numeric, Factor, Ordered            | [praznik](https://cran.r-project.org/package=praznik)             |
+| performance       | Universal      | Logical, Integer, Numeric, Factor, Ordered   | [rpart](https://cran.r-project.org/package=rpart)                 |
+| variance          | Classif & Regr | Integer, Numeric                             | stats                                                             |
 
 ### Variable Importance Filters
 
@@ -110,10 +109,10 @@ filter$calculate(task)
 head(as.data.table(filter), 3)
 ```
 
-    ##         feature     score
-    ## 1:  Petal.Width 44.224198
-    ## 2: Petal.Length 43.303520
-    ## 3: Sepal.Length  9.618601
+    ##         feature    score
+    ## 1:  Petal.Width 43.66496
+    ## 2: Petal.Length 43.10837
+    ## 3: Sepal.Length 10.21944
 
 ### Performance Filter
 
