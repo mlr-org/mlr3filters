@@ -21,3 +21,4 @@
 ^clang-.*$
 ^revdep$
 ^clang-.*
+^\.vscode$
