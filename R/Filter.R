@@ -64,8 +64,9 @@ Filter = R6Class("Filter",
     #'   Note that these packages will be loaded via [requireNamespace()], and
     #'   are not attached.
     #' @param man (`character(1)`)\cr
-    #'   String in the format `[pkg]::[topic]` pointing to a manual page for this object.
-    #'   The referenced help package can be opened via method `$help()`.
+    #'   String in the format `[pkg]::[topic]` pointing to a manual page for
+    #'   this object. The referenced help package can be opened via method
+    #'   `$help()`.
     initialize = function(id, task_type, task_properties = character(),
       param_set = ParamSet$new(), feature_types = character(),
       packages = character(), man = NA_character_) {

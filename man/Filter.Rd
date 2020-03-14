@@ -87,6 +87,7 @@ non-deterministic order.}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a Filter object.
 \subsection{Usage}{
@@ -130,14 +131,16 @@ Note that these packages will be loaded via \code{\link[=requireNamespace]{requi
 are not attached.}
 
 \item{\code{man}}{(\code{character(1)})\cr
-String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.
-The referenced help package can be opened via method \verb{$help()}.}
+String in the format \verb{[pkg]::[topic]} pointing to a manual page for
+this object. The referenced help package can be opened via method
+\verb{$help()}.}
 }
 \if{html}{\out{</div>}}
 }
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-format"></a>}}
+\if{latex}{\out{\hypertarget{method-format}{}}}
 \subsection{Method \code{format()}}{
 Format helper for Filter class
 \subsection{Usage}{
@@ -147,6 +150,7 @@ Format helper for Filter class
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 Printer for Filter class
 \subsection{Usage}{
@@ -156,6 +160,7 @@ Printer for Filter class
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-help"></a>}}
+\if{latex}{\out{\hypertarget{method-help}{}}}
 \subsection{Method \code{help()}}{
 Opens the corresponding help page referenced by field \verb{$man}.
 \subsection{Usage}{
@@ -165,6 +170,7 @@ Opens the corresponding help page referenced by field \verb{$man}.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-calculate"></a>}}
+\if{latex}{\out{\hypertarget{method-calculate}{}}}
 \subsection{Method \code{calculate()}}{
 Calculates the filter score values for the provided \link[mlr3:Task]{mlr3::Task} and
 stores them in field \code{scores}. \code{nfeat} determines the minimum number of
@@ -190,6 +196,7 @@ THe minimum number of features to calculate filter scores for.}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

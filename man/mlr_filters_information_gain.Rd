@@ -75,16 +75,17 @@ Other Filter:
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a FilterInformationGain object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FilterInformationGain$new(
   id = "information_gain",
   task_type = c("classif", "regr"),
-  param_set = ParamSet$new(list(ParamFct$new("type", levels = c("infogain", "gainratio",
-    "symuncert"), default = "infogain"), ParamLgl$new("equal", default = FALSE),
-    ParamLgl$new("discIntegers", default = TRUE), ParamInt$new("threads", lower = 0L,
-    default = 1L))),
+  param_set = ParamSet$new(list(ParamFct$new("type", levels = c("infogain",
+    "gainratio", "symuncert"), default = "infogain"), ParamLgl$new("equal", default =
+    FALSE), ParamLgl$new("discIntegers", default = TRUE), ParamInt$new("threads", lower =
+    0L, default = 1L))),
   packages = "FSelectorRcpp",
   feature_types = c("integer", "numeric", "factor", "ordered")
 )}\if{html}{\out{</div>}}
@@ -118,6 +119,7 @@ Must be a subset of
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

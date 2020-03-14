@@ -48,7 +48,7 @@ FilterVariance = R6Class("FilterVariance", inherit = Filter,
         param_set = param_set,
         feature_types = feature_types,
         packages = packages,
-        man = "mlr3filters::mlr_filters_performance"
+        man = "mlr3filters::mlr_filters_variance"
       )
       self$param_set$values = list(na.rm = TRUE)
     }
