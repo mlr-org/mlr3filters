@@ -68,22 +68,24 @@ Other Filter:
 \itemize{
 \item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate">}\href{../../mlr3filters/html/Filter.html#method-calculate}{\code{mlr3filters::Filter$calculate()}}\out{</span>}
 \item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format">}\href{../../mlr3filters/html/Filter.html#method-format}{\code{mlr3filters::Filter$format()}}\out{</span>}
+\item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help">}\href{../../mlr3filters/html/Filter.html#method-help}{\code{mlr3filters::Filter$help()}}\out{</span>}
 \item \out{<span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print">}\href{../../mlr3filters/html/Filter.html#method-print}{\code{mlr3filters::Filter$print()}}\out{</span>}
 }
 \out{</details>}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a FilterInformationGain object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FilterInformationGain$new(
   id = "information_gain",
   task_type = c("classif", "regr"),
-  param_set = ParamSet$new(list(ParamFct$new("type", levels = c("infogain", "gainratio",
-    "symuncert"), default = "infogain"), ParamLgl$new("equal", default = FALSE),
-    ParamLgl$new("discIntegers", default = TRUE), ParamInt$new("threads", lower = 0L,
-    default = 1L))),
+  param_set = ParamSet$new(list(ParamFct$new("type", levels = c("infogain",
+    "gainratio", "symuncert"), default = "infogain"), ParamLgl$new("equal", default =
+    FALSE), ParamLgl$new("discIntegers", default = TRUE), ParamInt$new("threads", lower =
+    0L, default = 1L))),
   packages = "FSelectorRcpp",
   feature_types = c("integer", "numeric", "factor", "ordered")
 )}\if{html}{\out{</div>}}
@@ -117,6 +119,7 @@ Must be a subset of
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

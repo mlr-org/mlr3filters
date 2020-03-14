@@ -46,29 +46,27 @@ FilterPerformance = R6Class("FilterPerformance", inherit = Filter,
     #'   [mlr3::Resampling] to be used within resampling.
     #' @param measure ([mlr3::Measure])\cr
     #'   [mlr3::Measure] to be used for evaluating the performance.
-    #' @param packages (`character()`)\cr
-    #'   Set of required packages.
-    #'   Note that these packages will be loaded via [requireNamespace()], and
-    #'   are not attached.
     initialize = function(id = "performance",
       task_type = learner$task_type,
       param_set = learner$param_set,
       feature_types = learner$feature_types,
       learner = mlr3::lrn("classif.rpart"),
       resampling = mlr3::rsmp("holdout"),
-      measure = mlr3::msr("classif.ce"),
-      packages = learner$packages) {
+      measure = mlr3::msr("classif.ce")) {
 
       self$learner = learner = assert_learner(as_learner(learner, clone = TRUE),
         properties = "importance")
       self$resampling = assert_resampling(as_resampling(resampling))
       self$measure = assert_measure(as_measure(measure,
         task_type = learner$task_type, clone = TRUE), learner = learner)
+      packages = unique(c(self$learner$packages, self$measure$packages))
 
       super$initialize(
         id = id,
         task_type = task_type,
-        feature_types = feature_types
+        feature_types = feature_types,
+        packages = packages,
+        man = "mlr3filters::mlr_filters_performance"
       )
     }
   ),

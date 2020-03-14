@@ -31,6 +31,11 @@ Filter = R6Class("Filter",
     feature_types = NULL,
     packages = NULL,
 
+    #' @field man (`character(1)`)\cr
+    #'   String in the format `[pkg]::[topic]` pointing to a manual page for this object.
+    #'   Defaults to `NA`, but can be set by child classes.
+    man = NULL,
+
     #' @field scores
     #'   Stores the calculated filter score values as named numeric vector.
     #'   The vector is sorted in decreasing order with possible `NA` values
@@ -58,9 +63,13 @@ Filter = R6Class("Filter",
     #'   Set of required packages.
     #'   Note that these packages will be loaded via [requireNamespace()], and
     #'   are not attached.
+    #' @param man (`character(1)`)\cr
+    #'   String in the format `[pkg]::[topic]` pointing to a manual page for
+    #'   this object. The referenced help package can be opened via method
+    #'   `$help()`.
     initialize = function(id, task_type, task_properties = character(),
       param_set = ParamSet$new(), feature_types = character(),
-      packages = character()) {
+      packages = character(), man = NA_character_) {
 
       self$id = assert_string(id)
       self$task_type = assert_subset(task_type, mlr_reflections$task_types$type,
@@ -73,6 +82,7 @@ Filter = R6Class("Filter",
       self$packages = assert_character(packages, any.missing = FALSE,
         unique = TRUE)
       self$scores = set_names(numeric(), character())
+      self$man = assert_string(man, na.ok = TRUE)
     },
 
     #' @description
@@ -93,6 +103,12 @@ Filter = R6Class("Filter",
         print(as.data.table(self), nrows = 10L, topn = 5L, class = FALSE,
           row.names = TRUE, print.keys = FALSE) # nocov end
       }
+    },
+
+    #' @description
+    #' Opens the corresponding help page referenced by field `$man`.
+    help = function() {
+      open_help(self$man) # nocov
     },
 
     #' @description

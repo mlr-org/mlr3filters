@@ -47,7 +47,8 @@ FilterMRMR = R6Class("FilterMRMR", inherit = Filter,
         task_type = task_type,
         param_set = param_set,
         feature_types = feature_types,
-        packages = packages
+        packages = packages,
+        man = "mlr3filters::mlr_filters_mrmr"
       )
     }
   ),

@@ -14,14 +14,14 @@
   ],
   "issueTracker": "https://github.com/mlr-org/mlr3filters/issues",
   "license": "https://spdx.org/licenses/LGPL-3.0",
-  "version": "0.1.1.9002",
+  "version": "0.2.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.2",
+    "version": "3.6.3",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.2 (2019-12-12)",
+  "runtimePlatform": "R version 3.6.3 Patched (2020-02-29 r77919)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -226,7 +226,7 @@
       "@type": "SoftwareApplication",
       "identifier": "mlr3",
       "name": "mlr3",
-      "version": ">= 0.1.2",
+      "version": ">= 0.1.8",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -274,7 +274,7 @@
   ],
   "releaseNotes": "https://github.com/mlr-org/mlr3filters/blob/master/NEWS.md",
   "readme": "https://github.com/mlr-org/mlr3filters/blob/master/README.md",
-  "fileSize": "22.613KB",
+  "fileSize": "23.59KB",
   "contIntegration": "https://codecov.io/github/mlr-org/mlr3filters?branch=master",
   "keywords": [
     "filter",

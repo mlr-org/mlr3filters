@@ -4,7 +4,9 @@
 \name{mlr_filters}
 \alias{mlr_filters}
 \title{Dictionary of Filters}
-\format{\link{R6Class} object}
+\format{
+\link{R6Class} object
+}
 \usage{
 mlr_filters
 }
