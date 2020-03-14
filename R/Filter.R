@@ -108,7 +108,7 @@ Filter = R6Class("Filter",
     #' @description
     #' Opens the corresponding help page referenced by field `$man`.
     help = function() {
-      open_help(self$man)
+      open_help(self$man) # nocov
     },
 
     #' @description
