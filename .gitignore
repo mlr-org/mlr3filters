@@ -27,3 +27,5 @@ vignettes/*.pdf
 rsconnect/
 # CRAN
 cran-comments.md
+.vscode/
+docs/
