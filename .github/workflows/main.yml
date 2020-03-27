@@ -141,7 +141,7 @@ jobs:
         run: Rscript -e "tic::after_success()"
 
       - name: Lint
-        if: matrix.config.lintr == "true"
+        if: matrix.config.lintr == 'true'
         run: lintr::lint_package()
         shell: Rscript {0}
 
