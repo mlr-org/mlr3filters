@@ -20,7 +20,7 @@ jobs:
         config:
           # comment out lines if you do not want to build on certain platforms
           - { os: windows-latest, r: "release" }
-          - { os: macOS-latest, r: "release" }
+          - { os: macOS-latest, r: "release", lintr: "true"}
           - { os: macOS-latest, r: "devel" }
           - { os: ubuntu-latest, r: "release" }
 
@@ -38,6 +38,7 @@ jobs:
       TIC_DEPLOY_KEY: ${{ secrets.TIC_DEPLOY_KEY }}
       # prevent rgl issues because no X11 display is available
       RGL_USE_NULL: true
+      LINTR: ${{ secrets.matrix.config.lintr }}
 
     steps:
       - uses: actions/checkout@v2

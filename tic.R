@@ -11,5 +11,10 @@ if (Sys.info()["sysname"] == "Linux") {
   do_readme_rmd()
 }
 
+if (ci_has_env("LINTR")) {
+  get_stage("after_success") %>%
+    add_code_step(lintr::lint_package())
+}
+
 get_stage("after_success") %>%
   add_code_step(system("curl -s https://raw.githubusercontent.com/mlr-org/mlr3orga/master/trigger-mlr3book.sh | bash"))
