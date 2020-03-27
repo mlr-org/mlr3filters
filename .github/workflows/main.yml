@@ -38,7 +38,7 @@ jobs:
       TIC_DEPLOY_KEY: ${{ secrets.TIC_DEPLOY_KEY }}
       # prevent rgl issues because no X11 display is available
       RGL_USE_NULL: true
-      LINTR: ${{ secrets.matrix.config.lintr }}
+      LINTR: ${{ env.matrix.config.lintr }}
 
     steps:
       - uses: actions/checkout@v2
