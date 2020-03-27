@@ -73,7 +73,7 @@ jobs:
 
       - name: "[Cache] Cache R packages"
         if: runner.os != 'Windows'
-        uses: pat-s/always-upload-cache@v1.1.4
+        uses: pat-s/always-upload-cache@master
         with:
           path: |
             ${{ env.R_LIBS_USER }}
@@ -98,7 +98,7 @@ jobs:
 
       # install ccache and write config file
       # mirror the setup described in https://github.com/rmacoslib/r-macos-rtools
-      - name: "[macOS] ccache"
+      - name: "[macOS] Set up CRAN toolchain"
         if: runner.os == 'macOS' && matrix.config.r != 'devel'
         run: |
           brew install ccache
@@ -111,12 +111,14 @@ jobs:
 
       # install ccache and write config file
       # mirror the setup described in https://github.com/rmacoslib/r-macos-rtools
-      - name: "[macOS-devel] ccache"
+      - name: "[macOS-devel] Set up CRAN toolchain"
         if: runner.os == 'macOS' && matrix.config.r == 'devel'
         run: |
           brew install ccache
-          wget https://cran.r-project.org/bin/macosx/tools/clang-8.0.0.pkg
-          sudo installer -package clang-8.0.0.pkg -target /
+          if [ ! -d /usr/local/clang7 ]; then
+            wget https://cran.r-project.org/bin/macosx/tools/clang-8.0.0.pkg
+            sudo installer -package clang-8.0.0.pkg -target /
+          fi
           mkdir -p ~/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache /usr/local/clang8/bin/clang\nCC11=ccache /usr/local/clang8/bin/clang\nCC14=ccache /usr/local/clang8/bin/clang\nCXX=ccache /usr/local/clang8/bin/clang++\nCXX11=ccache /usr/local/clang8/bin/clang++\nCXX14=ccache /usr/local/clang8/bin/clang++\nC11=ccache /usr/local/clang8/bin/clang++\nC14=ccache /usr/local/clang8/bin/clang++\nF88=ccache gfortran/nCFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\nCXXFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\nCCFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk\nCFLAGS=-isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk' > $HOME/.R/Makevars
           R CMD javareconf
 
