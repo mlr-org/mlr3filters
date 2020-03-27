@@ -144,7 +144,7 @@ jobs:
         if: matrix.config.os == 'macOS-latest' && matrix.config.r == 'release'
         run: Rscript -e "tic::after_success()"
 
-      - name: [macOS-release] Lint package
+      - name: "[macOS-release] Lint package"
         if: matrix.config.lintr == 'true'
         run: lintr::lint_package()
         shell: Rscript {0}
