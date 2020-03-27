@@ -78,8 +78,8 @@ jobs:
           path: |
             ${{ env.R_LIBS_USER }}
             /usr/local/clang*
-          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
-          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
+          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}1
+          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}1
 
       - name: "[Cache] Cache ccache"
         if: runner.os != 'Windows'
@@ -102,7 +102,7 @@ jobs:
         if: runner.os == 'macOS' && matrix.config.r != 'devel'
         run: |
           brew install ccache
-          if [ -d /usr/local/clang7 ]; then
+          if [ ! -d /usr/local/clang7 ]; then
             wget https://cran.r-project.org/bin/macosx/tools/clang-7.0.0.pkg
             sudo installer -package clang-7.0.0.pkg -target /
           fi
@@ -144,7 +144,7 @@ jobs:
         if: matrix.config.os == 'macOS-latest' && matrix.config.r == 'release'
         run: Rscript -e "tic::after_success()"
 
-      - name: Lint
+      - name: [macOS-release] Lint package
         if: matrix.config.lintr == 'true'
         run: lintr::lint_package()
         shell: Rscript {0}
