@@ -6,9 +6,10 @@ dist: bionic
 language: r
 cache: packages
 latex: false
-r_packages:
-  - lintr
 
 # Stages -----------------------------------------------------------------------
 
-script: Rscript -e 'lintr::lint_package()'
+install: true
+script:
+  - install.packages("lintr")
+  - Rscript -e 'lintr::lint_package()'
