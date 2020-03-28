@@ -11,5 +11,5 @@ latex: false
 
 install: true
 script:
-  - Rscript -e "if (!requireNamespace('lintr')) install.packages('lintr')"
+  - Rscript -e 'if (!requireNamespace("lintr")) install.packages("lintr")'
   - Rscript -e 'lintr::lint_package()'
