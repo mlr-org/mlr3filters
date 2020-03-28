@@ -19,10 +19,10 @@ jobs:
       matrix:
         config:
           # comment out lines if you do not want to build on certain platforms
-          - { os: windows-latest, r: "release" }
+          - { os: windows-latest, r: "release", lintr: "false" }
           - { os: macOS-latest, r: "release", lintr: "true"}
-          - { os: macOS-latest, r: "devel" }
-          - { os: ubuntu-latest, r: "release" }
+          - { os: macOS-latest, r: "devel", lintr: "false" }
+          - { os: ubuntu-latest, r: "release", lintr: "false" }
 
     env:
       # otherwise remotes::fun() errors cause the build to fail. Example: Unavailability of binaries
