@@ -71,6 +71,12 @@ jobs:
         id: datew
         run: echo "::set-output name=datew::$(date '+%Y-%V')"
 
+      - name: "[Cache] Prepare cache directories"
+        if: runner.os == 'macOS'
+        run: |
+          sudo mkdir -p /usr/local/clang7
+          sudo mkdir -p /usr/local/clang8
+
       - name: "[Cache] Cache R packages"
         if: runner.os != 'Windows'
         uses: pat-s/always-upload-cache@master
