@@ -11,5 +11,6 @@ latex: false
 install: true
 script:
   - Rscript -e 'if (!requireNamespace("lintr")) install.packages("lintr")'
-  - R CMD INSTALL $PKG_TARBALL
+  - R CMD build .
+  - R CMD INSTALL *.tar.gz
   - Rscript -e 'lintr::lint_package()'
