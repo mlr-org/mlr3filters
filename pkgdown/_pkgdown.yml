@@ -17,6 +17,10 @@ development:
 toc:
   depth: 3
 
+authors:
+  Patrick Schratz:
+    href: https://pat-s.me
+
 navbar:
   structure:
     left:  [reference, news, book]

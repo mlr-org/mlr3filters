@@ -57,8 +57,8 @@ FilterVariance = R6Class("FilterVariance", inherit = Filter,
   private = list(
 
     .calculate = function(task, nfeat) {
-      na.rm = self$param_set$values$na.rm %??% TRUE
-      map_dbl(task$data(cols = task$feature_names), var, na.rm = na.rm)
+      na_rm = self$param_set$values$na.rm %??% TRUE
+      map_dbl(task$data(cols = task$feature_names), var, na.rm = na_rm)
     }
   )
 )

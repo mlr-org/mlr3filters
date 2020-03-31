@@ -62,13 +62,13 @@ FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
   private = list(
 
     .calculate = function(task, nfeat) {
-      na.action = self$param_set$values$na.action %??%
+      na_action = self$param_set$values$na.action %??%
         self$param_set$default$na.action
 
       data = task$data(cols = task$feature_names)
       g = task$truth()
       -log10(map_dbl(data, function(x) {
-        kruskal.test(x = x, g = g, na.action = na.action)$p.value
+        kruskal.test(x = x, g = g, na.action = na_action)$p.value
       }))
     }
   )
