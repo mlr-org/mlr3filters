@@ -37,6 +37,7 @@ Other Filter:
 \code{\link{mlr_filters_mrmr}},
 \code{\link{mlr_filters_njmim}},
 \code{\link{mlr_filters_performance}},
+\code{\link{mlr_filters_permutation}},
 \code{\link{mlr_filters}}
 }
 \concept{Filter}
