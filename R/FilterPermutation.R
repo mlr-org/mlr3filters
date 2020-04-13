@@ -86,27 +86,28 @@ FilterPermutation = R6Class("FilterPermutation",
       baseline = rr$aggregate(self$measure)
 
       perf = map_dtr(seq(pars$nmc), function(i) {
-          set_names(map_dtc(fn, function(x) {
-            task = task$clone()
-            data = task$data()
-            column = data[, x, with = FALSE][[1]]
-            data[, (x) := column[sample(nrow(data))]]
+        set_names(map_dtc(fn, function(x) {
 
-            # Empty task and fill with shuffled column
-            task$filter(rows = 0)
-            task$rbind(data)
-            rr = resample(task, self$learner, self$resampling)
-            rr$aggregate(self$measure)
-          }), fn)
-        })
-      delta = baseline - as.matrix(perf[, lapply(.SD, mean)])[1,]
+          task = task$clone()
+          data = task$data()
+          column = data[, x, with = FALSE][[1]]
+          data[, (x) := column[sample(nrow(data))]]
+
+          # Empty task and fill with shuffled column
+          task$filter(rows = 0)
+          task$rbind(data)
+          rr = resample(task, self$learner, self$resampling)
+          rr$aggregate(self$measure)
+        }), fn)
+      })
+      delta = baseline - as.matrix(perf[, lapply(.SD, mean)])[1, ]
 
       if (self$measure$minimize) {
         delta = -delta
       }
 
-      if(pars$standardize) {
-          delta = delta/max(delta)
+      if (pars$standardize) {
+        delta = delta / max(delta)
       }
       set_names(delta, fn)
     }
