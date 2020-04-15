@@ -3,9 +3,12 @@
 #' @name mlr_filters_permutation
 #'
 #' @description
-#' Estimate how important individual features are by contrasting prediction
-#' performances. Compute the change in performance from permuting the values of
-#' a feature and compare that to the predictions made on the unmodified data.
+#' The permutation filter randomly permutes the values of a single feature in a
+#' [mlr3::Task] to break the association with the response. The permutated
+#' feature, together with the unmodified features, is used to perform a
+#' [mlr3::resample()]. The permutation filter score is the difference between
+#' the aggregated performance of the [mlr3::Measure] and the performance
+#' estimated on the unmodified [mlr3::Task].
 #'
 #' @section Parameters:
 #' \describe{
