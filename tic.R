@@ -11,7 +11,7 @@ if (ci_on_ghactions() && ci_has_env("BUILD_PKGDOWN")) {
   do_pkgdown(orphan = TRUE)
 }
 
-if (Sys.info()["sysname"] == "Linux") {
+if (Sys.info()["sysname"] == "Linux" && ci_get_branch() == "master") {
   do_readme_rmd()
 }
 
