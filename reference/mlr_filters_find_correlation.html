@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Filter Base Class — Filter • mlr3filters</title>
+<title>Correlation Filter — mlr_filters_find_correlation • mlr3filters</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -53,12 +53,16 @@
 
 
 
-<meta property="og:title" content="Filter Base Class — Filter" />
-<meta property="og:description" content="Base class for filters. Predefined filters are stored in the
-dictionary mlr_filters. A Filter calculates a score
-for each feature of a task. Important features get a large value and
-unimportant features get a small value. Note that filter scores may also be
-negative." />
+<meta property="og:title" content="Correlation Filter — mlr_filters_find_correlation" />
+<meta property="og:description" content="Simple filter emulating caret::findCorrelation(exact = FALSE).
+This gives each feature a score between 0 and 1 that is one minus the
+cutoff value for which it is excluded when using caret::findCorrelation().
+The negative is used because caret::findCorrelation() excludes everything
+above a cutoff, while filters exclude everything below a cutoff.
+Here the filter scores are shifted by +1 to get positive values for to align
+with the way other filters work.
+Subsequently caret::findCorrelation(cutoff = 0.9) lists the same features
+that are excluded with FilterFindCorrelation at score 0.1 (= 1 - 0.9)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -157,37 +161,36 @@ negative." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Filter Base Class</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3filters/blob/master/R/Filter.R'><code>R/Filter.R</code></a></small>
-    <div class="hidden name"><code>Filter.Rd</code></div>
+    <h1>Correlation Filter</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3filters/blob/master/R/FilterFindCorrelation.R'><code>R/FilterFindCorrelation.R</code></a></small>
+    <div class="hidden name"><code>mlr_filters_find_correlation.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Base class for filters. Predefined filters are stored in the
-<a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> <a href='mlr_filters.html'>mlr_filters</a>. A Filter calculates a score
-for each feature of a task. Important features get a large value and
-unimportant features get a small value. Note that filter scores may also be
-negative.</p>
+    <p>Simple filter emulating <code><a href='https://rdrr.io/pkg/caret/man/findCorrelation.html'>caret::findCorrelation(exact = FALSE)</a></code>.</p>
+<p>This gives each feature a score between 0 and 1 that is <em>one minus</em> the
+cutoff value for which it is excluded when using <code><a href='https://rdrr.io/pkg/caret/man/findCorrelation.html'>caret::findCorrelation()</a></code>.
+The negative is used because <code><a href='https://rdrr.io/pkg/caret/man/findCorrelation.html'>caret::findCorrelation()</a></code> excludes everything
+<em>above</em> a cutoff, while filters exclude everything below a cutoff.
+Here the filter scores are shifted by +1 to get positive values for to align
+with the way other filters work.</p>
+<p>Subsequently <code><a href='https://rdrr.io/pkg/caret/man/findCorrelation.html'>caret::findCorrelation(cutoff = 0.9)</a></code> lists the same features
+that are excluded with <code>FilterFindCorrelation</code> at score 0.1 (= 1 - 0.9).</p>
     </div>
 
 
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Some features support partial scoring of the feature set:
-If <code>nfeat</code> is not <code>NULL</code>, only the best <code>nfeat</code> features are guaranteed to
-get a score. Additional features may be ignored for computational reasons,
-and then get a score value of <code>NA</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Filter: 
+    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='Filter.html'>Filters</a>: <a href='mlr_filters.html'>mlr_filters</a></p>
+<p>Other Filter: 
+<code><a href='Filter.html'>Filter</a></code>,
 <code><a href='mlr_filters_anova.html'>mlr_filters_anova</a></code>,
 <code><a href='mlr_filters_auc.html'>mlr_filters_auc</a></code>,
 <code><a href='mlr_filters_carscore.html'>mlr_filters_carscore</a></code>,
 <code><a href='mlr_filters_cmim.html'>mlr_filters_cmim</a></code>,
 <code><a href='mlr_filters_correlation.html'>mlr_filters_correlation</a></code>,
 <code><a href='mlr_filters_disr.html'>mlr_filters_disr</a></code>,
-<code><a href='mlr_filters_find_correlation.html'>mlr_filters_find_correlation</a></code>,
 <code><a href='mlr_filters_information_gain.html'>mlr_filters_information_gain</a></code>,
 <code><a href='mlr_filters_jmim.html'>mlr_filters_jmim</a></code>,
 <code><a href='mlr_filters_jmi.html'>mlr_filters_jmi</a></code>,
@@ -199,57 +202,38 @@ and then get a score value of <code>NA</code>.</p>
 <code><a href='mlr_filters_variable_importance.html'>mlr_filters_variable_importance</a></code>,
 <code><a href='mlr_filters_variance.html'>mlr_filters_variance</a></code>,
 <code><a href='mlr_filters.html'>mlr_filters</a></code></p></div>
-    <h2 class="hasAnchor" id="public-fields"><a class="anchor" href="#public-fields"></a>Public fields</h2>
+    <h2 class="hasAnchor" id="super-class"><a class="anchor" href="#super-class"></a>Super class</h2>
 
-    <p><div class="r6-fields"></p><dl'>
-<dt><code>id</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
-Identifier of the object.
-Used in tables, plot and text output.</p></dd>
-
-<dt><code>task_type</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
-Task type, e.g. <code>"classif"</code> or <code>"regr"</code>.For a complete list of possible task types (depending on the loaded packages),
-see <code>mlr_reflections$task_types$type</code>.</p></dd>
-
-<dt><code>task_properties</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>task properties.</p></dd>
-
-<dt><code>param_set</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
-Set of hyperparameters.</p></dd>
-
-<dt><code>feature_types</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Feature types of the filter.</p></dd>
-
-<dt><code>packages</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Packages which this filter is relying on.</p></dd>
-
-<dt><code>scores</code></dt><dd><p>Stores the calculated filter score values as named numeric vector.
-The vector is sorted in decreasing order with possible <code>NA</code> values
-last. Tied values (this includes <code>NA</code> values) appear in a random,
-non-deterministic order.</p></dd>
-
-</dl><p></div></p>
+    <p><code><a href='Filter.html'>mlr3filters::Filter</a></code> -&gt; <code>FilterFindCorrelation</code></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
 <h3>Public methods</h3>
 
 <ul>
-<li><p><a href='#method-new'><code>Filter$new()</code></a></p></li>
-<li><p><a href='#method-format'><code>Filter$format()</code></a></p></li>
-<li><p><a href='#method-print'><code>Filter$print()</code></a></p></li>
-<li><p><a href='#method-calculate'><code>Filter$calculate()</code></a></p></li>
-<li><p><a href='#method-clone'><code>Filter$clone()</code></a></p></li>
+<li><p><a href='#method-new'><code>FilterFindCorrelation$new()</code></a></p></li>
+<li><p><a href='#method-clone'><code>FilterFindCorrelation$clone()</code></a></p></li>
 </ul>
-<p><hr>
+<p><details open ><summary>Inherited methods</summary>
+<ul>
+<li><p><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-calculate'><code>mlr3filters::Filter$calculate()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-format'><code>mlr3filters::Filter$format()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-print'><code>mlr3filters::Filter$print()</code></a></span></p></li>
+</ul>
+</details>
+
+<hr>
 <a id="method-new"></a></p><h3>Method <code>new()</code></h3>
-<p>Create a Filter object.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Filter</span>$<span class='fu'>new</span>(
-  <span class='no'>id</span>,
-  <span class='no'>task_type</span>,
-  <span class='kw'>task_properties</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(),
-  <span class='kw'>param_set</span> <span class='kw'>=</span> <span class='no'>ParamSet</span>$<span class='fu'>new</span>(),
-  <span class='kw'>feature_types</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(),
-  <span class='kw'>packages</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>()
+<p>Create a FilterFindCorrelation object.</p><h3>Usage</h3>
+<p><div class="r"></p><pre><span class='no'>FilterFindCorrelation</span>$<span class='fu'>new</span>(
+  <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"find_correlation"</span>,
+  <span class='kw'>task_type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"classif"</span>, <span class='st'>"regr"</span>),
+  <span class='kw'>param_set</span> <span class='kw'>=</span> <span class='no'>ParamSet</span>$<span class='fu'>new</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>ParamFct</span>$<span class='fu'>new</span>(<span class='st'>"use"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='st'>"everything"</span>, <span class='kw'>levels</span> <span class='kw'>=</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"everything"</span>, <span class='st'>"all.obs"</span>, <span class='st'>"complete.obs"</span>, <span class='st'>"na.or.complete"</span>,
+    <span class='st'>"pairwise.complete.obs"</span>)), <span class='no'>ParamFct</span>$<span class='fu'>new</span>(<span class='st'>"method"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='st'>"pearson"</span>, <span class='kw'>levels</span> <span class='kw'>=</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>)))),
+  <span class='kw'>packages</span> <span class='kw'>=</span> <span class='st'>"stats"</span>,
+  <span class='kw'>feature_types</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"integer"</span>, <span class='st'>"numeric"</span>)
 )</pre><p></div></p>
 
 <h3>Arguments</h3>
@@ -261,58 +245,24 @@ Identifier for the filter.</p></dd>
 Types of the task the filter can operator on. E.g., <code>"classif"</code> or
 <code>"regr"</code>.</p></dd>
 
-<dt><code>task_properties</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Required task properties, see <a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>.
-Must be a subset of
-<code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$task_properties</a></code>.</p></dd>
-
 <dt><code>param_set</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
 Set of hyperparameters.</p></dd>
-
-<dt><code>feature_types</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Feature types the filter operates on.
-Must be a subset of
-<code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$task_feature_types</a></code>.</p></dd>
 
 <dt><code>packages</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
 Set of required packages.
 Note that these packages will be loaded via <code><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace()</a></code>, and
 are not attached.</p></dd>
 
-</dl><p></div></p>
-<p><hr>
-<a id="method-format"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code></h3>
-<p>Format helper for Filter class</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Filter</span>$<span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span>()</pre><p></div></p>
-
-<p><hr>
-<a id="method-print"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code></h3>
-<p>Printer for Filter class</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Filter</span>$<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>()</pre><p></div></p>
-
-<p><hr>
-<a id="method-calculate"></a></p><h3>Method <code>calculate()</code></h3>
-<p>Calculates the filter score values for the provided <a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a> and
-stores them in field <code>scores</code>. <code>nfeat</code> determines the minimum number of
-features to score (see details), and defaults to the number
-of features in <code>task</code>. Loads required packages and then calls
-<code>private$.calculate()</code> of the respective subclass.
-If the task has no rows, each feature gets the score <code>NA</code>.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Filter</span>$<span class='fu'>calculate</span>(<span class='no'>task</span>, <span class='kw'>nfeat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre><p></div></p>
-
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
-<dt><code>task</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>)<br />
-<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a> to calculate the filter scores for.</p></dd>
-
-<dt><code>nfeat</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code>)<br />
-THe minimum number of features to calculate filter scores for.</p></dd>
+<dt><code>feature_types</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Feature types the filter operates on.
+Must be a subset of
+<code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$task_feature_types</a></code>.</p></dd>
 
 </dl><p></div></p>
 <p><hr>
 <a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Filter</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>FilterFindCorrelation</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl'>
@@ -322,6 +272,36 @@ THe minimum number of features to calculate filter scores for.</p></dd>
 
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'>## Pearson (default)</span>
+<span class='no'>task</span> <span class='kw'>=</span> <span class='kw pkg'>mlr3</span><span class='kw ns'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"mtcars"</span>)
+<span class='no'>filter</span> <span class='kw'>=</span> <span class='fu'><a href='flt.html'>flt</a></span>(<span class='st'>"find_correlation"</span>)
+<span class='no'>filter</span>$<span class='fu'>calculate</span>(<span class='no'>task</span>)
+<span class='fu'><a href='as.data.table.html'>as.data.table</a></span>(<span class='no'>filter</span>)</div><div class='output co'>#&gt;     feature      score
+#&gt;  1:    carb 1.00000000
+#&gt;  2:    gear 0.72592716
+#&gt;  3:    qsec 0.34375077
+#&gt;  4:      wt 0.28755935
+#&gt;  5:    drat 0.28728887
+#&gt;  6:      vs 0.25546456
+#&gt;  7:      hp 0.25018753
+#&gt;  8:      am 0.20594124
+#&gt;  9:    disp 0.11202008
+#&gt; 10:     cyl 0.09796713</div><div class='input'>
+<span class='co'>## Spearman</span>
+<span class='no'>filter</span> <span class='kw'>=</span> <span class='fu'><a href='flt.html'>flt</a></span>(<span class='st'>"find_correlation"</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"spearman"</span>)
+<span class='no'>filter</span>$<span class='fu'>calculate</span>(<span class='no'>task</span>)
+<span class='fu'><a href='as.data.table.html'>as.data.table</a></span>(<span class='no'>filter</span>)</div><div class='output co'>#&gt;     feature      score
+#&gt;  1:    qsec 1.00000000
+#&gt;  2:      am 0.79666789
+#&gt;  3:    carb 0.34128186
+#&gt;  4:    drat 0.25518383
+#&gt;  5:      hp 0.24840661
+#&gt;  6:      wt 0.22532327
+#&gt;  7:      vs 0.20842852
+#&gt;  8:    gear 0.19231200
+#&gt;  9:    disp 0.10229356
+#&gt; 10:     cyl 0.07234842</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Double Input Symmetrical Relevance Filter — FilterDISR • mlr3filters</title>
+<title>Double Input Symmetrical Relevance Filter — mlr_filters_disr • mlr3filters</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -18,6 +18,10 @@
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -49,7 +53,7 @@
 
 
 
-<meta property="og:title" content="Double Input Symmetrical Relevance Filter — FilterDISR" />
+<meta property="og:title" content="Double Input Symmetrical Relevance Filter — mlr_filters_disr" />
 <meta property="og:description" content="Double input symmetrical relevance filter calling
 praznik::DISR() from package praznik.
 This filter supports partial scoring (see Filter)." />
@@ -71,7 +75,7 @@ This filter supports partial scoring (see Filter)." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -83,14 +87,14 @@ This filter supports partial scoring (see Filter)." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">mlr3filters</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.1</span>
-      </span>
-    </div>
 
+      <div class="navbar-brand-container">
+        <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
+        <a class="navbar-brand" href="../index.html">mlr3filters <small>v0.2.0</small></a>
+      </div>
+    </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
     <span class="fa fa fa fa-file-alt"></span>
@@ -108,17 +112,15 @@ This filter supports partial scoring (see Filter)." />
     mlr3book
   </a>
 </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/mlr-org/mlr3filters">
+  <a href="https://github.com/mlr-org/mlr3filters/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://mlr-org.slack.com">
-    <span class="fab fa fab fa-slack"></span>
+  <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/">
+    <span class="fa fa fa fa-comments"></span>
      
   </a>
 </li>
@@ -136,7 +138,7 @@ This filter supports partial scoring (see Filter)." />
 </li>
       </ul>
       
-      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+      <form class="navbar-form navbar-right docsearch" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
@@ -155,7 +157,7 @@ This filter supports partial scoring (see Filter)." />
     <div class="page-header">
     <h1>Double Input Symmetrical Relevance Filter</h1>
     <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3filters/blob/master/R/FilterDISR.R'><code>R/FilterDISR.R</code></a></small>
-    <div class="hidden name"><code>FilterDISR.Rd</code></div>
+    <div class="hidden name"><code>mlr_filters_disr.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -166,38 +168,94 @@ This filter supports partial scoring (see Filter)." />
 
 
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p><a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6::R6Class</a> inheriting from <a href='Filter.html'>Filter</a>.</p>
-    <h2 class="hasAnchor" id="construction"><a class="anchor" href="#construction"></a>Construction</h2>
-
-    
-<pre>FilterDISR$new()
-mlr_filters$get("disc")
-flt("disc")
-</pre>
-
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='Filter.html'>Filters</a>: <a href='mlr_filters.html'>mlr_filters</a></p>
 <p>Other Filter: 
-<code><a href='FilterAUC.html'>FilterAUC</a></code>,
-<code><a href='FilterAnova.html'>FilterAnova</a></code>,
-<code><a href='FilterCMIM.html'>FilterCMIM</a></code>,
-<code><a href='FilterCarScore.html'>FilterCarScore</a></code>,
-<code><a href='FilterCorrelation.html'>FilterCorrelation</a></code>,
-<code><a href='FilterImportance.html'>FilterImportance</a></code>,
-<code><a href='FilterInformationGain.html'>FilterInformationGain</a></code>,
-<code><a href='FilterJMIM.html'>FilterJMIM</a></code>,
-<code><a href='FilterJMI.html'>FilterJMI</a></code>,
-<code><a href='FilterKruskalTest.html'>FilterKruskalTest</a></code>,
-<code><a href='FilterMIM.html'>FilterMIM</a></code>,
-<code><a href='FilterMRMR.html'>FilterMRMR</a></code>,
-<code><a href='FilterNJMIM.html'>FilterNJMIM</a></code>,
-<code><a href='FilterPerformance.html'>FilterPerformance</a></code>,
-<code><a href='FilterVariance.html'>FilterVariance</a></code>,
 <code><a href='Filter.html'>Filter</a></code>,
+<code><a href='mlr_filters_anova.html'>mlr_filters_anova</a></code>,
+<code><a href='mlr_filters_auc.html'>mlr_filters_auc</a></code>,
+<code><a href='mlr_filters_carscore.html'>mlr_filters_carscore</a></code>,
+<code><a href='mlr_filters_cmim.html'>mlr_filters_cmim</a></code>,
+<code><a href='mlr_filters_correlation.html'>mlr_filters_correlation</a></code>,
+<code><a href='mlr_filters_find_correlation.html'>mlr_filters_find_correlation</a></code>,
+<code><a href='mlr_filters_information_gain.html'>mlr_filters_information_gain</a></code>,
+<code><a href='mlr_filters_jmim.html'>mlr_filters_jmim</a></code>,
+<code><a href='mlr_filters_jmi.html'>mlr_filters_jmi</a></code>,
+<code><a href='mlr_filters_kruskal_test.html'>mlr_filters_kruskal_test</a></code>,
+<code><a href='mlr_filters_mim.html'>mlr_filters_mim</a></code>,
+<code><a href='mlr_filters_mrmr.html'>mlr_filters_mrmr</a></code>,
+<code><a href='mlr_filters_njmim.html'>mlr_filters_njmim</a></code>,
+<code><a href='mlr_filters_performance.html'>mlr_filters_performance</a></code>,
+<code><a href='mlr_filters_variable_importance.html'>mlr_filters_variable_importance</a></code>,
+<code><a href='mlr_filters_variance.html'>mlr_filters_variance</a></code>,
 <code><a href='mlr_filters.html'>mlr_filters</a></code></p></div>
+    <h2 class="hasAnchor" id="super-class"><a class="anchor" href="#super-class"></a>Super class</h2>
+
+    <p><code><a href='Filter.html'>mlr3filters::Filter</a></code> -&gt; <code>FilterDISR</code></p>
+    <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
+
+    
+<h3>Public methods</h3>
+
+<ul>
+<li><p><a href='#method-new'><code>FilterDISR$new()</code></a></p></li>
+<li><p><a href='#method-clone'><code>FilterDISR$clone()</code></a></p></li>
+</ul>
+<p><details open ><summary>Inherited methods</summary>
+<ul>
+<li><p><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-calculate'><code>mlr3filters::Filter$calculate()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-format'><code>mlr3filters::Filter$format()</code></a></span></p></li>
+<li><p><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-print'><code>mlr3filters::Filter$print()</code></a></span></p></li>
+</ul>
+</details>
+
+<hr>
+<a id="method-new"></a></p><h3>Method <code>new()</code></h3>
+<p>Create a FilterDISR object.</p><h3>Usage</h3>
+<p><div class="r"></p><pre><span class='no'>FilterDISR</span>$<span class='fu'>new</span>(
+  <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"disr"</span>,
+  <span class='kw'>task_type</span> <span class='kw'>=</span> <span class='st'>"classif"</span>,
+  <span class='kw'>param_set</span> <span class='kw'>=</span> <span class='no'>ParamSet</span>$<span class='fu'>new</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>ParamInt</span>$<span class='fu'>new</span>(<span class='st'>"threads"</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>0L</span>))),
+  <span class='kw'>packages</span> <span class='kw'>=</span> <span class='st'>"praznik"</span>,
+  <span class='kw'>feature_types</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"integer"</span>, <span class='st'>"numeric"</span>, <span class='st'>"factor"</span>, <span class='st'>"ordered"</span>)
+)</pre><p></div></p>
+
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl'>
+<dt><code>id</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
+Identifier for the filter.</p></dd>
+
+<dt><code>task_type</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Types of the task the filter can operator on. E.g., <code>"classif"</code> or
+<code>"regr"</code>.</p></dd>
+
+<dt><code>param_set</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
+Set of hyperparameters.</p></dd>
+
+<dt><code>packages</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Set of required packages.
+Note that these packages will be loaded via <code><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace()</a></code>, and
+are not attached.</p></dd>
+
+<dt><code>feature_types</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Feature types the filter operates on.
+Must be a subset of
+<code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$task_feature_types</a></code>.</p></dd>
+
+</dl><p></div></p>
+<p><hr>
+<a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
+<p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
+<p><div class="r"></p><pre><span class='no'>FilterDISR</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
+
+<h3>Arguments</h3>
+<p><div class="arguments"></p><dl'>
+<dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
+
+</dl><p></div></p>
+
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>task</span> <span class='kw'>=</span> <span class='kw pkg'>mlr3</span><span class='kw ns'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"iris"</span>)
@@ -209,26 +267,21 @@ flt("disc")
 #&gt; 3:  Sepal.Width        NA
 #&gt; 4: Sepal.Length        NA</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
-      <li><a href="#construction">Construction</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Patrick Schratz, Michel Lang, Bernd Bischl.</p>
+  <p>Developed by Patrick Schratz, Michel Lang, Bernd Bischl, Martin Binder.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

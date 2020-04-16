@@ -19,6 +19,10 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
+
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
@@ -67,7 +71,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -79,14 +83,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">mlr3filters</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Version">0.1.1</span>
-      </span>
-    </div>
 
+      <div class="navbar-brand-container">
+        <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
+        <a class="navbar-brand" href="../index.html">mlr3filters <small>v0.2.0</small></a>
+      </div>
+    </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../reference/index.html">
     <span class="fa fa fa fa-file-alt"></span>
@@ -104,17 +108,15 @@
     mlr3book
   </a>
 </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/mlr-org/mlr3filters">
+  <a href="https://github.com/mlr-org/mlr3filters/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://mlr-org.slack.com">
-    <span class="fab fa fab fa-slack"></span>
+  <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/">
+    <span class="fa fa fa fa-comments"></span>
      
   </a>
 </li>
@@ -132,7 +134,7 @@
 </li>
       </ul>
       
-      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+      <form class="navbar-form navbar-right docsearch" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
@@ -167,106 +169,111 @@
           <p class="section-desc"></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
-          <p><code><a href="Filter.html">Filter</a></code> </p>
-        </td>
-        <td><p>Filter Base Class</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="FilterAUC.html">FilterAUC</a></code> </p>
-        </td>
-        <td><p>AUC Filter</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="FilterAnova.html">FilterAnova</a></code> </p>
+          <p><code><a href="mlr_filters_anova.html">mlr_filters_anova</a></code> </p>
         </td>
         <td><p>ANOVA F-Test Filter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="FilterCMIM.html">FilterCMIM</a></code> </p>
+          <p><code><a href="mlr_filters_auc.html">mlr_filters_auc</a></code> </p>
+        </td>
+        <td><p>AUC Filter</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mlr_filters_carscore.html">mlr_filters_carscore</a></code> </p>
+        </td>
+        <td><p>Conditional Mutual Information Based Feature Selection Filter</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mlr_filters_cmim.html">mlr_filters_cmim</a></code> </p>
         </td>
         <td><p>Minimal Conditional Mutual Information Filter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="FilterCarScore.html">FilterCarScore</a></code> </p>
-        </td>
-        <td><p>Conditional Mutual Information Based Feature Selection Filter</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="FilterCorrelation.html">FilterCorrelation</a></code> </p>
+          <p><code><a href="mlr_filters_correlation.html">mlr_filters_correlation</a></code> </p>
         </td>
         <td><p>Correlation Filter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="FilterDISR.html">FilterDISR</a></code> </p>
+          <p><code><a href="mlr_filters_disr.html">mlr_filters_disr</a></code> </p>
         </td>
         <td><p>Double Input Symmetrical Relevance Filter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="FilterImportance.html">FilterImportance</a></code> </p>
+          <p><code><a href="mlr_filters_find_correlation.html">mlr_filters_find_correlation</a></code> </p>
         </td>
-        <td><p>Filter for Embedded Feature Selection via Variable Importance</p></td>
+        <td><p>Correlation Filter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="FilterInformationGain.html">FilterInformationGain</a></code> </p>
+          <p><code><a href="mlr_filters_information_gain.html">mlr_filters_information_gain</a></code> </p>
         </td>
         <td><p>Information Gain Filter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="FilterJMI.html">FilterJMI</a></code> </p>
+          <p><code><a href="mlr_filters_jmi.html">mlr_filters_jmi</a></code> </p>
         </td>
         <td><p>Joint Mutual Information Filter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="FilterJMIM.html">FilterJMIM</a></code> </p>
+          <p><code><a href="mlr_filters_jmim.html">mlr_filters_jmim</a></code> </p>
         </td>
         <td><p>Minimal Joint Mutual Information Maximisation Filter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="FilterKruskalTest.html">FilterKruskalTest</a></code> </p>
+          <p><code><a href="mlr_filters_kruskal_test.html">mlr_filters_kruskal_test</a></code> </p>
         </td>
         <td><p>Kruskal-Wallis Test Filter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="FilterMIM.html">FilterMIM</a></code> </p>
+          <p><code><a href="mlr_filters_mim.html">mlr_filters_mim</a></code> </p>
         </td>
         <td><p>Conditional Mutual Information Based Feature Selection Filter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="FilterMRMR.html">FilterMRMR</a></code> </p>
+          <p><code><a href="mlr_filters_mrmr.html">mlr_filters_mrmr</a></code> </p>
         </td>
         <td><p>Minimum redundancy maximal relevancy filter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="FilterNJMIM.html">FilterNJMIM</a></code> </p>
+          <p><code><a href="mlr_filters_njmim.html">mlr_filters_njmim</a></code> </p>
         </td>
         <td><p>Minimal Normalised Joint Mutual Information Maximisation Filter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="FilterPerformance.html">FilterPerformance</a></code> </p>
+          <p><code><a href="mlr_filters_performance.html">mlr_filters_performance</a></code> </p>
         </td>
         <td><p>Predictive Performance Filter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="FilterVariance.html">FilterVariance</a></code> </p>
+          <p><code><a href="mlr_filters_variable_importance.html">mlr_filters_variable_importance</a></code> </p>
+        </td>
+        <td><p>Filter for Embedded Feature Selection via Variable Importance</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mlr_filters_variance.html">mlr_filters_variance</a></code> </p>
         </td>
         <td><p>Variance Filter</p></td>
       </tr>
@@ -277,7 +284,18 @@
           <p class="section-desc"></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
+        
+        <td>
+          <p><code><a href="Filter.html">Filter</a></code> </p>
+        </td>
+        <td><p>Filter Base Class</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="flt.html">flt()</a></code> </p>
@@ -300,23 +318,21 @@
     </table>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-filters">Filters</a></li>
-      <li><a href="#section-general">General</a></li>
-    </ul>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Patrick Schratz, Michel Lang, Bernd Bischl.</p>
+  <p>Developed by Patrick Schratz, Michel Lang, Bernd Bischl, Martin Binder.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
