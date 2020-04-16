@@ -160,6 +160,6 @@ Filter = R6Class("Filter",
 )
 
 #' @export
-as.data.table.Filter = function(x, ...) {
+as.data.table.Filter = function(x, ...) { # nolint
   mlr3misc::enframe(x$scores, name = "feature", value = "score")
 }
