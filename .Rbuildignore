@@ -22,3 +22,4 @@
 ^revdep$
 ^clang-.*
 ^\.vscode$
+^gfortran.*
