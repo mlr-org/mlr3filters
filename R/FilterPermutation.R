@@ -90,12 +90,16 @@ FilterPermutation = R6Class("FilterPermutation",
 
       perf = map_dtr(seq(pars$nmc), function(i) {
         set_names(map_dtc(fn, function(x) {
+          task = task$clone()
+          data = task$data()
           column = task$data(cols = x)
-          task$cbind(column[sample(nrow(column)), ])
+          data[, (x) := column[sample(nrow(data))]]
+
+          # Empty task and fill with shuffled column
+          task$filter(rows = 0)
+          task$rbind(data)
           rr = resample(task, self$learner, self$resampling)
-          perf = rr$aggregate(self$measure)
-          task$cbind(column)
-          perf
+          rr$aggregate(self$measure)
         }), fn)
       })
       delta = baseline - as.matrix(perf[, lapply(.SD, mean)])[1, ]
