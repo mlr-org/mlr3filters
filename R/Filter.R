@@ -23,7 +23,6 @@
 #' @export
 Filter = R6Class("Filter",
   public = list(
-
     id = NULL,
     task_type = NULL,
     task_properties = NULL,
@@ -74,12 +73,15 @@ Filter = R6Class("Filter",
       self$id = assert_string(id)
       self$task_type = assert_subset(task_type, mlr_reflections$task_types$type,
         empty.ok = FALSE)
-      self$task_properties = assert_subset(task_properties,
+      self$task_properties = assert_subset(
+        task_properties,
         unlist(mlr_reflections$task_properties, use.names = FALSE))
       self$param_set = assert_param_set(param_set)
-      self$feature_types = assert_subset(feature_types,
+      self$feature_types = assert_subset(
+        feature_types,
         mlr_reflections$task_feature_types)
-      self$packages = assert_character(packages, any.missing = FALSE,
+      self$packages = assert_character(packages,
+        any.missing = FALSE,
         unique = TRUE)
       self$scores = set_names(numeric(), character())
       self$man = assert_string(man, na.ok = TRUE)
@@ -100,7 +102,8 @@ Filter = R6Class("Filter",
       catf(str_indent("Packages:", self$packages))
       catf(str_indent("Feature types:", self$feature_types))
       if (length(self$scores)) {
-        print(as.data.table(self), nrows = 10L, topn = 5L, class = FALSE,
+        print(as.data.table(self),
+          nrows = 10L, topn = 5L, class = FALSE,
           row.names = TRUE, print.keys = FALSE) # nocov end
       }
     },
@@ -123,7 +126,8 @@ Filter = R6Class("Filter",
     #' @param nfeat ([integer()])\cr
     #'   THe minimum number of features to calculate filter scores for.
     calculate = function(task, nfeat = NULL) {
-      task = assert_task(as_task(task), feature_types = self$feature_types,
+      task = assert_task(as_task(task),
+        feature_types = self$feature_types,
         task_properties = self$task_properties)
       fn = task$feature_names
 
@@ -157,5 +161,5 @@ Filter = R6Class("Filter",
 
 #' @export
 as.data.table.Filter = function(x, ...) {
-  enframe(x$scores, name = "feature", value = "score")
+  mlr3misc::enframe(x$scores, name = "feature", value = "score")
 }
