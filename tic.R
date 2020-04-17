@@ -15,7 +15,7 @@ if (ci_on_ghactions() && ci_has_env("BUILD_PKGDOWN")) {
 
 if (Sys.info()["sysname"] == "Linux" && ci_get_branch() == "master") {
   get_stage("deploy") %>%
-    add_step(step_install_github("mlr3filters"))
+    add_step(step_install_github("mlr-org/mlr3filters"))
   do_readme_rmd()
 }
 
