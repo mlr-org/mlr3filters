@@ -2,7 +2,7 @@
 #'
 #' @name mlr_filters_variance
 #'
-#' @description Variance filter calling [stats::var()].
+#' @description Variance filter calling `stats::var()`.
 #'
 #' Argument `na.rm` defaults to `TRUE` here.
 #'

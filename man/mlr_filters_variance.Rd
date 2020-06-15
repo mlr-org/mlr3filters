@@ -5,7 +5,7 @@
 \alias{FilterVariance}
 \title{Variance Filter}
 \description{
-Variance filter calling \code{\link[stats:var]{stats::var()}}.
+Variance filter calling \code{stats::var()}.
 
 Argument \code{na.rm} defaults to \code{TRUE} here.
 }
