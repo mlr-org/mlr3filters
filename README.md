@@ -9,8 +9,7 @@ feature selection methods of algorithms to {mlr3}.
 
 <!-- badges: start -->
 
-[![R CMD Check via
-{tic}](https://github.com/mlr-org/mlr3filters/workflows/R%20CMD%20Check%20via%20%7Btic%7D/badge.svg?branch=master)](https://github.com/mlr-org/mlr3filters/actions)
+[![tic](https://github.com/mlr-org/mlr3filters/workflows/tic/badge.svg?branch=master)](https://github.com/mlr-org/mlr3filters/actions)
 [![CRAN Status
 Badge](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
 [![CRAN
@@ -85,8 +84,9 @@ as.data.table(filter$calculate(task))
 The following learners allow the extraction of variable importance and
 therefore are supported by `FilterImportance`:
 
-    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"       "classif.xgboost"    
-    ## [5] "regr.featureless"    "regr.ranger"         "regr.rpart"          "regr.xgboost"
+    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
+    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
+    ## [7] "regr.rpart"          "regr.xgboost"
 
 If your learner is not listed here but capable of extracting variable
 importance from the fitted model, the reason is most likely that it is
