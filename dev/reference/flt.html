@@ -162,7 +162,9 @@
     <p>This function complements <a href='mlr_filters.html'>mlr_filters</a> with a function in the spirit of <a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>mlr3::mlr_sugar</a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>flt</span>(<span class='no'>.key</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>flt</span>(<span class='no'>.key</span>, <span class='no'>...</span>)
+
+<span class='fu'>flts</span>(<span class='no'>.keys</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,6 +179,11 @@ Key passed to the respective <a href='https://mlr3misc.mlr-org.com/reference/Dic
       <td><p>(named <code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>)<br />
 Named arguments passed to the constructor, to be set as parameters in the <a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>, or to be set as public field.
 See <code><a href='https://mlr3misc.mlr-org.com/reference/dictionary_sugar_get.html'>mlr3misc::dictionary_sugar_get()</a></code> for more details.</p></td>
+    </tr>
+    <tr>
+      <th>.keys</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Keys passed to the respective <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> to retrieve multiple objects.</p></td>
     </tr>
     </table>
 
