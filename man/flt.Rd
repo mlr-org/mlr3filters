@@ -24,8 +24,9 @@ Keys passed to the respective \link[mlr3misc:Dictionary]{dictionary} to retrieve
 \link{Filter}.
 }
 \description{
-This function complements \link{mlr_filters} with a function in the spirit of \link[mlr3:mlr_sugar]{mlr3::mlr_sugar}.
+These functions complements \link{mlr_filters} with a function in the spirit of \link[mlr3:mlr_sugar]{mlr3::mlr_sugar}.
 }
 \examples{
 flt("correlation", method = "kendall")
+flts(c("mrmr", "jmim"))
 }

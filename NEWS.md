@@ -1,3 +1,10 @@
+# mlr3filters 0.2.0.9001
+
+- Add `flts()` (#77)
+- Github Actions: set cron job to 4am to avoid potential download issues with R-devel on macOS
+- Filters now have a help method `$help()` which opens the respective help page (#68)
+
+
 # mlr3filters 0.2.0.9000
 
 - Same as previous version.
