@@ -211,7 +211,7 @@ Task type, e.g. <code>"classif"</code> or <code>"regr"</code>.For a complete lis
 see <code>mlr_reflections$task_types$type</code>.</p></dd>
 
 <dt><code>task_properties</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-<a href='https://rdrr.io/pkg/mlr3/man/Task.html'>mlr3::Task</a>task properties.</p></dd>
+<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>task properties.</p></dd>
 
 <dt><code>param_set</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
 Set of hyperparameters.</p></dd>
@@ -268,9 +268,9 @@ Types of the task the filter can operator on. E.g., <code>"classif"</code> or
 <code>"regr"</code>.</p></dd>
 
 <dt><code>task_properties</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Required task properties, see <a href='https://rdrr.io/pkg/mlr3/man/Task.html'>mlr3::Task</a>.
+Required task properties, see <a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>.
 Must be a subset of
-<code><a href='https://rdrr.io/pkg/mlr3/man/mlr_reflections.html'>mlr_reflections$task_properties</a></code>.</p></dd>
+<code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$task_properties</a></code>.</p></dd>
 
 <dt><code>param_set</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
 Set of hyperparameters.</p></dd>
@@ -278,7 +278,7 @@ Set of hyperparameters.</p></dd>
 <dt><code>feature_types</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
 Feature types the filter operates on.
 Must be a subset of
-<code><a href='https://rdrr.io/pkg/mlr3/man/mlr_reflections.html'>mlr_reflections$task_feature_types</a></code>.</p></dd>
+<code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$task_feature_types</a></code>.</p></dd>
 
 <dt><code>packages</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
 Set of required packages.
@@ -308,7 +308,7 @@ this object. The referenced help package can be opened via method
 
 <p><hr>
 <a id="method-calculate"></a></p><h3>Method <code>calculate()</code></h3>
-<p>Calculates the filter score values for the provided <a href='https://rdrr.io/pkg/mlr3/man/Task.html'>mlr3::Task</a> and
+<p>Calculates the filter score values for the provided <a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a> and
 stores them in field <code>scores</code>. <code>nfeat</code> determines the minimum number of
 features to score (see details), and defaults to the number
 of features in <code>task</code>. Loads required packages and then calls
@@ -318,8 +318,8 @@ If the task has no rows, each feature gets the score <code>NA</code>.</p><h3>Usa
 
 <h3>Arguments</h3>
 <p><div class="arguments"></p><dl'>
-<dt><code>task</code></dt><dd><p>(<a href='https://rdrr.io/pkg/mlr3/man/Task.html'>mlr3::Task</a>)<br />
-<a href='https://rdrr.io/pkg/mlr3/man/Task.html'>mlr3::Task</a> to calculate the filter scores for.</p></dd>
+<dt><code>task</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>)<br />
+<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a> to calculate the filter scores for.</p></dd>
 
 <dt><code>nfeat</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code>)<br />
 THe minimum number of features to calculate filter scores for.</p></dd>

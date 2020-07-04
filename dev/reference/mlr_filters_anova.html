@@ -237,9 +237,9 @@ Types of the task the filter can operator on. E.g., <code>"classif"</code> or
 <code>"regr"</code>.</p></dd>
 
 <dt><code>task_properties</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Required task properties, see <a href='https://rdrr.io/pkg/mlr3/man/Task.html'>mlr3::Task</a>.
+Required task properties, see <a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>.
 Must be a subset of
-<code><a href='https://rdrr.io/pkg/mlr3/man/mlr_reflections.html'>mlr_reflections$task_properties</a></code>.</p></dd>
+<code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$task_properties</a></code>.</p></dd>
 
 <dt><code>param_set</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
 Set of hyperparameters.</p></dd>
@@ -247,7 +247,7 @@ Set of hyperparameters.</p></dd>
 <dt><code>feature_types</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
 Feature types the filter operates on.
 Must be a subset of
-<code><a href='https://rdrr.io/pkg/mlr3/man/mlr_reflections.html'>mlr_reflections$task_feature_types</a></code>.</p></dd>
+<code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$task_feature_types</a></code>.</p></dd>
 
 <dt><code>packages</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
 Set of required packages.
@@ -269,7 +269,7 @@ are not attached.</p></dd>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>task</span> <span class='kw'>=</span> <span class='kw pkg'>mlr3</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mlr3/man/mlr_sugar.html'>tsk</a></span>(<span class='st'>"iris"</span>)
+    <pre class="examples"><div class='input'><span class='no'>task</span> <span class='kw'>=</span> <span class='kw pkg'>mlr3</span><span class='kw ns'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"iris"</span>)
 <span class='no'>filter</span> <span class='kw'>=</span> <span class='fu'><a href='flt.html'>flt</a></span>(<span class='st'>"anova"</span>)
 <span class='no'>filter</span>$<span class='fu'>calculate</span>(<span class='no'>task</span>)
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='as.data.table.html'>as.data.table</a></span>(<span class='no'>filter</span>), <span class='fl'>3</span>)</div><div class='output co'>#&gt;         feature    score

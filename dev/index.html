@@ -135,7 +135,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"mlr3"</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"mlr3filters"</span>)
 
-<span class="no">task</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/mlr3/man/mlr_sugar.html">tsk</a></span>(<span class="st">"pima"</span>)
+<span class="no">task</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span>(<span class="st">"pima"</span>)
 <span class="no">filter</span> <span class="kw">=</span> <span class="fu"><a href="reference/flt.html">flt</a></span>(<span class="st">"auc"</span>)
 <span class="fu"><a href="reference/as.data.table.html">as.data.table</a></span>(<span class="no">filter</span>$<span class="fu">calculate</span>(<span class="no">task</span>))</pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">##     feature     score</span></span>
@@ -279,8 +279,8 @@
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co">## [7] "regr.rpart"          "regr.xgboost"</span></span></code></pre></div>
 <p>If your learner is not listed here but capable of extracting variable importance from the fitted model, the reason is most likely that it is not yet integrated in the package <a href="https://github.com/mlr-org/mlr3learners">mlr3learners</a> or the <a href="https://github.com/mlr3learners">extra learner organization</a>. Please open an issue so we can add your package.</p>
 <p>Some learners need to have their variable importance measure “activated” during learner creation. For example, to use the “impurity” measure of Random Forest via the {ranger} package:</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="no">task</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/mlr3/man/mlr_sugar.html">tsk</a></span>(<span class="st">"iris"</span>)
-<span class="no">lrn</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/mlr3/man/mlr_sugar.html">lrn</a></span>(<span class="st">"classif.ranger"</span>)
+<div class="sourceCode" id="cb6"><pre class="r"><span class="no">task</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span>(<span class="st">"iris"</span>)
+<span class="no">lrn</span> <span class="kw">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span>(<span class="st">"classif.ranger"</span>)
 <span class="no">lrn</span>$<span class="no">param_set</span>$<span class="no">values</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">importance</span> <span class="kw">=</span> <span class="st">"impurity"</span>)
 
 <span class="no">filter</span> <span class="kw">=</span> <span class="fu"><a href="reference/flt.html">flt</a></span>(<span class="st">"importance"</span>, <span class="kw">learner</span> <span class="kw">=</span> <span class="no">lrn</span>)
@@ -294,7 +294,7 @@
 <div id="performance-filter" class="section level3">
 <h3 class="hasAnchor">
 <a href="#performance-filter" class="anchor"></a>Performance Filter</h3>
-<p><code>FilterPerformance</code> is a univariate filter method which calls <code><a href="https://rdrr.io/pkg/mlr3/man/resample.html">resample()</a></code> with every predictor variable in the dataset and ranks the final outcome using the supplied measure. Any learner can be passed to this filter with <code>classif.rpart</code> being the default. Of course, also regression learners can be passed if the task is of type “regr”.</p>
+<p><code>FilterPerformance</code> is a univariate filter method which calls <code><a href="https://mlr3.mlr-org.com/reference/resample.html">resample()</a></code> with every predictor variable in the dataset and ranks the final outcome using the supplied measure. Any learner can be passed to this filter with <code>classif.rpart</code> being the default. Of course, also regression learners can be passed if the task is of type “regr”.</p>
 </div>
 </div>
 </div>
