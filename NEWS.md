@@ -1,3 +1,8 @@
+# mlr3filters 0.2.0.9002
+
+- Add Permutation (#70)
+
+
 # mlr3filters 0.2.0.9001
 
 - Add `flts()` (#77)
