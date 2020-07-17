@@ -15,7 +15,8 @@
 #' filter$calculate(task)
 #' head(filter$scores, 3)
 #' as.data.table(filter)
-FilterVariance = R6Class("FilterVariance", inherit = Filter,
+FilterVariance = R6Class("FilterVariance",
+  inherit = Filter,
 
   public = list(
 
@@ -55,7 +56,6 @@ FilterVariance = R6Class("FilterVariance", inherit = Filter,
   ),
 
   private = list(
-
     .calculate = function(task, nfeat) {
       na_rm = self$param_set$values$na.rm %??% TRUE
       map_dbl(task$data(cols = task$feature_names), var, na.rm = na_rm)

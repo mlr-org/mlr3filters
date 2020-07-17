@@ -20,7 +20,8 @@
 #'
 #' # transform to p-value
 #' 10^(-filter$scores)
-FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
+FilterKruskalTest = R6Class("FilterKruskalTest",
+  inherit = Filter,
 
   public = list(
 
@@ -43,7 +44,8 @@ FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
     initialize = function(id = "kruskal_test",
       task_type = "classif",
       param_set = ParamSet$new(list(
-        ParamFct$new("na.action", default = "na.omit",
+        ParamFct$new("na.action",
+          default = "na.omit",
           levels = c("na.omit", "na.fail", "na.exclude", "na.pass"))
       )),
       packages = "stats",
@@ -60,7 +62,6 @@ FilterKruskalTest = R6Class("FilterKruskalTest", inherit = Filter,
   ),
 
   private = list(
-
     .calculate = function(task, nfeat) {
       na_action = self$param_set$values$na.action %??%
         self$param_set$default$na.action

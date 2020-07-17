@@ -5,7 +5,8 @@ lapply(list.files(system.file("testthat", package = "mlr3"),
 
 expect_filter = function(f, task = NULL) {
   expect_r6(f, "Filter",
-    public = c("packages", "feature_types", "task_type", "param_set", "scores",
+    public = c(
+      "packages", "feature_types", "task_type", "param_set", "scores",
       "calculate")
   )
 

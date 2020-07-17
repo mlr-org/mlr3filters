@@ -15,7 +15,8 @@
 #' filter = flt("mim")
 #' filter$calculate(task, nfeat = 2)
 #' as.data.table(filter)
-FilterMIM = R6Class("FilterMIM", inherit = Filter,
+FilterMIM = R6Class("FilterMIM",
+  inherit = Filter,
 
   public = list(
 
@@ -54,7 +55,6 @@ FilterMIM = R6Class("FilterMIM", inherit = Filter,
   ),
 
   private = list(
-
     .calculate = function(task, nfeat) {
       threads = self$param_set$values$threads %??% 0L
       X = task$data(cols = task$feature_names)

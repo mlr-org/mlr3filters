@@ -2,7 +2,8 @@ context("FilterFindCorrelation")
 
 test_that("FilterImportance", {
   task = mlr3::mlr_tasks$get("sonar")
-  equalcor = cbind(a = rep(c(1, 0, 0, 0), task$nrow / 4), b = c(0, 1, 0, 0),
+  equalcor = cbind(
+    a = rep(c(1, 0, 0, 0), task$nrow / 4), b = c(0, 1, 0, 0),
     c = c(0, 0, 1, 0), d = c(0, 0, 0, 1), e = c(0.1, -0.1, 0.1, 0.99),
     f = c(-0.1, 0.1, 0.1, 0.99))
   task$cbind(as.data.frame(equalcor))

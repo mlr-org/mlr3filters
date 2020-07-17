@@ -15,7 +15,8 @@
 #' filter = flt("cmim")
 #' filter$calculate(task, nfeat = 2)
 #' as.data.table(filter)
-FilterCMIM = R6Class("FilterCMIM", inherit = Filter,
+FilterCMIM = R6Class("FilterCMIM",
+  inherit = Filter,
 
   public = list(
 

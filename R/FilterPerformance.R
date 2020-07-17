@@ -17,7 +17,8 @@
 #' filter = flt("performance", learner = learner)
 #' filter$calculate(task)
 #' as.data.table(filter)
-FilterPerformance = R6Class("FilterPerformance", inherit = Filter,
+FilterPerformance = R6Class("FilterPerformance",
+  inherit = Filter,
 
   public = list(
 
@@ -72,7 +73,6 @@ FilterPerformance = R6Class("FilterPerformance", inherit = Filter,
   ),
 
   private = list(
-
     .calculate = function(task, nfeat) {
       task = task$clone()
       fn = task$feature_names

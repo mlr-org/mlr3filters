@@ -24,7 +24,8 @@
 #' filter$param_set$values = list("diagonal" = TRUE)
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
-FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
+FilterCarScore = R6Class("FilterCarScore",
+  inherit = Filter,
 
   public = list(
 
@@ -66,13 +67,13 @@ FilterCarScore = R6Class("FilterCarScore", inherit = Filter,
   ),
 
   private = list(
-
     .calculate = function(task, nfeat) {
       target = task$truth()
       features = task$data(cols = task$feature_names)
 
       pv = self$param_set$values
-      scores = invoke(care::carscore, Xtrain = features, Ytrain = target,
+      scores = invoke(care::carscore,
+        Xtrain = features, Ytrain = target,
         .args = pv)
       set_names(abs(scores), names(scores))
     }

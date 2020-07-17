@@ -20,7 +20,8 @@
 #'
 #' # transform to p-value
 #' 10^(-filter$scores)
-FilterAnova = R6Class("FilterAnova", inherit = Filter,
+FilterAnova = R6Class("FilterAnova",
+  inherit = Filter,
 
   public = list(
 
@@ -61,7 +62,6 @@ FilterAnova = R6Class("FilterAnova", inherit = Filter,
   ),
 
   private = list(
-
     .calculate = function(task, nfeat) {
       data = task$data()
       target = task$target_names

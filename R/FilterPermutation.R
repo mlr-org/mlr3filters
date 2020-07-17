@@ -79,6 +79,7 @@ FilterPermutation = R6Class("FilterPermutation",
 
   private = list(
     .calculate = function(task, nfeat) {
+
       task = task$clone()
       pars = self$param_set$values
       fn = task$feature_names
@@ -90,6 +91,7 @@ FilterPermutation = R6Class("FilterPermutation",
 
       perf = map_dtr(seq(pars$nmc), function(i) {
         set_names(map_dtc(fn, function(x) {
+
           task = task$clone()
           data = task$data()
           column = task$data(cols = x)

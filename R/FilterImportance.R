@@ -16,7 +16,8 @@
 #' filter = flt("importance", learner = learner)
 #' filter$calculate(task)
 #' as.data.table(filter)
-FilterImportance = R6Class("FilterImportance", inherit = Filter,
+FilterImportance = R6Class("FilterImportance",
+  inherit = Filter,
 
   public = list(
 
@@ -62,7 +63,6 @@ FilterImportance = R6Class("FilterImportance", inherit = Filter,
   ),
 
   private = list(
-
     .calculate = function(task, nfeat) {
       learner = self$learner$clone(deep = TRUE)
       learner = learner$train(task = task)
