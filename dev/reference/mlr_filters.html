@@ -200,6 +200,7 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 <code><a href='mlr_filters_mrmr.html'>mlr_filters_mrmr</a></code>,
 <code><a href='mlr_filters_njmim.html'>mlr_filters_njmim</a></code>,
 <code><a href='mlr_filters_performance.html'>mlr_filters_performance</a></code>,
+<code><a href='mlr_filters_permutation.html'>mlr_filters_permutation</a></code>,
 <code><a href='mlr_filters_variance.html'>mlr_filters_variance</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -207,7 +208,7 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 #&gt;  [5] "correlation"      "disr"             "find_correlation" "importance"      
 #&gt;  [9] "information_gain" "jmi"              "jmim"             "kruskal_test"    
 #&gt; [13] "mim"              "mrmr"             "njmim"            "performance"     
-#&gt; [17] "variance"        </div><div class='input'><span class='fu'><a href='as.data.table.html'>as.data.table</a></span>(<span class='no'>mlr_filters</span>)</div><div class='output co'>#&gt;                  key    task_type task_properties  param_set
+#&gt; [17] "permutation"      "variance"        </div><div class='input'><span class='fu'><a href='as.data.table.html'>as.data.table</a></span>(<span class='no'>mlr_filters</span>)</div><div class='output co'>#&gt;                  key    task_type task_properties  param_set
 #&gt;  1:            anova      classif                 &lt;ParamSet&gt;
 #&gt;  2:              auc      classif        twoclass &lt;ParamSet&gt;
 #&gt;  3:         carscore         regr                 &lt;ParamSet&gt;
@@ -224,7 +225,8 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 #&gt; 14:             mrmr      classif                 &lt;ParamSet&gt;
 #&gt; 15:            njmim      classif                 &lt;ParamSet&gt;
 #&gt; 16:      performance      classif                 &lt;ParamSet&gt;
-#&gt; 17:         variance classif,regr                 &lt;ParamSet&gt;
+#&gt; 17:      permutation      classif                 &lt;ParamSet&gt;
+#&gt; 18:         variance classif,regr                 &lt;ParamSet&gt;
 #&gt;                              feature_types           packages
 #&gt;  1:                        integer,numeric              stats
 #&gt;  2:                        integer,numeric       mlr3measures
@@ -242,7 +244,8 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 #&gt; 14:         integer,numeric,factor,ordered            praznik
 #&gt; 15:         integer,numeric,factor,ordered            praznik
 #&gt; 16: logical,integer,numeric,factor,ordered rpart,mlr3measures
-#&gt; 17:                        integer,numeric              stats</div><div class='input'><span class='no'>mlr_filters</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"mim"</span>)</div><div class='output co'>#&gt; &lt;FilterMIM:mim&gt;
+#&gt; 17: logical,integer,numeric,factor,ordered rpart,mlr3measures
+#&gt; 18:                        integer,numeric              stats</div><div class='input'><span class='no'>mlr_filters</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"mim"</span>)</div><div class='output co'>#&gt; &lt;FilterMIM:mim&gt;
 #&gt; Task Types: classif
 #&gt; Task Properties: -
 #&gt; Packages: praznik
