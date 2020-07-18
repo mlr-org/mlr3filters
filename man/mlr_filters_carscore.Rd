@@ -76,42 +76,9 @@ Other Filter:
 \subsection{Method \code{new()}}{
 Create a FilterCarScore object.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterCarScore$new(
-  id = "carscore",
-  task_type = "regr",
-  param_set = ParamSet$new(list(ParamDbl$new("lambda", lower = 0, upper = 1, default =
-    NO_DEF), ParamLgl$new("diagonal", default = FALSE), ParamLgl$new("verbose", default =
-    TRUE))),
-  packages = "care",
-  feature_types = "numeric"
-)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FilterCarScore$new()}\if{html}{\out{</div>}}
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{id}}{(\code{character(1)})\cr
-Identifier for the filter.}
-
-\item{\code{task_type}}{(\code{character()})\cr
-Types of the task the filter can operator on. E.g., \code{"classif"} or
-\code{"regr"}.}
-
-\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
-Set of hyperparameters.}
-
-\item{\code{packages}}{(\code{character()})\cr
-Set of required packages.
-Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
-are not attached.}
-
-\item{\code{feature_types}}{(\code{character()})\cr
-Feature types the filter operates on.
-Must be a subset of
-\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.}
-}
-\if{html}{\out{</div>}}
-}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
