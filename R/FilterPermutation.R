@@ -61,7 +61,7 @@ FilterPermutation = R6Class("FilterPermutation",
       measure = mlr3::msr("classif.ce")) {
 
       self$learner = learner = assert_learner(as_learner(learner, clone = TRUE))
-      self$resampling = assert_resampling(as_resampling(resampling))
+      self$resampling = assert_resampling(as_resampling(resampling), instantiated = FALSE)
       self$measure = assert_measure(as_measure(measure,
         task_type = learner$task_type, clone = TRUE), learner = learner)
       packages = unique(c(self$learner$packages, self$measure$packages))
@@ -79,32 +79,37 @@ FilterPermutation = R6Class("FilterPermutation",
 
   private = list(
     .calculate = function(task, nfeat) {
-
       task = task$clone()
-      pars = self$param_set$values
       fn = task$feature_names
+      pars = self$param_set$values
       pars$standardize = pars$standardize %??% FALSE
       pars$nmc = pars$nmc %??% 50L
 
+      backend = task$backend
       rr = resample(task, self$learner, self$resampling)
       baseline = rr$aggregate(self$measure)
 
-      perf = map_dtr(seq(pars$nmc), function(i) {
-        set_names(map_dtc(fn, function(x) {
+      perf = matrix(NA_real_, nrow = pars$nmc, ncol = length(fn),
+        dimnames = list(NULL, fn))
 
-          task = task$clone()
-          data = task$data()
-          column = task$data(cols = x)
-          data[, (x) := column[sample(nrow(data))]]
+      for (j in seq_col(perf)) {
+        data = task$data(cols = fn[j])
 
-          # Empty task and fill with shuffled column
-          task$filter(rows = 0)
-          task$rbind(data)
+        for (i in seq_row(perf)) {
+          data[[1L]] = shuffle(data[[1L]])
+          task$cbind(data)
           rr = resample(task, self$learner, self$resampling)
-          rr$aggregate(self$measure)
-        }), fn)
-      })
-      delta = baseline - as.matrix(perf[, lapply(.SD, mean)])[1, ]
+          perf[i, j] = rr$aggregate(self$measure)
+
+          # reset to previous backend
+          # this is a bit of an ugly hack, but since we are only overwriting
+          # a column with its own values during `task$cbind()`, this should pose
+          # no problem.
+          task$backend = backend
+        }
+      }
+
+      delta = baseline - colMeans(perf)
 
       if (self$measure$minimize) {
         delta = -delta
@@ -113,7 +118,8 @@ FilterPermutation = R6Class("FilterPermutation",
       if (pars$standardize) {
         delta = delta / max(delta)
       }
-      set_names(delta, fn)
+
+      delta
     }
   )
 )
