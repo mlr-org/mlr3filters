@@ -7,10 +7,10 @@ mlr3filters 0.3.0
 ## R CMD check results
 
 - [x] Checked locally, R 4.0.2
-- [ ] Checked on CI system, R 4.0.2
-- [ ] Checked on win-builder, R devel
+- [x] Checked on CI system, R 4.0.2
+- [x] Checked on win-builder, R devel
 
-- [ ] Check the boxes above after successful execution and remove this line. Then run `fledge::release().
+- [x] Check the boxes above after successful execution and remove this line. Then run `fledge::release().
 
 ## Current CRAN check results
 
