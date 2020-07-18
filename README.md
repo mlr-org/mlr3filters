@@ -77,7 +77,8 @@ as.data.table(filter$calculate(task))
 | mim               | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
 | mrmr              | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
 | njmim             | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
-| performance       | Universal      | Logical, Integer, Numeric, Factor, Ordered | [character(0)](https://cran.r-project.org/package=character\(0\)) |
+| performance       | Universal      | Logical, Integer, Numeric, Factor, Ordered |                                                                   |
+| permutation       | Universal      | Logical, Integer, Numeric, Factor, Ordered |                                                                   |
 | variance          | Classif & Regr | Integer, Numeric                           | stats                                                             |
 
 ### Variable Importance Filters
