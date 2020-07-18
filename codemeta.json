@@ -274,7 +274,7 @@
   ],
   "releaseNotes": "https://github.com/mlr-org/mlr3filters/blob/master/NEWS.md",
   "readme": "https://github.com/mlr-org/mlr3filters/blob/master/README.md",
-  "fileSize": "25.163KB",
+  "fileSize": "25.136KB",
   "contIntegration": "https://codecov.io/github/mlr-org/mlr3filters?branch=master",
   "keywords": [
     "filter",
