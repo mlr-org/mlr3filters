@@ -24,3 +24,4 @@
 ^\.vscode$
 ^gfortran.*
 ^\.lintr$
+^cran-comments\.md$
