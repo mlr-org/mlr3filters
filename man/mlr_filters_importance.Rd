@@ -76,41 +76,14 @@ Learner to extract the importance values from.}
 \subsection{Method \code{new()}}{
 Create a FilterImportance object.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterImportance$new(
-  id = "importance",
-  task_type = learner$task_type,
-  feature_types = learner$feature_types,
-  learner = mlr3::lrn("classif.rpart"),
-  packages = learner$packages,
-  param_set = learner$param_set
-)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FilterImportance$new(learner = mlr3::lrn("classif.rpart"))}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{id}}{(\code{character(1)})\cr
-Identifier for the filter.}
-
-\item{\code{task_type}}{(\code{character()})\cr
-Types of the task the filter can operator on. E.g., \code{"classif"} or
-\code{"regr"}.}
-
-\item{\code{feature_types}}{(\code{character()})\cr
-Feature types the filter operates on.
-Must be a subset of
-\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.}
-
 \item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr
 Learner to extract the importance values from.}
-
-\item{\code{packages}}{(\code{character()})\cr
-Set of required packages.
-Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
-are not attached.}
-
-\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
-Set of hyperparameters.}
 }
 \if{html}{\out{</div>}}
 }

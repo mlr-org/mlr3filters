@@ -72,46 +72,9 @@ Other Filter:
 \subsection{Method \code{new()}}{
 Create a FilterAnova object.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterAnova$new(
-  id = "anova",
-  task_type = "classif",
-  task_properties = character(),
-  param_set = ParamSet$new(),
-  feature_types = c("integer", "numeric"),
-  packages = "stats"
-)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FilterAnova$new()}\if{html}{\out{</div>}}
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{id}}{(\code{character(1)})\cr
-Identifier for the filter.}
-
-\item{\code{task_type}}{(\code{character()})\cr
-Types of the task the filter can operator on. E.g., \code{"classif"} or
-\code{"regr"}.}
-
-\item{\code{task_properties}}{(\code{character()})\cr
-Required task properties, see \link[mlr3:Task]{mlr3::Task}.
-Must be a subset of
-\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_properties}}.}
-
-\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
-Set of hyperparameters.}
-
-\item{\code{feature_types}}{(\code{character()})\cr
-Feature types the filter operates on.
-Must be a subset of
-\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.}
-
-\item{\code{packages}}{(\code{character()})\cr
-Set of required packages.
-Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
-are not attached.}
-}
-\if{html}{\out{</div>}}
-}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}

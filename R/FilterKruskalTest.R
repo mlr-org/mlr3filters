@@ -26,36 +26,19 @@ FilterKruskalTest = R6Class("FilterKruskalTest",
   public = list(
 
     #' @description Create a FilterKruskalTest object.
-    #' @param id (`character(1)`)\cr
-    #'   Identifier for the filter.
-    #' @param task_type (`character()`)\cr
-    #'   Types of the task the filter can operator on. E.g., `"classif"` or
-    #'   `"regr"`.
-    #' @param param_set ([paradox::ParamSet])\cr
-    #'   Set of hyperparameters.
-    #' @param feature_types (`character()`)\cr
-    #'   Feature types the filter operates on.
-    #'   Must be a subset of
-    #'   [`mlr_reflections$task_feature_types`][mlr3::mlr_reflections].
-    #' @param packages (`character()`)\cr
-    #'   Set of required packages.
-    #'   Note that these packages will be loaded via [requireNamespace()], and
-    #'   are not attached.
-    initialize = function(id = "kruskal_test",
-      task_type = "classif",
+    initialize = function() {
       param_set = ParamSet$new(list(
         ParamFct$new("na.action",
           default = "na.omit",
           levels = c("na.omit", "na.fail", "na.exclude", "na.pass"))
-      )),
-      packages = "stats",
-      feature_types = c("integer", "numeric")) {
+      ))
+
       super$initialize(
-        id = id,
-        task_type = task_type,
+        id = "kruskal_test",
+        task_type = "classif",
         param_set = param_set,
-        feature_types = feature_types,
-        packages = packages,
+        packages = "stats",
+        feature_types = c("integer", "numeric"),
         man = "mlr3filters::mlr_filters_kruskal_test"
       )
     }
@@ -63,8 +46,7 @@ FilterKruskalTest = R6Class("FilterKruskalTest",
 
   private = list(
     .calculate = function(task, nfeat) {
-      na_action = self$param_set$values$na.action %??%
-        self$param_set$default$na.action
+      na_action = self$param_set$values$na.action %??% "na.omit"
 
       data = task$data(cols = task$feature_names)
       g = task$truth()

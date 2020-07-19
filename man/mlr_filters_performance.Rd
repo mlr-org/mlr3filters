@@ -81,34 +81,15 @@ Other Filter:
 Create a FilterDISR object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FilterPerformance$new(
-  id = "performance",
-  task_type = learner$task_type,
-  param_set = learner$param_set,
-  feature_types = learner$feature_types,
   learner = mlr3::lrn("classif.rpart"),
   resampling = mlr3::rsmp("holdout"),
-  measure = mlr3::msr("classif.ce")
+  measure = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{id}}{(\code{character(1)})\cr
-Identifier for the filter.}
-
-\item{\code{task_type}}{(\code{character()})\cr
-Types of the task the filter can operator on. E.g., \code{"classif"} or
-\code{"regr"}.}
-
-\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
-Set of hyperparameters.}
-
-\item{\code{feature_types}}{(\code{character()})\cr
-Feature types the filter operates on.
-Must be a subset of
-\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.}
-
 \item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr
 \link[mlr3:Learner]{mlr3::Learner} to use for model fitting.}
 

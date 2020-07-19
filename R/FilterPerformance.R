@@ -30,42 +30,26 @@ FilterPerformance = R6Class("FilterPerformance",
     measure = NULL,
 
     #' @description Create a FilterDISR object.
-    #' @param id (`character(1)`)\cr
-    #'   Identifier for the filter.
-    #' @param task_type (`character()`)\cr
-    #'   Types of the task the filter can operator on. E.g., `"classif"` or
-    #'   `"regr"`.
-    #' @param param_set ([paradox::ParamSet])\cr
-    #'   Set of hyperparameters.
-    #' @param feature_types (`character()`)\cr
-    #'   Feature types the filter operates on.
-    #'   Must be a subset of
-    #'   [`mlr_reflections$task_feature_types`][mlr3::mlr_reflections].
     #' @param learner ([mlr3::Learner])\cr
     #'   [mlr3::Learner] to use for model fitting.
     #' @param resampling ([mlr3::Resampling])\cr
     #'   [mlr3::Resampling] to be used within resampling.
     #' @param measure ([mlr3::Measure])\cr
     #'   [mlr3::Measure] to be used for evaluating the performance.
-    initialize = function(id = "performance",
-      task_type = learner$task_type,
-      param_set = learner$param_set,
-      feature_types = learner$feature_types,
-      learner = mlr3::lrn("classif.rpart"),
-      resampling = mlr3::rsmp("holdout"),
-      measure = mlr3::msr("classif.ce")) {
+    initialize = function(learner = mlr3::lrn("classif.rpart"),
+      resampling = mlr3::rsmp("holdout"), measure = NULL) {
 
-      self$learner = learner = assert_learner(as_learner(learner, clone = TRUE),
-        properties = "importance")
+      self$learner = learner = assert_learner(as_learner(learner, clone = TRUE))
       self$resampling = assert_resampling(as_resampling(resampling))
       self$measure = assert_measure(as_measure(measure,
         task_type = learner$task_type, clone = TRUE), learner = learner)
       packages = unique(c(self$learner$packages, self$measure$packages))
 
       super$initialize(
-        id = id,
-        task_type = task_type,
-        feature_types = feature_types,
+        id = "performance",
+        task_type = learner$task_type,
+        param_set = learner$param_set,
+        feature_types = learner$feature_types,
         packages = packages,
         man = "mlr3filters::mlr_filters_performance"
       )

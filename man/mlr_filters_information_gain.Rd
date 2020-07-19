@@ -80,43 +80,9 @@ Other Filter:
 \subsection{Method \code{new()}}{
 Create a FilterInformationGain object.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterInformationGain$new(
-  id = "information_gain",
-  task_type = c("classif", "regr"),
-  param_set = ParamSet$new(list(ParamFct$new("type", levels = c("infogain",
-    "gainratio", "symuncert"), default = "infogain"), ParamLgl$new("equal", default =
-    FALSE), ParamLgl$new("discIntegers", default = TRUE), ParamInt$new("threads", lower =
-    0L, default = 1L))),
-  packages = "FSelectorRcpp",
-  feature_types = c("integer", "numeric", "factor", "ordered")
-)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FilterInformationGain$new()}\if{html}{\out{</div>}}
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{id}}{(\code{character(1)})\cr
-Identifier for the filter.}
-
-\item{\code{task_type}}{(\code{character()})\cr
-Types of the task the filter can operator on. E.g., \code{"classif"} or
-\code{"regr"}.}
-
-\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
-Set of hyperparameters.}
-
-\item{\code{packages}}{(\code{character()})\cr
-Set of required packages.
-Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
-are not attached.}
-
-\item{\code{feature_types}}{(\code{character()})\cr
-Feature types the filter operates on.
-Must be a subset of
-\code{\link[mlr3:mlr_reflections]{mlr_reflections$task_feature_types}}.}
-}
-\if{html}{\out{</div>}}
-}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}

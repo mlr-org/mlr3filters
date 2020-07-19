@@ -23,37 +23,13 @@ FilterAUC = R6Class("FilterAUC",
   public = list(
 
     #' @description Create a FilterAUC object.
-    #' @param id (`character(1)`)\cr
-    #'   Identifier for the filter.
-    #' @param task_type (`character()`)\cr
-    #'   Types of the task the filter can operator on. E.g., `"classif"` or
-    #'   `"regr"`.
-    #' @param param_set ([paradox::ParamSet])\cr
-    #'   Set of hyperparameters.
-    #' @param feature_types (`character()`)\cr
-    #'   Feature types the filter operates on.
-    #'   Must be a subset of
-    #'   [`mlr_reflections$task_feature_types`][mlr3::mlr_reflections].
-    #' @param task_properties (`character()`)\cr
-    #'   Required task properties, see [mlr3::Task].
-    #'   Must be a subset of
-    #'   [`mlr_reflections$task_properties`][mlr3::mlr_reflections].
-    #' @param packages (`character()`)\cr
-    #'   Set of required packages.
-    #'   Note that these packages will be loaded via [requireNamespace()], and
-    #'   are not attached.
-    initialize = function(id = "auc",
-      task_type = "classif",
-      task_properties = "twoclass",
-      param_set = ParamSet$new(),
-      packages = "mlr3measures",
-      feature_types = c("integer", "numeric")) {
+    initialize = function() {
       super$initialize(
-        id = id,
-        task_type = task_type,
-        task_properties = task_properties,
-        feature_types = feature_types,
-        packages = packages,
+        id = "auc",
+        task_type = "classif",
+        task_properties = "twoclass",
+        feature_types = c("integer", "numeric"),
+        packages = "mlr3measures",
         man = "mlr3filters::mlr_filters_auc"
       )
     }
