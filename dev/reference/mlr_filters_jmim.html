@@ -215,37 +215,8 @@ This filter supports partial scoring (see Filter)." />
 <hr>
 <a id="method-new"></a></p><h3>Method <code>new()</code></h3>
 <p>Create a FilterJMIM object.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>FilterJMIM</span>$<span class='fu'>new</span>(
-  <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"jmim"</span>,
-  <span class='kw'>task_type</span> <span class='kw'>=</span> <span class='st'>"classif"</span>,
-  <span class='kw'>param_set</span> <span class='kw'>=</span> <span class='no'>ParamSet</span>$<span class='fu'>new</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>ParamInt</span>$<span class='fu'>new</span>(<span class='st'>"threads"</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>0L</span>))),
-  <span class='kw'>packages</span> <span class='kw'>=</span> <span class='st'>"praznik"</span>,
-  <span class='kw'>feature_types</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"integer"</span>, <span class='st'>"numeric"</span>, <span class='st'>"factor"</span>, <span class='st'>"ordered"</span>)
-)</pre><p></div></p>
+<p><div class="r"></p><pre><span class='no'>FilterJMIM</span>$<span class='fu'>new</span>()</pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
-<dt><code>id</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
-Identifier for the filter.</p></dd>
-
-<dt><code>task_type</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Types of the task the filter can operator on. E.g., <code>"classif"</code> or
-<code>"regr"</code>.</p></dd>
-
-<dt><code>param_set</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
-Set of hyperparameters.</p></dd>
-
-<dt><code>packages</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Set of required packages.
-Note that these packages will be loaded via <code><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace()</a></code>, and
-are not attached.</p></dd>
-
-<dt><code>feature_types</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Feature types the filter operates on.
-Must be a subset of
-<code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$task_feature_types</a></code>.</p></dd>
-
-</dl><p></div></p>
 <p><hr>
 <a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
