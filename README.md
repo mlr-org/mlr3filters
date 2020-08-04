@@ -4,8 +4,11 @@
 Package website: [release](https://mlr3filters.mlr-org.com/) |
 [dev](https://mlr3filters.mlr-org.com/dev)
 
-{mlr3filters} adds filters, feature selection methods and embedded
-feature selection methods of algorithms to {mlr3}.
+{mlr3filters} adds feature selection filters to
+[mlr3](https://mlr3.mlr-org.com). Wrapper methods for feature selection
+are implemented in [mlr3fselect](https://mlr3fselect.mlr-org.com).
+Learners which support the extraction feature importance scores can be
+combined with a filter from this package for embedded feature selection.
 
 <!-- badges: start -->
 
@@ -111,10 +114,10 @@ filter$calculate(task)
 head(as.data.table(filter), 3)
 ```
 
-    ##         feature    score
-    ## 1:  Petal.Width 43.66496
-    ## 2: Petal.Length 43.10837
-    ## 3: Sepal.Length 10.21944
+    ##         feature     score
+    ## 1:  Petal.Width 44.224198
+    ## 2: Petal.Length 43.303520
+    ## 3: Sepal.Length  9.618601
 
 ### Performance Filter
 
