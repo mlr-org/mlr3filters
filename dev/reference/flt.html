@@ -162,9 +162,9 @@
     <p>These functions complements <a href='mlr_filters.html'>mlr_filters</a> with a function in the spirit of <a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>mlr3::mlr_sugar</a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>flt</span>(<span class='no'>.key</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>flt</span>(<span class='kw'>.key</span>, <span class='kw'>...</span>)
 
-<span class='fu'>flts</span>(<span class='no'>.keys</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>flts</span>(<span class='kw'>.keys</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -192,11 +192,13 @@ Keys passed to the respective <a href='https://mlr3misc.mlr-org.com/reference/Di
     <p><a href='Filter.html'>Filter</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>flt</span>(<span class='st'>"correlation"</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"kendall"</span>)</div><div class='output co'>#&gt; &lt;FilterCorrelation:correlation&gt;
+    <pre class="examples"><div class='input'><span class='fu'>flt</span>(<span class='st'>"correlation"</span>, method = <span class='st'>"kendall"</span>)
+</div><div class='output co'>#&gt; &lt;FilterCorrelation:correlation&gt;
 #&gt; Task Types: regr
 #&gt; Task Properties: -
 #&gt; Packages: stats
-#&gt; Feature types: integer, numeric</div><div class='input'><span class='fu'>flts</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mrmr"</span>, <span class='st'>"jmim"</span>))</div><div class='output co'>#&gt; [[1]]
+#&gt; Feature types: integer, numeric</div><div class='input'><span class='fu'>flts</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mrmr"</span>, <span class='st'>"jmim"</span>))
+</div><div class='output co'>#&gt; [[1]]
 #&gt; &lt;FilterMRMR:mrmr&gt;
 #&gt; Task Types: classif
 #&gt; Task Properties: -
@@ -225,7 +227,7 @@ Keys passed to the respective <a href='https://mlr3misc.mlr-org.com/reference/Di
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

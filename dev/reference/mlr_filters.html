@@ -168,7 +168,7 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 <p>For a more convenient way to retrieve and construct filters, see <code><a href='flt.html'>flt()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='no'>mlr_filters</span></pre>
+    <pre class="usage"><span class='kw'>mlr_filters</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
@@ -204,11 +204,13 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 <code><a href='mlr_filters_variance.html'>mlr_filters_variance</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>mlr_filters</span>$<span class='fu'>keys</span>()</div><div class='output co'>#&gt;  [1] "anova"            "auc"              "carscore"         "cmim"            
+    <pre class="examples"><div class='input'><span class='kw'>mlr_filters</span><span class='op'>$</span><span class='fu'>keys</span>()
+</div><div class='output co'>#&gt;  [1] "anova"            "auc"              "carscore"         "cmim"            
 #&gt;  [5] "correlation"      "disr"             "find_correlation" "importance"      
 #&gt;  [9] "information_gain" "jmi"              "jmim"             "kruskal_test"    
 #&gt; [13] "mim"              "mrmr"             "njmim"            "performance"     
-#&gt; [17] "permutation"      "variance"        </div><div class='input'><span class='fu'><a href='as.data.table.html'>as.data.table</a></span>(<span class='no'>mlr_filters</span>)</div><div class='output co'>#&gt;                  key    task_type task_properties      param_set
+#&gt; [17] "permutation"      "variance"        </div><div class='input'><span class='fu'><a href='as.data.table.html'>as.data.table</a></span>(<span class='kw'>mlr_filters</span>)
+</div><div class='output co'>#&gt;                  key    task_type task_properties      param_set
 #&gt;  1:            anova      classif                 &lt;ParamSet[39]&gt;
 #&gt;  2:              auc      classif        twoclass &lt;ParamSet[39]&gt;
 #&gt;  3:         carscore         regr                 &lt;ParamSet[39]&gt;
@@ -245,11 +247,13 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 #&gt; 15:         integer,numeric,factor,ordered            praznik
 #&gt; 16: logical,integer,numeric,factor,ordered rpart,mlr3measures
 #&gt; 17: logical,integer,numeric,factor,ordered rpart,mlr3measures
-#&gt; 18:                        integer,numeric              stats</div><div class='input'><span class='no'>mlr_filters</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"mim"</span>)</div><div class='output co'>#&gt; &lt;FilterMIM:mim&gt;
+#&gt; 18:                        integer,numeric              stats</div><div class='input'><span class='kw'>mlr_filters</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"mim"</span>)
+</div><div class='output co'>#&gt; &lt;FilterMIM:mim&gt;
 #&gt; Task Types: classif
 #&gt; Task Properties: -
 #&gt; Packages: praznik
-#&gt; Feature types: integer, numeric, factor, ordered</div><div class='input'><span class='fu'><a href='flt.html'>flt</a></span>(<span class='st'>"anova"</span>)</div><div class='output co'>#&gt; &lt;FilterAnova:anova&gt;
+#&gt; Feature types: integer, numeric, factor, ordered</div><div class='input'><span class='fu'><a href='flt.html'>flt</a></span>(<span class='st'>"anova"</span>)
+</div><div class='output co'>#&gt; &lt;FilterAnova:anova&gt;
 #&gt; Task Types: classif
 #&gt; Task Properties: -
 #&gt; Packages: stats
@@ -269,7 +273,7 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

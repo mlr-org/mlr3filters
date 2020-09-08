@@ -202,14 +202,14 @@ and then get a score value of <code>NA</code>.</p>
 <code><a href='mlr_filters.html'>mlr_filters</a></code></p></div>
     <h2 class="hasAnchor" id="public-fields"><a class="anchor" href="#public-fields"></a>Public fields</h2>
 
-    <p><div class="r6-fields"></p><dl'>
+    <p><div class="r6-fields"></p><dl>
 <dt><code>id</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
 Identifier of the object.
 Used in tables, plot and text output.</p></dd>
 
 <dt><code>task_type</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
 Task type, e.g. <code>"classif"</code> or <code>"regr"</code>.For a complete list of possible task types (depending on the loaded packages),
-see <code>mlr_reflections$task_types$type</code>.</p></dd>
+see <code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$task_types$type</a></code>.</p></dd>
 
 <dt><code>task_properties</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
 <a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>task properties.</p></dd>
@@ -236,7 +236,7 @@ non-deterministic order.</p></dd>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
-<h3>Public methods</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
 
 <ul>
 <li><p><a href='#method-new'><code>Filter$new()</code></a></p></li>
@@ -247,20 +247,20 @@ non-deterministic order.</p></dd>
 <li><p><a href='#method-clone'><code>Filter$clone()</code></a></p></li>
 </ul>
 <p><hr>
-<a id="method-new"></a></p><h3>Method <code>new()</code></h3>
-<p>Create a Filter object.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Filter</span>$<span class='fu'>new</span>(
-  <span class='no'>id</span>,
-  <span class='no'>task_type</span>,
-  <span class='kw'>task_properties</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(),
-  <span class='kw'>param_set</span> <span class='kw'>=</span> <span class='no'>ParamSet</span>$<span class='fu'>new</span>(),
-  <span class='kw'>feature_types</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(),
-  <span class='kw'>packages</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(),
-  <span class='kw'>man</span> <span class='kw'>=</span> <span class='fl'>NA_character_</span>
+<a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
+<p>Create a Filter object.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='kw'>Filter</span><span class='op'>$</span><span class='fu'>new</span>(
+  <span class='kw'>id</span>,
+  <span class='kw'>task_type</span>,
+  task_properties = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(),
+  param_set = <span class='kw'>ParamSet</span><span class='op'>$</span><span class='fu'>new</span>(),
+  feature_types = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(),
+  packages = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(),
+  man = <span class='fl'>NA_character_</span>
 )</pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
 <dt><code>id</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
 Identifier for the filter.</p></dd>
 
@@ -293,32 +293,32 @@ this object. The referenced help package can be opened via method
 
 </dl><p></div></p>
 <p><hr>
-<a id="method-format"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code></h3>
-<p>Format helper for Filter class</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Filter</span>$<span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span>()</pre><p></div></p>
+<a id="method-format"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code></h3>
+<p>Format helper for Filter class</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='kw'>Filter</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span>()</pre><p></div></p>
 
 <p><hr>
-<a id="method-print"></a></p><h3>Method <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code></h3>
-<p>Printer for Filter class</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Filter</span>$<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>()</pre><p></div></p>
+<a id="method-print"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code><a href='https://rdrr.io/r/base/print.html'>print()</a></code></h3>
+<p>Printer for Filter class</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='kw'>Filter</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>()</pre><p></div></p>
 
 <p><hr>
-<a id="method-help"></a></p><h3>Method <code>help()</code></h3>
-<p>Opens the corresponding help page referenced by field <code>$man</code>.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Filter</span>$<span class='fu'><a href='https://rdrr.io/r/utils/help.html'>help</a></span>()</pre><p></div></p>
+<a id="method-help"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>help()</code></h3>
+<p>Opens the corresponding help page referenced by field <code>$man</code>.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='kw'>Filter</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/utils/help.html'>help</a></span>()</pre><p></div></p>
 
 <p><hr>
-<a id="method-calculate"></a></p><h3>Method <code>calculate()</code></h3>
+<a id="method-calculate"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>calculate()</code></h3>
 <p>Calculates the filter score values for the provided <a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a> and
 stores them in field <code>scores</code>. <code>nfeat</code> determines the minimum number of
 features to score (see details), and defaults to the number
 of features in <code>task</code>. Loads required packages and then calls
 <code>private$.calculate()</code> of the respective subclass.
-If the task has no rows, each feature gets the score <code>NA</code>.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Filter</span>$<span class='fu'>calculate</span>(<span class='no'>task</span>, <span class='kw'>nfeat</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre><p></div></p>
+If the task has no rows, each feature gets the score <code>NA</code>.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='kw'>Filter</span><span class='op'>$</span><span class='fu'>calculate</span>(<span class='kw'>task</span>, nfeat = <span class='kw'>NULL</span>)</pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
 <dt><code>task</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>)<br />
 <a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a> to calculate the filter scores for.</p></dd>
 
@@ -327,12 +327,12 @@ THe minimum number of features to calculate filter scores for.</p></dd>
 
 </dl><p></div></p>
 <p><hr>
-<a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
-<p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>Filter</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
+<a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
+<p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='kw'>Filter</span><span class='op'>$</span><span class='fu'>clone</span>(deep = <span class='fl'>FALSE</span>)</pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
 <dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
 
 </dl><p></div></p>
@@ -354,7 +354,7 @@ THe minimum number of features to calculate filter scores for.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
