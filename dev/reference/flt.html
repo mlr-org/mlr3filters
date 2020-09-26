@@ -162,9 +162,9 @@
     <p>These functions complements <a href='mlr_filters.html'>mlr_filters</a> with a function in the spirit of <a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>mlr3::mlr_sugar</a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>flt</span>(<span class='kw'>.key</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>flt</span><span class='op'>(</span><span class='va'>.key</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>flts</span>(<span class='kw'>.keys</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>flts</span><span class='op'>(</span><span class='va'>.keys</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -192,12 +192,12 @@ Keys passed to the respective <a href='https://mlr3misc.mlr-org.com/reference/Di
     <p><a href='Filter.html'>Filter</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>flt</span>(<span class='st'>"correlation"</span>, method = <span class='st'>"kendall"</span>)
+    <pre class="examples"><div class='input'><span class='fu'>flt</span><span class='op'>(</span><span class='st'>"correlation"</span>, method <span class='op'>=</span> <span class='st'>"kendall"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;FilterCorrelation:correlation&gt;
 #&gt; Task Types: regr
 #&gt; Task Properties: -
 #&gt; Packages: stats
-#&gt; Feature types: integer, numeric</div><div class='input'><span class='fu'>flts</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mrmr"</span>, <span class='st'>"jmim"</span>))
+#&gt; Feature types: integer, numeric</div><div class='input'><span class='fu'>flts</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mrmr"</span>, <span class='st'>"jmim"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
 #&gt; &lt;FilterMRMR:mrmr&gt;
 #&gt; Task Types: classif
