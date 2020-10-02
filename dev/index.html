@@ -116,16 +116,14 @@
 <p>Package website: <a href="https://mlr3filters.mlr-org.com/">release</a> | <a href="https://mlr3filters.mlr-org.com/dev">dev</a></p>
 <p>{mlr3filters} adds feature selection filters to <a href="https://mlr3.mlr-org.com">mlr3</a>. Wrapper methods for feature selection are implemented in <a href="https://mlr3fselect.mlr-org.com">mlr3fselect</a>. Learners which support the extraction feature importance scores can be combined with a filter from this package for embedded feature selection.</p>
 <!-- badges: start -->
-<p><a href="https://github.com/mlr-org/mlr3filters/actions"><img src="https://github.com/mlr-org/mlr3filters/workflows/tic/badge.svg?branch=master" alt="tic"></a> <a href="https://cran.r-project.org/package=mlr3filters"><img src="https://www.r-pkg.org/badges/version-ago/mlr3filters" alt="CRAN Status Badge"></a> <a href="https://cran.r-project.org/web/checks/check_results_mlr3filters.html"><img src="https://cranchecks.info/badges/worst/mlr3filters" alt="CRAN checks"></a> <a href="https://codecov.io/github/mlr-org/mlr3filters?branch=master"><img src="https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg" alt="Coverage status"></a> <a href="https://www.codefactor.io/repository/github/mlr-org/mlr3filters"><img src="https://www.codefactor.io/repository/github/mlr-org/mlr3filters/badge" alt="CodeFactor"></a> <a href="https://stackoverflow.com/questions/tagged/mlr3"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a> <!-- badges: end --></p>
+<p><a href="https://github.com/mlr-org/mlr3filters/actions"><img src="https://github.com/mlr-org/mlr3filters/workflows/tic/badge.svg?branch=master" alt="tic"></a> <a href="https://cran.r-project.org/package=mlr3filters"><img src="https://www.r-pkg.org/badges/version-ago/mlr3filters" alt="CRAN Status"></a> <a href="https://www.codefactor.io/repository/github/mlr-org/mlr3filters"><img src="https://www.codefactor.io/repository/github/mlr-org/mlr3filters/badge" alt="CodeFactor"></a> <a href="https://stackoverflow.com/questions/tagged/mlr3"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a> <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/"><img src="https://img.shields.io/badge/chat-mattermost-orange.svg" alt="Mattermost"></a> <!-- badges: end --></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>CRAN version</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"mlr3filters"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">"mlr3filters"</span>)</span></code></pre></div>
 <p>Development version</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"mlr-org/mlr3filters"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"mlr-org/mlr3filters"</span>)</span></code></pre></div>
 </div>
 <div id="filters" class="section level2">
 <h2 class="hasAnchor">
@@ -133,33 +131,33 @@
 <div id="filter-example" class="section level3">
 <h3 class="hasAnchor">
 <a href="#filter-example" class="anchor"></a>Filter Example</h3>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3.mlr-org.com">"mlr3"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3filters.mlr-org.com">"mlr3filters"</a></span><span class="op">)</span>
-
-<span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>
-<span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="reference/flt.html">flt</a></span><span class="op">(</span><span class="st">"auc"</span><span class="op">)</span>
-<span class="fu"><a href="reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span><span class="op">)</span></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">##     feature     score</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="co">## 1:  glucose 0.2927906</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co">## 2:  insulin 0.2316288</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co">## 3:     mass 0.1870358</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">## 4:      age 0.1869403</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">## 5:  triceps 0.1625115</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">## 6: pregnant 0.1195149</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">## 7: pressure 0.1075760</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">## 8: pedigree 0.1062015</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">library</span>(<span class="st">"mlr3"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">library</span>(<span class="st">"mlr3filters"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a>task =<span class="st"> </span><span class="kw">tsk</span>(<span class="st">"pima"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>filter =<span class="st"> </span><span class="kw">flt</span>(<span class="st">"auc"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="kw">as.data.table</span>(filter<span class="op">$</span><span class="kw">calculate</span>(task))</span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">##     feature     score</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">## 1:  glucose 0.2927906</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">## 2:  insulin 0.2316288</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">## 3:     mass 0.1870358</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">## 4:      age 0.1869403</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">## 5:  triceps 0.1625115</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co">## 6: pregnant 0.1195149</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="co">## 7: pressure 0.1075760</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co">## 8: pedigree 0.1062015</span></span></code></pre></div>
 </div>
 <div id="implemented-filters" class="section level3">
 <h3 class="hasAnchor">
 <a href="#implemented-filters" class="anchor"></a>Implemented Filters</h3>
 <table class="table">
 <colgroup>
-<col width="12%">
+<col width="13%">
 <col width="10%">
 <col width="30%">
-<col width="47%">
+<col width="45%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">Name</th>
@@ -283,28 +281,29 @@
 <h3 class="hasAnchor">
 <a href="#variable-importance-filters" class="anchor"></a>Variable Importance Filters</h3>
 <p>The following learners allow the extraction of variable importance and therefore are supported by <code>FilterImportance</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      </span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co">## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        </span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co">## [7] "regr.rpart"          "regr.xgboost"</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"      </span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">##  [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        </span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">##  [7] "regr.rpart"          "regr.xgboost"        "surv.ranger"        </span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">## [10] "surv.xgboost"</span></span></code></pre></div>
 <p>If your learner is not listed here but capable of extracting variable importance from the fitted model, the reason is most likely that it is not yet integrated in the package <a href="https://github.com/mlr-org/mlr3learners">mlr3learners</a> or the <a href="https://github.com/mlr3learners">extra learner organization</a>. Please open an issue so we can add your package.</p>
 <p>Some learners need to have their variable importance measure “activated” during learner creation. For example, to use the “impurity” measure of Random Forest via the {ranger} package:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span>
-<span class="va">lrn</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span><span class="op">(</span><span class="st">"classif.ranger"</span><span class="op">)</span>
-<span class="va">lrn</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="va">values</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>importance <span class="op">=</span> <span class="st">"impurity"</span><span class="op">)</span>
-
-<span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="reference/flt.html">flt</a></span><span class="op">(</span><span class="st">"importance"</span>, learner <span class="op">=</span> <span class="va">lrn</span><span class="op">)</span>
-<span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">##         feature     score</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="co">## 1:  Petal.Width 44.224198</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co">## 2: Petal.Length 43.303520</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">## 3: Sepal.Length  9.618601</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>task =<span class="st"> </span><span class="kw">tsk</span>(<span class="st">"iris"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>lrn =<span class="st"> </span><span class="kw">lrn</span>(<span class="st">"classif.ranger"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>lrn<span class="op">$</span>param_set<span class="op">$</span>values =<span class="st"> </span><span class="kw">list</span>(<span class="dt">importance =</span> <span class="st">"impurity"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a>filter =<span class="st"> </span><span class="kw">flt</span>(<span class="st">"importance"</span>, <span class="dt">learner =</span> lrn)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>filter<span class="op">$</span><span class="kw">calculate</span>(task)</span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="kw">head</span>(<span class="kw">as.data.table</span>(filter), <span class="dv">3</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">##         feature     score</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">## 1:  Petal.Width 44.224198</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">## 2: Petal.Length 43.303520</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">## 3: Sepal.Length  9.618601</span></span></code></pre></div>
 </div>
 <div id="performance-filter" class="section level3">
 <h3 class="hasAnchor">
 <a href="#performance-filter" class="anchor"></a>Performance Filter</h3>
-<p><code>FilterPerformance</code> is a univariate filter method which calls <code><a href="https://mlr3.mlr-org.com/reference/resample.html">resample()</a></code> with every predictor variable in the dataset and ranks the final outcome using the supplied measure. Any learner can be passed to this filter with <code>classif.rpart</code> being the default. Of course, also regression learners can be passed if the task is of type “regr”.</p>
+<p><code>FilterPerformance</code> is a univariate filter method which calls <code>resample()</code> with every predictor variable in the dataset and ranks the final outcome using the supplied measure. Any learner can be passed to this filter with <code>classif.rpart</code> being the default. Of course, also regression learners can be passed if the task is of type “regr”.</p>
 </div>
 </div>
 </div>
