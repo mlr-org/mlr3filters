@@ -1,7 +1,8 @@
 
-# mlr3filters
+mlr3filters
+===========
 
-Package website: [release](https://mlr3filters.mlr-org.com/) |
+Package website: [release](https://mlr3filters.mlr-org.com/) \|
 [dev](https://mlr3filters.mlr-org.com/dev)
 
 {mlr3filters} adds feature selection filters to
@@ -13,43 +14,36 @@ combined with a filter from this package for embedded feature selection.
 <!-- badges: start -->
 
 [![tic](https://github.com/mlr-org/mlr3filters/workflows/tic/badge.svg?branch=master)](https://github.com/mlr-org/mlr3filters/actions)
-[![CRAN Status
-Badge](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
 [![CRAN
-checks](https://cranchecks.info/badges/worst/mlr3filters)](https://cran.r-project.org/web/checks/check_results_mlr3filters.html)
-[![Coverage
-status](https://codecov.io/gh/mlr-org/mlr3filters/branch/master/graph/badge.svg)](https://codecov.io/github/mlr-org/mlr3filters?branch=master)
+Status](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
 [![CodeFactor](https://www.codefactor.io/repository/github/mlr-org/mlr3filters/badge)](https://www.codefactor.io/repository/github/mlr-org/mlr3filters)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
+[![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
 <!-- badges: end -->
 
-## Installation
+Installation
+------------
 
 CRAN version
 
-``` r
-install.packages("mlr3filters")
-```
+    install.packages("mlr3filters")
 
 Development version
 
-``` r
-remotes::install_github("mlr-org/mlr3filters")
-```
+    remotes::install_github("mlr-org/mlr3filters")
 
-## Filters
+Filters
+-------
 
 ### Filter Example
 
-``` r
-set.seed(1)
-library("mlr3")
-library("mlr3filters")
+    set.seed(1)
+    library("mlr3")
+    library("mlr3filters")
 
-task = tsk("pima")
-filter = flt("auc")
-as.data.table(filter$calculate(task))
-```
+    task = tsk("pima")
+    filter = flt("auc")
+    as.data.table(filter$calculate(task))
 
     ##     feature     score
     ## 1:  glucose 0.2927906
@@ -64,7 +58,7 @@ as.data.table(filter$calculate(task))
 ### Implemented Filters
 
 | Name              | Task Type      | Feature Types                              | Package                                                           |
-| :---------------- | :------------- | :----------------------------------------- | :---------------------------------------------------------------- |
+|:------------------|:---------------|:-------------------------------------------|:------------------------------------------------------------------|
 | anova             | Classif        | Integer, Numeric                           | stats                                                             |
 | auc               | Classif        | Integer, Numeric                           | [mlr3measures](https://cran.r-project.org/package=mlr3measures)   |
 | carscore          | Regr           | Numeric                                    | [care](https://cran.r-project.org/package=care)                   |
@@ -89,9 +83,10 @@ as.data.table(filter$calculate(task))
 The following learners allow the extraction of variable importance and
 therefore are supported by `FilterImportance`:
 
-    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
-    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
-    ## [7] "regr.rpart"          "regr.xgboost"
+    ##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
+    ##  [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
+    ##  [7] "regr.rpart"          "regr.xgboost"        "surv.ranger"        
+    ## [10] "surv.xgboost"
 
 If your learner is not listed here but capable of extracting variable
 importance from the fitted model, the reason is most likely that it is
@@ -104,15 +99,13 @@ Some learners need to have their variable importance measure “activated”
 during learner creation. For example, to use the “impurity” measure of
 Random Forest via the {ranger} package:
 
-``` r
-task = tsk("iris")
-lrn = lrn("classif.ranger")
-lrn$param_set$values = list(importance = "impurity")
+    task = tsk("iris")
+    lrn = lrn("classif.ranger")
+    lrn$param_set$values = list(importance = "impurity")
 
-filter = flt("importance", learner = lrn)
-filter$calculate(task)
-head(as.data.table(filter), 3)
-```
+    filter = flt("importance", learner = lrn)
+    filter$calculate(task)
+    head(as.data.table(filter), 3)
 
     ##         feature     score
     ## 1:  Petal.Width 44.224198
