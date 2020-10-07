@@ -1,5 +1,5 @@
 Package: mlr3filters
-Title: Filter Based Feature Selection for 'mlr3'
+Title: Filter Based Feature Selection for 'mlr3'  fes
 Version: 0.3.0.9000
 Authors@R:
     c(person(given = "Patrick",
