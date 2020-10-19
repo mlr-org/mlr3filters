@@ -73,6 +73,7 @@ Collate:
     'FilterNJMIM.R'
     'FilterPerformance.R'
     'FilterPermutation.R'
+    'FilterRelief.R'
     'FilterVariance.R'
     'flt.R'
     'reexports.R'
