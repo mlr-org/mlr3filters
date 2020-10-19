@@ -7,6 +7,7 @@
 #' Argument `na.rm` defaults to `TRUE` here.
 #'
 #' @family Filter
+#' @importFrom stats var
 #' @template seealso_filter
 #' @export
 #' @examples

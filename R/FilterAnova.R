@@ -10,6 +10,7 @@
 #' \eqn{p}-values.
 #'
 #' @family Filter
+#' @importFrom stats aov
 #' @template seealso_filter
 #' @export
 #' @examples

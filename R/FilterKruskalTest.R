@@ -10,6 +10,7 @@
 #' \eqn{p}-values.
 #'
 #' @family Filter
+#' @importFrom stats kruskal.test
 #' @template seealso_filter
 #' @export
 #' @examples
