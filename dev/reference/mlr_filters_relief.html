@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Joint Mutual Information Filter — mlr_filters_jmi • mlr3filters</title>
+<title>Information Gain Filter — mlr_filters_relief • mlr3filters</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -53,10 +53,9 @@
 
 
 
-<meta property="og:title" content="Joint Mutual Information Filter — mlr_filters_jmi" />
-<meta property="og:description" content="Joint mutual information filter calling praznik::JMI() in
-package praznik.
-This filter supports partial scoring (see Filter)." />
+<meta property="og:title" content="Information Gain Filter — mlr_filters_relief" />
+<meta property="og:description" content="Information gain filter calling
+FSelectorRcpp::relief() in package FSelectorRcpp." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -155,15 +154,14 @@ This filter supports partial scoring (see Filter)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Joint Mutual Information Filter</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3filters/blob/master/R/FilterJMI.R'><code>R/FilterJMI.R</code></a></small>
-    <div class="hidden name"><code>mlr_filters_jmi.Rd</code></div>
+    <h1>Information Gain Filter</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3filters/blob/master/R/FilterRelief.R'><code>R/FilterRelief.R</code></a></small>
+    <div class="hidden name"><code>mlr_filters_relief.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Joint mutual information filter calling <code><a href='https://rdrr.io/pkg/praznik/man/JMI.html'>praznik::JMI()</a></code> in
-package <a href='https://CRAN.R-project.org/package=praznik'><span class="pkg">praznik</span></a>.</p>
-<p>This filter supports partial scoring (see <a href='Filter.html'>Filter</a>).</p>
+    <p>Information gain filter calling
+<code><a href='https://rdrr.io/pkg/FSelectorRcpp/man/relief.html'>FSelectorRcpp::relief()</a></code> in package <a href='https://CRAN.R-project.org/package=FSelectorRcpp'><span class="pkg">FSelectorRcpp</span></a>.</p>
     </div>
 
 
@@ -183,26 +181,26 @@ package <a href='https://CRAN.R-project.org/package=praznik'><span class="pkg">p
 <code><a href='mlr_filters_importance.html'>mlr_filters_importance</a></code>,
 <code><a href='mlr_filters_information_gain.html'>mlr_filters_information_gain</a></code>,
 <code><a href='mlr_filters_jmim.html'>mlr_filters_jmim</a></code>,
+<code><a href='mlr_filters_jmi.html'>mlr_filters_jmi</a></code>,
 <code><a href='mlr_filters_kruskal_test.html'>mlr_filters_kruskal_test</a></code>,
 <code><a href='mlr_filters_mim.html'>mlr_filters_mim</a></code>,
 <code><a href='mlr_filters_mrmr.html'>mlr_filters_mrmr</a></code>,
 <code><a href='mlr_filters_njmim.html'>mlr_filters_njmim</a></code>,
 <code><a href='mlr_filters_performance.html'>mlr_filters_performance</a></code>,
 <code><a href='mlr_filters_permutation.html'>mlr_filters_permutation</a></code>,
-<code><a href='mlr_filters_relief.html'>mlr_filters_relief</a></code>,
 <code><a href='mlr_filters_variance.html'>mlr_filters_variance</a></code>,
 <code><a href='mlr_filters.html'>mlr_filters</a></code></p></div>
     <h2 class="hasAnchor" id="super-class"><a class="anchor" href="#super-class"></a>Super class</h2>
 
-    <p><code><a href='Filter.html'>mlr3filters::Filter</a></code> -&gt; <code>FilterJMI</code></p>
+    <p><code><a href='Filter.html'>mlr3filters::Filter</a></code> -&gt; <code>FilterRelief</code></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
 
 <ul>
-<li><p><a href='#method-new'><code>FilterJMI$new()</code></a></p></li>
-<li><p><a href='#method-clone'><code>FilterJMI$clone()</code></a></p></li>
+<li><p><a href='#method-new'><code>FilterRelief$new()</code></a></p></li>
+<li><p><a href='#method-clone'><code>FilterRelief$clone()</code></a></p></li>
 </ul>
 <p><details open ><summary>Inherited methods</summary>
 <ul>
@@ -215,13 +213,13 @@ package <a href='https://CRAN.R-project.org/package=praznik'><span class="pkg">p
 
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
-<p>Create a FilterJMI object.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>FilterJMI</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
+<p>Create a FilterRelief object.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>FilterRelief</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
 
 <p><hr>
 <a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>FilterJMI</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>FilterRelief</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -232,15 +230,22 @@ package <a href='https://CRAN.R-project.org/package=praznik'><span class="pkg">p
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>task</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"iris"</span><span class='op'>)</span>
-<span class='va'>filter</span> <span class='op'>=</span> <span class='fu'><a href='flt.html'>flt</a></span><span class='op'>(</span><span class='st'>"jmi"</span><span class='op'>)</span>
-<span class='va'>filter</span><span class='op'>$</span><span class='fu'>calculate</span><span class='op'>(</span><span class='va'>task</span>, nfeat <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>filter</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;         feature     score
-#&gt; 1: Sepal.Length 1.0401337
-#&gt; 2:  Petal.Width 0.9893676
-#&gt; 3: Petal.Length        NA
-#&gt; 4:  Sepal.Width        NA</div></pre>
+    <pre class="examples"><div class='input'><span class='co'>## Relief (default)</span>
+<span class='va'>task</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span>
+<span class='va'>filter</span> <span class='op'>=</span> <span class='fu'><a href='flt.html'>flt</a></span><span class='op'>(</span><span class='st'>"relief"</span><span class='op'>)</span>
+<span class='va'>filter</span><span class='op'>$</span><span class='fu'>calculate</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>filter</span><span class='op'>$</span><span class='va'>scores</span>, <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;       mass    glucose   pregnant 
+#&gt; 0.05975460 0.05187097 0.04705882 </div><div class='input'><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>filter</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;     feature        score
+#&gt; 1:     mass  0.059754601
+#&gt; 2:  glucose  0.051870968
+#&gt; 3: pregnant  0.047058824
+#&gt; 4:  triceps  0.033260870
+#&gt; 5:      age  0.014000000
+#&gt; 6: pressure  0.013061224
+#&gt; 7:  insulin -0.003389423
+#&gt; 8: pedigree -0.010572161</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
