@@ -19,6 +19,7 @@
 #' get a score. Additional features may be ignored for computational reasons,
 #' and then get a score value of `NA`.
 #'
+#' @importFrom stats runif
 #' @family Filter
 #' @export
 Filter = R6Class("Filter",
