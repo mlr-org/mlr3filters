@@ -1,6 +1,7 @@
 context("FilterImportance")
 
 test_that("FilterImportance", {
+  set.seed(42)
   task = mlr3::mlr_tasks$get("wine")
   learner = mlr3::mlr_learners$get("classif.rpart")
   f = FilterImportance$new(learner = learner)
