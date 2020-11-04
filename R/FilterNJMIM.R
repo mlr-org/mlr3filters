@@ -7,6 +7,7 @@
 #'
 #' This filter supports partial scoring (see [Filter]).
 #'
+#' @template details_praznik
 #' @family Filter
 #' @template seealso_filter
 #' @export
@@ -41,7 +42,7 @@ FilterNJMIM = R6Class("FilterNJMIM",
       threads = self$param_set$values$threads %??% 0L
       X = task$data(cols = task$feature_names)
       Y = task$truth()
-      praznik::NJMIM(X = X, Y = Y, k = nfeat, threads = threads)$score
+      reencode_praznik_score(praznik::NJMIM(X = X, Y = Y, k = nfeat, threads = threads))
     }
   )
 )

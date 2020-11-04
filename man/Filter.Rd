@@ -71,7 +71,8 @@ Defaults to \code{NA}, but can be set by child classes.}
 
 \item{\code{scores}}{Stores the calculated filter score values as named numeric vector.
 The vector is sorted in decreasing order with possible \code{NA} values
-last. Tied values (this includes \code{NA} values) appear in a random,
+last. The more important the feature, the higher the score.
+Tied values (this includes \code{NA} values) appear in a random,
 non-deterministic order.}
 }
 \if{html}{\out{</div>}}
