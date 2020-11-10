@@ -7,9 +7,6 @@
     <loc>https://mlr3filters.mlr-org.com/reference/Filter.html</loc>
   </url>
   <url>
-    <loc>https://mlr3filters.mlr-org.com/reference/as.data.table.html</loc>
-  </url>
-  <url>
     <loc>https://mlr3filters.mlr-org.com/reference/flt.html</loc>
   </url>
   <url>
@@ -40,6 +37,9 @@
     <loc>https://mlr3filters.mlr-org.com/reference/mlr_filters_find_correlation.html</loc>
   </url>
   <url>
+    <loc>https://mlr3filters.mlr-org.com/reference/mlr_filters_importance.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3filters.mlr-org.com/reference/mlr_filters_information_gain.html</loc>
   </url>
   <url>
@@ -64,9 +64,15 @@
     <loc>https://mlr3filters.mlr-org.com/reference/mlr_filters_performance.html</loc>
   </url>
   <url>
-    <loc>https://mlr3filters.mlr-org.com/reference/mlr_filters_variable_importance.html</loc>
+    <loc>https://mlr3filters.mlr-org.com/reference/mlr_filters_permutation.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3filters.mlr-org.com/reference/mlr_filters_relief.html</loc>
   </url>
   <url>
     <loc>https://mlr3filters.mlr-org.com/reference/mlr_filters_variance.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3filters.mlr-org.com/reference/reexports.html</loc>
   </url>
 </urlset>

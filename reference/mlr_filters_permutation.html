@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Conditional Mutual Information Based Feature Selection Filter — mlr_filters_carscore • mlr3filters</title>
+<title>Permutation Filter — mlr_filters_permutation • mlr3filters</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -18,6 +18,10 @@
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -49,17 +53,17 @@
 
 
 
-<meta property="og:title" content="Conditional Mutual Information Based Feature Selection Filter — mlr_filters_carscore" />
-<meta property="og:description" content="Calculates the Correlation-Adjusted (marginal) coRelation scores
-(short CAR scores) implemented in care::carscore() in package
-care. The CAR scores for a set of features are defined as the
-correlations between the target and the decorrelated features. The filter
-returns the absolute value of the calculated scores.
-Argument verbose defaults to FALSE." />
+<meta property="og:title" content="Permutation Filter — mlr_filters_permutation" />
+<meta property="og:description" content="The permutation filter randomly permutes the values of a single feature in a
+mlr3::Task to break the association with the response. The permutated
+feature, together with the unmodified features, is used to perform a
+mlr3::resample(). The permutation filter score is the difference between
+the aggregated performance of the mlr3::Measure and the performance
+estimated on the unmodified mlr3::Task." />
 <meta name="twitter:card" content="summary" />
 
 
-<meta name="robots" content="noindex">
+
 
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
@@ -89,7 +93,7 @@ Argument verbose defaults to FALSE." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3filters <small>v0.2.0.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3filters <small>v0.4.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -101,25 +105,8 @@ Argument verbose defaults to FALSE." />
     Reference
   </a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    News
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Releases</li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2018/02/usethis-1-3-0/">usethis 1.3.0</a>
-    </li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2017/11/usethis-1.0.0/">usethis 1.0.0 (and 1.1.0)</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="../news/index.html">Changelog</a>
-    </li>
-  </ul>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
 <li>
   <a href="https://mlr3book.mlr-org.com">
@@ -171,21 +158,33 @@ Argument verbose defaults to FALSE." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Conditional Mutual Information Based Feature Selection Filter</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3filters/blob/master/R/FilterCarScore.R'><code>R/FilterCarScore.R</code></a></small>
-    <div class="hidden name"><code>mlr_filters_carscore.Rd</code></div>
+    <h1>Permutation Filter</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mlr-org/mlr3filters/blob/master/R/FilterPermutation.R'><code>R/FilterPermutation.R</code></a></small>
+    <div class="hidden name"><code>mlr_filters_permutation.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculates the Correlation-Adjusted (marginal) coRelation scores
-(short CAR scores) implemented in <code><a href='https://rdrr.io/pkg/care/man/carscore.html'>care::carscore()</a></code> in package
-<a href='https://CRAN.R-project.org/package=care'><span class="pkg">care</span></a>. The CAR scores for a set of features are defined as the
-correlations between the target and the decorrelated features. The filter
-returns the absolute value of the calculated scores.</p>
-<p>Argument <code>verbose</code> defaults to <code>FALSE</code>.</p>
+    <p>The permutation filter randomly permutes the values of a single feature in a
+<a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a> to break the association with the response. The permutated
+feature, together with the unmodified features, is used to perform a
+<code><a href='https://mlr3.mlr-org.com/reference/resample.html'>mlr3::resample()</a></code>. The permutation filter score is the difference between
+the aggregated performance of the <a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a> and the performance
+estimated on the unmodified <a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a>.</p>
     </div>
 
 
+
+    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
+
+    
+
+<dl>
+<dt><code>standardize</code></dt><dd><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code><br />
+Standardize feature importance by maximum score.</p></dd>
+<dt><code>nmc</code></dt><dd><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code></p></dd>
+Number of Monte-Carlo iterations to use in computing the feature importance.
+
+</dl>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -194,6 +193,7 @@ returns the absolute value of the calculated scores.</p>
 <code><a href='Filter.html'>Filter</a></code>,
 <code><a href='mlr_filters_anova.html'>mlr_filters_anova</a></code>,
 <code><a href='mlr_filters_auc.html'>mlr_filters_auc</a></code>,
+<code><a href='mlr_filters_carscore.html'>mlr_filters_carscore</a></code>,
 <code><a href='mlr_filters_cmim.html'>mlr_filters_cmim</a></code>,
 <code><a href='mlr_filters_correlation.html'>mlr_filters_correlation</a></code>,
 <code><a href='mlr_filters_disr.html'>mlr_filters_disr</a></code>,
@@ -207,19 +207,30 @@ returns the absolute value of the calculated scores.</p>
 <code><a href='mlr_filters_mrmr.html'>mlr_filters_mrmr</a></code>,
 <code><a href='mlr_filters_njmim.html'>mlr_filters_njmim</a></code>,
 <code><a href='mlr_filters_performance.html'>mlr_filters_performance</a></code>,
+<code><a href='mlr_filters_relief.html'>mlr_filters_relief</a></code>,
 <code><a href='mlr_filters_variance.html'>mlr_filters_variance</a></code>,
 <code><a href='mlr_filters.html'>mlr_filters</a></code></p></div>
     <h2 class="hasAnchor" id="super-class"><a class="anchor" href="#super-class"></a>Super class</h2>
 
-    <p><code><a href='Filter.html'>mlr3filters::Filter</a></code> -&gt; <code>FilterCarScore</code></p>
+    <p><code><a href='Filter.html'>mlr3filters::Filter</a></code> -&gt; <code>FilterPermutation</code></p>
+    <h2 class="hasAnchor" id="public-fields"><a class="anchor" href="#public-fields"></a>Public fields</h2>
+
+    <p><div class="r6-fields"></p><dl>
+<dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>)<br /></p></dd>
+
+<dt><code>resampling</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br /></p></dd>
+
+<dt><code>measure</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br /></p></dd>
+
+</dl><p></div></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
-<h3>Public methods</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
 
 <ul>
-<li><p><a href='#method-new'><code>FilterCarScore$new()</code></a></p></li>
-<li><p><a href='#method-clone'><code>FilterCarScore$clone()</code></a></p></li>
+<li><p><a href='#method-new'><code>FilterPermutation$new()</code></a></p></li>
+<li><p><a href='#method-clone'><code>FilterPermutation$clone()</code></a></p></li>
 </ul>
 <p><details open ><summary>Inherited methods</summary>
 <ul>
@@ -231,69 +242,39 @@ returns the absolute value of the calculated scores.</p>
 </details>
 
 <hr>
-<a id="method-new"></a></p><h3>Method <code>new()</code></h3>
-<p>Create a FilterCarScore object.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>FilterCarScore</span>$<span class='fu'>new</span>(
-  <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"carscore"</span>,
-  <span class='kw'>task_type</span> <span class='kw'>=</span> <span class='st'>"regr"</span>,
-  <span class='kw'>param_set</span> <span class='kw'>=</span> <span class='no'>ParamSet</span>$<span class='fu'>new</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>ParamDbl</span>$<span class='fu'>new</span>(<span class='st'>"lambda"</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>default</span> <span class='kw'>=</span>
-    <span class='no'>NO_DEF</span>), <span class='no'>ParamLgl</span>$<span class='fu'>new</span>(<span class='st'>"diagonal"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>), <span class='no'>ParamLgl</span>$<span class='fu'>new</span>(<span class='st'>"verbose"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
-    <span class='fl'>TRUE</span>))),
-  <span class='kw'>packages</span> <span class='kw'>=</span> <span class='st'>"care"</span>,
-  <span class='kw'>feature_types</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>
-)</pre><p></div></p>
+<a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
+<p>Create a FilterDISR object.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>FilterPermutation</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span>
+  learner <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rpart"</span><span class='op'>)</span>,
+  resampling <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>rsmp</a></span><span class='op'>(</span><span class='st'>"holdout"</span><span class='op'>)</span>,
+  measure <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
-<dt><code>id</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>)<br />
-Identifier for the filter.</p></dd>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
+<dt><code>learner</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a>)<br />
+<a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a> to use for model fitting.</p></dd>
 
-<dt><code>task_type</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Types of the task the filter can operator on. E.g., <code>"classif"</code> or
-<code>"regr"</code>.</p></dd>
+<dt><code>resampling</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a>)<br />
+<a href='https://mlr3.mlr-org.com/reference/Resampling.html'>mlr3::Resampling</a> to be used within resampling.</p></dd>
 
-<dt><code>param_set</code></dt><dd><p>(<a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>)<br />
-Set of hyperparameters.</p></dd>
-
-<dt><code>packages</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Set of required packages.
-Note that these packages will be loaded via <code><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace()</a></code>, and
-are not attached.</p></dd>
-
-<dt><code>feature_types</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
-Feature types the filter operates on.
-Must be a subset of
-<code><a href='https://mlr3.mlr-org.com/reference/mlr_reflections.html'>mlr_reflections$task_feature_types</a></code>.</p></dd>
+<dt><code>measure</code></dt><dd><p>(<a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a>)<br />
+<a href='https://mlr3.mlr-org.com/reference/Measure.html'>mlr3::Measure</a> to be used for evaluating the performance.</p></dd>
 
 </dl><p></div></p>
 <p><hr>
-<a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
-<p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>FilterCarScore</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
+<a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
+<p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>FilterPermutation</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
 <dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
 
 </dl><p></div></p>
 
 
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>task</span> <span class='kw'>=</span> <span class='kw pkg'>mlr3</span><span class='kw ns'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span>(<span class='st'>"mtcars"</span>)
-<span class='no'>filter</span> <span class='kw'>=</span> <span class='fu'><a href='flt.html'>flt</a></span>(<span class='st'>"carscore"</span>)
-<span class='no'>filter</span>$<span class='fu'>calculate</span>(<span class='no'>task</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='as.data.table.html'>as.data.table</a></span>(<span class='no'>filter</span>), <span class='fl'>3</span>)</div><div class='output co'>#&gt;    feature     score
-#&gt; 1:      wt 0.4144012
-#&gt; 2:      hp 0.3174307
-#&gt; 3:     cyl 0.3102745</div><div class='input'>
-<span class='co'>## changing filter settings</span>
-<span class='no'>filter</span> <span class='kw'>=</span> <span class='fu'><a href='flt.html'>flt</a></span>(<span class='st'>"carscore"</span>)
-<span class='no'>filter</span>$<span class='no'>param_set</span>$<span class='no'>values</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"diagonal"</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>filter</span>$<span class='fu'>calculate</span>(<span class='no'>task</span>)</div><div class='output co'>#&gt; Estimating optimal shrinkage intensity lambda (correlation matrix): 0.0707 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='as.data.table.html'>as.data.table</a></span>(<span class='no'>filter</span>), <span class='fl'>3</span>)</div><div class='output co'>#&gt;    feature     score
-#&gt; 1:      wt 0.8062818
-#&gt; 2:     cyl 0.7918806
-#&gt; 3:    disp 0.7875962</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -309,7 +290,7 @@ Must be a subset of
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

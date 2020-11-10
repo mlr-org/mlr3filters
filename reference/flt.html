@@ -54,7 +54,7 @@
 
 
 <meta property="og:title" content="Syntactic Sugar for Filter Construction — flt" />
-<meta property="og:description" content="This function complements mlr_filters with a function in the spirit of mlr3::mlr_sugar." />
+<meta property="og:description" content="These functions complements mlr_filters with a function in the spirit of mlr3::mlr_sugar." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -88,7 +88,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3filters <small>v0.2.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3filters <small>v0.4.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -159,10 +159,12 @@
     </div>
 
     <div class="ref-description">
-    <p>This function complements <a href='mlr_filters.html'>mlr_filters</a> with a function in the spirit of <a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>mlr3::mlr_sugar</a>.</p>
+    <p>These functions complements <a href='mlr_filters.html'>mlr_filters</a> with a function in the spirit of <a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>mlr3::mlr_sugar</a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>flt</span>(<span class='no'>.key</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>flt</span><span class='op'>(</span><span class='va'>.key</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>flts</span><span class='op'>(</span><span class='va'>.keys</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -178,6 +180,11 @@ Key passed to the respective <a href='https://mlr3misc.mlr-org.com/reference/Dic
 Named arguments passed to the constructor, to be set as parameters in the <a href='https://paradox.mlr-org.com/reference/ParamSet.html'>paradox::ParamSet</a>, or to be set as public field.
 See <code><a href='https://mlr3misc.mlr-org.com/reference/dictionary_sugar_get.html'>mlr3misc::dictionary_sugar_get()</a></code> for more details.</p></td>
     </tr>
+    <tr>
+      <th>.keys</th>
+      <td><p>(<code><a href='https://rdrr.io/r/base/character.html'>character()</a></code>)<br />
+Keys passed to the respective <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> to retrieve multiple objects.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -185,11 +192,26 @@ See <code><a href='https://mlr3misc.mlr-org.com/reference/dictionary_sugar_get.h
     <p><a href='Filter.html'>Filter</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>flt</span>(<span class='st'>"correlation"</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"kendall"</span>)</div><div class='output co'>#&gt; &lt;FilterCorrelation:correlation&gt;
+    <pre class="examples"><div class='input'><span class='fu'>flt</span><span class='op'>(</span><span class='st'>"correlation"</span>, method <span class='op'>=</span> <span class='st'>"kendall"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;FilterCorrelation:correlation&gt;
 #&gt; Task Types: regr
 #&gt; Task Properties: -
 #&gt; Packages: stats
-#&gt; Feature types: integer, numeric</div></pre>
+#&gt; Feature types: integer, numeric</div><div class='input'><span class='fu'>flts</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mrmr"</span>, <span class='st'>"jmim"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
+#&gt; &lt;FilterMRMR:mrmr&gt;
+#&gt; Task Types: classif
+#&gt; Task Properties: -
+#&gt; Packages: praznik
+#&gt; Feature types: integer, numeric, factor, ordered
+#&gt; 
+#&gt; [[2]]
+#&gt; &lt;FilterJMIM:jmim&gt;
+#&gt; Task Types: classif
+#&gt; Task Properties: -
+#&gt; Packages: praznik
+#&gt; Feature types: integer, numeric, factor, ordered
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -201,11 +223,11 @@ See <code><a href='https://mlr3misc.mlr-org.com/reference/dictionary_sugar_get.h
 
       <footer>
       <div class="copyright">
-  <p>Developed by Patrick Schratz, Michel Lang, Bernd Bischl, Martin Binder.</p>
+  <p>Developed by <a href='https://pat-s.me'>Patrick Schratz</a>, Michel Lang, Bernd Bischl, Martin Binder.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
