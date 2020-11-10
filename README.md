@@ -2,7 +2,7 @@
 # mlr3filters
 
 Package website: [release](https://mlr3filters.mlr-org.com/) \|
-[dev](https://mlr3filters.mlr-org.com/dev)
+[dev](https://mlr3filters.mlr-org.com/dev/)
 
 {mlr3filters} adds feature selection filters to
 [mlr3](https://mlr3.mlr-org.com). Wrapper methods for feature selection
@@ -86,10 +86,9 @@ as.data.table(filter$calculate(task))
 The following learners allow the extraction of variable importance and
 therefore are supported by `FilterImportance`:
 
-    ##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
-    ##  [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
-    ##  [7] "regr.rpart"          "regr.xgboost"        "surv.ranger"        
-    ## [10] "surv.xgboost"
+    ##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"       "classif.xgboost"    
+    ##  [5] "regr.featureless"    "regr.ranger"         "regr.rpart"          "regr.xgboost"       
+    ##  [9] "surv.ranger"         "surv.xgboost"
 
 If your learner is not listed here but capable of extracting variable
 importance from the fitted model, the reason is most likely that it is

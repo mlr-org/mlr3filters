@@ -4,7 +4,7 @@ output: github_document
 
 # mlr3filters
 
-Package website: [release](https://mlr3filters.mlr-org.com/) | [dev](https://mlr3filters.mlr-org.com/dev)
+Package website: [release](https://mlr3filters.mlr-org.com/) | [dev](https://mlr3filters.mlr-org.com/dev/)
 
 {mlr3filters} adds feature selection filters to [mlr3](https://mlr3.mlr-org.com).
 Wrapper methods for feature selection are implemented in [mlr3fselect](https://mlr3fselect.mlr-org.com).
