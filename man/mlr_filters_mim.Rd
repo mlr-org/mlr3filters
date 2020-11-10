@@ -10,6 +10,11 @@ calling \code{\link[praznik:MIM]{praznik::MIM()}} in package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).
 }
+\details{
+As the scores calculated by the \CRANpkg{praznik} package are not monotone due
+to the greedy forward fashion, the returned scores simply reflect the selection order:
+\code{1}, \code{(k-1)/k}, ..., \code{1/k} where \code{k} is the number of selected features.
+}
 \examples{
 task = mlr3::tsk("iris")
 filter = flt("mim")

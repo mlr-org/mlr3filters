@@ -76,5 +76,6 @@ Collate:
     'FilterRelief.R'
     'FilterVariance.R'
     'flt.R'
+    'helper.R'
     'reexports.R'
     'zzz.R'

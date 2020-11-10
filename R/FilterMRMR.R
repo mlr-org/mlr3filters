@@ -7,6 +7,7 @@
 #'
 #' This filter supports partial scoring (see [Filter]).
 #'
+#' @template details_praznik
 #' @family Filter
 #' @template seealso_filter
 #' @export
@@ -42,7 +43,7 @@ FilterMRMR = R6Class("FilterMRMR",
       threads = self$param_set$values$threads %??% 0L
       X = task$data(cols = task$feature_names)
       Y = task$truth()
-      praznik::MRMR(X = X, Y = Y, k = nfeat, threads = threads)$score
+      reencode_praznik_score(praznik::MRMR(X = X, Y = Y, k = nfeat, threads = threads))
     }
   )
 )
