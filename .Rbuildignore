@@ -25,3 +25,4 @@
 ^gfortran.*
 ^\.lintr$
 ^cran-comments\.md$
+^README\.html$
