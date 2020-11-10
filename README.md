@@ -1,6 +1,5 @@
 
-mlr3filters
-===========
+# mlr3filters
 
 Package website: [release](https://mlr3filters.mlr-org.com/) \|
 [dev](https://mlr3filters.mlr-org.com/dev)
@@ -21,29 +20,33 @@ Status](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-pr
 [![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
 <!-- badges: end -->
 
-Installation
-------------
+## Installation
 
 CRAN version
 
-    install.packages("mlr3filters")
+``` r
+install.packages("mlr3filters")
+```
 
 Development version
 
-    remotes::install_github("mlr-org/mlr3filters")
+``` r
+remotes::install_github("mlr-org/mlr3filters")
+```
 
-Filters
--------
+## Filters
 
 ### Filter Example
 
-    set.seed(1)
-    library("mlr3")
-    library("mlr3filters")
+``` r
+set.seed(1)
+library("mlr3")
+library("mlr3filters")
 
-    task = tsk("pima")
-    filter = flt("auc")
-    as.data.table(filter$calculate(task))
+task = tsk("pima")
+filter = flt("auc")
+as.data.table(filter$calculate(task))
+```
 
     ##     feature     score
     ## 1:  glucose 0.2927906
@@ -99,18 +102,20 @@ Some learners need to have their variable importance measure “activated”
 during learner creation. For example, to use the “impurity” measure of
 Random Forest via the {ranger} package:
 
-    task = tsk("iris")
-    lrn = lrn("classif.ranger")
-    lrn$param_set$values = list(importance = "impurity")
+``` r
+task = tsk("iris")
+lrn = lrn("classif.ranger")
+lrn$param_set$values = list(importance = "impurity")
 
-    filter = flt("importance", learner = lrn)
-    filter$calculate(task)
-    head(as.data.table(filter), 3)
+filter = flt("importance", learner = lrn)
+filter$calculate(task)
+head(as.data.table(filter), 3)
+```
 
-    ##         feature     score
-    ## 1:  Petal.Width 44.224198
-    ## 2: Petal.Length 43.303520
-    ## 3: Sepal.Length  9.618601
+    ##         feature    score
+    ## 1:  Petal.Width 43.66496
+    ## 2: Petal.Length 43.10837
+    ## 3: Sepal.Length 10.21944
 
 ### Performance Filter
 
