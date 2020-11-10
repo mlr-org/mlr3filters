@@ -168,6 +168,11 @@ package <a href='https://CRAN.R-project.org/package=praznik'><span class="pkg">p
 
 
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>As the scores calculated by the <a href='https://CRAN.R-project.org/package=praznik'><span class="pkg">praznik</span></a> package are not monotone due
+to the greedy forward fashion, the returned scores simply reflect the selection order:
+<code>1</code>, <code>(k-1)/k</code>, ..., <code>1/k</code> where <code>k</code> is the number of selected features.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='Filter.html'>Filters</a>: <a href='mlr_filters.html'>mlr_filters</a></p>
@@ -236,11 +241,11 @@ package <a href='https://CRAN.R-project.org/package=praznik'><span class="pkg">p
 <span class='va'>filter</span> <span class='op'>=</span> <span class='fu'><a href='flt.html'>flt</a></span><span class='op'>(</span><span class='st'>"jmi"</span><span class='op'>)</span>
 <span class='va'>filter</span><span class='op'>$</span><span class='fu'>calculate</span><span class='op'>(</span><span class='va'>task</span>, nfeat <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>filter</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;         feature     score
-#&gt; 1: Sepal.Length 1.0401337
-#&gt; 2:  Petal.Width 0.9893676
-#&gt; 3: Petal.Length        NA
-#&gt; 4:  Sepal.Width        NA</div></pre>
+</div><div class='output co'>#&gt;         feature score
+#&gt; 1:  Petal.Width     1
+#&gt; 2: Sepal.Length     0
+#&gt; 3: Petal.Length    NA
+#&gt; 4:  Sepal.Width    NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

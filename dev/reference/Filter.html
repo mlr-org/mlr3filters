@@ -230,7 +230,8 @@ Defaults to <code>NA</code>, but can be set by child classes.</p></dd>
 
 <dt><code>scores</code></dt><dd><p>Stores the calculated filter score values as named numeric vector.
 The vector is sorted in decreasing order with possible <code>NA</code> values
-last. Tied values (this includes <code>NA</code> values) appear in a random,
+last. The more important the feature, the higher the score.
+Tied values (this includes <code>NA</code> values) appear in a random,
 non-deterministic order.</p></dd>
 
 </dl><p></div></p>
