@@ -1,5 +1,3 @@
-context("FilterPermutation")
-
 test_that("FilterPermutation", {
   task = mlr3::mlr_tasks$get("iris")
   learner = mlr3::mlr_learners$get("classif.rpart")

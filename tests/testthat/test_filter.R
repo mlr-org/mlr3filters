@@ -1,5 +1,3 @@
-context("Filter")
-
 test_that("Filtering an empty Task (#39)", {
   task = mlr_tasks$get("mtcars")
   f = mlr_filters$get("variance")

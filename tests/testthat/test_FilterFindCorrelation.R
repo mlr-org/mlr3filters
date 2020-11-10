@@ -1,5 +1,3 @@
-context("FilterFindCorrelation")
-
 test_that("FilterImportance", {
   task = mlr3::mlr_tasks$get("sonar")
   equalcor = cbind(

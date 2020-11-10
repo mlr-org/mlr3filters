@@ -1,5 +1,3 @@
-context("classif")
-
 test_that("all classif filters return correct filter values", {
   task = mlr_tasks$get("sonar")
   task$select(head(task$feature_names, 10))

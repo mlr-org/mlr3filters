@@ -1,5 +1,3 @@
-context("regr")
-
 test_that("all regr filters return correct filter values", {
   task = mlr_tasks$get("mtcars")
   filters = mlr_filters$mget(as.data.table(mlr_filters)[map_lgl(task_type,
