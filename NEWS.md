@@ -1,12 +1,8 @@
-# mlr3filters 0.4.0.9000
-
-- Internal changes only.
-
-
 # mlr3filters 0.4.0
 
 - Add ReliefF filter (#86)
 - Fix praznik scores calculation: praznik filters are not monotone in the selected features due to their iterative fashion. E.g., the first selected feature can have a score of 5, the second selected feature a score of 10. This version replaces the praznik scores by a simple sequence (#87, @mllg)
+
 
 # mlr3filters 0.3.0
 
