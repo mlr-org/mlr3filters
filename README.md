@@ -79,6 +79,7 @@ as.data.table(filter$calculate(task))
 | njmim             | Classif        | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
 | performance       | Universal      | Logical, Integer, Numeric, Factor, Ordered |                                                                   |
 | permutation       | Universal      | Logical, Integer, Numeric, Factor, Ordered |                                                                   |
+| relief            | Classif & Regr | Integer, Numeric, Factor, Ordered          | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
 | variance          | Classif & Regr | Integer, Numeric                           | stats                                                             |
 
 ### Variable Importance Filters
@@ -86,9 +87,8 @@ as.data.table(filter$calculate(task))
 The following learners allow the extraction of variable importance and
 therefore are supported by `FilterImportance`:
 
-    ##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"       "classif.xgboost"    
-    ##  [5] "regr.featureless"    "regr.ranger"         "regr.rpart"          "regr.xgboost"       
-    ##  [9] "surv.ranger"         "surv.xgboost"
+    ##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"       "classif.xgboost"     "regr.featureless"   
+    ##  [6] "regr.ranger"         "regr.rpart"          "regr.xgboost"        "surv.ranger"         "surv.xgboost"
 
 If your learner is not listed here but capable of extracting variable
 importance from the fitted model, the reason is most likely that it is
