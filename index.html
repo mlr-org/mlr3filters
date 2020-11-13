@@ -270,6 +270,12 @@
 <td align="left"></td>
 </tr>
 <tr class="even">
+<td align="left">relief</td>
+<td align="left">Classif &amp; Regr</td>
+<td align="left">Integer, Numeric, Factor, Ordered</td>
+<td align="left"><a href="https://cran.r-project.org/package=FSelectorRcpp">FSelectorRcpp</a></td>
+</tr>
+<tr class="odd">
 <td align="left">variance</td>
 <td align="left">Classif &amp; Regr</td>
 <td align="left">Integer, Numeric</td>
@@ -282,9 +288,8 @@
 <h3 class="hasAnchor">
 <a href="#variable-importance-filters" class="anchor"></a>Variable Importance Filters</h3>
 <p>The following learners allow the extraction of variable importance and therefore are supported by <code>FilterImportance</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"       "classif.xgboost"    </span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co">##  [5] "regr.featureless"    "regr.ranger"         "regr.rpart"          "regr.xgboost"       </span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co">##  [9] "surv.ranger"         "surv.xgboost"</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"       "classif.xgboost"     "regr.featureless"   </span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co">##  [6] "regr.ranger"         "regr.rpart"          "regr.xgboost"        "surv.ranger"         "surv.xgboost"</span></span></code></pre></div>
 <p>If your learner is not listed here but capable of extracting variable importance from the fitted model, the reason is most likely that it is not yet integrated in the package <a href="https://github.com/mlr-org/mlr3learners">mlr3learners</a> or the <a href="https://github.com/mlr3learners">extra learner organization</a>. Please open an issue so we can add your package.</p>
 <p>Some learners need to have their variable importance measure “activated” during learner creation. For example, to use the “impurity” measure of Random Forest via the {ranger} package:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
