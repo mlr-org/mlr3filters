@@ -29,7 +29,7 @@ FilterJMI = R6Class("FilterJMI",
 
       super$initialize(
         id = "jmi",
-        task_type = "classif",
+        task_type = c("classif", "regr"),
         param_set = param_set,
         packages = "praznik",
         feature_types = c("integer", "numeric", "factor", "ordered"),

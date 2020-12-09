@@ -29,7 +29,7 @@ FilterMRMR = R6Class("FilterMRMR",
 
       super$initialize(
         id = "mrmr",
-        task_type = "classif",
+        task_type = c("classif", "regr"),
         param_set = param_set,
         packages = "praznik",
         feature_types = c("integer", "numeric", "factor", "ordered"),
