@@ -21,8 +21,8 @@
 <script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Filter Based Feature Selection for mlr3">
-<meta property="og:description" content="Extends mlr3 with filter methods for feature
-    selection. Besides standalone filter methods built-in methods of any
+<meta property="og:description" content="Extends mlr3 with filter methods for feature selection.
+    Besides standalone filter methods built-in methods of any
     machine-learning algorithm are supported.  Partial scoring of
     multivariate filter methods is supported.">
 <meta name="twitter:card" content="summary">
@@ -70,7 +70,7 @@
 </li>
         <li>
   <a href="https://github.com/mlr-org/mlr3filters/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -82,13 +82,13 @@
 </li>
 <li>
   <a href="https://stackoverflow.com/questions/tagged/mlr">
-    <span class="fab fa fab fa-stack-overflow"></span>
+    <span class="fab fa-stack-overflow"></span>
      
   </a>
 </li>
 <li>
   <a href="https://mlr-org.com/">
-    <span class="fa fa-rss"></span>
+    <span class="fas fa-rss"></span>
      
   </a>
 </li>
@@ -113,7 +113,7 @@
 <div id="mlr3filters" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#mlr3filters" class="anchor"></a>mlr3filters</h1></div>
-<p>Package website: <a href="https://mlr3filters.mlr-org.com/">release</a> | <a href="https://mlr3filters.mlr-org.com/dev">dev</a></p>
+<p>Package website: <a href="https://mlr3filters.mlr-org.com/">release</a> | <a href="https://mlr3filters.mlr-org.com/dev/">dev</a></p>
 <p>{mlr3filters} adds feature selection filters to <a href="https://mlr3.mlr-org.com">mlr3</a>. Wrapper methods for feature selection are implemented in <a href="https://mlr3fselect.mlr-org.com">mlr3fselect</a>. Learners which support the extraction feature importance scores can be combined with a filter from this package for embedded feature selection.</p>
 <!-- badges: start -->
 <p><a href="https://github.com/mlr-org/mlr3filters/actions"><img src="https://github.com/mlr-org/mlr3filters/workflows/tic/badge.svg?branch=master" alt="tic"></a> <a href="https://cran.r-project.org/package=mlr3filters"><img src="https://www.r-pkg.org/badges/version-ago/mlr3filters" alt="CRAN Status"></a> <a href="https://www.codefactor.io/repository/github/mlr-org/mlr3filters"><img src="https://www.codefactor.io/repository/github/mlr-org/mlr3filters/badge" alt="CodeFactor"></a> <a href="https://stackoverflow.com/questions/tagged/mlr3"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a> <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/"><img src="https://img.shields.io/badge/chat-mattermost-orange.svg" alt="Mattermost"></a> <!-- badges: end --></p>
@@ -271,6 +271,12 @@
 <td align="left"></td>
 </tr>
 <tr class="even">
+<td align="left">relief</td>
+<td align="left">Classif &amp; Regr</td>
+<td align="left">Integer, Numeric, Factor, Ordered</td>
+<td align="left"><a href="https://cran.r-project.org/package=FSelectorRcpp">FSelectorRcpp</a></td>
+</tr>
+<tr class="odd">
 <td align="left">variance</td>
 <td align="left">Classif &amp; Regr</td>
 <td align="left">Integer, Numeric</td>
@@ -283,10 +289,8 @@
 <h3 class="hasAnchor">
 <a href="#variable-importance-filters" class="anchor"></a>Variable Importance Filters</h3>
 <p>The following learners allow the extraction of variable importance and therefore are supported by <code>FilterImportance</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"      </span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co">##  [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        </span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co">##  [7] "regr.rpart"          "regr.xgboost"        "surv.ranger"        </span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">## [10] "surv.xgboost"</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"       "classif.xgboost"     "regr.featureless"   </span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co">##  [6] "regr.ranger"         "regr.rpart"          "regr.xgboost"        "surv.ranger"         "surv.xgboost"</span></span></code></pre></div>
 <p>If your learner is not listed here but capable of extracting variable importance from the fitted model, the reason is most likely that it is not yet integrated in the package <a href="https://github.com/mlr-org/mlr3learners">mlr3learners</a> or the <a href="https://github.com/mlr3learners">extra learner organization</a>. Please open an issue so we can add your package.</p>
 <p>Some learners need to have their variable importance measure “activated” during learner creation. For example, to use the “impurity” measure of Random Forest via the {ranger} package:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
