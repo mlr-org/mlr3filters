@@ -122,11 +122,16 @@ Filter = R6Class("Filter",
     #'   features to score (see details), and defaults to the number
     #'   of features in `task`. Loads required packages and then calls
     #'   `private$.calculate()` of the respective subclass.
+    #'   This private method is is expected to return a numeric vector, uniquely named
+    #'   with (a subset of) feature names. The returned vector may include missing
+    #'   values. Features with missing values and features with no calculated score are
+    #'   ranked last, in a random order.
+    #'
     #'   If the task has no rows, each feature gets the score `NA`.
     #' @param task ([mlr3::Task])\cr
     #'   [mlr3::Task] to calculate the filter scores for.
     #' @param nfeat ([integer()])\cr
-    #'   THe minimum number of features to calculate filter scores for.
+    #'   The minimum number of features to calculate filter scores for.
     calculate = function(task, nfeat = NULL) {
       task = assert_task(as_task(task),
         feature_types = self$feature_types,
@@ -135,7 +140,7 @@ Filter = R6Class("Filter",
 
       if (task$nrow == 0L) {
         self$scores = shuffle(set_names(rep.int(NA_real_, length(fn)), fn))
-      } else if (length(task$feature_names) == 0L) {
+      } else if (length(fn) == 0L) {
         self$scores = set_names(numeric(), character())
       } else {
         if (is.null(nfeat)) {
@@ -149,8 +154,8 @@ Filter = R6Class("Filter",
         scores = private$.calculate(task, nfeat)
 
         # check result, re-order with correction for ties
-        assert_numeric(scores, any.missing = FALSE, names = "unique")
-        assert_names(names(scores), subset.of = fn)
+        assert_numeric(scores, any.missing = TRUE, names = "unique")
+        assert_names(names(scores), type = "unique", subset.of = fn)
         scores = insert_named(set_names(rep(NA_real_, length(fn)), fn), scores)
         self$scores = scores[order(scores, runif(length(scores)),
           decreasing = TRUE, na.last = TRUE)]
