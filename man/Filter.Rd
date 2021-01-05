@@ -180,11 +180,12 @@ stores them in field \code{scores}. \code{nfeat} determines the minimum number o
 features to score (see details), and defaults to the number
 of features in \code{task}. Loads required packages and then calls
 \code{private$.calculate()} of the respective subclass.
-This private method is is expected to return a numeric vector, uniquely named
-with (a subset of) feature names. The returned vector may include missing
-values. Features with missing values and features with no calculated score are
-ranked last, in a random order.
 
+This private method is is expected to return a numeric vector, uniquely named
+with (a subset of) feature names. The returned vector may have missing
+values.
+Features with missing values as well as features with no calculated
+score are automatically ranked last, in a random order.
 If the task has no rows, each feature gets the score \code{NA}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Filter$calculate(task, nfeat = NULL)}\if{html}{\out{</div>}}
