@@ -315,7 +315,12 @@ this object. The referenced help package can be opened via method
 stores them in field <code>scores</code>. <code>nfeat</code> determines the minimum number of
 features to score (see details), and defaults to the number
 of features in <code>task</code>. Loads required packages and then calls
-<code>private$.calculate()</code> of the respective subclass.
+<code>private$.calculate()</code> of the respective subclass.</p>
+<p>This private method is is expected to return a numeric vector, uniquely named
+with (a subset of) feature names. The returned vector may have missing
+values.
+Features with missing values as well as features with no calculated
+score are automatically ranked last, in a random order.
 If the task has no rows, each feature gets the score <code>NA</code>.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre><span class='va'>Filter</span><span class='op'>$</span><span class='fu'>calculate</span><span class='op'>(</span><span class='va'>task</span>, nfeat <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre><p></div></p>
 
@@ -325,7 +330,7 @@ If the task has no rows, each feature gets the score <code>NA</code>.</p><h4 cla
 <a href='https://mlr3.mlr-org.com/reference/Task.html'>mlr3::Task</a> to calculate the filter scores for.</p></dd>
 
 <dt><code>nfeat</code></dt><dd><p>(<code><a href='https://rdrr.io/r/base/integer.html'>integer()</a></code>)<br />
-THe minimum number of features to calculate filter scores for.</p></dd>
+The minimum number of features to calculate filter scores for.</p></dd>
 
 </dl><p></div></p>
 <p><hr>
