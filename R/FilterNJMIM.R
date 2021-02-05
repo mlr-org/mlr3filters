@@ -24,8 +24,9 @@ FilterNJMIM = R6Class("FilterNJMIM",
     #' @description Create a FilterNJMIM object.
     initialize = function() {
       param_set = ParamSet$new(list(
-        ParamInt$new("threads", lower = 0L, default = 0L)
+        ParamInt$new("threads", lower = 0L, default = 0L, tags = "threads")
       ))
+      param_set$values = list(threads = 1L)
       super$initialize(
         id = "njmim",
         task_type = c("classif", "regr"),
@@ -39,10 +40,7 @@ FilterNJMIM = R6Class("FilterNJMIM",
 
   private = list(
     .calculate = function(task, nfeat) {
-      threads = self$param_set$values$threads %??% 0L
-      X = task$data(cols = task$feature_names)
-      Y = task$truth()
-      reencode_praznik_score(praznik::NJMIM(X = X, Y = Y, k = nfeat, threads = threads))
+      call_praznik(self, task, praznik::NJMIM)
     }
   )
 )
