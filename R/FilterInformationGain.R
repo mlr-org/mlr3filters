@@ -41,7 +41,7 @@ FilterInformationGain = R6Class("FilterInformationGain",
           default = "infogain"),
         ParamLgl$new("equal", default = FALSE),
         ParamLgl$new("discIntegers", default = TRUE),
-        ParamInt$new("threads", lower = 0L, default = 1L)
+        ParamInt$new("threads", lower = 1L, default = 1L, tags = "threads")
       ))
 
       super$initialize(

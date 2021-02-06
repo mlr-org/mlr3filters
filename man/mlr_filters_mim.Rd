@@ -14,6 +14,10 @@ This filter supports partial scoring (see \link{Filter}).
 As the scores calculated by the \CRANpkg{praznik} package are not monotone due
 to the greedy forward fashion, the returned scores simply reflect the selection order:
 \code{1}, \code{(k-1)/k}, ..., \code{1/k} where \code{k} is the number of selected features.
+
+Threading is disabled by default (hyperparameter \code{threads} is set to 1).
+Set to a number \verb{>= 2} to enable threading, or to \code{0} for auto-detecting the number
+of available cores.
 }
 \examples{
 task = mlr3::tsk("iris")

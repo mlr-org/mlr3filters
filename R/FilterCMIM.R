@@ -24,8 +24,9 @@ FilterCMIM = R6Class("FilterCMIM",
     #' @description Create a FilterCMIM object.
     initialize = function() {
       param_set = ParamSet$new(list(
-        ParamInt$new("threads", lower = 0L, default = 0L)
+        ParamInt$new("threads", lower = 0L, default = 0L, tags = "threads")
       ))
+      param_set$values = list(threads = 1L)
 
       super$initialize(
         id = "cmim",
@@ -40,10 +41,7 @@ FilterCMIM = R6Class("FilterCMIM",
 
   private = list(
     .calculate = function(task, nfeat) {
-      threads = self$param_set$values$threads %??% 0L
-      X = task$data(cols = task$feature_names)
-      Y = task$truth()
-      reencode_praznik_score(praznik::CMIM(X = X, Y = Y, k = nfeat, threads = threads))
+      call_praznik(self, task, praznik::CMIM)
     }
   )
 )
