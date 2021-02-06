@@ -1,3 +1,9 @@
+# mlr3filters 0.4.0.9001
+
+- Disable threading in praznik filters by default.
+  Enable by setting hyperparameter `threads` >= 2 or to `0` for auto-detection of available cores (#93, @mllg)
+
+
 # mlr3filters 0.4.0.9000
 
 - Document return type of private `.calculate()` (#92, @mllg)
