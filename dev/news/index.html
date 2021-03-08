@@ -165,25 +165,10 @@
 </div>
     <div id="mlr3filters-041" class="section level1">
 <h1 class="page-header" data-toc-text="0.4.1">
-<a href="#mlr3filters-041" class="anchor"></a>mlr3filters 0.4.1<small> Unreleased </small>
+<a href="#mlr3filters-041" class="anchor"></a>mlr3filters 0.4.1<small> 2021-03-08 </small>
 </h1>
 <ul>
-<li>Internal changes only.</li>
-</ul>
-</div>
-    <div id="mlr3filters-0409001" class="section level1">
-<h1 class="page-header" data-toc-text="0.4.0.9001">
-<a href="#mlr3filters-0409001" class="anchor"></a>mlr3filters 0.4.0.9001<small> Unreleased </small>
-</h1>
-<ul>
-<li>Disable threading in praznik filters by default. Enable by setting hyperparameter <code>threads</code> &gt;= 2 or to <code>0</code> for auto-detection of available cores (<a href='https://github.com/mlr-org/mlr3filters/issues/93'>#93</a>, <a href='https://github.com/mllg'>@mllg</a>)</li>
-</ul>
-</div>
-    <div id="mlr3filters-0409000" class="section level1">
-<h1 class="page-header" data-toc-text="0.4.0.9000">
-<a href="#mlr3filters-0409000" class="anchor"></a>mlr3filters 0.4.0.9000<small> Unreleased </small>
-</h1>
-<ul>
+<li>Disable threading in praznik filters by default (5f24742e9b92f6a5f828c4f755be3fb53427afdb, <a href='https://github.com/mllg'>@mllg</a>) Enable by setting hyperparameter <code>threads</code> &gt;= 2 or to <code>0</code> for auto-detection of available cores (<a href='https://github.com/mlr-org/mlr3filters/issues/93'>#93</a>, <a href='https://github.com/mllg'>@mllg</a>)</li>
 <li>Document return type of private <code>.calculate()</code> (<a href='https://github.com/mlr-org/mlr3filters/issues/92'>#92</a>, <a href='https://github.com/mllg'>@mllg</a>)</li>
 <li>Allow <code>NA</code> in returned vectors. Features with missing values as well as features with no calculated score are automatically ranked last, in a random order. (<a href='https://github.com/mlr-org/mlr3filters/issues/92'>#92</a>, <a href='https://github.com/mllg'>@mllg</a>)</li>
 <li>praznik filters now also support <code>regr</code> Tasks (<a href='https://github.com/mlr-org/mlr3filters/issues/90'>#90</a>, <a href='https://github.com/bommert'>@bommert</a>)</li>
