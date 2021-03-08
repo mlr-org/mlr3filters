@@ -90,7 +90,7 @@ This filter supports partial scoring (see Filter)." />
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3filters <small>v0.4.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3filters <small>v0.4.1</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -173,6 +173,9 @@ This filter supports partial scoring (see Filter)." />
     <p>As the scores calculated by the <a href='https://CRAN.R-project.org/package=praznik'><span class="pkg">praznik</span></a> package are not monotone due
 to the greedy forward fashion, the returned scores simply reflect the selection order:
 <code>1</code>, <code>(k-1)/k</code>, ..., <code>1/k</code> where <code>k</code> is the number of selected features.</p>
+<p>Threading is disabled by default (hyperparameter <code>threads</code> is set to 1).
+Set to a number <code>&gt;= 2</code> to enable threading, or to <code>0</code> for auto-detecting the number
+of available cores.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='Filter.html'>Filters</a>: <a href='mlr_filters.html'>mlr_filters</a></p>
@@ -242,10 +245,10 @@ to the greedy forward fashion, the returned scores simply reflect the selection 
 <span class='va'>filter</span><span class='op'>$</span><span class='fu'>calculate</span><span class='op'>(</span><span class='va'>task</span>, nfeat <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>filter</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;         feature score
-#&gt; 1:  Petal.Width     1
-#&gt; 2: Petal.Length     0
-#&gt; 3:  Sepal.Width    NA
-#&gt; 4: Sepal.Length    NA</div></pre>
+#&gt; 1:  Petal.Width   1.0
+#&gt; 2: Petal.Length   0.5
+#&gt; 3: Sepal.Length   0.0
+#&gt; 4:  Sepal.Width    NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
