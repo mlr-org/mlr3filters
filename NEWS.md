@@ -1,3 +1,8 @@
+# mlr3filters 0.4.1
+
+- Internal changes only.
+
+
 # mlr3filters 0.4.0.9001
 
 - Disable threading in praznik filters by default.
