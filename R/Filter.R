@@ -149,6 +149,7 @@ Filter = R6Class("Filter",
           nfeat = length(fn)
         } else {
           nfeat = assert_count(nfeat, coerce = TRUE)
+          nfeat = min(nfeat, length(fn))
         }
 
         # calculate filter values using the dedicated filter

@@ -2,7 +2,7 @@ call_praznik = function(self, task, fun, nfeat) {
   selection = invoke(fun,
     X = task$data(cols = task$feature_names),
     Y = task$truth(),
-    k = min(nfeat, length(task$feature_names)),
+    k = nfeat,
     .args = self$param_set$get_values()
   )$selection
 
