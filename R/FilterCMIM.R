@@ -41,7 +41,7 @@ FilterCMIM = R6Class("FilterCMIM",
 
   private = list(
     .calculate = function(task, nfeat) {
-      call_praznik(self, task, praznik::CMIM)
+      call_praznik(self, task, praznik::CMIM, nfeat)
     }
   )
 )

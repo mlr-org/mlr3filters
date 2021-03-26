@@ -35,3 +35,10 @@ test_that("Assertion of task type works", {
   expect_error(f$calculate(task), regexp = "Must be element of set \\{'regr'\\}")
 })
 
+
+test_that("nfeat is passed to praznik correctly", {
+  task = tsk("iris")
+  f = flt("disr")
+  f$calculate(task, nfeat = 1)
+  expect_equal(sum(!is.na(f$scores)), 1)
+})

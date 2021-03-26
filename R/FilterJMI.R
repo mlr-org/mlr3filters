@@ -41,7 +41,7 @@ FilterJMI = R6Class("FilterJMI",
 
   private = list(
     .calculate = function(task, nfeat) {
-      call_praznik(self, task, praznik::JMI)
+      call_praznik(self, task, praznik::JMI, nfeat)
     }
   )
 )

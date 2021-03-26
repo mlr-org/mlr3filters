@@ -40,7 +40,7 @@ FilterNJMIM = R6Class("FilterNJMIM",
 
   private = list(
     .calculate = function(task, nfeat) {
-      call_praznik(self, task, praznik::NJMIM)
+      call_praznik(self, task, praznik::NJMIM, nfeat)
     }
   )
 )

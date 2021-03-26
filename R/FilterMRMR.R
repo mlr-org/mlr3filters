@@ -41,7 +41,7 @@ FilterMRMR = R6Class("FilterMRMR",
 
   private = list(
     .calculate = function(task, nfeat) {
-      call_praznik(self, task, praznik::MRMR)
+      call_praznik(self, task, praznik::MRMR, nfeat)
     }
   )
 )

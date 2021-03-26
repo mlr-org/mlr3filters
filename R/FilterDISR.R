@@ -41,7 +41,7 @@ FilterDISR = R6Class("FilterDISR",
 
   private = list(
     .calculate = function(task, nfeat) {
-      call_praznik(self, task, praznik::DISR)
+      call_praznik(self, task, praznik::DISR, nfeat)
     }
   )
 )
