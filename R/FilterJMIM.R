@@ -41,7 +41,7 @@ FilterJMIM = R6Class("FilterJMIM",
 
   private = list(
     .calculate = function(task, nfeat) {
-      call_praznik(self, task, praznik::JMIM)
+      call_praznik(self, task, praznik::JMIM, nfeat)
     }
   )
 )
