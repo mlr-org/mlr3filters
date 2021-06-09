@@ -83,7 +83,7 @@ Other Filter:
 \if{html}{\out{<a id="method-new"></a>}}
 \if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
-Create a FilterDISR object.
+Create a FilterPermutation object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FilterPermutation$new(
   learner = mlr3::lrn("classif.rpart"),

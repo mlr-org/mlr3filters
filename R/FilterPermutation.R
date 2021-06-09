@@ -32,7 +32,7 @@ FilterPermutation = R6Class("FilterPermutation",
     #' @field measure ([mlr3::Measure])\cr
     measure = NULL,
 
-    #' @description Create a FilterDISR object.
+    #' @description Create a FilterPermutation object.
     #' @param learner ([mlr3::Learner])\cr
     #'   [mlr3::Learner] to use for model fitting.
     #' @param resampling ([mlr3::Resampling])\cr

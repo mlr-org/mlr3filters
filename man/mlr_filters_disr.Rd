@@ -22,7 +22,7 @@ of available cores.
 \examples{
 task = mlr3::tsk("iris")
 filter = flt("disr")
-filter$calculate(task, nfeat = 2)
+filter$calculate(task)
 as.data.table(filter)
 }
 \seealso{
