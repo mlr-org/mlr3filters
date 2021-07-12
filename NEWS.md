@@ -2,17 +2,7 @@
 
 # mlr3filters 0.4.2
 
-- Same as previous version.
-
-
-# mlr3filters 0.4.1.9001
-
 - Fixes an issue where argument `nfeat` was not passed down to {praznik} filters (#97)
-
-
-# mlr3filters 0.4.1.9000
-
-- Internal changes only.
 
 
 # mlr3filters 0.4.1
