@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# mlr3filters 0.4.2.9000
+
+- Same as previous version.
+
+
 # mlr3filters 0.4.2
 
 - Same as previous version.
