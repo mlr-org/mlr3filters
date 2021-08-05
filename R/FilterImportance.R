@@ -47,7 +47,7 @@ FilterImportance = R6Class("FilterImportance",
     .calculate = function(task, nfeat) {
       learner = self$learner$clone(deep = TRUE)
       learner = learner$train(task = task)
-      learner$importance()
+      learner$base_learner()$importance()
     }
   )
 )
