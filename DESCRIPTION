@@ -76,6 +76,7 @@ Collate:
     'FilterPerformance.R'
     'FilterPermutation.R'
     'FilterRelief.R'
+    'FilterSelectedFeatures.R'
     'FilterVariance.R'
     'flt.R'
     'helper.R'
