@@ -63,13 +63,3 @@ FilterSelectedFeatures = R6Class("FilterSelectedFeatures",
 
 #' @include mlr_filters.R
 mlr_filters$add("selected_features", FilterSelectedFeatures)
-
-
-if (FALSE) {
-  task = tsk("iris")
-  f = flt("selected_features", learner = lrn("classif.rpart"))
-  f$calculate(task)
-  scores = f$scores
-  critvalue = 0.5
-  names(scores)[scores >= critvalue]
-}
