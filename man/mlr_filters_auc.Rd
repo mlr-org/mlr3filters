@@ -39,6 +39,7 @@ Other Filter:
 \code{\link{mlr_filters_performance}},
 \code{\link{mlr_filters_permutation}},
 \code{\link{mlr_filters_relief}},
+\code{\link{mlr_filters_selected_features}},
 \code{\link{mlr_filters_variance}},
 \code{\link{mlr_filters}}
 }

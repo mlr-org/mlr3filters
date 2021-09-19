@@ -7,6 +7,9 @@ output: github_document
 Package website: [release](https://mlr3filters.mlr-org.com/) | [dev](https://mlr3filters.mlr-org.com/dev/)
 
 {mlr3filters} adds feature selection filters to [mlr3](https://mlr3.mlr-org.com).
+The implemented filters can be used stand-alone, or as part of a machine learning pipeline in combination with
+[mlr3pipelines](https://mlr3pipelines.mlr-org.com) and the [filter operator](https://mlr3pipelines.mlr-org.com/reference/mlr_pipeops_filter.html).
+
 Wrapper methods for feature selection are implemented in [mlr3fselect](https://mlr3fselect.mlr-org.com).
 Learners which support the extraction feature importance scores can be combined with a filter from this package for embedded feature selection.
 
