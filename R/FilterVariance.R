@@ -6,6 +6,11 @@
 #'
 #' Argument `na.rm` defaults to `TRUE` here.
 #'
+#' @references
+#' For a benchmark of filter methods:
+#'
+#' `r format_bib("bommert_2020")`
+#'
 #' @family Filter
 #' @importFrom stats var
 #' @template seealso_filter

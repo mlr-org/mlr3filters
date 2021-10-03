@@ -5,8 +5,7 @@
 \alias{FilterKruskalTest}
 \title{Kruskal-Wallis Test Filter}
 \description{
-Kruskal-Wallis rank sum test filter calling
-\code{\link[stats:kruskal.test]{stats::kruskal.test()}}.
+Kruskal-Wallis rank sum test filter calling \code{\link[stats:kruskal.test]{stats::kruskal.test()}}.
 
 The filter value is \code{-log10(p)} where \code{p} is the \eqn{p}-value. This
 transformation is necessary to ensure numerical stability for very small
@@ -20,6 +19,14 @@ as.data.table(filter)
 
 # transform to p-value
 10^(-filter$scores)
+}
+\references{
+For a benchmark of filter methods:
+
+Bommert A, Sun X, Bischl B, Rahnenführer J, Lang M (2020).
+\dQuote{Benchmark for filter methods for feature selection in high-dimensional classification data.}
+\emph{Computational Statistics \& Data Analysis}, \bold{143}, 106839.
+\doi{10.1016/j.csda.2019.106839}.
 }
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}

@@ -5,7 +5,7 @@
 \alias{FilterCarScore}
 \title{Conditional Mutual Information Based Feature Selection Filter}
 \description{
-Calculates the Correlation-Adjusted (marginal) coRelation scores
+Calculates the Correlation-Adjusted (marginal) coRrelation scores
 (short CAR scores) implemented in \code{\link[care:carscore]{care::carscore()}} in package
 \CRANpkg{care}. The CAR scores for a set of features are defined as the
 correlations between the target and the decorrelated features. The filter

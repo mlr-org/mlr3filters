@@ -9,6 +9,11 @@
 #' transformation is necessary to ensure numerical stability for very small
 #' \eqn{p}-values.
 #'
+#' @references
+#' For a benchmark of filter methods:
+#'
+#' `r format_bib("bommert_2020")`
+#'
 #' @family Filter
 #' @importFrom stats aov
 #' @template seealso_filter

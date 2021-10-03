@@ -9,6 +9,11 @@
 #' (random classifier). The absolute value of the difference between the AUC and
 #' 0.5 is used as final filter value.
 #'
+#' @references
+#' For a benchmark of filter methods:
+#'
+#' `r format_bib("bommert_2020")`
+#'
 #' @family Filter
 #' @template seealso_filter
 #' @export

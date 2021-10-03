@@ -54,7 +54,7 @@ Config/testthat/parallel: true
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Collate:
     'Filter.R'
     'mlr_filters.R'
@@ -78,6 +78,7 @@ Collate:
     'FilterRelief.R'
     'FilterSelectedFeatures.R'
     'FilterVariance.R'
+    'bibentries.R'
     'flt.R'
     'helper.R'
     'reexports.R'

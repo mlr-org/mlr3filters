@@ -16,6 +16,14 @@ filter$calculate(task)
 head(filter$scores, 3)
 as.data.table(filter)
 }
+\references{
+For a benchmark of filter methods:
+
+Bommert A, Sun X, Bischl B, Rahnenführer J, Lang M (2020).
+\dQuote{Benchmark for filter methods for feature selection in high-dimensional classification data.}
+\emph{Computational Statistics \& Data Analysis}, \bold{143}, 106839.
+\doi{10.1016/j.csda.2019.106839}.
+}
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 
