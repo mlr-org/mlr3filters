@@ -6,6 +6,11 @@
 #' Simple correlation filter calling [stats::cor()].
 #' The filter score is the absolute value of the correlation.
 #'
+#' @references
+#' For a benchmark of filter methods:
+#'
+#' `r format_bib("bommert_2020")`
+#'
 #' @family Filter
 #' @template seealso_filter
 #' @export

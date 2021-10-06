@@ -7,6 +7,13 @@
 #'
 #' This filter supports partial scoring (see [Filter]).
 #'
+#' @references
+#' `r format_bib("kursa_2021")`
+#'
+#' For a benchmark of filter methods:
+#'
+#' `r format_bib("bommert_2020")`
+#'
 #' @template details_praznik
 #' @family Filter
 #' @template seealso_filter

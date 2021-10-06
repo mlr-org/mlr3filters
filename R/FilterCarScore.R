@@ -2,7 +2,7 @@
 #'
 #' @name mlr_filters_carscore
 #'
-#' @description Calculates the Correlation-Adjusted (marginal) coRelation scores
+#' @description Calculates the Correlation-Adjusted (marginal) coRrelation scores
 #' (short CAR scores) implemented in [care::carscore()] in package
 #' \CRANpkg{care}. The CAR scores for a set of features are defined as the
 #' correlations between the target and the decorrelated features. The filter

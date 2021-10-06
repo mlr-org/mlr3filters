@@ -2,12 +2,16 @@
 #'
 #' @name mlr_filters_kruskal_test
 #'
-#' @description Kruskal-Wallis rank sum test filter calling
-#'   [stats::kruskal.test()].
+#' @description Kruskal-Wallis rank sum test filter calling [stats::kruskal.test()].
 #'
 #' The filter value is `-log10(p)` where `p` is the \eqn{p}-value. This
 #' transformation is necessary to ensure numerical stability for very small
 #' \eqn{p}-values.
+#'
+#' @references
+#' For a benchmark of filter methods:
+#'
+#' `r format_bib("bommert_2020")`
 #'
 #' @family Filter
 #' @importFrom stats kruskal.test

@@ -25,6 +25,19 @@ filter = flt("jmi")
 filter$calculate(task, nfeat = 2)
 as.data.table(filter)
 }
+\references{
+Kursa MB (2021).
+\dQuote{Praznik: High performance information-based feature selection.}
+\emph{SoftwareX}, \bold{16}, 100819.
+\doi{10.1016/j.softx.2021.100819}.
+
+For a benchmark of filter methods:
+
+Bommert A, Sun X, Bischl B, Rahnenführer J, Lang M (2020).
+\dQuote{Benchmark for filter methods for feature selection in high-dimensional classification data.}
+\emph{Computational Statistics & Data Analysis}, \bold{143}, 106839.
+\doi{10.1016/j.csda.2019.106839}.
+}
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 
