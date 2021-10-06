@@ -9,7 +9,7 @@ bibentries     = c(
     pages      = "106839",
     author     = "Andrea Bommert and Xudong Sun and Bernd Bischl and J\u00f6rg Rahnenf\u00fchrer and Michel Lang",
     title      = "Benchmark for filter methods for feature selection in high-dimensional classification data",
-    journal    = "Computational Statistics {\\&} Data Analysis"
+    journal    = "Computational Statistics & Data Analysis"
   ),
 
  kursa_2021    = bibentry("article",
