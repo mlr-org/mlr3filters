@@ -22,10 +22,10 @@ FilterRelief = R6Class("FilterRelief",
 
     #' @description Create a FilterRelief object.
     initialize = function() {
-      param_set = ParamSet$new(list(
-        ParamInt$new("neighboursCount", lower = 1L, default = 5L),
-        ParamInt$new("sampleSize", lower = 1L, default = 10L)
-      ))
+      param_set = ps(
+        neighboursCount = p_int(lower = 1L, default = 5L),
+        sampleSize      = p_int(lower = 1L, default = 10L)
+      )
 
       super$initialize(
         id = "relief",

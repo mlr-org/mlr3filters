@@ -99,7 +99,7 @@ Create a Filter object.
   id,
   task_type,
   task_properties = character(),
-  param_set = ParamSet$new(),
+  param_set = ps(),
   feature_types = character(),
   packages = character(),
   man = NA_character_
