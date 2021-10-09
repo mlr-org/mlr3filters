@@ -1,5 +1,5 @@
 #' @importFrom utils bibentry
-bibentries     = c(
+bibentries = c(
   bommert_2020 = bibentry("article",
     doi        = "10.1016/j.csda.2019.106839",
     year       = "2020",
@@ -12,7 +12,7 @@ bibentries     = c(
     journal    = "Computational Statistics & Data Analysis"
   ),
 
- kursa_2021    = bibentry("article",
+  kursa_2021 = bibentry("article",
     doi        = "10.1016/j.softx.2021.100819",
     year       = "2021",
     month      = "12",

@@ -42,7 +42,6 @@ FilterPermutation = R6Class("FilterPermutation",
     initialize = function(learner = mlr3::lrn("classif.rpart"), resampling = mlr3::rsmp("holdout"),
       measure = NULL) {
 
-
       param_set = ps(
         standardize = p_lgl(default = FALSE),
         nmc         = p_int(lower = 1L, default = 50L)
