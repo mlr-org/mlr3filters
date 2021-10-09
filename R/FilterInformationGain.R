@@ -35,14 +35,12 @@ FilterInformationGain = R6Class("FilterInformationGain",
 
     #' @description Create a FilterInformationGain object.
     initialize = function() {
-      param_set = ParamSet$new(list(
-        ParamFct$new("type",
-          levels = c("infogain", "gainratio", "symuncert"),
-          default = "infogain"),
-        ParamLgl$new("equal", default = FALSE),
-        ParamLgl$new("discIntegers", default = TRUE),
-        ParamInt$new("threads", lower = 1L, default = 1L, tags = "threads")
-      ))
+      param_set = ps(
+        type         = p_fct(c("infogain", "gainratio", "symuncert"), default = "infogain"),
+        equal        = p_lgl(default = FALSE),
+        discIntegers = p_lgl(default = TRUE),
+        threads      = p_int(lower = 0L, default = 0L, tags = "threads")
+      )
 
       super$initialize(
         id = "information_gain",

@@ -69,7 +69,7 @@ Filter = R6Class("Filter",
     #'   this object. The referenced help package can be opened via method
     #'   `$help()`.
     initialize = function(id, task_type, task_properties = character(),
-      param_set = ParamSet$new(), feature_types = character(),
+      param_set = ps(), feature_types = character(),
       packages = character(), man = NA_character_) {
 
       self$id = assert_string(id)

@@ -30,9 +30,9 @@ FilterDISR = R6Class("FilterDISR",
 
     #' @description Create a FilterDISR object.
     initialize = function() {
-      param_set = ParamSet$new(list(
-        ParamInt$new("threads", lower = 0L, default = 0L, tags = "threads")
-      ))
+      param_set = ps(
+        threads = p_int(lower = 0L, default = 0L, tags = "threads")
+      )
       param_set$values = list(threads = 1L)
 
       super$initialize(

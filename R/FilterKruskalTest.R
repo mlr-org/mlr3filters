@@ -32,11 +32,9 @@ FilterKruskalTest = R6Class("FilterKruskalTest",
 
     #' @description Create a FilterKruskalTest object.
     initialize = function() {
-      param_set = ParamSet$new(list(
-        ParamFct$new("na.action",
-          default = "na.omit",
-          levels = c("na.omit", "na.fail", "na.exclude", "na.pass"))
-      ))
+      param_set = ps(
+        na.action = p_fct(c("na.omit", "na.fail", "na.exclude", "na.pass"), default = "na.omit")
+      )
 
       super$initialize(
         id = "kruskal_test",

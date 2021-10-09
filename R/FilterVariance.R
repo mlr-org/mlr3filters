@@ -28,9 +28,9 @@ FilterVariance = R6Class("FilterVariance",
 
     #' @description Create a FilterVariance object.
     initialize = function() {
-      param_set = ParamSet$new(list(
-        ParamLgl$new("na.rm", default = TRUE)
-      ))
+      param_set = ps(
+        na.rm = p_lgl(default = TRUE)
+      )
       self$param_set$values = list(na.rm = TRUE)
 
       super$initialize(

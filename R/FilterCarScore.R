@@ -30,10 +30,10 @@ FilterCarScore = R6Class("FilterCarScore",
   public = list(
     #' @description Create a FilterCarScore object.
     initialize = function() {
-      param_set = ParamSet$new(list(
-        ParamDbl$new("lambda", lower = 0, upper = 1, default = NO_DEF),
-        ParamLgl$new("diagonal", default = FALSE),
-        ParamLgl$new("verbose", default = TRUE))
+      param_set = ps(
+        lambda   = p_dbl(lower = 0, upper = 1, default = NO_DEF),
+        diagonal = p_lgl(default = FALSE),
+        verbose  = p_lgl(default = TRUE)
       )
       param_set$values = list(verbose = FALSE)
 
