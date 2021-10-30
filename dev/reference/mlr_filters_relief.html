@@ -231,22 +231,24 @@ FSelectorRcpp::relief() in package FSelectorRcpp." />
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Relief (default)</span>
-<span class='va'>task</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span>
-<span class='va'>filter</span> <span class='op'>=</span> <span class='fu'><a href='flt.html'>flt</a></span><span class='op'>(</span><span class='st'>"relief"</span><span class='op'>)</span>
-<span class='va'>filter</span><span class='op'>$</span><span class='fu'>calculate</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>filter</span><span class='op'>$</span><span class='va'>scores</span>, <span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;       mass    glucose   pregnant 
-#&gt; 0.05975460 0.05187097 0.04705882 </div><div class='input'><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>filter</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;     feature        score
-#&gt; 1:     mass  0.059754601
-#&gt; 2:  glucose  0.051870968
-#&gt; 3: pregnant  0.047058824
-#&gt; 4:  triceps  0.033260870
-#&gt; 5:      age  0.014000000
-#&gt; 6: pressure  0.013061224
-#&gt; 7:  insulin -0.003389423
-#&gt; 8: pedigree -0.010572161</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'>## Relief (default)</span></span>
+<span class='r-in'><span class='va'>task</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"pima"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>filter</span> <span class='op'>=</span> <span class='fu'><a href='flt.html'>flt</a></span><span class='op'>(</span><span class='st'>"relief"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>filter</span><span class='op'>$</span><span class='fu'>calculate</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>filter</span><span class='op'>$</span><span class='va'>scores</span>, <span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       mass    glucose   pregnant </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 0.05975460 0.05187097 0.04705882 </span>
+<span class='r-in'><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>filter</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     feature        score</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1:     mass  0.059754601</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2:  glucose  0.051870968</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3: pregnant  0.047058824</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4:  triceps  0.033260870</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5:      age  0.014000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6: pressure  0.013061224</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7:  insulin -0.003389423</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8: pedigree -0.010572161</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

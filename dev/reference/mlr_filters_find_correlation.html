@@ -167,14 +167,14 @@ that are excluded with FilterFindCorrelation at score 0.1 (= 1 - 0.9)." />
     </div>
 
     <div class="ref-description">
-    <p>Simple filter emulating <code><a href='https://rdrr.io/pkg/caret/man/findCorrelation.html'>caret::findCorrelation(exact = FALSE)</a></code>.</p>
+    <p>Simple filter emulating <code>caret::findCorrelation(exact = FALSE)</code>.</p>
 <p>This gives each feature a score between 0 and 1 that is <em>one minus</em> the
 cutoff value for which it is excluded when using <code><a href='https://rdrr.io/pkg/caret/man/findCorrelation.html'>caret::findCorrelation()</a></code>.
 The negative is used because <code><a href='https://rdrr.io/pkg/caret/man/findCorrelation.html'>caret::findCorrelation()</a></code> excludes everything
 <em>above</em> a cutoff, while filters exclude everything below a cutoff.
 Here the filter scores are shifted by +1 to get positive values for to align
 with the way other filters work.</p>
-<p>Subsequently <code><a href='https://rdrr.io/pkg/caret/man/findCorrelation.html'>caret::findCorrelation(cutoff = 0.9)</a></code> lists the same features
+<p>Subsequently <code>caret::findCorrelation(cutoff = 0.9)</code> lists the same features
 that are excluded with <code>FilterFindCorrelation</code> at score 0.1 (= 1 - 0.9).</p>
     </div>
 
@@ -245,37 +245,39 @@ that are excluded with <code>FilterFindCorrelation</code> at score 0.1 (= 1 - 0.
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Pearson (default)</span>
-<span class='va'>task</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"mtcars"</span><span class='op'>)</span>
-<span class='va'>filter</span> <span class='op'>=</span> <span class='fu'><a href='flt.html'>flt</a></span><span class='op'>(</span><span class='st'>"find_correlation"</span><span class='op'>)</span>
-<span class='va'>filter</span><span class='op'>$</span><span class='fu'>calculate</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
-<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>filter</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;     feature      score
-#&gt;  1:    carb 1.00000000
-#&gt;  2:    gear 0.72592716
-#&gt;  3:    qsec 0.34375077
-#&gt;  4:      wt 0.28755935
-#&gt;  5:    drat 0.28728887
-#&gt;  6:      vs 0.25546456
-#&gt;  7:      hp 0.25018753
-#&gt;  8:      am 0.20594124
-#&gt;  9:    disp 0.11202008
-#&gt; 10:     cyl 0.09796713</div><div class='input'>
-<span class='co'>## Spearman</span>
-<span class='va'>filter</span> <span class='op'>=</span> <span class='fu'><a href='flt.html'>flt</a></span><span class='op'>(</span><span class='st'>"find_correlation"</span>, method <span class='op'>=</span> <span class='st'>"spearman"</span><span class='op'>)</span>
-<span class='va'>filter</span><span class='op'>$</span><span class='fu'>calculate</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span>
-<span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>filter</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;     feature      score
-#&gt;  1:    qsec 1.00000000
-#&gt;  2:      am 0.79666789
-#&gt;  3:    carb 0.34128186
-#&gt;  4:    drat 0.25518383
-#&gt;  5:      hp 0.24840661
-#&gt;  6:      wt 0.22532327
-#&gt;  7:      vs 0.20842852
-#&gt;  8:    gear 0.19231200
-#&gt;  9:    disp 0.10229356
-#&gt; 10:     cyl 0.07234842</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'>## Pearson (default)</span></span>
+<span class='r-in'><span class='va'>task</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>tsk</a></span><span class='op'>(</span><span class='st'>"mtcars"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>filter</span> <span class='op'>=</span> <span class='fu'><a href='flt.html'>flt</a></span><span class='op'>(</span><span class='st'>"find_correlation"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>filter</span><span class='op'>$</span><span class='fu'>calculate</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>filter</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     feature      score</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1:    carb 1.00000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  2:    gear 0.72592716</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3:    qsec 0.34375077</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  4:      wt 0.28755935</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  5:    drat 0.28728887</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  6:      vs 0.25546456</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  7:      hp 0.25018753</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  8:      am 0.20594124</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  9:    disp 0.11202008</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10:     cyl 0.09796713</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Spearman</span></span>
+<span class='r-in'><span class='va'>filter</span> <span class='op'>=</span> <span class='fu'><a href='flt.html'>flt</a></span><span class='op'>(</span><span class='st'>"find_correlation"</span>, method <span class='op'>=</span> <span class='st'>"spearman"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>filter</span><span class='op'>$</span><span class='fu'>calculate</span><span class='op'>(</span><span class='va'>task</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html'>as.data.table</a></span><span class='op'>(</span><span class='va'>filter</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     feature      score</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1:    qsec 1.00000000</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  2:      am 0.79666789</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  3:    carb 0.34128186</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  4:    drat 0.25518383</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  5:      hp 0.24840661</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  6:      wt 0.22532327</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  7:      vs 0.20842852</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  8:    gear 0.19231200</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  9:    disp 0.10229356</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10:     cyl 0.07234842</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
