@@ -82,9 +82,10 @@ Filter = R6Class("Filter",
       self$feature_types = assert_subset(
         feature_types,
         mlr_reflections$task_feature_types)
-      self$packages = assert_character(packages,
-        any.missing = FALSE,
-        unique = TRUE)
+      self$packages = union(
+        "mlr3filters",
+        assert_character(packages, any.missing = FALSE, min.chars = 1L)
+      )
       self$scores = set_names(numeric(), character())
       self$man = assert_string(man, na.ok = TRUE)
     },
