@@ -50,6 +50,7 @@ Used in tables, plot and text output.}
 
 \item{\code{task_type}}{(\code{character(1)})\cr
 Task type, e.g. \code{"classif"} or \code{"regr"}.
+Can be set to \code{NA} to allow all task types.
 
 For a complete list of possible task types (depending on the loaded packages),
 see \code{\link[=mlr_reflections]{mlr_reflections$task_types$type}}.}
@@ -114,7 +115,7 @@ Identifier for the filter.}
 
 \item{\code{task_type}}{(\code{character()})\cr
 Types of the task the filter can operator on. E.g., \code{"classif"} or
-\code{"regr"}.}
+\code{"regr"}. Can be set to \code{NA} to allow all task types.}
 
 \item{\code{task_properties}}{(\code{character()})\cr
 Required task properties, see \link[mlr3:Task]{mlr3::Task}.
