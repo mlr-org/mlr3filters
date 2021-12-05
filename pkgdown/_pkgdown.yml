@@ -1,13 +1,8 @@
 url: https://mlr3filters.mlr-org.com
 
 template:
+  bootstrap: 5
   package: mlr3pkgdowntemplate
-  params:
-    bootswatch: journal
-    docsearch:
-      api_key: 628c25905dbac982bd2155f719a334cb
-      index_name: mlr3filters
-  default_assets: false
 
 development:
   mode: auto
