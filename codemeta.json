@@ -1,26 +1,20 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "mlr3filters",
-  "description": "Extends 'mlr3' with filter methods for feature\n    selection.  Besides standalone filter methods built-in methods of any\n    machine-learning algorithm are supported.  Partial scoring of\n    multivariate filter methods is supported.",
+  "description": "Extends 'mlr3' with filter methods for feature selection. Besides standalone filter methods built-in methods of any machine-learning algorithm are supported. Partial scoring of multivariate filter methods is supported.",
   "name": "mlr3filters: Filter Based Feature Selection for 'mlr3'",
+  "relatedLink": "https://mlr3filters.mlr-org.com",
   "codeRepository": "https://github.com/mlr-org/mlr3filters",
-  "relatedLink": [
-    "https://mlr3filters.mlr-org.com",
-    "https://CRAN.R-project.org/package=mlr3filters"
-  ],
   "issueTracker": "https://github.com/mlr-org/mlr3filters/issues",
   "license": "https://spdx.org/licenses/LGPL-3.0",
-  "version": "0.4.0",
+  "version": "0.4.2.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.3 Patched (2020-10-27 r79379)",
+  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -56,9 +50,6 @@
       "email": "mlr.developer@mb706.com"
     }
   ],
-  "contributor": {},
-  "copyrightHolder": {},
-  "funder": {},
   "maintainer": [
     {
       "@type": "Person",
@@ -104,6 +95,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=FSelectorRcpp"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
     },
     {
       "@type": "SoftwareApplication",
@@ -179,14 +182,14 @@
       "sameAs": "https://CRAN.R-project.org/package=testthat"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
       "version": ">= 3.1.0"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "backports",
       "name": "backports",
@@ -198,7 +201,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=backports"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "checkmate",
       "name": "checkmate",
@@ -210,7 +213,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=checkmate"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "data.table",
       "name": "data.table",
@@ -222,11 +225,11 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=data.table"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "mlr3",
       "name": "mlr3",
-      "version": ">= 0.1.8",
+      "version": ">= 0.12.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -235,7 +238,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=mlr3"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "mlr3misc",
       "name": "mlr3misc",
@@ -247,7 +250,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=mlr3misc"
     },
-    {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "paradox",
       "name": "paradox",
@@ -259,7 +262,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=paradox"
     },
-    {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "R6",
       "name": "R6",
@@ -270,18 +273,8 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=R6"
-    }
-  ],
-  "releaseNotes": "https://github.com/mlr-org/mlr3filters/blob/master/NEWS.md",
-  "readme": "https://github.com/mlr-org/mlr3filters/blob/master/README.md",
-  "fileSize": "193.093KB",
-  "keywords": [
-    "filter",
-    "mlr",
-    "r",
-    "filters",
-    "mlr3",
-    "feature-selection",
-    "variable-importance"
-  ]
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "167.089KB"
 }
