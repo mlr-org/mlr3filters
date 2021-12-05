@@ -33,14 +33,10 @@ FilterCorrelation = R6Class("FilterCorrelation",
 
     #' @description Create a FilterCorrelation object.
     initialize = function() {
-      param_set = ParamSet$new(list(
-        ParamFct$new("use", default = "everything",
-          levels = c(
-            "everything", "all.obs", "complete.obs", "na.or.complete",
-            "pairwise.complete.obs")),
-        ParamFct$new("method", default = "pearson",
-          levels = c("pearson", "kendall", "spearman"))
-      ))
+      param_set = ps(
+        use    = p_fct(c("everything", "all.obs", "complete.obs", "na.or.complete", "pairwise.complete.obs"), default = "everything"),
+        method = p_fct(c("pearson", "kendall", "spearman"), default = "pearson")
+      )
 
       super$initialize(
         id = "correlation",

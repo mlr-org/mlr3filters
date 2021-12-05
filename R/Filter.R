@@ -49,7 +49,7 @@ Filter = R6Class("Filter",
     #'   Identifier for the filter.
     #' @param task_type (`character()`)\cr
     #'   Types of the task the filter can operator on. E.g., `"classif"` or
-    #'   `"regr"`.
+    #'   `"regr"`. Can be set to `NA` to allow all task types.
     #' @param param_set ([paradox::ParamSet])\cr
     #'   Set of hyperparameters.
     #' @param feature_types (`character()`)\cr
@@ -69,12 +69,14 @@ Filter = R6Class("Filter",
     #'   this object. The referenced help package can be opened via method
     #'   `$help()`.
     initialize = function(id, task_type, task_properties = character(),
-      param_set = ParamSet$new(), feature_types = character(),
+      param_set = ps(), feature_types = character(),
       packages = character(), man = NA_character_) {
 
       self$id = assert_string(id)
-      self$task_type = assert_subset(task_type, mlr_reflections$task_types$type,
-        empty.ok = FALSE)
+      if (!test_scalar_na(task_type)) {
+        assert_subset(task_type, mlr_reflections$task_types$type, empty.ok = FALSE)
+      }
+      self$task_type = task_type
       self$task_properties = assert_subset(
         task_properties,
         unlist(mlr_reflections$task_properties, use.names = FALSE))
@@ -82,9 +84,10 @@ Filter = R6Class("Filter",
       self$feature_types = assert_subset(
         feature_types,
         mlr_reflections$task_feature_types)
-      self$packages = assert_character(packages,
-        any.missing = FALSE,
-        unique = TRUE)
+      self$packages = union(
+        "mlr3filters",
+        assert_character(packages, any.missing = FALSE, min.chars = 1L)
+      )
       self$scores = set_names(numeric(), character())
       self$man = assert_string(man, na.ok = TRUE)
     },
@@ -137,7 +140,9 @@ Filter = R6Class("Filter",
       task = assert_task(as_task(task),
         feature_types = self$feature_types,
         task_properties = self$task_properties)
-      assert_choice(task$task_type, self$task_type)
+      if (!test_scalar_na(self$task_type)) {
+        assert_choice(task$task_type, self$task_type)
+      }
       fn = task$feature_names
 
       if (task$nrow == 0L) {
