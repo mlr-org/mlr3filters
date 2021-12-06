@@ -6,6 +6,8 @@
 \alias{mlr3filters-package}
 \title{mlr3filters: Filter Based Feature Selection for 'mlr3'}
 \description{
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+
 Extends 'mlr3' with filter methods for feature selection. Besides standalone filter methods built-in methods of any machine-learning algorithm are supported. Partial scoring of multivariate filter methods is supported.
 }
 \seealso{

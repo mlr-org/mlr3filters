@@ -10,8 +10,8 @@ repos:
         - mlr-org/styler.mlr
     -   id: roxygenize
         additional_dependencies:
-        -    tidyr
-        -    dplyr
+        - tidyr
+        - dplyr
         - checkmate
         - data.table
         - mlr3
