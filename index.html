@@ -4,7 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Extends mlr3 with filter methods for feature selection.
+    Besides standalone filter methods built-in methods of any
+    machine-learning algorithm are supported.  Partial scoring of
+    multivariate filter methods is supported.">
 <title>Filter Based Feature Selection for mlr3 • mlr3filters</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -12,134 +16,129 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<link href="extra.css" rel="stylesheet">
-<script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
-<link href="docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Filter Based Feature Selection for mlr3">
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><link href="deps/_Roboto-0.4.0/font.css" rel="stylesheet">
+<link href="deps/_JetBrains%20Mono-0.4.0/font.css" rel="stylesheet">
+<link href="deps/_Roboto%20Slab-0.4.0/font.css" rel="stylesheet">
+<!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Filter Based Feature Selection for mlr3">
 <meta property="og:description" content="Extends mlr3 with filter methods for feature selection.
     Besides standalone filter methods built-in methods of any
     machine-learning algorithm are supported.  Partial scoring of
     multivariate filter methods is supported.">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://mlr3filters.mlr-org.com/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-home">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-      <div class="navbar-brand-container">
-        <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org"></a>
-        <a class="navbar-brand" href="index.html">mlr3filters <small>v0.4.2</small></a>
-      </div>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="reference/index.html">
-    <span class="fa fa-file-alt"></span>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="index.html">mlr3filters</a>
+
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.0</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="reference/index.html">
+    <span class="fa fa fa fa-file-alt"></span>
      
     Reference
   </a>
 </li>
-<li>
-  <a href="news/index.html">Changelog</a>
+<li class="nav-item">
+  <a class="nav-link" href="news/index.html">Changelog</a>
 </li>
-<li>
-  <a href="https://mlr3book.mlr-org.com">
-    <span class="fa fa-link"></span>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://mlr3book.mlr-org.com">
+    <span class="fa fa fa fa-link"></span>
      
     mlr3book
   </a>
 </li>
-        <li>
-  <a href="https://github.com/mlr-org/mlr3filters/">
-    <span class="fab fa-github fa-lg"></span>
+      </ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/mlr-org/mlr3filters/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
-<li>
-  <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/">
-    <span class="fa fa-comments"></span>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/">
+    <span class="fa fa fa fa-comments"></span>
      
   </a>
 </li>
-<li>
-  <a href="https://stackoverflow.com/questions/tagged/mlr">
-    <span class="fab fa-stack-overflow"></span>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://stackoverflow.com/questions/tagged/mlr3">
+    <span class="fab fa fab fa-stack-overflow"></span>
      
   </a>
 </li>
-<li>
-  <a href="https://mlr-org.com/">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://mlr-org.com/">
     <span class="fa fa-rss"></span>
      
   </a>
 </li>
       </ul>
-<form class="navbar-form navbar-right docsearch" role="search">
-        <div class="form-group">
-          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
-      </form>
-      
-    </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
+</nav><div class="container template-home">
+<div class="row">
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="mlr3filters">mlr3filters<a class="anchor" aria-label="anchor" href="#mlr3filters"></a>
+</h1>
 </div>
-<!--/.navbar -->
-
-      
-
-      </header><div class="row">
-  <div class="contents col-md-9">
-<div id="mlr3filters" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#mlr3filters" class="anchor"></a>mlr3filters</h1></div>
 <p>Package website: <a href="https://mlr3filters.mlr-org.com/">release</a> | <a href="https://mlr3filters.mlr-org.com/dev/">dev</a></p>
-<p>{mlr3filters} adds feature selection filters to <a href="https://mlr3.mlr-org.com">mlr3</a>. Wrapper methods for feature selection are implemented in <a href="https://mlr3fselect.mlr-org.com">mlr3fselect</a>. Learners which support the extraction feature importance scores can be combined with a filter from this package for embedded feature selection.</p>
+<p>{mlr3filters} adds feature selection filters to <a href="https://mlr3.mlr-org.com" class="external-link">mlr3</a>. The implemented filters can be used stand-alone, or as part of a machine learning pipeline in combination with <a href="https://mlr3pipelines.mlr-org.com" class="external-link">mlr3pipelines</a> and the <a href="https://mlr3pipelines.mlr-org.com/reference/mlr_pipeops_filter.html" class="external-link">filter operator</a>.</p>
+<p>Wrapper methods for feature selection are implemented in <a href="https://mlr3fselect.mlr-org.com" class="external-link">mlr3fselect</a>. Learners which support the extraction feature importance scores can be combined with a filter from this package for embedded feature selection.</p>
 <!-- badges: start -->
-<p><a href="https://github.com/mlr-org/mlr3filters/actions"><img src="https://github.com/mlr-org/mlr3filters/workflows/tic/badge.svg?branch=master" alt="tic"></a> <a href="https://cran.r-project.org/package=mlr3filters"><img src="https://www.r-pkg.org/badges/version-ago/mlr3filters" alt="CRAN Status"></a> <a href="https://www.codefactor.io/repository/github/mlr-org/mlr3filters"><img src="https://www.codefactor.io/repository/github/mlr-org/mlr3filters/badge" alt="CodeFactor"></a> <a href="https://stackoverflow.com/questions/tagged/mlr3"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a> <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/"><img src="https://img.shields.io/badge/chat-mattermost-orange.svg" alt="Mattermost"></a> <!-- badges: end --></p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>CRAN version</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"mlr3filters"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"mlr3filters"</span><span class="op">)</span></code></pre></div>
 <p>Development version</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"mlr-org/mlr3filters"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"mlr-org/mlr3filters"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="filters" class="section level2">
-<h2 class="hasAnchor">
-<a href="#filters" class="anchor"></a>Filters</h2>
-<div id="filter-example" class="section level3">
-<h3 class="hasAnchor">
-<a href="#filter-example" class="anchor"></a>Filter Example</h3>
+<div class="section level2">
+<h2 id="filters">Filters<a class="anchor" aria-label="anchor" href="#filters"></a>
+</h2>
+<div class="section level3">
+<h3 id="filter-example">Filter Example<a class="anchor" aria-label="anchor" href="#filter-example"></a>
+</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3.mlr-org.com">"mlr3"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3filters.mlr-org.com">"mlr3filters"</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3.mlr-org.com" class="external-link">"mlr3"</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3filters.mlr-org.com">"mlr3filters"</a></span><span class="op">)</span>
 
-<span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>
+<span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>
 <span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="reference/flt.html">flt</a></span><span class="op">(</span><span class="st">"auc"</span><span class="op">)</span>
-<span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">##     feature     score</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">## 1:  glucose 0.2927906</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="co">## 2:  insulin 0.2316288</span></span>
@@ -150,15 +149,15 @@
 <span id="cb4-8"><a href="#cb4-8"></a><span class="co">## 7: pressure 0.1075760</span></span>
 <span id="cb4-9"><a href="#cb4-9"></a><span class="co">## 8: pedigree 0.1062015</span></span></code></pre></div>
 </div>
-<div id="implemented-filters" class="section level3">
-<h3 class="hasAnchor">
-<a href="#implemented-filters" class="anchor"></a>Implemented Filters</h3>
+<div class="section level3">
+<h3 id="implemented-filters">Implemented Filters<a class="anchor" aria-label="anchor" href="#implemented-filters"></a>
+</h3>
 <table class="table">
 <colgroup>
-<col width="13%">
-<col width="10%">
-<col width="30%">
-<col width="45%">
+<col width="11%">
+<col width="9%">
+<col width="26%">
+<col width="52%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">Name</th>
@@ -177,19 +176,19 @@
 <td align="left">auc</td>
 <td align="left">Classif</td>
 <td align="left">Integer, Numeric</td>
-<td align="left"><a href="https://cran.r-project.org/package=mlr3measures">mlr3measures</a></td>
+<td align="left"><a href="https://cran.r-project.org/package=mlr3measures" class="external-link">mlr3measures</a></td>
 </tr>
 <tr class="odd">
 <td align="left">carscore</td>
 <td align="left">Regr</td>
 <td align="left">Numeric</td>
-<td align="left"><a href="https://cran.r-project.org/package=care">care</a></td>
+<td align="left"><a href="https://cran.r-project.org/package=care" class="external-link">care</a></td>
 </tr>
 <tr class="even">
 <td align="left">cmim</td>
 <td align="left">Classif &amp; Regr</td>
 <td align="left">Integer, Numeric, Factor, Ordered</td>
-<td align="left"><a href="https://cran.r-project.org/package=praznik">praznik</a></td>
+<td align="left"><a href="https://cran.r-project.org/package=praznik" class="external-link">praznik</a></td>
 </tr>
 <tr class="odd">
 <td align="left">correlation</td>
@@ -199,9 +198,9 @@
 </tr>
 <tr class="even">
 <td align="left">disr</td>
-<td align="left">Classif</td>
+<td align="left">Classif &amp; Regr</td>
 <td align="left">Integer, Numeric, Factor, Ordered</td>
-<td align="left"><a href="https://cran.r-project.org/package=praznik">praznik</a></td>
+<td align="left"><a href="https://cran.r-project.org/package=praznik" class="external-link">praznik</a></td>
 </tr>
 <tr class="odd">
 <td align="left">find_correlation</td>
@@ -213,25 +212,25 @@
 <td align="left">importance</td>
 <td align="left">Universal</td>
 <td align="left">Logical, Integer, Numeric, Factor, Ordered</td>
-<td align="left"><a href="https://cran.r-project.org/package=rpart">rpart</a></td>
+<td align="left"><a href="https://cran.r-project.org/package=c(%22mlr3%22,%20%22rpart%22)" class="external-link">c(“mlr3”, “rpart”)</a></td>
 </tr>
 <tr class="odd">
 <td align="left">information_gain</td>
 <td align="left">Classif &amp; Regr</td>
 <td align="left">Integer, Numeric, Factor, Ordered</td>
-<td align="left"><a href="https://cran.r-project.org/package=FSelectorRcpp">FSelectorRcpp</a></td>
+<td align="left"><a href="https://cran.r-project.org/package=FSelectorRcpp" class="external-link">FSelectorRcpp</a></td>
 </tr>
 <tr class="even">
 <td align="left">jmi</td>
-<td align="left">Classif</td>
+<td align="left">Classif &amp; Regr</td>
 <td align="left">Integer, Numeric, Factor, Ordered</td>
-<td align="left"><a href="https://cran.r-project.org/package=praznik">praznik</a></td>
+<td align="left"><a href="https://cran.r-project.org/package=praznik" class="external-link">praznik</a></td>
 </tr>
 <tr class="odd">
 <td align="left">jmim</td>
-<td align="left">Classif</td>
+<td align="left">Classif &amp; Regr</td>
 <td align="left">Integer, Numeric, Factor, Ordered</td>
-<td align="left"><a href="https://cran.r-project.org/package=praznik">praznik</a></td>
+<td align="left"><a href="https://cran.r-project.org/package=praznik" class="external-link">praznik</a></td>
 </tr>
 <tr class="even">
 <td align="left">kruskal_test</td>
@@ -241,21 +240,21 @@
 </tr>
 <tr class="odd">
 <td align="left">mim</td>
-<td align="left">Classif</td>
+<td align="left">Classif &amp; Regr</td>
 <td align="left">Integer, Numeric, Factor, Ordered</td>
-<td align="left"><a href="https://cran.r-project.org/package=praznik">praznik</a></td>
+<td align="left"><a href="https://cran.r-project.org/package=praznik" class="external-link">praznik</a></td>
 </tr>
 <tr class="even">
 <td align="left">mrmr</td>
-<td align="left">Classif</td>
+<td align="left">Classif &amp; Regr</td>
 <td align="left">Integer, Numeric, Factor, Ordered</td>
-<td align="left"><a href="https://cran.r-project.org/package=praznik">praznik</a></td>
+<td align="left"><a href="https://cran.r-project.org/package=praznik" class="external-link">praznik</a></td>
 </tr>
 <tr class="odd">
 <td align="left">njmim</td>
-<td align="left">Classif</td>
+<td align="left">Classif &amp; Regr</td>
 <td align="left">Integer, Numeric, Factor, Ordered</td>
-<td align="left"><a href="https://cran.r-project.org/package=praznik">praznik</a></td>
+<td align="left"><a href="https://cran.r-project.org/package=praznik" class="external-link">praznik</a></td>
 </tr>
 <tr class="even">
 <td align="left">performance</td>
@@ -273,9 +272,15 @@
 <td align="left">relief</td>
 <td align="left">Classif &amp; Regr</td>
 <td align="left">Integer, Numeric, Factor, Ordered</td>
-<td align="left"><a href="https://cran.r-project.org/package=FSelectorRcpp">FSelectorRcpp</a></td>
+<td align="left"><a href="https://cran.r-project.org/package=FSelectorRcpp" class="external-link">FSelectorRcpp</a></td>
 </tr>
 <tr class="odd">
+<td align="left">selected_features</td>
+<td align="left">Classif</td>
+<td align="left">Logical, Integer, Numeric, Factor, Ordered</td>
+<td align="left"><a href="https://cran.r-project.org/package=c(%22mlr3%22,%20%22rpart%22)" class="external-link">c(“mlr3”, “rpart”)</a></td>
+</tr>
+<tr class="even">
 <td align="left">variance</td>
 <td align="left">Classif &amp; Regr</td>
 <td align="left">Integer, Numeric</td>
@@ -284,95 +289,102 @@
 </tbody>
 </table>
 </div>
-<div id="variable-importance-filters" class="section level3">
-<h3 class="hasAnchor">
-<a href="#variable-importance-filters" class="anchor"></a>Variable Importance Filters</h3>
+<div class="section level3">
+<h3 id="variable-importance-filters">Variable Importance Filters<a class="anchor" aria-label="anchor" href="#variable-importance-filters"></a>
+</h3>
 <p>The following learners allow the extraction of variable importance and therefore are supported by <code>FilterImportance</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"       "classif.xgboost"     "regr.featureless"   </span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co">##  [6] "regr.ranger"         "regr.rpart"          "regr.xgboost"        "surv.ranger"         "surv.xgboost"</span></span></code></pre></div>
-<p>If your learner is not listed here but capable of extracting variable importance from the fitted model, the reason is most likely that it is not yet integrated in the package <a href="https://github.com/mlr-org/mlr3learners">mlr3learners</a> or the <a href="https://github.com/mlr3learners">extra learner organization</a>. Please open an issue so we can add your package.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"      </span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co">##  [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        </span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">##  [7] "regr.rpart"          "regr.xgboost"        "surv.ranger"        </span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">## [10] "surv.xgboost"</span></span></code></pre></div>
+<p>If your learner is not listed here but capable of extracting variable importance from the fitted model, the reason is most likely that it is not yet integrated in the package <a href="https://github.com/mlr-org/mlr3learners" class="external-link">mlr3learners</a> or the <a href="https://github.com/mlr3learners" class="external-link">extra learner organization</a>. Please open an issue so we can add your package.</p>
 <p>Some learners need to have their variable importance measure “activated” during learner creation. For example, to use the “impurity” measure of Random Forest via the {ranger} package:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">tsk</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span>
-<span class="va">lrn</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html">lrn</a></span><span class="op">(</span><span class="st">"classif.ranger"</span><span class="op">)</span>
-<span class="va">lrn</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="va">values</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>importance <span class="op">=</span> <span class="st">"impurity"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span>
+<span class="va">lrn</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.ranger"</span><span class="op">)</span>
+<span class="va">lrn</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="va">values</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>importance <span class="op">=</span> <span class="st">"impurity"</span><span class="op">)</span>
 
 <span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="reference/flt.html">flt</a></span><span class="op">(</span><span class="st">"importance"</span>, learner <span class="op">=</span> <span class="va">lrn</span><span class="op">)</span>
 <span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">##         feature    score</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co">## 1:  Petal.Width 43.66496</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co">## 2: Petal.Length 43.10837</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a><span class="co">## 3: Sepal.Length 10.21944</span></span></code></pre></div>
 </div>
-<div id="performance-filter" class="section level3">
-<h3 class="hasAnchor">
-<a href="#performance-filter" class="anchor"></a>Performance Filter</h3>
-<p><code>FilterPerformance</code> is a univariate filter method which calls <code><a href="https://mlr3.mlr-org.com/reference/resample.html">resample()</a></code> with every predictor variable in the dataset and ranks the final outcome using the supplied measure. Any learner can be passed to this filter with <code>classif.rpart</code> being the default. Of course, also regression learners can be passed if the task is of type “regr”.</p>
+<div class="section level3">
+<h3 id="performance-filter">Performance Filter<a class="anchor" aria-label="anchor" href="#performance-filter"></a>
+</h3>
+<p><code>FilterPerformance</code> is a univariate filter method which calls <code><a href="https://mlr3.mlr-org.com/reference/resample.html" class="external-link">resample()</a></code> with every predictor variable in the dataset and ranks the final outcome using the supplied measure. Any learner can be passed to this filter with <code>classif.rpart</code> being the default. Of course, also regression learners can be passed if the task is of type “regr”.</p>
 </div>
 </div>
 </div>
-  </div>
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=mlr3filters" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/mlr-org/mlr3filters/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/mlr-org/mlr3filters/issues" class="external-link">Report a bug</a></li>
+</ul>
+</div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="links">
-<h2>Links</h2>
-<ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=mlr3filters">https://​cloud.r-project.org/​package=mlr3filters</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/mlr-org/mlr3filters/">https://​github.com/​mlr-org/​mlr3filters/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/mlr-org/mlr3filters/issues">https://​github.com/​mlr-org/​mlr3filters/​issues</a>
-</li>
-</ul>
-</div>
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/LGPL-3">LGPL-3</a></li>
+<li><a href="https://www.r-project.org/Licenses/LGPL-3" class="external-link">LGPL-3</a></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing mlr3filters</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://pat-s.me">Patrick Schratz</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-0748-6624" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Michel Lang <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-9754-0393" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Bernd Bischl <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-6002-6980" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<a href="https://pat-s.me" class="external-link">Patrick Schratz</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-0748-6624" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Michel Lang <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-9754-0393" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Bernd Bischl <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-6002-6980" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Martin Binder <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
-  </div>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/mlr-org/mlr3filters/actions" class="external-link"><img src="https://github.com/mlr-org/mlr3filters/workflows/tic/badge.svg?branch=master" alt="tic"></a></li>
+<li><a href="https://cran.r-project.org/package=mlr3filters" class="external-link"><img src="https://www.r-pkg.org/badges/version/mlr3filters" alt="CRAN Status"></a></li>
+<li><a href="https://www.codefactor.io/repository/github/mlr-org/mlr3filters" class="external-link"><img src="https://www.codefactor.io/repository/github/mlr-org/mlr3filters/badge" alt="CodeFactor"></a></li>
+<li><a href="https://stackoverflow.com/questions/tagged/mlr3" class="external-link"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a></li>
+<li><a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/" class="external-link"><img src="https://img.shields.io/badge/chat-mattermost-orange.svg" alt="Mattermost"></a></li>
+</ul>
+</div>
+
+  </aside>
 </div>
 
 
-      <footer><div class="copyright">
-  <p>Developed by <a href="https://pat-s.me">Patrick Schratz</a>, Michel Lang, Bernd Bischl, Martin Binder.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Michel Lang, Bernd Bischl, Martin Binder.</p>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
-  docsearch({
-    
-    
-    apiKey: '628c25905dbac982bd2155f719a334cb',
-    indexName: 'mlr3filters',
-    inputSelector: 'input#search-input.form-control',
-    transformData: function(hits) {
-      return hits.map(function (hit) {
-        hit.url = updateHitURL(hit);
-        return hit;
-      });
-    }
-  });
-</script>
-</body>
+
+  
+
+  </body>
 </html>
