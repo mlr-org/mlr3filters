@@ -65,28 +65,28 @@ as.data.table(filter$calculate(task))
 
 ### Implemented Filters
 
-| Name              | Task Type      | Feature Types                              | Package                                                                               |
-|:------------------|:---------------|:-------------------------------------------|:--------------------------------------------------------------------------------------|
-| anova             | Classif        | Integer, Numeric                           | stats                                                                                 |
-| auc               | Classif        | Integer, Numeric                           | [mlr3measures](https://cran.r-project.org/package=mlr3measures)                       |
-| carscore          | Regr           | Numeric                                    | [care](https://cran.r-project.org/package=care)                                       |
-| cmim              | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)                                 |
-| correlation       | Regr           | Integer, Numeric                           | stats                                                                                 |
-| disr              | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)                                 |
-| find_correlation  | Classif & Regr | Integer, Numeric                           | stats                                                                                 |
-| importance        | Universal      | Logical, Integer, Numeric, Factor, Ordered | [c(“mlr3”, “rpart”)](https://cran.r-project.org/package=c(%22mlr3%22,%20%22rpart%22)) |
-| information_gain  | Classif & Regr | Integer, Numeric, Factor, Ordered          | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp)                     |
-| jmi               | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)                                 |
-| jmim              | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)                                 |
-| kruskal_test      | Classif        | Integer, Numeric                           | stats                                                                                 |
-| mim               | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)                                 |
-| mrmr              | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)                                 |
-| njmim             | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)                                 |
-| performance       | Universal      | Logical, Integer, Numeric, Factor, Ordered |                                                                                       |
-| permutation       | Universal      | Logical, Integer, Numeric, Factor, Ordered |                                                                                       |
-| relief            | Classif & Regr | Integer, Numeric, Factor, Ordered          | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp)                     |
-| selected_features | Classif        | Logical, Integer, Numeric, Factor, Ordered | [c(“mlr3”, “rpart”)](https://cran.r-project.org/package=c(%22mlr3%22,%20%22rpart%22)) |
-| variance          | Classif & Regr | Integer, Numeric                           | stats                                                                                 |
+| Name              | Task Type      | Feature Types                              | Package                                                           |
+|:------------------|:---------------|:-------------------------------------------|:------------------------------------------------------------------|
+| anova             | Classif        | Integer, Numeric                           | stats                                                             |
+| auc               | Classif        | Integer, Numeric                           | [mlr3measures](https://cran.r-project.org/package=mlr3measures)   |
+| carscore          | Regr           | Numeric                                    | [care](https://cran.r-project.org/package=care)                   |
+| cmim              | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| correlation       | Regr           | Integer, Numeric                           | stats                                                             |
+| disr              | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| find_correlation  | Classif & Regr | Integer, Numeric                           | stats                                                             |
+| importance        | Universal      | Logical, Integer, Numeric, Factor, Ordered |                                                                   |
+| information_gain  | Classif & Regr | Integer, Numeric, Factor, Ordered          | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
+| jmi               | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| jmim              | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| kruskal_test      | Classif        | Integer, Numeric                           | stats                                                             |
+| mim               | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| mrmr              | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| njmim             | Classif & Regr | Integer, Numeric, Factor, Ordered          | [praznik](https://cran.r-project.org/package=praznik)             |
+| performance       | Universal      | Logical, Integer, Numeric, Factor, Ordered |                                                                   |
+| permutation       | Universal      | Logical, Integer, Numeric, Factor, Ordered |                                                                   |
+| relief            | Classif & Regr | Integer, Numeric, Factor, Ordered          | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
+| selected_features | Classif        | Logical, Integer, Numeric, Factor, Ordered |                                                                   |
+| variance          | Classif & Regr | Integer, Numeric                           | stats                                                             |
 
 ### Variable Importance Filters
 
