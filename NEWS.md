@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# mlr3filters 0.5.0.9000
+
+- Add references to benchmark paper and praznik paper #104
+
+
 # mlr3filters 0.5.0
 
 - Add references to benchmark paper and praznik paper #104
