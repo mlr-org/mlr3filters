@@ -78,7 +78,9 @@ tab[Name == "importance", `Task Type` := "Universal"]
 # manually change the package for filter "performance" and "parmutation"
 tab[Name == "performance", `Package` := ""]
 tab[Name == "permutation", `Package` := ""]
-knitr::kable(tab[order(Name)], escape = F, format = "markdown")
+tab[Name == "selected_features", `Package` := ""]
+tab[Name == "importance", `Package` := ""]
+knitr::kable(tab[order(Name)], escape = FALSE, format = "markdown")
 ```
 
 ### Variable Importance Filters

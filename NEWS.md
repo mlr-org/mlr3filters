@@ -7,12 +7,11 @@
 
 # mlr3filters 0.5.0
 
-- Add references to benchmark paper and praznik paper #104
-
-
-# mlr3filters 0.4.2.9000
-
-- Same as previous version.
+- Add references to benchmark paper and praznik paper (#104)
+- New filter `FilterSelectedFeatures` which makes use of embedded feature selection methods of learners.
+  See the help page for more details (#102)
+- Allow `NA` as task type.
+  This makes it possible to use other tasks than `"regr"` or `"classif"` for certain filters, e.g. `FilterVariance` (#106)
 
 
 # mlr3filters 0.4.2
