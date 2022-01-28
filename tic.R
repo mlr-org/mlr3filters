@@ -1,10 +1,12 @@
 do_package_checks(error_on = "warning")
 
+get_stage("before_install") %>%
+  add_step(step_install_github("ropensci/tic"))
+
 get_stage("install") %>%
   # install ranger for README
   add_step(step_install_cran("ranger")) %>%
-  add_step(step_install_github("mlr-org/mlr3pkgdowntemplate")) %>%
-  add_step(step_install_github("ropensci/tic"))
+  add_step(step_install_github("mlr-org/mlr3pkgdowntemplate"))
 
 if (ci_on_ghactions() && ci_has_env("BUILD_PKGDOWN")) {
   # creates pkgdown site and pushes to gh-pages branch
