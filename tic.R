@@ -1,8 +1,5 @@
 do_package_checks(error_on = "warning")
 
-get_stage("before_install") %>%
-  add_step(step_install_github("ropensci/tic"))
-
 get_stage("install") %>%
   # install ranger for README
   add_step(step_install_cran("ranger")) %>%
