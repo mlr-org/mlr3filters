@@ -5,7 +5,6 @@ test_that("all regr filters return correct filter values", {
     el = "regr"), key])
 
   for (f in filters) {
-    expect_filter(f)
     f$calculate(task)
     expect_filter(f, task = task)
   }

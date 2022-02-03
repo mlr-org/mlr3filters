@@ -7,7 +7,6 @@ test_that("all classif filters return correct filter values", {
   filters$permutation$param_set$values = list(nmc = 2)
 
   for (f in filters) {
-    expect_filter(f)
     f$calculate(task)
     expect_filter(f, task = task)
   }
