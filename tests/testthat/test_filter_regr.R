@@ -25,6 +25,5 @@ test_that("Errors for unsupported features", {
   # supplied: factor, integer, numeric
   for (f in filters) {
     expect_error(f$calculate(task_bh))
-
   }
 })

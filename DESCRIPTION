@@ -36,6 +36,7 @@ Suggests:
     lgr,
     mlr3learners,
     mlr3measures,
+    mlr3proba,
     praznik,
     rpart,
     testthat (>= 3.0.0)

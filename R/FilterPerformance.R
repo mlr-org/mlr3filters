@@ -63,8 +63,7 @@ FilterPerformance = R6Class("FilterPerformance",
 
       perf = map_dbl(fn, function(x) {
         task$col_roles$feature = x
-        rr = resample(task, self$learner, self$resampling)
-        rr$aggregate()
+        resample(task, self$learner, self$resampling, clone = character())$aggregate()
       })
 
       if (self$measure$minimize) {
