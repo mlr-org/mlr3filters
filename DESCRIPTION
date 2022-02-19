@@ -31,11 +31,13 @@ Imports:
 Suggests:
     care,
     caret,
+    carSurv,
     FSelectorRcpp,
     knitr,
     lgr,
     mlr3learners,
     mlr3measures,
+    mlr3proba,
     praznik,
     rpart,
     testthat (>= 3.0.0)
@@ -52,6 +54,7 @@ Collate:
     'FilterAnova.R'
     'FilterCMIM.R'
     'FilterCarScore.R'
+    'FilterCarSurvScore.R'
     'FilterCorrelation.R'
     'FilterDISR.R'
     'FilterFindCorrelation.R'

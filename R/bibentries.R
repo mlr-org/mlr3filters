@@ -22,5 +22,17 @@ bibentries = c(
     author     = "Miron B. Kursa",
     title      = "Praznik: High performance information-based feature selection",
     journal    = "{SoftwareX}"
+  ),
+
+  bommert_2021 = bibentry("article",
+    doi = "0.1093/bib/bbab354",
+    year = "2021",
+    month = "9",
+    publisher = "Oxford University Press ({OUP})",
+    volume = "23",
+    number = "1",
+    author = "Andrea Bommert and Thomas Welchowski and Matthias Schmid and J\u00f6rg Rahnenf\u00fchrer",
+    title = "Benchmark of filter methods for feature selection in high-dimensional gene expression survival data",
+    journal = "Briefings in Bioinformatics"
   )
 )
