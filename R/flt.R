@@ -10,7 +10,7 @@
 #' flt("correlation", method = "kendall")
 #' flts(c("mrmr", "jmim"))
 flt = function(.key, ...) {
-  dictionary_sugar(mlr_filters, .key, ...)
+  dictionary_sugar_get(mlr_filters, .key, ...)
 }
 
 #' @rdname flt
