@@ -25,6 +25,12 @@
 Filter = R6Class("Filter",
   public = list(
     id = NULL,
+
+    #' @field label (`character(1)`)\cr
+    #' Label for this object.
+    #' Can be used in tables, plot and text output instead of the ID.
+    label = NA_character_,
+
     task_type = NULL,
     task_properties = NULL,
     param_set = NULL,
@@ -70,9 +76,10 @@ Filter = R6Class("Filter",
     #'   `$help()`.
     initialize = function(id, task_type, task_properties = character(),
       param_set = ps(), feature_types = character(),
-      packages = character(), man = NA_character_) {
+      packages = character(), label = NA_character_, man = NA_character_) {
 
       self$id = assert_string(id)
+      self$label = assert_string(label, na.ok = TRUE)
       if (!test_scalar_na(task_type)) {
         assert_subset(task_type, mlr_reflections$task_types$type, empty.ok = FALSE)
       }
@@ -101,7 +108,7 @@ Filter = R6Class("Filter",
     #' @description
     #' Printer for Filter class
     print = function() {
-      catf(format(self)) # nocov start
+      catn(format(self), if (is.na(self$label)) "" else paste0(": ", self$label))
       catf(str_indent("Task Types:", self$task_type))
       catf(str_indent("Task Properties:", self$task_properties))
       catf(str_indent("Packages:", self$packages))
@@ -109,7 +116,7 @@ Filter = R6Class("Filter",
       if (length(self$scores)) {
         print(as.data.table(self),
           nrows = 10L, topn = 5L, class = FALSE,
-          row.names = TRUE, print.keys = FALSE) # nocov end
+          row.names = TRUE, print.keys = FALSE)
       }
     },
 
