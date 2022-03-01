@@ -127,10 +127,10 @@ Filter = R6Class("Filter",
     #' Printer for Filter class
     print = function() {
       catn(format(self), if (is.na(self$label)) "" else paste0(": ", self$label))
-      catf(str_indent("Task Types:", self$task_type))
-      catf(str_indent("Task Properties:", self$task_properties))
-      catf(str_indent("Packages:", self$packages))
-      catf(str_indent("Feature types:", self$feature_types))
+      catn(str_indent("Task Types:", self$task_type))
+      catn(str_indent("Task Properties:", self$task_properties))
+      catn(str_indent("Packages:", self$packages))
+      catn(str_indent("Feature types:", self$feature_types))
       if (length(self$scores)) {
         print(as.data.table(self),
           nrows = 10L, topn = 5L, class = FALSE,

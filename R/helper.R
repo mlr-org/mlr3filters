@@ -8,3 +8,7 @@ call_praznik = function(self, task, fun, nfeat) {
 
   set_names(seq(from = 1, to = 0, length.out = length(selection)), names(selection))
 }
+
+catn = function(..., file = "") {
+  cat(paste0(..., collapse = "\n"), "\n", sep = "", file = file)
+}
