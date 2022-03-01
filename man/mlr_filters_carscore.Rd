@@ -3,7 +3,7 @@
 \name{mlr_filters_carscore}
 \alias{mlr_filters_carscore}
 \alias{FilterCarScore}
-\title{Conditional Mutual Information Based Feature Selection Filter}
+\title{Correlation-Adjusted Marignal Correlation Score Filter}
 \description{
 Calculates the Correlation-Adjusted (marginal) coRrelation scores
 (short CAR scores) implemented in \code{\link[care:carscore]{care::carscore()}} in package
@@ -32,6 +32,7 @@ Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
+\code{\link{mlr_filters_carsurvscore}},
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},

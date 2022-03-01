@@ -1,4 +1,4 @@
-#' @title Conditional Mutual Information Based Feature Selection Filter
+#' @title Correlation-Adjusted Marignal Correlation Score Filter
 #'
 #' @name mlr_filters_carscore
 #'
