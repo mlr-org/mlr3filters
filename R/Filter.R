@@ -74,7 +74,9 @@ Filter = R6Class("Filter",
 
       self$id = assert_string(id)
       if (!test_scalar_na(task_type)) {
-        assert_subset(task_type, mlr_reflections$task_types$type, empty.ok = FALSE)
+        # we allow any task type here, otherwise we are not able to construct
+        # the filter without loading additional packages like mlr3proba
+        assert_character(task_type, any.missing = FALSE)
       }
       self$task_type = task_type
       self$task_properties = assert_subset(

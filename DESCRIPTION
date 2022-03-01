@@ -31,6 +31,7 @@ Imports:
 Suggests:
     care,
     caret,
+    carSurv,
     FSelectorRcpp,
     knitr,
     lgr,
@@ -53,6 +54,7 @@ Collate:
     'FilterAnova.R'
     'FilterCMIM.R'
     'FilterCarScore.R'
+    'FilterCarSurvScore.R'
     'FilterCorrelation.R'
     'FilterDISR.R'
     'FilterFindCorrelation.R'
