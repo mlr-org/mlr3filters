@@ -3,7 +3,7 @@
 \name{mlr_filters_relief}
 \alias{mlr_filters_relief}
 \alias{FilterRelief}
-\title{Information Gain Filter}
+\title{RELIEF Filter}
 \description{
 Information gain filter calling
 \code{\link[FSelectorRcpp:relief]{FSelectorRcpp::relief()}} in package \CRANpkg{FSelectorRcpp}.

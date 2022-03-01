@@ -43,7 +43,7 @@ FilterCarScore = R6Class("FilterCarScore",
         param_set = param_set,
         feature_types = "numeric",
         packages = "care",
-        label = "Correlation-Adjusted marginal coRrelation Score",
+        label = "Correlation-Adjusted coRrelation Score",
         man = "mlr3filters::mlr_filters_carscore"
       )
     }

@@ -41,6 +41,7 @@ FilterDISR = R6Class("FilterDISR",
         param_set = param_set,
         feature_types = c("integer", "numeric", "factor", "ordered"),
         packages = "praznik",
+        label = "Double Input Symmetrical Relevance",
         man = "mlr3filters::mlr_filters_disr"
       )
     }

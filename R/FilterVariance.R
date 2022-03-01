@@ -39,6 +39,7 @@ FilterVariance = R6Class("FilterVariance",
         param_set = param_set,
         packages = "stats",
         feature_types = c("integer", "numeric"),
+        label = "Variance",
         man = "mlr3filters::mlr_filters_variance"
       )
     }

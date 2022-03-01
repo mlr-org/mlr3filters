@@ -35,7 +35,7 @@ FilterAUC = R6Class("FilterAUC",
         task_properties = "twoclass",
         feature_types = c("integer", "numeric"),
         packages = "mlr3measures",
-        label = "Area Under the ROC Curve Filter",
+        label = "Area Under the ROC Curve Score",
         man = "mlr3filters::mlr_filters_auc"
       )
     }

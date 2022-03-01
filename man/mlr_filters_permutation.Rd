@@ -3,7 +3,7 @@
 \name{mlr_filters_permutation}
 \alias{mlr_filters_permutation}
 \alias{FilterPermutation}
-\title{Permutation Filter}
+\title{Permutation Score Filter}
 \description{
 The permutation filter randomly permutes the values of a single feature in a
 \link[mlr3:Task]{mlr3::Task} to break the association with the response. The permutated

@@ -27,12 +27,14 @@ mlr_filters = DictionaryFilter = R6Class("DictionaryFilter",
 
 
 #' @export
-as.data.table.DictionaryFilter = function(x, ...) {
+as.data.table.DictionaryFilter = function(x, ..., objects = FALSE) {
+  assert_flag(objects)
+
   setkeyv(map_dtr(x$keys(), function(key) {
     f = x$get(key)
     insert_named(
       list(key = key, label = f$label, task_type = list(f$task_type),
-        task_properties = list(f$task_properties), param_set = list(f$param_set),
+        task_properties = list(f$task_properties), params = list(f$param_set$ids()),
         feature_types = list(f$feature_types), packages = list(f$packages)),
       if (objects) list(object = list(f))
     )

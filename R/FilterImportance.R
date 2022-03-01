@@ -38,6 +38,7 @@ FilterImportance = R6Class("FilterImportance",
         feature_types = learner$feature_types,
         packages = learner$packages,
         param_set = learner$param_set,
+        label = "Importance Score",
         man = "mlr3filters::mlr_filters_importance"
       )
     }

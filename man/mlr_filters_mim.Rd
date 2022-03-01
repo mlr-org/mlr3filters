@@ -3,7 +3,7 @@
 \name{mlr_filters_mim}
 \alias{mlr_filters_mim}
 \alias{FilterMIM}
-\title{Conditional Mutual Information Based Feature Selection Filter}
+\title{Mutual Information Maximization Filter}
 \description{
 Conditional mutual information based feature selection filter
 calling \code{\link[praznik:MIM]{praznik::MIM()}} in package \CRANpkg{praznik}.

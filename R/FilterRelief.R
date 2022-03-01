@@ -1,4 +1,4 @@
-#' @title Information Gain Filter
+#' @title RELIEF Filter
 #'
 #' @name mlr_filters_relief
 #'
@@ -33,6 +33,7 @@ FilterRelief = R6Class("FilterRelief",
         param_set = param_set,
         feature_types = c("integer", "numeric", "factor", "ordered"),
         packages = "FSelectorRcpp",
+        label = "RELIEF",
         man = "mlr3filters::mlr_filters_relief"
       )
     }

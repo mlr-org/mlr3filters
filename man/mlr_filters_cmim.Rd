@@ -3,9 +3,9 @@
 \name{mlr_filters_cmim}
 \alias{mlr_filters_cmim}
 \alias{FilterCMIM}
-\title{Minimal Conditional Mutual Information Filter}
+\title{Minimal Conditional Mutual Information Maximization Filter}
 \description{
-Minimal conditional mutual information maximisation filter
+Minimal conditional mutual information maximization filter
 calling \code{\link[praznik:CMIM]{praznik::CMIM()}} from package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).

@@ -44,6 +44,7 @@ FilterCorrelation = R6Class("FilterCorrelation",
         param_set = param_set,
         feature_types = c("integer", "numeric"),
         packages = "stats",
+        label = "Correlation",
         man = "mlr3filters::mlr_filters_correlation"
       )
     }

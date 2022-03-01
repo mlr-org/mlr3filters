@@ -38,7 +38,7 @@ FilterAnova = R6Class("FilterAnova",
         packages = "stats",
         feature_types = c("integer", "numeric"),
         task_type = "classif",
-        label = "ANOVA F-Test Filter"
+        label = "ANOVA F-Test",
         man = "mlr3filters::mlr_filters_anova"
       )
     }

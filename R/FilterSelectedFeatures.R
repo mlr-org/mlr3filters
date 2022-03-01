@@ -46,6 +46,7 @@ FilterSelectedFeatures = R6Class("FilterSelectedFeatures",
         feature_types = learner$feature_types,
         packages = learner$packages,
         param_set = learner$param_set,
+        label = "Embedded Feature Selection",
         man = "mlr3filters::mlr_filters_selected_features"
       )
     }
