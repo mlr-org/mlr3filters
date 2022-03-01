@@ -42,6 +42,7 @@ FilterJMI = R6Class("FilterJMI",
         param_set = param_set,
         packages = "praznik",
         feature_types = c("integer", "numeric", "factor", "ordered"),
+        label = "Joint Mutual Information",
         man = "mlr3filters::mlr_filters_jmi"
       )
     }

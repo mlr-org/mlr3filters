@@ -3,7 +3,7 @@
 \name{mlr_filters_mrmr}
 \alias{mlr_filters_mrmr}
 \alias{FilterMRMR}
-\title{Minimum redundancy maximal relevancy filter}
+\title{Minimum Redundancy Maximal Relevancy Filter}
 \description{
 Minimum redundancy maximal relevancy filter calling
 \code{\link[praznik:MRMR]{praznik::MRMR()}} in package \CRANpkg{praznik}.

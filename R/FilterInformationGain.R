@@ -48,6 +48,7 @@ FilterInformationGain = R6Class("FilterInformationGain",
         param_set = param_set,
         feature_types = c("integer", "numeric", "factor", "ordered"),
         packages = "FSelectorRcpp",
+        label = "Information Gain",
         man = "mlr3filters::mlr_filters_information_gain"
       )
     }

@@ -3,9 +3,9 @@
 \name{mlr_filters_njmim}
 \alias{mlr_filters_njmim}
 \alias{FilterNJMIM}
-\title{Minimal Normalised Joint Mutual Information Maximisation Filter}
+\title{Minimal Normalised Joint Mutual Information Maximization Filter}
 \description{
-Minimal normalised joint mutual information maximisation filter
+Minimal normalised joint mutual information maximization filter
 calling \code{\link[praznik:NJMIM]{praznik::NJMIM()}} from package \CRANpkg{praznik}.
 
 This filter supports partial scoring (see \link{Filter}).

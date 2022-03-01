@@ -1,4 +1,4 @@
-#' @title Minimum redundancy maximal relevancy filter
+#' @title Minimum Redundancy Maximal Relevancy Filter
 #'
 #' @name mlr_filters_mrmr
 #'
@@ -41,6 +41,7 @@ FilterMRMR = R6Class("FilterMRMR",
         param_set = param_set,
         packages = "praznik",
         feature_types = c("integer", "numeric", "factor", "ordered"),
+        label = "Minimum Redundancy Maximal Relevancy",
         man = "mlr3filters::mlr_filters_mrmr"
       )
     }

@@ -51,6 +51,7 @@ FilterPerformance = R6Class("FilterPerformance",
         param_set = learner$param_set,
         feature_types = learner$feature_types,
         packages = packages,
+        label = "Predictive Performance",
         man = "mlr3filters::mlr_filters_performance"
       )
     }

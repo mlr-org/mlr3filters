@@ -42,6 +42,7 @@ FilterKruskalTest = R6Class("FilterKruskalTest",
         param_set = param_set,
         packages = "stats",
         feature_types = c("integer", "numeric"),
+        label = "Kruskal-Wallis Test",
         man = "mlr3filters::mlr_filters_kruskal_test"
       )
     }

@@ -1,8 +1,8 @@
-#' @title Minimal Conditional Mutual Information Filter
+#' @title Minimal Conditional Mutual Information Maximization Filter
 #'
 #' @name mlr_filters_cmim
 #'
-#' @description Minimal conditional mutual information maximisation filter
+#' @description Minimal conditional mutual information maximization filter
 #' calling [praznik::CMIM()] from package \CRANpkg{praznik}.
 #'
 #' This filter supports partial scoring (see [Filter]).
@@ -41,6 +41,7 @@ FilterCMIM = R6Class("FilterCMIM",
         param_set = param_set,
         feature_types = c("integer", "numeric", "factor", "ordered"),
         packages = "praznik",
+        label = "Minimal Conditional Mutual Information Maximization",
         man = "mlr3filters::mlr_filters_cmim"
       )
     }

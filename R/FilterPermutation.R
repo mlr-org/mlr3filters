@@ -1,4 +1,4 @@
-#' @title Permutation Filter
+#' @title Permutation Score Filter
 #'
 #' @name mlr_filters_permutation
 #'
@@ -59,6 +59,7 @@ FilterPermutation = R6Class("FilterPermutation",
         feature_types = learner$feature_types,
         packages = packages,
         param_set = param_set,
+        label = "Permutation Score",
         man = "mlr3filters::mlr_filters_performance"
       )
     }

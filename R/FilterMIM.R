@@ -1,4 +1,4 @@
-#' @title Conditional Mutual Information Based Feature Selection Filter
+#' @title Mutual Information Maximization Filter
 #'
 #' @name mlr_filters_mim
 #'
@@ -41,6 +41,7 @@ FilterMIM = R6Class("FilterMIM",
         param_set = param_set,
         packages = "praznik",
         feature_types = c("integer", "numeric", "factor", "ordered"),
+        label = "Mutual Information Maximization",
         man = "mlr3filters::mlr_filters_mim"
       )
     }

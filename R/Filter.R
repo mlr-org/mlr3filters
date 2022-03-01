@@ -6,13 +6,6 @@
 #' unimportant features get a small value. Note that filter scores may also be
 #' negative.
 #'
-#' @template field_id
-#' @template field_task_type
-#' @template field_task_properties
-#' @template field_param_set
-#' @template field_feature_types
-#' @template field_packages
-#'
 #' @details
 #' Some features support partial scoring of the feature set:
 #' If `nfeat` is not `NULL`, only the best `nfeat` features are guaranteed to
@@ -24,11 +17,38 @@
 #' @export
 Filter = R6Class("Filter",
   public = list(
+    #' @field id (`character(1)`)\cr
+    #'   Identifier of the object.
+    #'   Used in tables, plot and text output.
     id = NULL,
+
+    #' @field label (`character(1)`)\cr
+    #'   Label for this object.
+    #'   Can be used in tables, plot and text output instead of the ID.
+    label = NA_character_,
+
+    #' @field task_type (`character(1)`)\cr
+    #'   Task type, e.g. `"classif"` or `"regr"`.
+    #'   Can be set to `NA` to allow all task types.
+    #'
+    #'   For a complete list of possible task types (depending on the loaded packages),
+    #'   see [`mlr_reflections$task_types$type`][mlr_reflections].
     task_type = NULL,
+
+    #' @field task_properties (`character()`)\cr
+    #'   [mlr3::Task]task properties.
     task_properties = NULL,
+
+    #' @field param_set ([paradox::ParamSet])\cr
+    #'   Set of hyperparameters.
     param_set = NULL,
+
+    #' @field feature_types (`character()`)\cr
+    #'   Feature types of the filter.
     feature_types = NULL,
+
+    #' @field packages ([character()])\cr
+    #'   Packages which this filter is relying on.
     packages = NULL,
 
     #' @field man (`character(1)`)\cr
@@ -64,15 +84,18 @@ Filter = R6Class("Filter",
     #'   Set of required packages.
     #'   Note that these packages will be loaded via [requireNamespace()], and
     #'   are not attached.
+    #' @param label (`character(1)`)\cr
+    #'   Label for the new instance.
     #' @param man (`character(1)`)\cr
     #'   String in the format `[pkg]::[topic]` pointing to a manual page for
     #'   this object. The referenced help package can be opened via method
     #'   `$help()`.
     initialize = function(id, task_type, task_properties = character(),
       param_set = ps(), feature_types = character(),
-      packages = character(), man = NA_character_) {
+      packages = character(), label = NA_character_, man = NA_character_) {
 
       self$id = assert_string(id)
+      self$label = assert_string(label, na.ok = TRUE)
       if (!test_scalar_na(task_type)) {
         # we allow any task type here, otherwise we are not able to construct
         # the filter without loading additional packages like mlr3proba
@@ -103,15 +126,15 @@ Filter = R6Class("Filter",
     #' @description
     #' Printer for Filter class
     print = function() {
-      catf(format(self)) # nocov start
-      catf(str_indent("Task Types:", self$task_type))
-      catf(str_indent("Task Properties:", self$task_properties))
-      catf(str_indent("Packages:", self$packages))
-      catf(str_indent("Feature types:", self$feature_types))
+      catn(format(self), if (is.na(self$label)) "" else paste0(": ", self$label))
+      catn(str_indent("Task Types:", self$task_type))
+      catn(str_indent("Task Properties:", self$task_properties))
+      catn(str_indent("Packages:", self$packages))
+      catn(str_indent("Feature types:", self$feature_types))
       if (length(self$scores)) {
         print(as.data.table(self),
           nrows = 10L, topn = 5L, class = FALSE,
-          row.names = TRUE, print.keys = FALSE) # nocov end
+          row.names = TRUE, print.keys = FALSE)
       }
     },
 

@@ -49,6 +49,10 @@ Other Filter:
 Identifier of the object.
 Used in tables, plot and text output.}
 
+\item{\code{label}}{(\code{character(1)})\cr
+Label for this object.
+Can be used in tables, plot and text output instead of the ID.}
+
 \item{\code{task_type}}{(\code{character(1)})\cr
 Task type, e.g. \code{"classif"} or \code{"regr"}.
 Can be set to \code{NA} to allow all task types.
@@ -104,6 +108,7 @@ Create a Filter object.
   param_set = ps(),
   feature_types = character(),
   packages = character(),
+  label = NA_character_,
   man = NA_character_
 )}\if{html}{\out{</div>}}
 }
@@ -135,6 +140,9 @@ Must be a subset of
 Set of required packages.
 Note that these packages will be loaded via \code{\link[=requireNamespace]{requireNamespace()}}, and
 are not attached.}
+
+\item{\code{label}}{(\code{character(1)})\cr
+Label for the new instance.}
 
 \item{\code{man}}{(\code{character(1)})\cr
 String in the format \verb{[pkg]::[topic]} pointing to a manual page for

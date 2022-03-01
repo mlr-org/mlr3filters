@@ -1,8 +1,8 @@
-#' @title Minimal Normalised Joint Mutual Information Maximisation Filter
+#' @title Minimal Normalised Joint Mutual Information Maximization Filter
 #'
 #' @name mlr_filters_njmim
 #'
-#' @description Minimal normalised joint mutual information maximisation filter
+#' @description Minimal normalised joint mutual information maximization filter
 #' calling [praznik::NJMIM()] from package \CRANpkg{praznik}.
 #'
 #' This filter supports partial scoring (see [Filter]).
@@ -40,6 +40,7 @@ FilterNJMIM = R6Class("FilterNJMIM",
         param_set = param_set,
         packages = "praznik",
         feature_types = c("integer", "numeric", "factor", "ordered"),
+        label = "Minimal Normalised Joint Mutual Information Maximization",
         man = "mlr3filters::mlr_filters_njmim"
       )
     }
