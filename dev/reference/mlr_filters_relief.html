@@ -90,6 +90,7 @@ FSelectorRcpp::relief() in package FSelectorRcpp."><meta property="og:image" con
 <code><a href="mlr_filters_anova.html">mlr_filters_anova</a></code>,
 <code><a href="mlr_filters_auc.html">mlr_filters_auc</a></code>,
 <code><a href="mlr_filters_carscore.html">mlr_filters_carscore</a></code>,
+<code><a href="mlr_filters_carsurvscore.html">mlr_filters_carsurvscore</a></code>,
 <code><a href="mlr_filters_cmim.html">mlr_filters_cmim</a></code>,
 <code><a href="mlr_filters_correlation.html">mlr_filters_correlation</a></code>,
 <code><a href="mlr_filters_disr.html">mlr_filters_disr</a></code>,
@@ -159,18 +160,18 @@ FSelectorRcpp::relief() in package FSelectorRcpp."><meta property="og:image" con
 <span class="r-in"><span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="flt.html">flt</a></span><span class="op">(</span><span class="st">"relief"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">filter</span><span class="op">$</span><span class="va">scores</span>, <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    triceps   pedigree    glucose </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.03500000 0.03458582 0.03109677 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    triceps    glucose   pedigree </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.02891304 0.02851613 0.02186166 </span>
 <span class="r-in"><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     feature        score</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:  triceps  0.035000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2: pedigree  0.034585824</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:  glucose  0.031096774</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4:     mass  0.014233129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5:      age  0.009000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6: pregnant -0.002352941</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7:  insulin -0.009375000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8: pressure -0.017551020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:  triceps  0.028913043</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:  glucose  0.028516129</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3: pedigree  0.021861657</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4: pressure  0.020816327</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:     mass  0.020245399</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6:  insulin  0.009447115</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7:      age  0.007666667</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8: pregnant -0.021176471</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
