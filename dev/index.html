@@ -140,15 +140,15 @@
 <span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span>
 <span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="reference/flt.html">flt</a></span><span class="op">(</span><span class="st">"auc"</span><span class="op">)</span>
 <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">##     feature     score</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="co">## 1:  glucose 0.2927906</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co">## 2:  insulin 0.2316288</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co">## 3:     mass 0.1870358</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">## 4:      age 0.1869403</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">## 5:  triceps 0.1625115</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">## 6: pregnant 0.1195149</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">## 7: pressure 0.1075760</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">## 8: pedigree 0.1062015</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">##     feature     score</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 1:  glucose 0.2927906</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 2:  insulin 0.2316288</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 3:     mass 0.1870358</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 4:      age 0.1869403</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 5:  triceps 0.1625115</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 6: pregnant 0.1195149</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 7: pressure 0.1075760</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 8: pedigree 0.1062015</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="implemented-filters">Implemented Filters<a class="anchor" aria-label="anchor" href="#implemented-filters"></a>
@@ -294,10 +294,10 @@
 <h3 id="variable-importance-filters">Variable Importance Filters<a class="anchor" aria-label="anchor" href="#variable-importance-filters"></a>
 </h3>
 <p>The following learners allow the extraction of variable importance and therefore are supported by <code>FilterImportance</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"      </span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co">##  [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        </span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co">##  [7] "regr.rpart"          "regr.xgboost"        "surv.ranger"        </span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">## [10] "surv.xgboost"</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] "classif.featureless" "classif.ranger"      "classif.rpart"      </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] "regr.rpart"          "regr.xgboost"        "surv.ranger"        </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [10] "surv.xgboost"</span></span></code></pre></div>
 <p>If your learner is not listed here but capable of extracting variable importance from the fitted model, the reason is most likely that it is not yet integrated in the package <a href="https://github.com/mlr-org/mlr3learners" class="external-link">mlr3learners</a> or the <a href="https://github.com/mlr3learners" class="external-link">extra learner organization</a>. Please open an issue so we can add your package.</p>
 <p>Some learners need to have their variable importance measure “activated” during learner creation. For example, to use the “impurity” measure of Random Forest via the {ranger} package:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -308,10 +308,10 @@
 <span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="reference/flt.html">flt</a></span><span class="op">(</span><span class="st">"importance"</span>, learner <span class="op">=</span> <span class="va">lrn</span><span class="op">)</span>
 <span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">##         feature    score</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="co">## 1:  Petal.Width 43.66496</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co">## 2: Petal.Length 43.10837</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">## 3: Sepal.Length 10.21944</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">##         feature    score</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 1:  Petal.Width 43.66496</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 2: Petal.Length 43.10837</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 3: Sepal.Length 10.21944</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="performance-filter">Performance Filter<a class="anchor" aria-label="anchor" href="#performance-filter"></a>
