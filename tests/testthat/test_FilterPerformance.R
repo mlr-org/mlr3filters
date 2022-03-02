@@ -1,4 +1,4 @@
-test_that("FilterPerformane", {
+test_that("FilterPerformance", {
   task = mlr3::mlr_tasks$get("iris")
   learner = mlr3::mlr_learners$get("classif.rpart")
   resampling = rsmp("holdout")
