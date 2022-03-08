@@ -79,7 +79,7 @@ Learner to extract the importance values from.}
 \subsection{Method \code{new()}}{
 Create a FilterImportance object.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterImportance$new(learner = mlr3::lrn("classif.rpart"))}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FilterImportance$new(learner = mlr3::lrn("classif.featureless"))}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

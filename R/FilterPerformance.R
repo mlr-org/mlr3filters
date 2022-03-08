@@ -36,7 +36,7 @@ FilterPerformance = R6Class("FilterPerformance",
     #'   [mlr3::Resampling] to be used within resampling.
     #' @param measure ([mlr3::Measure])\cr
     #'   [mlr3::Measure] to be used for evaluating the performance.
-    initialize = function(learner = mlr3::lrn("classif.rpart"),
+    initialize = function(learner = mlr3::lrn("classif.featureless"),
       resampling = mlr3::rsmp("holdout"), measure = NULL) {
 
       self$learner = learner = assert_learner(as_learner(learner, clone = TRUE))

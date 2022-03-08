@@ -84,18 +84,11 @@ Learner to extract the importance values from.}
 \if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a FilterImportance object.
+Learner to extract the selected features from.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterSelectedFeatures$new(learner = mlr3::lrn("classif.rpart"))}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FilterSelectedFeatures$new(learner = mlr3::lrn("classif.featureless"))}\if{html}{\out{</div>}}
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr
-Learner to extract the importance values from.}
-}
-\if{html}{\out{</div>}}
-}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
