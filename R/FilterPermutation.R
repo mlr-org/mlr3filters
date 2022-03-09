@@ -39,7 +39,7 @@ FilterPermutation = R6Class("FilterPermutation",
     #'   [mlr3::Resampling] to be used within resampling.
     #' @param measure ([mlr3::Measure])\cr
     #'   [mlr3::Measure] to be used for evaluating the performance.
-    initialize = function(learner = mlr3::lrn("classif.rpart"), resampling = mlr3::rsmp("holdout"),
+    initialize = function(learner = mlr3::lrn("classif.featureless"), resampling = mlr3::rsmp("holdout"),
       measure = NULL) {
 
       param_set = ps(

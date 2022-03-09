@@ -88,7 +88,7 @@ Other Filter:
 Create a FilterPermutation object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FilterPermutation$new(
-  learner = mlr3::lrn("classif.rpart"),
+  learner = mlr3::lrn("classif.featureless"),
   resampling = mlr3::rsmp("holdout"),
   measure = NULL
 )}\if{html}{\out{</div>}}

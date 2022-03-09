@@ -84,7 +84,7 @@ Other Filter:
 Create a FilterDISR object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FilterPerformance$new(
-  learner = mlr3::lrn("classif.rpart"),
+  learner = mlr3::lrn("classif.featureless"),
   resampling = mlr3::rsmp("holdout"),
   measure = NULL
 )}\if{html}{\out{</div>}}
