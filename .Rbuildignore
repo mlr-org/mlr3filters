@@ -27,3 +27,4 @@
 ^cran-comments\.md$
 ^README\.html$
 ^CRAN-SUBMISSION$
+^\.circleci$
