@@ -87,17 +87,17 @@ non-deterministic order.}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Filter$new()}}
-\item \href{#method-format}{\code{Filter$format()}}
-\item \href{#method-print}{\code{Filter$print()}}
-\item \href{#method-help}{\code{Filter$help()}}
-\item \href{#method-calculate}{\code{Filter$calculate()}}
-\item \href{#method-clone}{\code{Filter$clone()}}
+\item \href{#method-Filter-new}{\code{Filter$new()}}
+\item \href{#method-Filter-format}{\code{Filter$format()}}
+\item \href{#method-Filter-print}{\code{Filter$print()}}
+\item \href{#method-Filter-help}{\code{Filter$help()}}
+\item \href{#method-Filter-calculate}{\code{Filter$calculate()}}
+\item \href{#method-Filter-clone}{\code{Filter$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Filter-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Filter-new}{}}}
 \subsection{Method \code{new()}}{
 Create a Filter object.
 \subsection{Usage}{
@@ -153,8 +153,8 @@ this object. The referenced help package can be opened via method
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-format"></a>}}
-\if{latex}{\out{\hypertarget{method-format}{}}}
+\if{html}{\out{<a id="method-Filter-format"></a>}}
+\if{latex}{\out{\hypertarget{method-Filter-format}{}}}
 \subsection{Method \code{format()}}{
 Format helper for Filter class
 \subsection{Usage}{
@@ -163,8 +163,8 @@ Format helper for Filter class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Filter-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Filter-print}{}}}
 \subsection{Method \code{print()}}{
 Printer for Filter class
 \subsection{Usage}{
@@ -173,8 +173,8 @@ Printer for Filter class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-help"></a>}}
-\if{latex}{\out{\hypertarget{method-help}{}}}
+\if{html}{\out{<a id="method-Filter-help"></a>}}
+\if{latex}{\out{\hypertarget{method-Filter-help}{}}}
 \subsection{Method \code{help()}}{
 Opens the corresponding help page referenced by field \verb{$man}.
 \subsection{Usage}{
@@ -183,8 +183,8 @@ Opens the corresponding help page referenced by field \verb{$man}.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-calculate"></a>}}
-\if{latex}{\out{\hypertarget{method-calculate}{}}}
+\if{html}{\out{<a id="method-Filter-calculate"></a>}}
+\if{latex}{\out{\hypertarget{method-Filter-calculate}{}}}
 \subsection{Method \code{calculate()}}{
 Calculates the filter score values for the provided \link[mlr3:Task]{mlr3::Task} and
 stores them in field \code{scores}. \code{nfeat} determines the minimum number of
@@ -215,8 +215,8 @@ The minimum number of features to calculate filter scores for.}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Filter-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Filter-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
