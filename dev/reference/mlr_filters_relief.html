@@ -119,13 +119,13 @@ FSelectorRcpp::relief() in package FSelectorRcpp."><meta property="og:image" con
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
-<ul><li><p><a href="#method-new"><code>FilterRelief$new()</code></a></p></li>
-<li><p><a href="#method-clone"><code>FilterRelief$clone()</code></a></p></li>
-</ul></div><p><details open><summary>Inherited methods</summary><ul><li><p><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href="Filter.html#method-calculate"><code>mlr3filters::Filter$calculate()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href="Filter.html#method-format"><code>mlr3filters::Filter$format()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href="Filter.html#method-help"><code>mlr3filters::Filter$help()</code></a></span></p></li>
-<li><p><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href="Filter.html#method-print"><code>mlr3filters::Filter$print()</code></a></span></p></li>
-</ul></details></p><hr><a id="method-new"></a><div class="section">
+<ul><li><p><a href="#method-FilterRelief-new"><code>FilterRelief$new()</code></a></p></li>
+<li><p><a href="#method-FilterRelief-clone"><code>FilterRelief$clone()</code></a></p></li>
+</ul></div><p><details open><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href="Filter.html#method-calculate"><code>mlr3filters::Filter$calculate()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href="Filter.html#method-format"><code>mlr3filters::Filter$format()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href="Filter.html#method-help"><code>mlr3filters::Filter$help()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href="Filter.html#method-print"><code>mlr3filters::Filter$print()</code></a></span></li>
+</ul></details></p><hr><a id="method-FilterRelief-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Create a FilterRelief object.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
@@ -133,7 +133,7 @@ FSelectorRcpp::relief() in package FSelectorRcpp."><meta property="og:image" con
 </div>
 
 
-</div><p></p><hr><a id="method-clone"></a><div class="section">
+</div><p></p><hr><a id="method-FilterRelief-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
@@ -160,18 +160,18 @@ FSelectorRcpp::relief() in package FSelectorRcpp."><meta property="og:image" con
 <span class="r-in"><span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="flt.html">flt</a></span><span class="op">(</span><span class="st">"relief"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">filter</span><span class="op">$</span><span class="va">scores</span>, <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     pedigree      glucose      insulin </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0066609735 0.0060645161 0.0001201923 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    glucose    insulin   pressure </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.04464516 0.04456731 0.02367347 </span>
 <span class="r-in"><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     feature         score</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: pedigree  6.660974e-03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:  glucose  6.064516e-03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:  insulin  1.201923e-04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4: pressure -1.110223e-17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5: pregnant -2.352941e-03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6:     mass -2.494888e-03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7:  triceps -3.043478e-03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8:      age -3.200000e-02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:  glucose  0.0446451613</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:  insulin  0.0445673077</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3: pressure  0.0236734694</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4: pregnant  0.0188235294</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5:      age  0.0183333333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6: pedigree -0.0001110162</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7:     mass -0.0094887526</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8:  triceps -0.0147826087</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
