@@ -144,7 +144,7 @@ parameter <code>"type"</code> to <code>"gainratio"</code> to calculate the gain 
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Create a FilterInformationGain object.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va"><a href="../reference/mlr_filters_information_gain.html">FilterInformationGain</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_filters_information_gain.html">FilterInformationGain</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 
@@ -152,7 +152,7 @@ parameter <code>"type"</code> to <code>"gainratio"</code> to calculate the gain 
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va">FilterInformationGain</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">FilterInformationGain</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -170,14 +170,14 @@ parameter <code>"type"</code> to <code>"gainratio"</code> to calculate the gain 
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## InfoGain (default)</span></span>
-<span class="r-in"><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="flt.html">flt</a></span><span class="op">(</span><span class="st">"information_gain"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">filter</span><span class="op">$</span><span class="va">scores</span>, <span class="fl">3</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## InfoGain (default)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="flt.html">flt</a></span><span class="op">(</span><span class="st">"information_gain"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">filter</span><span class="op">$</span><span class="va">scores</span>, <span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    glucose       mass        age </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.13436177 0.05227572 0.05023425 </span>
-<span class="r-in"><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     feature      score</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1:  glucose 0.13436177</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2:     mass 0.05227572</span>
@@ -187,13 +187,13 @@ parameter <code>"type"</code> to <code>"gainratio"</code> to calculate the gain 
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6:  triceps 0.02611189</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7: pedigree 0.01441496</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8: pressure 0.01386885</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## GainRatio</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">filterGR</span> <span class="op">=</span> <span class="fu"><a href="flt.html">flt</a></span><span class="op">(</span><span class="st">"information_gain"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">filterGR</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="va">values</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"type"</span> <span class="op">=</span> <span class="st">"gainratio"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">filterGR</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filterGR</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## GainRatio</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">filterGR</span> <span class="op">=</span> <span class="fu"><a href="flt.html">flt</a></span><span class="op">(</span><span class="st">"information_gain"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">filterGR</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="va">values</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"type"</span> <span class="op">=</span> <span class="st">"gainratio"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">filterGR</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filterGR</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    feature      score</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1: glucose 0.09829336</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2:    mass 0.08428940</span>

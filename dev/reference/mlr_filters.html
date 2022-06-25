@@ -89,7 +89,7 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="va">mlr_filters</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">mlr_filters</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -132,7 +132,7 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">mlr_filters</span><span class="op">$</span><span class="fu">keys</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">mlr_filters</span><span class="op">$</span><span class="fu">keys</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "anova"             "auc"               "carscore"         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "carsurvscore"      "cmim"              "correlation"      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "disr"              "find_correlation"  "importance"       </span>
@@ -140,7 +140,7 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [13] "kruskal_test"      "mim"               "mrmr"             </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [16] "njmim"             "performance"       "permutation"      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [19] "relief"            "selected_features" "variance"         </span>
-<span class="r-in"><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">mlr_filters</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">mlr_filters</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   key                                                    label</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1:             anova                                             ANOVA F-Test</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2:               auc                           Area Under the ROC Curve Score</span>
@@ -233,13 +233,13 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 20:              mlr3filters,mlr3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 21:             mlr3filters,stats</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                          packages</span>
-<span class="r-in"><span class="va">mlr_filters</span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="st">"mim"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">mlr_filters</span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="st">"mim"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;FilterMIM:mim&gt;: Mutual Information Maximization</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Task Types: classif, regr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Task Properties: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Packages: mlr3filters, praznik</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Feature types: integer, numeric, factor, ordered</span>
-<span class="r-in"><span class="fu"><a href="flt.html">flt</a></span><span class="op">(</span><span class="st">"anova"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="flt.html">flt</a></span><span class="op">(</span><span class="st">"anova"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;FilterAnova:anova&gt;: ANOVA F-Test</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Task Types: classif</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Task Properties: -</span>
