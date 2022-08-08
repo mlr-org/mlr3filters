@@ -37,7 +37,7 @@ Suggests:
     lgr,
     mlr3learners,
     mlr3measures,
-    mlr3proba,
+    mlr3pipelines,
     praznik,
     rpart,
     testthat (>= 3.0.0),
@@ -47,7 +47,7 @@ Config/testthat/parallel: true
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Collate:
     'Filter.R'
     'mlr_filters.R'
@@ -55,7 +55,6 @@ Collate:
     'FilterAnova.R'
     'FilterCMIM.R'
     'FilterCarScore.R'
-    'FilterCarSurvScore.R'
     'FilterCorrelation.R'
     'FilterDISR.R'
     'FilterFindCorrelation.R'
