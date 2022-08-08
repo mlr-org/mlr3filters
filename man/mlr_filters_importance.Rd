@@ -11,11 +11,13 @@ extracting the variable importance (property "importance"), fits the model
 and extracts the importance values to use as filter scores.
 }
 \examples{
-task = mlr3::tsk("iris")
-learner = mlr3::lrn("classif.rpart")
-filter = flt("importance", learner = learner)
-filter$calculate(task)
-as.data.table(filter)
+if (requireNamespace("MASS")) {
+  task = mlr3::tsk("iris")
+  learner = mlr3::lrn("classif.rpart")
+  filter = flt("importance", learner = learner)
+  filter$calculate(task)
+  as.data.table(filter)
+}
 
 if (requireNamespace("mlr3pipelines") && requireNamespace("mlr3learners") &&
   requireNamespace("MASS")) {

@@ -20,8 +20,9 @@
 #' if (requireNamespace("mlr3pipelines")) {
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
+#'   l = lrn("classif.rpart")
 #'
-#'   graph = po("filter", filter = flt("performance", learner = lrn("classif.rpart")), filter.cutoff = -0.3) %>>%
+#'   graph = po("filter", filter = flt("performance", learner = l), filter.cutoff = -0.3) %>>%
 #'     po("learner", mlr3::lrn("classif.rpart"))
 #'
 #'   graph$train(task)
