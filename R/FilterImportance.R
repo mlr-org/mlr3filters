@@ -17,7 +17,8 @@
 #' filter$calculate(task)
 #' as.data.table(filter)
 #'
-#' if (requireNamespace("mlr3pipelines") && requireNamespace("mlr3learners") && requireNamespace("MASS")) {
+#' if (requireNamespace("mlr3pipelines") && requireNamespace("mlr3learners") &&
+#'   requireNamespace("MASS")) {
 #'   library("mlr3learners")
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
