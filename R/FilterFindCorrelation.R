@@ -19,7 +19,7 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-## Pearson (default)
+#' # Pearson (default)
 #' task = mlr3::tsk("mtcars")
 #' filter = flt("find_correlation")
 #' filter$calculate(task)
