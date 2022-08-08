@@ -29,6 +29,7 @@ filter$calculate(task)
 as.data.table(filter)
 
 if (requireNamespace("mlr3pipelines")) {
+  library("mlr3pipelines")
   task = mlr3::tsk("spam")
 
   graph = po("filter", filter = flt("find_correlation"), filter.cutoff = 0.4) \%>>\%
