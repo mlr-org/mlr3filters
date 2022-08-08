@@ -25,6 +25,16 @@
 #'
 #' # transform to p-value
 #' 10^(-filter$scores)
+#'
+#' if (requireNamespace("mlr3pipelines")) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("spam")
+#'
+#'   graph = po("filter", filter = flt("kruskal_test"), filter.cutoff = 0.2) %>>%
+#'     po("learner", mlr3::lrn("classif.rpart"))
+#'
+#'   graph$train(task)
+#' }
 FilterKruskalTest = R6Class("FilterKruskalTest",
   inherit = Filter,
 

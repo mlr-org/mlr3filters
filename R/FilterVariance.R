@@ -21,6 +21,16 @@
 #' filter$calculate(task)
 #' head(filter$scores, 3)
 #' as.data.table(filter)
+#'
+#' if (requireNamespace("mlr3pipelines")) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("spam")
+#'
+#'   graph = po("filter", filter = flt("variance"), filter.cutoff = 1) %>>%
+#'     po("learner", mlr3::lrn("classif.rpart"))
+#'
+#'   graph$train(task)
+#' }
 FilterVariance = R6Class("FilterVariance",
   inherit = Filter,
 

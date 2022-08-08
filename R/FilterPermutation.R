@@ -21,6 +21,24 @@
 #' @family Filter
 #' @template seealso_filter
 #' @export
+#' @examples
+#' learner = mlr3::lrn("classif.rpart")
+#' resampling = mlr3::rsmp("holdout")
+#' measure = mlr3::msr("classif.acc")
+#' filter = flt("permutation", learner = learner, measure = measure, resampling = resampling, nmc = 2)
+#' task = mlr3::tsk("iris")
+#' filter$calculate(task)
+#' as.data.table(filter)
+#'
+#' if (requireNamespace("mlr3pipelines")) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("iris")
+#'
+#'   graph = po("filter", filter = flt("permutation", nmc = 2), filter.cutoff = 0.1) %>>%
+#'     po("learner", mlr3::lrn("classif.rpart"))
+#'
+#'   graph$train(task)
+#' }
 FilterPermutation = R6Class("FilterPermutation",
   inherit = Filter,
   public = list(

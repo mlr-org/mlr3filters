@@ -15,29 +15,45 @@ Argument \code{equal} defaults to \code{FALSE} for classification tasks, and to
 \code{TRUE} for regression tasks.
 }
 \examples{
-## InfoGain (default)
-task = mlr3::tsk("pima")
-filter = flt("information_gain")
-filter$calculate(task)
-head(filter$scores, 3)
-as.data.table(filter)
+if (requireNamespace("FSelectorRcpp")) {
+  ## InfoGain (default)
+  task = mlr3::tsk("pima")
+  filter = flt("information_gain")
+  filter$calculate(task)
+  head(filter$scores, 3)
+  as.data.table(filter)
 
-## GainRatio
+  ## GainRatio
 
-filterGR = flt("information_gain")
-filterGR$param_set$values = list("type" = "gainratio")
-filterGR$calculate(task)
-head(as.data.table(filterGR), 3)
+  filterGR = flt("information_gain")
+  filterGR$param_set$values = list("type" = "gainratio")
+  filterGR$calculate(task)
+  head(as.data.table(filterGR), 3)
+
+}
+
+if (requireNamespace("mlr3pipelines") && requireNamespace("FSelectorRcpp")) {
+  library("mlr3pipelines")
+  task = mlr3::tsk("spam")
+
+  graph = po("filter", filter = flt("information_gain"), filter.cutoff = 0.1) \%>>\%
+    po("learner", mlr3::lrn("classif.rpart"))
+
+  graph$train(task)
+
+}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+\itemize{
+\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filtering in a pipeline
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+}
 
 Other Filter: 
 \code{\link{Filter}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
 \code{\link{mlr_filters_carscore}},
-\code{\link{mlr_filters_carsurvscore}},
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},
@@ -70,10 +86,10 @@ Other Filter:
 \if{html}{\out{
 <details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>mlr3filters::Filter$calculate()</code></a></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>mlr3filters::Filter$format()</code></a></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>mlr3filters::Filter$help()</code></a></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>mlr3filters::Filter$print()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>mlr3filters::Filter$calculate()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>mlr3filters::Filter$format()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>mlr3filters::Filter$help()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>mlr3filters::Filter$print()</code></a></span></li>
 </ul>
 </details>
 }}

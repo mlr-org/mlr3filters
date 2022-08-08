@@ -35,6 +35,8 @@ FilterSelectedFeatures = R6Class("FilterSelectedFeatures",
 
     #' @description Create a FilterImportance object.
     #'   Learner to extract the selected features from.
+    #' @param learner (`Learner`)\cr
+    #'   Learner with property `"selected_features"`.
     initialize = function(learner = mlr3::lrn("classif.featureless")) {
       self$learner = learner = assert_learner(as_learner(learner, clone = TRUE),
         properties = "selected_features")

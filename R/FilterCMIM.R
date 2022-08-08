@@ -19,10 +19,22 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::tsk("iris")
-#' filter = flt("cmim")
-#' filter$calculate(task, nfeat = 2)
-#' as.data.table(filter)
+#' if (requireNamespace("praznik")) {
+#'   task = mlr3::tsk("iris")
+#'   filter = flt("cmim")
+#'   filter$calculate(task, nfeat = 2)
+#'   as.data.table(filter)
+#' }
+#'
+#' if (requireNamespace("mlr3pipelines") && requireNamespace("praznik")) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("spam")
+#'
+#'   graph = po("filter", filter = flt("cmim"), filter.cutoff = 0.5) %>>%
+#'     po("learner", mlr3::lrn("classif.rpart"))
+#'
+#'   graph$train(task)
+#' }
 FilterCMIM = R6Class("FilterCMIM",
   inherit = Filter,
 

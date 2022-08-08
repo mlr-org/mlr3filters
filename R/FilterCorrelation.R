@@ -26,6 +26,15 @@
 #' filter$param_set$values = list("method" = "spearman")
 #' filter$calculate(task)
 #' as.data.table(filter)
+#' if (requireNamespace("mlr3pipelines")) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("boston_housing")
+#'
+#'   graph = po("filter", filter = flt("correlation"), filter.cutoff = 0.2) %>>%
+#'     po("learner", mlr3::lrn("regr.rpart"))
+#'
+#'   graph$train(task)
+#' }
 FilterCorrelation = R6Class("FilterCorrelation",
   inherit = Filter,
 

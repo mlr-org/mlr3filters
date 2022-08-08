@@ -17,6 +17,15 @@
 #' filter = flt("performance", learner = learner)
 #' filter$calculate(task)
 #' as.data.table(filter)
+#' if (requireNamespace("mlr3pipelines")) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("spam")
+#'
+#'   graph = po("filter", filter = flt("performance", learner = lrn("classif.rpart")), filter.cutoff = -0.3) %>>%
+#'     po("learner", mlr3::lrn("classif.rpart"))
+#'
+#'   graph$train(task)
+#' }
 FilterPerformance = R6Class("FilterPerformance",
   inherit = Filter,
 

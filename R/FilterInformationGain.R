@@ -15,19 +15,33 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' ## InfoGain (default)
-#' task = mlr3::tsk("pima")
-#' filter = flt("information_gain")
-#' filter$calculate(task)
-#' head(filter$scores, 3)
-#' as.data.table(filter)
+#' if (requireNamespace("FSelectorRcpp")) {
+#'   ## InfoGain (default)
+#'   task = mlr3::tsk("pima")
+#'   filter = flt("information_gain")
+#'   filter$calculate(task)
+#'   head(filter$scores, 3)
+#'   as.data.table(filter)
 #'
-#' ## GainRatio
+#'   ## GainRatio
 #'
-#' filterGR = flt("information_gain")
-#' filterGR$param_set$values = list("type" = "gainratio")
-#' filterGR$calculate(task)
-#' head(as.data.table(filterGR), 3)
+#'   filterGR = flt("information_gain")
+#'   filterGR$param_set$values = list("type" = "gainratio")
+#'   filterGR$calculate(task)
+#'   head(as.data.table(filterGR), 3)
+#'
+#' }
+#'
+#' if (requireNamespace("mlr3pipelines") && requireNamespace("FSelectorRcpp")) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("spam")
+#'
+#'   graph = po("filter", filter = flt("information_gain"), filter.cutoff = 0.1) %>>%
+#'     po("learner", mlr3::lrn("classif.rpart"))
+#'
+#'   graph$train(task)
+#'
+#' }
 FilterInformationGain = R6Class("FilterInformationGain",
   inherit = Filter,
 

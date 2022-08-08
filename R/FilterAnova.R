@@ -26,6 +26,16 @@
 #'
 #' # transform to p-value
 #' 10^(-filter$scores)
+#'
+#' if (requireNamespace("mlr3pipelines")) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("spam")
+#'
+#'   graph = po("filter", filter = flt("anova"), filter.cutoff = 20) %>>%
+#'     po("learner", mlr3::lrn("classif.rpart"))
+#'
+#'   graph$train(task)
+#' }
 FilterAnova = R6Class("FilterAnova",
   inherit = Filter,
 

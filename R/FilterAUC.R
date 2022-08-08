@@ -22,6 +22,16 @@
 #' filter = flt("auc")
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
+#'
+#' if (requireNamespace("mlr3pipelines")) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("spam")
+#'
+#'   graph = po("filter", filter = flt("auc"), filter.cutoff = 0.1) %>>%
+#'     po("learner", mlr3::lrn("classif.rpart"))
+#'
+#'   graph$train(task)
+#' }
 FilterAUC = R6Class("FilterAUC",
   inherit = Filter,
 

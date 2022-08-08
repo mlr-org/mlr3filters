@@ -19,7 +19,7 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' ## Pearson (default)
+## Pearson (default)
 #' task = mlr3::tsk("mtcars")
 #' filter = flt("find_correlation")
 #' filter$calculate(task)
@@ -29,6 +29,15 @@
 #' filter = flt("find_correlation", method = "spearman")
 #' filter$calculate(task)
 #' as.data.table(filter)
+#'
+#' if (requireNamespace("mlr3pipelines")) {
+#'   task = mlr3::tsk("spam")
+#'
+#'   graph = po("filter", filter = flt("find_correlation"), filter.cutoff = 0.4) %>>%
+#'     po("learner", mlr3::lrn("classif.rpart"))
+#'
+#'   graph$train(task)
+#' }
 FilterFindCorrelation = R6Class("FilterFindCorrelation",
   inherit = Filter,
 
