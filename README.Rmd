@@ -134,6 +134,3 @@ learner = as_learner(graph)
 
 rr = resample(task, learner, rsmp("holdout"))
 ```
-
-
-
