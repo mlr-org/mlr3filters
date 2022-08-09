@@ -166,7 +166,9 @@ Filter = R6Class("Filter",
         feature_types = self$feature_types,
         task_properties = self$task_properties)
       if (!test_scalar_na(self$task_type)) {
-        assert_choice(task$task_type, self$task_type)
+        if (fget(mlr_reflections$task_types, task$task_type, "learner", "type") != fget(mlr_reflections$task_types, self$task_type, "learner", "type")) {
+          stopf("Incompatible task types")
+        }
       }
       fn = task$feature_names
 
