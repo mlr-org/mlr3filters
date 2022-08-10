@@ -13,7 +13,7 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' if (requireNamespace("mlr3proba")) {
+#' if (requireNamespace("carSurv")) {
 #'   task = mlr3::tsk("gbcs")
 #'   filter = flt("carsurvscore")
 #'   filter$calculate(task)
@@ -31,7 +31,7 @@ FilterCarSurvScore = R6Class("FilterCarSurvScore",
       )
       super$initialize(
         id = "surv.carsurvscore",
-        packages = c("carSurv", "mlr3proba"),
+        packages = c("carSurv"),
         param_set = ps,
         feature_types = c("integer", "numeric"),
         task_type = "surv",

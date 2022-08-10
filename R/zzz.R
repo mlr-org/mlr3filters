@@ -8,6 +8,11 @@
 "_PACKAGE"
 
 .onLoad = function(libname, pkgname) {
+
+  # tasks
+  x = utils::getFromNamespace("mlr_tasks", ns = "mlr3")
+  x$add("gbcs", load_gbcs)
+
   # nolint
   # nocov start
   backports::import(pkgname)
