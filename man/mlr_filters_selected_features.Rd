@@ -89,6 +89,13 @@ Learner to extract the selected features from.
 \if{html}{\out{<div class="r">}}\preformatted{FilterSelectedFeatures$new(learner = mlr3::lrn("classif.featureless"))}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-FilterSelectedFeatures-clone"></a>}}
