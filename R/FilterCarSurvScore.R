@@ -12,13 +12,6 @@
 #' @family Filter
 #' @template seealso_filter
 #' @export
-#' @examples
-#' if (requireNamespace("mlr3proba")) {
-#'   task = mlr3::tsk("gbcs")
-#'   filter = flt("carsurvscore")
-#'   filter$calculate(task)
-#'   head(as.data.table(filter), 3)
-#' }
 FilterCarSurvScore = R6Class("FilterCarSurvScore",
   inherit = Filter,
 
