@@ -5,6 +5,9 @@ test_that("all regr filters return correct filter values", {
     el = "regr"), key])
 
   for (f in filters) {
+    if (!all(require_namespaces(f$packages, quietly = TRUE))) {
+      next
+    }
     f$calculate(task)
     expect_filter(f, task = task)
   }
@@ -23,6 +26,9 @@ test_that("Errors for unsupported features", {
   # supported: numeric, integer
   # supplied: factor, integer, numeric
   for (f in filters) {
+    if (!all(require_namespaces(f$packages, quietly = TRUE))) {
+      next
+    }
     expect_error(f$calculate(task_bh))
   }
 })

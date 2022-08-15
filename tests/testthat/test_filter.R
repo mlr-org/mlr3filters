@@ -37,6 +37,7 @@ test_that("Assertion of task type works", {
 
 
 test_that("nfeat is passed to praznik correctly", {
+  skip_if_not_installed("praznik")
   task = tsk("iris")
   f = flt("disr")
   f$calculate(task, nfeat = 1)

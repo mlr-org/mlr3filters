@@ -5,6 +5,10 @@ test_that("all generic filters return correct filter values", {
     el = NA), key])
 
   for (f in filters) {
+    if (!all(require_namespaces(f$packages, quietly = TRUE))) {
+      next
+    }
+
     f$calculate(task)
     expect_filter(f, task = task)
   }

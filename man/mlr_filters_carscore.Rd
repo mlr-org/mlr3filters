@@ -14,16 +14,18 @@ returns the absolute value of the calculated scores.
 Argument \code{verbose} defaults to \code{FALSE}.
 }
 \examples{
-task = mlr3::tsk("mtcars")
-filter = flt("carscore")
-filter$calculate(task)
-head(as.data.table(filter), 3)
+if (requireNamespace("care")) {
+  task = mlr3::tsk("mtcars")
+  filter = flt("carscore")
+  filter$calculate(task)
+  head(as.data.table(filter), 3)
 
-## changing filter settings
-filter = flt("carscore")
-filter$param_set$values = list("diagonal" = TRUE)
-filter$calculate(task)
-head(as.data.table(filter), 3)
+  ## changing filter settings
+  filter = flt("carscore")
+  filter$param_set$values = list("diagonal" = TRUE)
+  filter$calculate(task)
+  head(as.data.table(filter), 3)
+}
 }
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}

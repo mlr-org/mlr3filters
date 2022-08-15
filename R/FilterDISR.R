@@ -19,10 +19,12 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::tsk("iris")
-#' filter = flt("disr")
-#' filter$calculate(task)
-#' as.data.table(filter)
+#' if (requireNamespace("praznik")) {
+#'   task = mlr3::tsk("iris")
+#'   filter = flt("disr")
+#'   filter$calculate(task)
+#'   as.data.table(filter)
+#' }
 FilterDISR = R6Class("FilterDISR",
   inherit = Filter,
 

@@ -9,12 +9,14 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' ## Relief (default)
-#' task = mlr3::tsk("pima")
-#' filter = flt("relief")
-#' filter$calculate(task)
-#' head(filter$scores, 3)
-#' as.data.table(filter)
+#' if (requireNamespace("FSelectorRcpp")) {
+#'   ## Relief (default)
+#'   task = mlr3::tsk("pima")
+#'   filter = flt("relief")
+#'   filter$calculate(task)
+#'   head(filter$scores, 3)
+#'   as.data.table(filter)
+#' }
 FilterRelief = R6Class("FilterRelief",
   inherit = Filter,
 

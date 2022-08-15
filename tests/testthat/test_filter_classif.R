@@ -7,6 +7,10 @@ test_that("all classif filters return correct filter values", {
   filters$permutation$param_set$values = list(nmc = 2)
 
   for (f in filters) {
+    if (!all(require_namespaces(f$packages, quietly = TRUE))) {
+      next
+    }
+
     f$calculate(task)
     expect_filter(f, task = task)
   }

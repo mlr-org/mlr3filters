@@ -15,19 +15,21 @@ Argument \code{equal} defaults to \code{FALSE} for classification tasks, and to
 \code{TRUE} for regression tasks.
 }
 \examples{
-## InfoGain (default)
-task = mlr3::tsk("pima")
-filter = flt("information_gain")
-filter$calculate(task)
-head(filter$scores, 3)
-as.data.table(filter)
+if (requireNamespace("FSelectorRcpp")) {
+  ## InfoGain (default)
+  task = mlr3::tsk("pima")
+  filter = flt("information_gain")
+  filter$calculate(task)
+  head(filter$scores, 3)
+  as.data.table(filter)
 
-## GainRatio
+  ## GainRatio
 
-filterGR = flt("information_gain")
-filterGR$param_set$values = list("type" = "gainratio")
-filterGR$calculate(task)
-head(as.data.table(filterGR), 3)
+  filterGR = flt("information_gain")
+  filterGR$param_set$values = list("type" = "gainratio")
+  filterGR$calculate(task)
+  head(as.data.table(filterGR), 3)
+}
 }
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
