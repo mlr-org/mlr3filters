@@ -3,7 +3,7 @@
 # mlr3filters 0.5.0.9000
 
 - Add references to benchmark paper and praznik paper #104
-
+* Add documentation for PipeOpFilter
 
 # mlr3filters 0.5.0
 
