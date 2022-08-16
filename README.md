@@ -155,4 +155,4 @@ learner = as_learner(graph)
 rr = resample(task, learner, rsmp("holdout"))
 ```
 
-    ## INFO  [13:35:24.453] [mlr3] Applying learner 'auc.classif.rpart' on task 'spam' (iter 1/1)
+    ## INFO  [13:42:32.254] [mlr3] Applying learner 'auc.classif.rpart' on task 'spam' (iter 1/1)
