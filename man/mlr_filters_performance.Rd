@@ -17,9 +17,24 @@ learner = mlr3::lrn("classif.rpart")
 filter = flt("performance", learner = learner)
 filter$calculate(task)
 as.data.table(filter)
+if (requireNamespace("mlr3pipelines")) {
+  library("mlr3pipelines")
+  task = mlr3::tsk("spam")
+  l = lrn("classif.rpart")
+
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("performance", learner = l), filter.frac = 0.5) \%>>\%
+    po("learner", mlr3::lrn("classif.rpart"))
+
+  graph$train(task)
+}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+\itemize{
+\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+}
 
 Other Filter: 
 \code{\link{Filter}},

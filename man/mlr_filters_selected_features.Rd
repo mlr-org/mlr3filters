@@ -17,14 +17,32 @@ different from the order in the learner. In combination with
 \CRANpkg{mlr3pipelines}, only the filter criterion \code{cutoff} makes sense.
 }
 \examples{
-task = mlr3::tsk("iris")
-learner = mlr3::lrn("classif.rpart")
-filter = flt("selected_features", learner = learner)
-filter$calculate(task)
-as.data.table(filter)
+if (requireNamespace("MASS"))  {
+  task = mlr3::tsk("iris")
+  learner = mlr3::lrn("classif.rpart")
+  filter = flt("selected_features", learner = learner)
+  filter$calculate(task)
+  as.data.table(filter)
+}
+
+if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners"), quietly = TRUE)) {
+  library("mlr3pipelines")
+  library("mlr3learners")
+  task = mlr3::tsk("spam")
+
+  filter = flt("selected_features", learner = lrn("classif.rpart"))
+
+  graph = po("filter", filter = filter)  \%>>\%
+    po("learner", mlr3::lrn("classif.log_reg"))
+
+  graph$train(task)
+}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+\itemize{
+\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+}
 
 Other Filter: 
 \code{\link{Filter}},

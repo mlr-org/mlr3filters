@@ -24,9 +24,24 @@ filter = flt("carscore")
 filter$param_set$values = list("diagonal" = TRUE)
 filter$calculate(task)
 head(as.data.table(filter), 3)
+if (mlr3misc::require_namespaces(c("mlr3pipelines", "care"), quietly = TRUE)) {
+  library("mlr3pipelines")
+  task = mlr3::tsk("spam")
+
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("carscore"), filter.frac = 0.5) \%>>\%
+    po("learner", mlr3::lrn("classif.rpart"))
+
+  graph$train(task)
+
+}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+\itemize{
+\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+}
 
 Other Filter: 
 \code{\link{Filter}},

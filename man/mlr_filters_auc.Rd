@@ -16,6 +16,18 @@ task = mlr3::tsk("pima")
 filter = flt("auc")
 filter$calculate(task)
 head(as.data.table(filter), 3)
+
+if (requireNamespace("mlr3pipelines")) {
+  library("mlr3pipelines")
+  task = mlr3::tsk("spam")
+
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("auc"), filter.frac = 0.5) \%>>\%
+    po("learner", mlr3::lrn("classif.rpart"))
+
+  graph$train(task)
+}
 }
 \references{
 For a benchmark of filter methods:
@@ -26,7 +38,10 @@ Bommert A, Sun X, Bischl B, Rahnenführer J, Lang M (2020).
 \doi{10.1016/j.csda.2019.106839}.
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+\itemize{
+\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+}
 
 Other Filter: 
 \code{\link{Filter}},

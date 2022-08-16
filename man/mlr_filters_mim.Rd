@@ -20,10 +20,25 @@ Set to a number \verb{>= 2} to enable threading, or to \code{0} for auto-detecti
 of available cores.
 }
 \examples{
-task = mlr3::tsk("iris")
-filter = flt("mim")
-filter$calculate(task, nfeat = 2)
-as.data.table(filter)
+if (requireNamespace("praznik")) {
+  task = mlr3::tsk("iris")
+  filter = flt("mim")
+  filter$calculate(task, nfeat = 2)
+  as.data.table(filter)
+}
+
+
+if (mlr3misc::require_namespaces(c("mlr3pipelines", "praznik"), quietly = TRUE)) {
+  library("mlr3pipelines")
+  task = mlr3::tsk("spam")
+
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("mim"), filter.frac = 0.5) \%>>\%
+    po("learner", mlr3::lrn("classif.rpart"))
+
+  graph$train(task)
+}
 }
 \references{
 Kursa MB (2021).
@@ -39,7 +54,10 @@ Bommert A, Sun X, Bischl B, Rahnenführer J, Lang M (2020).
 \doi{10.1016/j.csda.2019.106839}.
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+\itemize{
+\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+}
 
 Other Filter: 
 \code{\link{Filter}},

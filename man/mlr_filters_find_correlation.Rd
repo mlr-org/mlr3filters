@@ -18,7 +18,7 @@ Subsequently \code{caret::findCorrelation(cutoff = 0.9)} lists the same features
 that are excluded with \code{FilterFindCorrelation} at score 0.1 (= 1 - 0.9).
 }
 \examples{
-## Pearson (default)
+# Pearson (default)
 task = mlr3::tsk("mtcars")
 filter = flt("find_correlation")
 filter$calculate(task)
@@ -28,9 +28,24 @@ as.data.table(filter)
 filter = flt("find_correlation", method = "spearman")
 filter$calculate(task)
 as.data.table(filter)
+
+if (requireNamespace("mlr3pipelines")) {
+  library("mlr3pipelines")
+  task = mlr3::tsk("spam")
+
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("find_correlation"), filter.frac = 0.5) \%>>\%
+    po("learner", mlr3::lrn("classif.rpart"))
+
+  graph$train(task)
+}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+\itemize{
+\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+}
 
 Other Filter: 
 \code{\link{Filter}},

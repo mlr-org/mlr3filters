@@ -22,8 +22,32 @@ Number of Monte-Carlo iterations to use in computing the feature importance.
 }
 }
 
+\examples{
+learner = mlr3::lrn("classif.rpart")
+resampling = mlr3::rsmp("holdout")
+measure = mlr3::msr("classif.acc")
+filter = flt("permutation", learner = learner, measure = measure, resampling = resampling, nmc = 2)
+task = mlr3::tsk("iris")
+filter$calculate(task)
+as.data.table(filter)
+
+if (requireNamespace("mlr3pipelines")) {
+  library("mlr3pipelines")
+  task = mlr3::tsk("iris")
+
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("permutation", nmc = 2), filter.frac = 0.5) \%>>\%
+    po("learner", mlr3::lrn("classif.rpart"))
+
+  graph$train(task)
+}
+}
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+\itemize{
+\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+}
 
 Other Filter: 
 \code{\link{Filter}},

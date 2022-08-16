@@ -15,22 +15,41 @@ Argument \code{equal} defaults to \code{FALSE} for classification tasks, and to
 \code{TRUE} for regression tasks.
 }
 \examples{
-## InfoGain (default)
-task = mlr3::tsk("pima")
-filter = flt("information_gain")
-filter$calculate(task)
-head(filter$scores, 3)
-as.data.table(filter)
+if (requireNamespace("FSelectorRcpp")) {
+  ## InfoGain (default)
+  task = mlr3::tsk("pima")
+  filter = flt("information_gain")
+  filter$calculate(task)
+  head(filter$scores, 3)
+  as.data.table(filter)
 
-## GainRatio
+  ## GainRatio
 
-filterGR = flt("information_gain")
-filterGR$param_set$values = list("type" = "gainratio")
-filterGR$calculate(task)
-head(as.data.table(filterGR), 3)
+  filterGR = flt("information_gain")
+  filterGR$param_set$values = list("type" = "gainratio")
+  filterGR$calculate(task)
+  head(as.data.table(filterGR), 3)
+
+}
+
+if (mlr3misc::require_namespaces(c("mlr3pipelines", "FSelectorRcpp"), quietly = TRUE)) {
+  library("mlr3pipelines")
+  task = mlr3::tsk("spam")
+
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("information_gain"), filter.frac = 0.5) \%>>\%
+    po("learner", mlr3::lrn("classif.rpart"))
+
+  graph$train(task)
+
+}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+\itemize{
+\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+}
 
 Other Filter: 
 \code{\link{Filter}},
