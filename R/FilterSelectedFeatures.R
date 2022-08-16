@@ -18,7 +18,7 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' if (requireNamespace("MASS"))  {
+#' if (requireNamespace("MASS")) {
 #'   task = mlr3::tsk("iris")
 #'   learner = mlr3::lrn("classif.rpart")
 #'   filter = flt("selected_features", learner = learner)
@@ -33,7 +33,7 @@
 #'
 #'   filter = flt("selected_features", learner = lrn("classif.rpart"))
 #'
-#'   graph = po("filter", filter = filter)  %>>%
+#'   graph = po("filter", filter = filter) %>>%
 #'     po("learner", mlr3::lrn("classif.log_reg"))
 #'
 #'   graph$train(task)
