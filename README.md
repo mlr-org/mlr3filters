@@ -54,7 +54,6 @@ as.data.table(filter$calculate(task))
 ```
 
     ##     feature     score
-    ##      <char>     <num>
     ## 1:  glucose 0.2927906
     ## 2:  insulin 0.2316288
     ## 3:     mass 0.1870358
@@ -73,6 +72,7 @@ as.data.table(filter$calculate(task))
 | :----------------- | :------------------------------------------------------- | :------------- | :----------------------------------- | :------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
 | anova              | ANOVA F-Test                                             | Classif        |                                      | Integer, Numeric                                               | [c(“mlr3filters”, “stats”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22stats%22\))                                     |
 | auc                | Area Under the ROC Curve Score                           | Classif        |                                      | Integer, Numeric                                               | [c(“mlr3filters”, “mlr3measures”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22mlr3measures%22\))                       |
+| carscore           | Correlation-Adjusted coRrelation Score                   | Regr           | lambda , diagonal, verbose           | Numeric                                                        | [c(“mlr3filters”, “care”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22care%22\))                                       |
 | carsurvscore       | Correlation-Adjusted coRrelation Survival Score          | Surv           | maxIPCweight, denom                  | Integer, Numeric                                               | [c(“mlr3filters”, “carSurv”, “mlr3proba”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22carSurv%22,%20%22mlr3proba%22\)) |
 | cmim               | Minimal Conditional Mutual Information Maximization      | Classif & Regr | threads                              | Integer, Numeric, Factor, Ordered                              | [c(“mlr3filters”, “praznik”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22praznik%22\))                                 |
 | correlation        | Correlation                                              | Regr           | use , method                         | Integer, Numeric                                               | [c(“mlr3filters”, “stats”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22stats%22\))                                     |
@@ -123,7 +123,6 @@ head(as.data.table(filter), 3)
 ```
 
     ##         feature     score
-    ##          <char>     <num>
     ## 1:  Petal.Width 44.224198
     ## 2: Petal.Length 43.303520
     ## 3: Sepal.Length  9.618601
@@ -155,4 +154,4 @@ learner = as_learner(graph)
 rr = resample(task, learner, rsmp("holdout"))
 ```
 
-    ## INFO  [13:43:20.500] [mlr3] Applying learner 'auc.classif.rpart' on task 'spam' (iter 1/1)
+    ## INFO  [13:47:15.660] [mlr3] Applying learner 'auc.classif.rpart' on task 'spam' (iter 1/1)
