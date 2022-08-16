@@ -14,6 +14,8 @@
 #'
 #' `r format_bib("bommert_2020")`
 #'
+#' @templateVar id anova
+#' @template filter
 #' @family Filter
 #' @importFrom stats aov
 #' @template seealso_filter
@@ -31,7 +33,9 @@
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'
-#'   graph = po("filter", filter = flt("anova"), filter.cutoff = 20) %>>%
+#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("anova"), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.rpart"))
 #'
 #'   graph$train(task)

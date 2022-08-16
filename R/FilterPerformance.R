@@ -8,6 +8,9 @@
 #'   [mlr3::Measure], or the negated aggregated performance if the measure has
 #'   to be minimized.
 #'
+#' @templateVar id performance
+#' @template filter
+#'
 #' @family Filter
 #' @template seealso_filter
 #' @export
@@ -22,7 +25,9 @@
 #'   task = mlr3::tsk("spam")
 #'   l = lrn("classif.rpart")
 #'
-#'   graph = po("filter", filter = flt("performance", learner = l), filter.cutoff = -0.3) %>>%
+#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("performance", learner = l), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.rpart"))
 #'
 #'   graph$train(task)

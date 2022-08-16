@@ -18,6 +18,8 @@
 #' Number of Monte-Carlo iterations to use in computing the feature importance.
 #' }
 #'
+#' @templateVar id permutation
+#' @template filter
 #' @family Filter
 #' @template seealso_filter
 #' @export
@@ -34,7 +36,9 @@
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("iris")
 #'
-#'   graph = po("filter", filter = flt("permutation", nmc = 2), filter.cutoff = 0.1) %>>%
+#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("permutation", nmc = 2), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.rpart"))
 #'
 #'   graph$train(task)

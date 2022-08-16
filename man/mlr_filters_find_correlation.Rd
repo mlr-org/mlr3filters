@@ -17,6 +17,32 @@ with the way other filters work.
 Subsequently \code{caret::findCorrelation(cutoff = 0.9)} lists the same features
 that are excluded with \code{FilterFindCorrelation} at score 0.1 (= 1 - 0.9).
 }
+\section{Dictionary}{
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters} or with the associated sugar function \code{\link[=flt]{flt()}}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_filters$get("find_correlation")
+flt("find_correlation")
+}\if{html}{\out{</div>}}
+}
+
+\section{Meta Information}{
+
+\itemize{
+\item Task types: \dQuote{classif}, \dQuote{regr}
+\item Feature types: \dQuote{integer}, \dQuote{numeric}
+\item Packages: \dQuote{mlr3filters}, \dQuote{stats}
+}
+}
+
+\section{Parameters}{
+\tabular{llll}{
+   Id \tab Type \tab Default \tab Levels \cr
+   use \tab character \tab everything \tab everything, all.obs, complete.obs, na.or.complete, pairwise.complete.obs \cr
+   method \tab character \tab pearson \tab pearson, kendall, spearman \cr
+}
+}
+
 \examples{
 # Pearson (default)
 task = mlr3::tsk("mtcars")
@@ -33,7 +59,9 @@ if (requireNamespace("mlr3pipelines")) {
   library("mlr3pipelines")
   task = mlr3::tsk("spam")
 
-  graph = po("filter", filter = flt("find_correlation"), filter.cutoff = 0.4) \%>>\%
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("find_correlation"), filter.frac = 0.5) \%>>\%
     po("learner", mlr3::lrn("classif.rpart"))
 
   graph$train(task)
@@ -49,7 +77,6 @@ Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
-\code{\link{mlr_filters_carscore}},
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},

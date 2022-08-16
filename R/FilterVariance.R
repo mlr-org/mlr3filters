@@ -11,6 +11,8 @@
 #'
 #' `r format_bib("bommert_2020")`
 #'
+#' @templateVar id variance
+#' @template filter
 #' @family Filter
 #' @importFrom stats var
 #' @template seealso_filter
@@ -26,7 +28,9 @@
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'
-#'   graph = po("filter", filter = flt("variance"), filter.cutoff = 1) %>>%
+#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("variance"), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.rpart"))
 #'
 #'   graph$train(task)

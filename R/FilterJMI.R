@@ -14,6 +14,8 @@
 #'
 #' `r format_bib("bommert_2020")`
 #'
+#' @templateVar id jmi
+#' @template filter
 #'
 #' @template details_praznik
 #' @family Filter
@@ -27,11 +29,13 @@
 #'   as.data.table(filter)
 #' }
 #'
-#' if (requireNamespace("mlr3pipelines") && requireNamespace("praznik")) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "praznik"), quietly = TRUE)) {
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'
-#'   graph = po("filter", filter = flt("jmi"), filter.cutoff = 0.2) %>>%
+#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("jmi"), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.rpart"))
 #'
 #'   graph$train(task)

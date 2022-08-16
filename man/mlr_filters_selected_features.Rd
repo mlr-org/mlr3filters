@@ -16,12 +16,52 @@ features get a score of 0. The order of selected features is random and
 different from the order in the learner. In combination with
 \CRANpkg{mlr3pipelines}, only the filter criterion \code{cutoff} makes sense.
 }
+\section{Dictionary}{
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters} or with the associated sugar function \code{\link[=flt]{flt()}}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_filters$get("selected_features")
+flt("selected_features")
+}\if{html}{\out{</div>}}
+}
+
+\section{Meta Information}{
+
+\itemize{
+\item Task types: \dQuote{classif}
+\item Feature types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}, \dQuote{POSIXct}
+\item Packages: \dQuote{mlr3filters}, \dQuote{mlr3}
+}
+}
+
+\section{Parameters}{
+\tabular{llll}{
+   Id \tab Type \tab Default \tab Levels \cr
+   method \tab character \tab mode \tab mode, sample, weighted.sample \cr
+}
+}
+
 \examples{
-task = mlr3::tsk("iris")
-learner = mlr3::lrn("classif.rpart")
-filter = flt("selected_features", learner = learner)
-filter$calculate(task)
-as.data.table(filter)
+if (requireNamespace("MASS"))  {
+  task = mlr3::tsk("iris")
+  learner = mlr3::lrn("classif.rpart")
+  filter = flt("selected_features", learner = learner)
+  filter$calculate(task)
+  as.data.table(filter)
+}
+
+if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners"), quietly = TRUE)) {
+  library("mlr3pipelines")
+  library("mlr3learners")
+  task = mlr3::tsk("spam")
+
+  filter = flt("selected_features", learner = lrn("classif.rpart"))
+
+  graph = po("filter", filter = filter)  \%>>\%
+    po("learner", mlr3::lrn("classif.log_reg"))
+
+  graph$train(task)
+}
 }
 \seealso{
 \itemize{
@@ -33,7 +73,6 @@ Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
-\code{\link{mlr_filters_carscore}},
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},

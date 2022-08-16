@@ -14,6 +14,8 @@
 #'
 #' `r format_bib("bommert_2020")`
 #'
+#' @templateVar id auc
+#' @template filter
 #' @family Filter
 #' @template seealso_filter
 #' @export
@@ -27,7 +29,9 @@
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'
-#'   graph = po("filter", filter = flt("auc"), filter.cutoff = 0.1) %>>%
+#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("auc"), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.rpart"))
 #'
 #'   graph$train(task)

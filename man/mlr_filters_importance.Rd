@@ -10,6 +10,31 @@ machine learning algorithms. Takes a \link[mlr3:Learner]{mlr3::Learner} which is
 extracting the variable importance (property "importance"), fits the model
 and extracts the importance values to use as filter scores.
 }
+\section{Dictionary}{
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters} or with the associated sugar function \code{\link[=flt]{flt()}}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_filters$get("importance")
+flt("importance")
+}\if{html}{\out{</div>}}
+}
+
+\section{Meta Information}{
+
+\itemize{
+\item Task types: \dQuote{classif}
+\item Feature types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}, \dQuote{POSIXct}
+\item Packages: \dQuote{mlr3filters}, \dQuote{mlr3}
+}
+}
+
+\section{Parameters}{
+\tabular{llll}{
+   Id \tab Type \tab Default \tab Levels \cr
+   method \tab character \tab mode \tab mode, sample, weighted.sample \cr
+}
+}
+
 \examples{
 if (requireNamespace("MASS")) {
   task = mlr3::tsk("iris")
@@ -19,15 +44,16 @@ if (requireNamespace("MASS")) {
   as.data.table(filter)
 }
 
-if (requireNamespace("mlr3pipelines") && requireNamespace("mlr3learners") &&
-  requireNamespace("MASS")) {
+if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners", "MASS"), quietly = TRUE)) {
   library("mlr3learners")
   library("mlr3pipelines")
   task = mlr3::tsk("spam")
 
   learner = mlr3::lrn("classif.rpart")
 
-  graph = po("filter", filter = flt("importance", learner = learner), filter.cutoff = 100) \%>>\%
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("importance", learner = learner), filter.frac = 0.5) \%>>\%
     po("learner", mlr3::lrn("classif.lda"))
 
   graph$train(task)
@@ -43,7 +69,6 @@ Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
-\code{\link{mlr_filters_carscore}},
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},

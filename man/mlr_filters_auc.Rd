@@ -11,6 +11,29 @@ calculating the AUC. If the AUC is undefined for the input, it is set to 0.5
 (random classifier). The absolute value of the difference between the AUC and
 0.5 is used as final filter value.
 }
+\section{Dictionary}{
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters} or with the associated sugar function \code{\link[=flt]{flt()}}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_filters$get("auc")
+flt("auc")
+}\if{html}{\out{</div>}}
+}
+
+\section{Meta Information}{
+
+\itemize{
+\item Task types: \dQuote{classif}
+\item Feature types: \dQuote{integer}, \dQuote{numeric}
+\item Packages: \dQuote{mlr3filters}, \dQuote{mlr3measures}
+}
+}
+
+\section{Parameters}{
+
+Empty ParamSet
+}
+
 \examples{
 task = mlr3::tsk("pima")
 filter = flt("auc")
@@ -21,7 +44,9 @@ if (requireNamespace("mlr3pipelines")) {
   library("mlr3pipelines")
   task = mlr3::tsk("spam")
 
-  graph = po("filter", filter = flt("auc"), filter.cutoff = 0.1) \%>>\%
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("auc"), filter.frac = 0.5) \%>>\%
     po("learner", mlr3::lrn("classif.rpart"))
 
   graph$train(task)
@@ -44,7 +69,6 @@ Bommert A, Sun X, Bischl B, Rahnenführer J, Lang M (2020).
 Other Filter: 
 \code{\link{Filter}},
 \code{\link{mlr_filters_anova}},
-\code{\link{mlr_filters_carscore}},
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},

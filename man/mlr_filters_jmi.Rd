@@ -19,6 +19,31 @@ Threading is disabled by default (hyperparameter \code{threads} is set to 1).
 Set to a number \verb{>= 2} to enable threading, or to \code{0} for auto-detecting the number
 of available cores.
 }
+\section{Dictionary}{
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters} or with the associated sugar function \code{\link[=flt]{flt()}}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_filters$get("jmi")
+flt("jmi")
+}\if{html}{\out{</div>}}
+}
+
+\section{Meta Information}{
+
+\itemize{
+\item Task types: \dQuote{classif}, \dQuote{regr}
+\item Feature types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Packages: \dQuote{mlr3filters}, \dQuote{praznik}
+}
+}
+
+\section{Parameters}{
+\tabular{llll}{
+   Id \tab Type \tab Default \tab Range \cr
+   threads \tab integer \tab 0 \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+}
+}
+
 \examples{
 if (requireNamespace("praznik")) {
   task = mlr3::tsk("iris")
@@ -27,11 +52,13 @@ if (requireNamespace("praznik")) {
   as.data.table(filter)
 }
 
-if (requireNamespace("mlr3pipelines") && requireNamespace("praznik")) {
+if (mlr3misc::require_namespaces(c("mlr3pipelines", "praznik"), quietly = TRUE)) {
   library("mlr3pipelines")
   task = mlr3::tsk("spam")
 
-  graph = po("filter", filter = flt("jmi"), filter.cutoff = 0.2) \%>>\%
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("jmi"), filter.frac = 0.5) \%>>\%
     po("learner", mlr3::lrn("classif.rpart"))
 
   graph$train(task)
@@ -60,7 +87,6 @@ Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
-\code{\link{mlr_filters_carscore}},
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},

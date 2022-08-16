@@ -14,6 +14,34 @@ parameter \code{"type"} to \code{"gainratio"} to calculate the gain ratio, or se
 Argument \code{equal} defaults to \code{FALSE} for classification tasks, and to
 \code{TRUE} for regression tasks.
 }
+\section{Dictionary}{
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters} or with the associated sugar function \code{\link[=flt]{flt()}}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_filters$get("information_gain")
+flt("information_gain")
+}\if{html}{\out{</div>}}
+}
+
+\section{Meta Information}{
+
+\itemize{
+\item Task types: \dQuote{classif}, \dQuote{regr}
+\item Feature types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Packages: \dQuote{mlr3filters}, \dQuote{FSelectorRcpp}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   type \tab character \tab infogain \tab infogain, gainratio, symuncert \tab - \cr
+   equal \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   discIntegers \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   threads \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+}
+}
+
 \examples{
 if (requireNamespace("FSelectorRcpp")) {
   ## InfoGain (default)
@@ -32,11 +60,13 @@ if (requireNamespace("FSelectorRcpp")) {
 
 }
 
-if (requireNamespace("mlr3pipelines") && requireNamespace("FSelectorRcpp")) {
+if (mlr3misc::require_namespaces(c("mlr3pipelines", "FSelectorRcpp"), quietly = TRUE)) {
   library("mlr3pipelines")
   task = mlr3::tsk("spam")
 
-  graph = po("filter", filter = flt("information_gain"), filter.cutoff = 0.1) \%>>\%
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("information_gain"), filter.frac = 0.5) \%>>\%
     po("learner", mlr3::lrn("classif.rpart"))
 
   graph$train(task)
@@ -53,7 +83,6 @@ Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
-\code{\link{mlr_filters_carscore}},
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},

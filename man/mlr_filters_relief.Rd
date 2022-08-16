@@ -8,6 +8,32 @@
 Information gain filter calling
 \code{\link[FSelectorRcpp:relief]{FSelectorRcpp::relief()}} in package \CRANpkg{FSelectorRcpp}.
 }
+\section{Dictionary}{
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters} or with the associated sugar function \code{\link[=flt]{flt()}}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_filters$get("relief")
+flt("relief")
+}\if{html}{\out{</div>}}
+}
+
+\section{Meta Information}{
+
+\itemize{
+\item Task types: \dQuote{classif}, \dQuote{regr}
+\item Feature types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Packages: \dQuote{mlr3filters}, \dQuote{FSelectorRcpp}
+}
+}
+
+\section{Parameters}{
+\tabular{llll}{
+   Id \tab Type \tab Default \tab Range \cr
+   neighboursCount \tab integer \tab 5 \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   sampleSize \tab integer \tab 10 \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+}
+}
+
 \examples{
 if (requireNamespace("FSelectorRcpp")) {
   ## Relief (default)
@@ -18,11 +44,13 @@ if (requireNamespace("FSelectorRcpp")) {
   as.data.table(filter)
 }
 
-if (requireNamespace("mlr3pipelines") && requireNamespace("FSelectorRcpp")) {
+if (mlr3misc::require_namespaces(c("mlr3pipelines", "FSelectorRcpp"), quietly = TRUE)) {
   library("mlr3pipelines")
   task = mlr3::tsk("iris")
 
-  graph = po("filter", filter = flt("relief"), filter.cutoff = 0.15) \%>>\%
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("relief"), filter.frac = 0.5) \%>>\%
     po("learner", mlr3::lrn("classif.rpart"))
 
   graph$train(task)
@@ -38,7 +66,6 @@ Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
-\code{\link{mlr_filters_carscore}},
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},

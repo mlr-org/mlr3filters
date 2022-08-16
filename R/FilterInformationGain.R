@@ -11,6 +11,9 @@
 #'   Argument `equal` defaults to `FALSE` for classification tasks, and to
 #'   `TRUE` for regression tasks.
 #'
+#' @templateVar id information_gain
+#' @template filter
+#'
 #' @family Filter
 #' @template seealso_filter
 #' @export
@@ -32,11 +35,13 @@
 #'
 #' }
 #'
-#' if (requireNamespace("mlr3pipelines") && requireNamespace("FSelectorRcpp")) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "FSelectorRcpp"), quietly = TRUE)) {
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'
-#'   graph = po("filter", filter = flt("information_gain"), filter.cutoff = 0.1) %>>%
+#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("information_gain"), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.rpart"))
 #'
 #'   graph$train(task)

@@ -13,6 +13,8 @@
 #'
 #' `r format_bib("bommert_2020")`
 #'
+#' @templateVar id kruskal_test
+#' @template filter
 #' @family Filter
 #' @importFrom stats kruskal.test
 #' @template seealso_filter
@@ -30,7 +32,9 @@
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'
-#'   graph = po("filter", filter = flt("kruskal_test"), filter.cutoff = 0.2) %>>%
+#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("kruskal_test"), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.rpart"))
 #'
 #'   graph$train(task)

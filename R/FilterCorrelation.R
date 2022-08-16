@@ -11,6 +11,8 @@
 #'
 #' `r format_bib("bommert_2020")`
 #'
+#' @templateVar id correlation
+#' @template filter
 #' @family Filter
 #' @template seealso_filter
 #' @export
@@ -30,7 +32,9 @@
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("boston_housing")
 #'
-#'   graph = po("filter", filter = flt("correlation"), filter.cutoff = 0.2) %>>%
+#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("correlation"), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("regr.rpart"))
 #'
 #'   graph$train(task)

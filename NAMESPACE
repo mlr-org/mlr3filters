@@ -2,11 +2,11 @@
 
 S3method(as.data.table,DictionaryFilter)
 S3method(as.data.table,Filter)
+S3method(rd_info,Filter)
 export(Filter)
 export(FilterAUC)
 export(FilterAnova)
 export(FilterCMIM)
-export(FilterCarScore)
 export(FilterCorrelation)
 export(FilterDISR)
 export(FilterFindCorrelation)

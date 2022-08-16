@@ -11,6 +11,31 @@ The filter value is \code{-log10(p)} where \code{p} is the \eqn{p}-value. This
 transformation is necessary to ensure numerical stability for very small
 \eqn{p}-values.
 }
+\section{Dictionary}{
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters} or with the associated sugar function \code{\link[=flt]{flt()}}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_filters$get("kruskal_test")
+flt("kruskal_test")
+}\if{html}{\out{</div>}}
+}
+
+\section{Meta Information}{
+
+\itemize{
+\item Task types: \dQuote{classif}
+\item Feature types: \dQuote{integer}, \dQuote{numeric}
+\item Packages: \dQuote{mlr3filters}, \dQuote{stats}
+}
+}
+
+\section{Parameters}{
+\tabular{llll}{
+   Id \tab Type \tab Default \tab Levels \cr
+   na.action \tab character \tab na.omit \tab na.omit, na.fail, na.exclude, na.pass \cr
+}
+}
+
 \examples{
 task = mlr3::tsk("iris")
 filter = flt("kruskal_test")
@@ -24,7 +49,9 @@ if (requireNamespace("mlr3pipelines")) {
   library("mlr3pipelines")
   task = mlr3::tsk("spam")
 
-  graph = po("filter", filter = flt("kruskal_test"), filter.cutoff = 0.2) \%>>\%
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("kruskal_test"), filter.frac = 0.5) \%>>\%
     po("learner", mlr3::lrn("classif.rpart"))
 
   graph$train(task)
@@ -48,7 +75,6 @@ Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
-\code{\link{mlr_filters_carscore}},
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},

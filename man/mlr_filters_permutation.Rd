@@ -20,6 +20,30 @@ Standardize feature importance by maximum score.}
 \item{\code{nmc}}{\code{integer(1)}}\cr
 Number of Monte-Carlo iterations to use in computing the feature importance.
 }
+
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   standardize \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   nmc \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+}
+}
+
+\section{Dictionary}{
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters} or with the associated sugar function \code{\link[=flt]{flt()}}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_filters$get("permutation")
+flt("permutation")
+}\if{html}{\out{</div>}}
+}
+
+\section{Meta Information}{
+
+\itemize{
+\item Task types: \dQuote{classif}
+\item Feature types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}, \dQuote{POSIXct}
+\item Packages: \dQuote{mlr3filters}, \dQuote{mlr3}, \dQuote{mlr3measures}
+}
 }
 
 \examples{
@@ -35,7 +59,9 @@ if (requireNamespace("mlr3pipelines")) {
   library("mlr3pipelines")
   task = mlr3::tsk("iris")
 
-  graph = po("filter", filter = flt("permutation", nmc = 2), filter.cutoff = 0.1) \%>>\%
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("permutation", nmc = 2), filter.frac = 0.5) \%>>\%
     po("learner", mlr3::lrn("classif.rpart"))
 
   graph$train(task)
@@ -51,7 +77,6 @@ Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
-\code{\link{mlr_filters_carscore}},
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},

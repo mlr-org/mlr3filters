@@ -11,6 +11,31 @@ feature separately. The filter score is the aggregated performance of the
 \link[mlr3:Measure]{mlr3::Measure}, or the negated aggregated performance if the measure has
 to be minimized.
 }
+\section{Dictionary}{
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_filters} or with the associated sugar function \code{\link[=flt]{flt()}}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_filters$get("performance")
+flt("performance")
+}\if{html}{\out{</div>}}
+}
+
+\section{Meta Information}{
+
+\itemize{
+\item Task types: \dQuote{classif}
+\item Feature types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}, \dQuote{POSIXct}
+\item Packages: \dQuote{mlr3filters}, \dQuote{mlr3}, \dQuote{mlr3measures}
+}
+}
+
+\section{Parameters}{
+\tabular{llll}{
+   Id \tab Type \tab Default \tab Levels \cr
+   method \tab character \tab mode \tab mode, sample, weighted.sample \cr
+}
+}
+
 \examples{
 task = mlr3::tsk("iris")
 learner = mlr3::lrn("classif.rpart")
@@ -22,7 +47,9 @@ if (requireNamespace("mlr3pipelines")) {
   task = mlr3::tsk("spam")
   l = lrn("classif.rpart")
 
-  graph = po("filter", filter = flt("performance", learner = l), filter.cutoff = -0.3) \%>>\%
+  # Note: The filter.frac is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("performance", learner = l), filter.frac = 0.5) \%>>\%
     po("learner", mlr3::lrn("classif.rpart"))
 
   graph$train(task)
@@ -38,7 +65,6 @@ Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
-\code{\link{mlr_filters_carscore}},
 \code{\link{mlr_filters_cmim}},
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},

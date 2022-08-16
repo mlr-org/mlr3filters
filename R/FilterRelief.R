@@ -5,6 +5,8 @@
 #' @description Information gain filter calling
 #'   [FSelectorRcpp::relief()] in package \CRANpkg{FSelectorRcpp}.
 #'
+#' @templateVar id relief
+#' @template filter
 #' @family Filter
 #' @template seealso_filter
 #' @export
@@ -18,11 +20,13 @@
 #'   as.data.table(filter)
 #' }
 #'
-#' if (requireNamespace("mlr3pipelines") && requireNamespace("FSelectorRcpp")) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "FSelectorRcpp"), quietly = TRUE)) {
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("iris")
 #'
-#'   graph = po("filter", filter = flt("relief"), filter.cutoff = 0.15) %>>%
+#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("relief"), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.rpart"))
 #'
 #'   graph$train(task)

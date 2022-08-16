@@ -7,6 +7,9 @@
 #' extracting the variable importance (property "importance"), fits the model
 #' and extracts the importance values to use as filter scores.
 #'
+#' @templateVar id importance
+#' @template filter
+#'
 #' @family Filter
 #' @template seealso_filter
 #' @export
@@ -19,15 +22,16 @@
 #'   as.data.table(filter)
 #' }
 #'
-#' if (requireNamespace("mlr3pipelines") && requireNamespace("mlr3learners") &&
-#'   requireNamespace("MASS")) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners", "MASS"), quietly = TRUE)) {
 #'   library("mlr3learners")
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'
 #'   learner = mlr3::lrn("classif.rpart")
 #'
-#'   graph = po("filter", filter = flt("importance", learner = learner), filter.cutoff = 100) %>>%
+#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("importance", learner = learner), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.lda"))
 #'
 #'   graph$train(task)

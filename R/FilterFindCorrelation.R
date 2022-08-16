@@ -15,6 +15,9 @@
 #' Subsequently `caret::findCorrelation(cutoff = 0.9)` lists the same features
 #' that are excluded with `FilterFindCorrelation` at score 0.1 (= 1 - 0.9).
 #'
+#' @templateVar id find_correlation
+#' @template filter
+#'
 #' @family Filter
 #' @template seealso_filter
 #' @export
@@ -34,7 +37,9 @@
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'
-#'   graph = po("filter", filter = flt("find_correlation"), filter.cutoff = 0.4) %>>%
+#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("find_correlation"), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.rpart"))
 #'
 #'   graph$train(task)
