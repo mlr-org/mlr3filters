@@ -26,7 +26,7 @@
 #' filter$param_set$values = list("method" = "spearman")
 #' filter$calculate(task)
 #' as.data.table(filter)
-#' if (requireNamespace("mlr3pipelines")) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "MASS"), quietly = TRUE)) {
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("boston_housing")
 #'

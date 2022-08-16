@@ -23,7 +23,7 @@
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
 #'
-#' if (requireNamespace("mlr3pipelines")) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "MASS"), quietly = TRUE)) {
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'

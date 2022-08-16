@@ -25,14 +25,16 @@ if (requireNamespace("MASS")) {
   as.data.table(filter)
 }
 
-if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners"), quietly = TRUE)) {
+if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners", "MASS"), quietly = TRUE)) {
   library("mlr3pipelines")
   library("mlr3learners")
   task = mlr3::tsk("spam")
 
   filter = flt("selected_features", learner = lrn("classif.rpart"))
 
-  graph = po("filter", filter = filter) \%>>\%
+  # Note: All filter scores are either 0 or 1
+
+  graph = po("filter", filter = filter, filter.cutoff = 0.5) \%>>\%
     po("learner", mlr3::lrn("classif.log_reg"))
 
   graph$train(task)
@@ -40,7 +42,7 @@ if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners"), quietly = T
 }
 \seealso{
 \itemize{
-\item \link[mlr3pipelines:PipeOpFilter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 }
 
@@ -90,10 +92,10 @@ Learner to extract the importance values from.}
 \if{html}{\out{
 <details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>mlr3filters::Filter$calculate()</code></a></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>mlr3filters::Filter$format()</code></a></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>mlr3filters::Filter$help()</code></a></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>mlr3filters::Filter$print()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>mlr3filters::Filter$calculate()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>mlr3filters::Filter$format()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>mlr3filters::Filter$help()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>mlr3filters::Filter$print()</code></a></span></li>
 </ul>
 </details>
 }}

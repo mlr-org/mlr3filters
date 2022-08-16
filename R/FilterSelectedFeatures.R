@@ -26,14 +26,16 @@
 #'   as.data.table(filter)
 #' }
 #'
-#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners"), quietly = TRUE)) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners", "MASS"), quietly = TRUE)) {
 #'   library("mlr3pipelines")
 #'   library("mlr3learners")
 #'   task = mlr3::tsk("spam")
 #'
 #'   filter = flt("selected_features", learner = lrn("classif.rpart"))
 #'
-#'   graph = po("filter", filter = filter) %>>%
+#'   # Note: All filter scores are either 0 or 1
+#'
+#'   graph = po("filter", filter = filter, filter.cutoff = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.log_reg"))
 #'
 #'   graph$train(task)
