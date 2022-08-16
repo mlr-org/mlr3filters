@@ -27,7 +27,7 @@
 #'   as.data.table(filter)
 #' }
 #'
-#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "praznik"), quietly = TRUE)) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "MASS", "praznik"), quietly = TRUE)) {
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'

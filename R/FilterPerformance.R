@@ -17,7 +17,7 @@
 #' filter = flt("performance", learner = learner)
 #' filter$calculate(task)
 #' as.data.table(filter)
-#' if (requireNamespace("mlr3pipelines")) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "MASS"), quietly = TRUE)) {
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'   l = lrn("classif.rpart")
