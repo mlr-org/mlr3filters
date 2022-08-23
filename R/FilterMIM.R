@@ -19,10 +19,12 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::tsk("iris")
-#' filter = flt("mim")
-#' filter$calculate(task, nfeat = 2)
-#' as.data.table(filter)
+#' if (requireNamespace("praznik")) {
+#'   task = mlr3::tsk("iris")
+#'   filter = flt("mim")
+#'   filter$calculate(task, nfeat = 2)
+#'   as.data.table(filter)
+#' }
 FilterMIM = R6Class("FilterMIM",
   inherit = Filter,
 

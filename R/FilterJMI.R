@@ -20,10 +20,12 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::tsk("iris")
-#' filter = flt("jmi")
-#' filter$calculate(task, nfeat = 2)
-#' as.data.table(filter)
+#' if (requireNamespace("praznik")) {
+#'   task = mlr3::tsk("iris")
+#'   filter = flt("jmi")
+#'   filter$calculate(task, nfeat = 2)
+#'   as.data.table(filter)
+#' }
 FilterJMI = R6Class("FilterJMI",
   inherit = Filter,
 
