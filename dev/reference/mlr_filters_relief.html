@@ -155,23 +155,23 @@ FSelectorRcpp::relief() in package FSelectorRcpp."><meta property="og:image" con
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Relief (default)</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="flt.html">flt</a></span><span class="op">(</span><span class="st">"relief"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">filter</span><span class="op">$</span><span class="va">scores</span>, <span class="fl">3</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     insulin    pregnant     glucose </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.023701923 0.009411765 0.008903226 </span>
-<span class="r-in"><span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     feature         score</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1:  insulin  0.0237019231</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2: pregnant  0.0094117647</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:  glucose  0.0089032258</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4: pedigree  0.0033390265</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5:      age -0.0006666667</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6: pressure -0.0028571429</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7:  triceps -0.0082608696</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8:     mass -0.0094069530</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"FSelectorRcpp"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="co">## Relief (default)</span></span></span>
+<span class="r-in"><span>  <span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="flt.html">flt</a></span><span class="op">(</span><span class="st">"relief"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">filter</span><span class="op">$</span><span class="va">scores</span>, <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     feature        score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:     mass  0.030470348</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:  triceps  0.026956522</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:      age  0.012333333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4: pedigree  0.011938514</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5: pressure  0.010612245</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6:  glucose  0.005032258</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7:  insulin  0.004278846</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8: pregnant -0.003529412</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
