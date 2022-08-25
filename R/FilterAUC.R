@@ -18,14 +18,12 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' if (requireNamespace("mlr3measures")) {
-#'   task = mlr3::tsk("pima")
-#'   filter = flt("auc")
-#'   filter$calculate(task)
-#'   head(as.data.table(filter), 3)
-#' }
+#' task = mlr3::tsk("pima")
+#' filter = flt("auc")
+#' filter$calculate(task)
+#' head(as.data.table(filter), 3)
 #'
-#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart", "mlr3measures"), quietly = TRUE)) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart"), quietly = TRUE)) {
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'
