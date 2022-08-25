@@ -24,7 +24,7 @@ if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart"), quietly = TRUE)) {
   task = mlr3::tsk("spam")
   l = lrn("classif.rpart")
 
-  # Note: `filter.frac`  is selected randomly and should be tuned.
+  # Note: `filter.frac` is selected randomly and should be tuned.
 
   graph = po("filter", filter = flt("performance", learner = l), filter.frac = 0.5) \%>>\%
     po("learner", mlr3::lrn("classif.rpart"))

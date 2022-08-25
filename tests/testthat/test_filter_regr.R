@@ -1,28 +1,24 @@
 test_that("all regr filters return correct filter values", {
   task = mlr_tasks$get("mtcars")
-  filters = mlr_filters$mget(as.data.table(mlr_filters)[map_lgl(task_type,
-    is.element,
-    el = "regr"), key])
+  filters = mlr_filters$mget(mlr_filters$keys())
 
   for (f in filters) {
-    f$calculate(task)
-    expect_filter(f, task = task)
+    if ("regr" %in% f$task_type && all(require_namespaces(f$packages, quietly = TRUE))) {
+      f$calculate(task)
+      expect_filter(f, task = task)
+    }
   }
 })
 
 
 test_that("Errors for unsupported features", {
-  # list filters that only support "numeric" features
   filters = mlr_filters$mget(mlr_filters$keys())
-  filters = Filter(function(x) {
-    all(grepl(paste(c("numeric", "integer"),
-      collapse = "|"), x$feature_types))
-  }, filters)
-  filters = filters[lengths(filters) != 0]
 
   # supported: numeric, integer
   # supplied: factor, integer, numeric
   for (f in filters) {
-    expect_error(f$calculate(task_bh))
+    if (any(c("integer", "numeric") %in% f$feature_types) && all(require_namespaces(f$packages, quietly = TRUE))) {
+      expect_error(f$calculate(task_bh))
+    }
   }
 })

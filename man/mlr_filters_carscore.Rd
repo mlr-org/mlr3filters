@@ -19,13 +19,14 @@ if (requireNamespace("care")) {
   filter = flt("carscore")
   filter$calculate(task)
   head(as.data.table(filter), 3)
+
+  ## changing the filter settings
+  filter = flt("carscore")
+  filter$param_set$values = list("diagonal" = TRUE)
+  filter$calculate(task)
+  head(as.data.table(filter), 3)
 }
 
-## changing filter settings
-filter = flt("carscore")
-filter$param_set$values = list("diagonal" = TRUE)
-filter$calculate(task)
-head(as.data.table(filter), 3)
 if (mlr3misc::require_namespaces(c("mlr3pipelines", "care", "rpart"), quietly = TRUE)) {
   library("mlr3pipelines")
   task = mlr3::tsk("mtcars")
@@ -36,7 +37,6 @@ if (mlr3misc::require_namespaces(c("mlr3pipelines", "care", "rpart"), quietly = 
     po("learner", mlr3::lrn("regr.rpart"))
 
   graph$train(task)
-
 }
 }
 \seealso{

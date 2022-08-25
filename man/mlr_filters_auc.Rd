@@ -12,12 +12,14 @@ calculating the AUC. If the AUC is undefined for the input, it is set to 0.5
 0.5 is used as final filter value.
 }
 \examples{
-task = mlr3::tsk("pima")
-filter = flt("auc")
-filter$calculate(task)
-head(as.data.table(filter), 3)
+if (requireNamespace("mlr3measures")) {
+  task = mlr3::tsk("pima")
+  filter = flt("auc")
+  filter$calculate(task)
+  head(as.data.table(filter), 3)
+}
 
-if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart"), quietly = TRUE)) {
+if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart", "mlr3measures"), quietly = TRUE)) {
   library("mlr3pipelines")
   task = mlr3::tsk("spam")
 

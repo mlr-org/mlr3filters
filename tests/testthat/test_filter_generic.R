@@ -1,11 +1,11 @@
 test_that("all generic filters return correct filter values", {
   task = mlr_tasks$get("mtcars")
-  filters = mlr_filters$mget(as.data.table(mlr_filters)[map_lgl(task_type,
-    is.element,
-    el = NA), key])
+  filters = mlr_filters$mget(mlr_filters$keys())
 
   for (f in filters) {
-    f$calculate(task)
-    expect_filter(f, task = task)
+    if (NA %in% f$task_type && all(require_namespaces(f$packages, quietly = TRUE))) {
+      f$calculate(task)
+      expect_filter(f, task = task)
+    }
   }
 })

@@ -19,7 +19,7 @@ if (requireNamespace("rpart")) {
   as.data.table(filter)
 }
 
-if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners"), quietly = TRUE)) {
+if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart", "mlr3learners"), quietly = TRUE)) {
   library("mlr3learners")
   library("mlr3pipelines")
   task = mlr3::tsk("spam")
