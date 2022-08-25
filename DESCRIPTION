@@ -35,7 +35,6 @@ Suggests:
     FSelectorRcpp,
     knitr,
     lgr,
-    MASS,
     mlr3learners,
     mlr3measures,
     mlr3pipelines,

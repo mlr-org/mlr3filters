@@ -11,7 +11,7 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' if (requireNamespace("MASS")) {
+#' if (requireNamespace("rpart")) {
 #'   task = mlr3::tsk("iris")
 #'   learner = mlr3::lrn("classif.rpart")
 #'   filter = flt("importance", learner = learner)
@@ -19,17 +19,17 @@
 #'   as.data.table(filter)
 #' }
 #'
-#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners", "MASS"), quietly = TRUE)) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart", "mlr3learners"), quietly = TRUE)) {
 #'   library("mlr3learners")
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'
 #'   learner = mlr3::lrn("classif.rpart")
 #'
-#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'   # Note: `filter.frac` is selected randomly and should be tuned.
 #'
 #'   graph = po("filter", filter = flt("importance", learner = learner), filter.frac = 0.5) %>>%
-#'     po("learner", mlr3::lrn("classif.lda"))
+#'     po("learner", mlr3::lrn("classif.log_reg"))
 #'
 #'   graph$train(task)
 #' }

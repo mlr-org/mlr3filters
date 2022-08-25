@@ -14,21 +14,23 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::tsk("mtcars")
-#' filter = flt("carscore")
-#' filter$calculate(task)
-#' head(as.data.table(filter), 3)
+#' if (requireNamespace("care")) {
+#'   task = mlr3::tsk("mtcars")
+#'   filter = flt("carscore")
+#'   filter$calculate(task)
+#'   head(as.data.table(filter), 3)
+#' }
 #'
 #' ## changing filter settings
 #' filter = flt("carscore")
 #' filter$param_set$values = list("diagonal" = TRUE)
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
-#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "care", "MASS"), quietly = TRUE)) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "care", "rpart"), quietly = TRUE)) {
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("mtcars")
 #'
-#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'   # Note: `filter.frac` is selected randomly and should be tuned.
 #'
 #'   graph = po("filter", filter = flt("carscore"), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("regr.rpart"))
