@@ -18,16 +18,18 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::tsk("pima")
-#' filter = flt("auc")
-#' filter$calculate(task)
-#' head(as.data.table(filter), 3)
+#' if (requireNamespace("mlr3measures")) {
+#'   task = mlr3::tsk("pima")
+#'   filter = flt("auc")
+#'   filter$calculate(task)
+#'   head(as.data.table(filter), 3)
+#' }
 #'
-#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "MASS"), quietly = TRUE)) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart", "mlr3measures"), quietly = TRUE)) {
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("spam")
 #'
-#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'   # Note: `filter.frac` is selected randomly and should be tuned.
 #'
 #'   graph = po("filter", filter = flt("auc"), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.rpart"))

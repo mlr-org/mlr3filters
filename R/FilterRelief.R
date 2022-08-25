@@ -18,11 +18,11 @@
 #'   as.data.table(filter)
 #' }
 #'
-#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "FSelectorRcpp", "MASS"), quietly = TRUE)) {
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "FSelectorRcpp", "rpart"), quietly = TRUE)) {
 #'   library("mlr3pipelines")
 #'   task = mlr3::tsk("iris")
 #'
-#'   # Note: The filter.frac is selected randomly and should be tuned.
+#'   # Note: `filter.frac` is selected randomly and should be tuned.
 #'
 #'   graph = po("filter", filter = flt("relief"), filter.frac = 0.5) %>>%
 #'     po("learner", mlr3::lrn("classif.rpart"))
