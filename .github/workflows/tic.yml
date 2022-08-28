@@ -1,4 +1,4 @@
-## tic GitHub Actions template: linux-deploy
+## tic GitHub Actions template: linux-macos-windows-deploy
 ## revision date: 2022-08-28
 on:
   workflow_dispatch:
@@ -30,7 +30,10 @@ jobs:
       matrix:
         config:
           # use a different tic template type if you do not want to build on all listed platforms
-          - { os: ubuntu-latest, r: "release", pkgdown: "true" }
+          - { os: windows-latest, r: "release" }
+          - { os: macOS-latest, r: "release", pkgdown: "true", latex: "true" }
+          - { os: ubuntu-latest, r: "devel" }
+          - { os: ubuntu-latest, r: "release" }
 
     env:
       # make sure to run `tic::use_ghactions_deploy()` to set up deployment
@@ -90,12 +93,3 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
-      - name: "[Stage] Before Deploy"
-        run: |
-          Rscript -e "tic::before_deploy()"
-
-      - name: "[Stage] Deploy"
-        run: Rscript -e "tic::deploy()"
-
-      - name: "[Stage] After Deploy"
-        run: Rscript -e "tic::after_deploy()"
