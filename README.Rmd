@@ -60,8 +60,16 @@ capitalize = function(x) {
   x
 }
 
-link_cran = function(x) {
-  ifelse(x %in% getOption("defaultPackages"), x, sprintf("[%1$s](https://cran.r-project.org/package=%1$s)", x))
+link_cran = function(pkg) {
+  mlr3misc::map(pkg, function(.x) {
+    mlr3misc::map_chr(.x, function(.y) {
+      if (unlist(.y) %in% getOption("defaultPackages")) {
+        .y
+      } else {
+        sprintf("[%1$s](https://cran.r-project.org/package=%1$s)", .y)
+      }
+    })
+  })
 }
 
 tab = as.data.table(mlr_filters)[, !c("params", "task_properties")]
@@ -80,7 +88,7 @@ tab[Name == "performance", `Package` := ""]
 tab[Name == "permutation", `Package` := ""]
 tab[Name == "selected_features", `Package` := ""]
 tab[Name == "importance", `Package` := ""]
-knitr::kable(tab[order(Name)], escape = FALSE, format = "markdown")
+knitr::kable(tab[order(Name)], format = "markdown")
 ```
 
 ### Variable Importance Filters
@@ -121,7 +129,7 @@ Of course, also regression learners can be passed if the task is of type "regr".
 In many cases filtering is only one step in the modeling pipeline.
 To select features based on filter values, one can use [`PipeOpFilter`](https://mlr3pipelines.mlr-org.com/reference/mlr_pipeops_filter.html) from [mlr3pipelines](https://github.com/mlr-org/mlr3pipelines).
 
-```{r}
+```{r, results='hide'}
 library(mlr3pipelines)
 task = tsk("spam")
 
