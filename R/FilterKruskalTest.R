@@ -25,6 +25,18 @@
 #'
 #' # transform to p-value
 #' 10^(-filter$scores)
+#'
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart"), quietly = TRUE)) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("spam")
+#'
+#'   # Note: `filter.frac` is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("kruskal_test"), filter.frac = 0.5) %>>%
+#'     po("learner", mlr3::lrn("classif.rpart"))
+#'
+#'   graph$train(task)
+#' }
 FilterKruskalTest = R6Class("FilterKruskalTest",
   inherit = Filter,
 

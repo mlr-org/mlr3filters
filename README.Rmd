@@ -64,7 +64,7 @@ link_cran = function(x) {
   ifelse(x %in% getOption("defaultPackages"), x, sprintf("[%1$s](https://cran.r-project.org/package=%1$s)", x))
 }
 
-tab = as.data.table(mlr_filters)[, !c("param_set", "task_properties")]
+tab = as.data.table(mlr_filters)[, !c("params", "task_properties")]
 tab[, task_type := sapply(task_type, function(x) paste(capitalize(x), collapse = " & "))]
 tab[, feature_types := sapply(feature_types, function(x) paste(capitalize(x), collapse = ", "))]
 tab[, packages := link_cran(packages)]
@@ -114,3 +114,21 @@ head(as.data.table(filter), 3)
 `FilterPerformance` is a univariate filter method which calls `resample()` with every predictor variable in the dataset and ranks the final outcome using the supplied measure.
 Any learner can be passed to this filter with `classif.rpart` being the default.
 Of course, also regression learners can be passed if the task is of type "regr".
+
+
+### Filter-based Feature Selection
+
+In many cases filtering is only one step in the modeling pipeline.
+To select features based on filter values, one can use [`PipeOpFilter`](https://mlr3pipelines.mlr-org.com/reference/mlr_pipeops_filter.html) from [mlr3pipelines](https://github.com/mlr-org/mlr3pipelines).
+
+```{r}
+library(mlr3pipelines)
+task = tsk("spam")
+
+# the `filter.frac` should be tuned
+graph = po("filter", filter = flt("auc"), filter.frac = 0.5) %>>%
+  po("learner", lrn("classif.rpart"))
+
+learner = as_learner(graph)
+rr = resample(task, learner, rsmp("holdout"))
+```

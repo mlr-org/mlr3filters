@@ -1,3 +1,4 @@
+
 #' @title Information Gain Filter
 #'
 #' @name mlr_filters_information_gain
@@ -29,6 +30,20 @@
 #'   filterGR$param_set$values = list("type" = "gainratio")
 #'   filterGR$calculate(task)
 #'   head(as.data.table(filterGR), 3)
+#'
+#' }
+#'
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "FSelectorRcpp", "rpart"), quietly = TRUE)) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("spam")
+#'
+#'   # Note: `filter.frac` is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("information_gain"), filter.frac = 0.5) %>>%
+#'     po("learner", mlr3::lrn("classif.rpart"))
+#'
+#'   graph$train(task)
+#'
 #' }
 FilterInformationGain = R6Class("FilterInformationGain",
   inherit = Filter,

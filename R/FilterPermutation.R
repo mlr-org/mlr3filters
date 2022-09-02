@@ -21,6 +21,29 @@
 #' @family Filter
 #' @template seealso_filter
 #' @export
+#' @examples
+#' if (requireNamespace("rpart")) {
+#'   learner = mlr3::lrn("classif.rpart")
+#'   resampling = mlr3::rsmp("holdout")
+#'   measure = mlr3::msr("classif.acc")
+#'   filter = flt("permutation", learner = learner, measure = measure, resampling = resampling,
+#'     nmc = 2)
+#'   task = mlr3::tsk("iris")
+#'   filter$calculate(task)
+#'   as.data.table(filter)
+#' }
+#'
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart"), quietly = TRUE)) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("iris")
+#'
+#'   # Note: `filter.frac` is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("permutation", nmc = 2), filter.frac = 0.5) %>>%
+#'     po("learner", mlr3::lrn("classif.rpart"))
+#'
+#'   graph$train(task)
+#' }
 FilterPermutation = R6Class("FilterPermutation",
   inherit = Filter,
   public = list(

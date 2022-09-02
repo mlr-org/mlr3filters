@@ -19,7 +19,7 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' ## Pearson (default)
+#' # Pearson (default)
 #' task = mlr3::tsk("mtcars")
 #' filter = flt("find_correlation")
 #' filter$calculate(task)
@@ -29,6 +29,18 @@
 #' filter = flt("find_correlation", method = "spearman")
 #' filter$calculate(task)
 #' as.data.table(filter)
+#'
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart"), quietly = TRUE)) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("spam")
+#'
+#'   # Note: `filter.frac` is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("find_correlation"), filter.frac = 0.5) %>>%
+#'     po("learner", mlr3::lrn("classif.rpart"))
+#'
+#'   graph$train(task)
+#' }
 FilterFindCorrelation = R6Class("FilterFindCorrelation",
   inherit = Filter,
 

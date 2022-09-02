@@ -12,14 +12,31 @@ feature separately. The filter score is the aggregated performance of the
 to be minimized.
 }
 \examples{
-task = mlr3::tsk("iris")
-learner = mlr3::lrn("classif.rpart")
-filter = flt("performance", learner = learner)
-filter$calculate(task)
-as.data.table(filter)
+if (requireNamespace("rpart")) {
+  task = mlr3::tsk("iris")
+  learner = mlr3::lrn("classif.rpart")
+  filter = flt("performance", learner = learner)
+  filter$calculate(task)
+  as.data.table(filter)
+}
+if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart"), quietly = TRUE)) {
+  library("mlr3pipelines")
+  task = mlr3::tsk("spam")
+  l = lrn("classif.rpart")
+
+  # Note: `filter.frac` is selected randomly and should be tuned.
+
+  graph = po("filter", filter = flt("performance", learner = l), filter.frac = 0.5) \%>>\%
+    po("learner", mlr3::lrn("classif.rpart"))
+
+  graph$train(task)
+}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+\itemize{
+\item \link[mlr3pipelines:PipeOpFilter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
+}
 
 Other Filter: 
 \code{\link{Filter}},

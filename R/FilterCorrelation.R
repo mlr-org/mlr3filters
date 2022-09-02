@@ -26,6 +26,17 @@
 #' filter$param_set$values = list("method" = "spearman")
 #' filter$calculate(task)
 #' as.data.table(filter)
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart"), quietly = TRUE)) {
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("boston_housing")
+#'
+#'   # Note: `filter.frac` is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("correlation"), filter.frac = 0.5) %>>%
+#'     po("learner", mlr3::lrn("regr.rpart"))
+#'
+#'   graph$train(task)
+#' }
 FilterCorrelation = R6Class("FilterCorrelation",
   inherit = Filter,
 

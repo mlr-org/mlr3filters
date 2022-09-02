@@ -11,11 +11,28 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::tsk("iris")
-#' learner = mlr3::lrn("classif.rpart")
-#' filter = flt("importance", learner = learner)
-#' filter$calculate(task)
-#' as.data.table(filter)
+#' if (requireNamespace("rpart")) {
+#'   task = mlr3::tsk("iris")
+#'   learner = mlr3::lrn("classif.rpart")
+#'   filter = flt("importance", learner = learner)
+#'   filter$calculate(task)
+#'   as.data.table(filter)
+#' }
+#'
+#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart", "mlr3learners"), quietly = TRUE)) {
+#'   library("mlr3learners")
+#'   library("mlr3pipelines")
+#'   task = mlr3::tsk("spam")
+#'
+#'   learner = mlr3::lrn("classif.rpart")
+#'
+#'   # Note: `filter.frac` is selected randomly and should be tuned.
+#'
+#'   graph = po("filter", filter = flt("importance", learner = learner), filter.frac = 0.5) %>>%
+#'     po("learner", mlr3::lrn("classif.log_reg"))
+#'
+#'   graph$train(task)
+#' }
 FilterImportance = R6Class("FilterImportance",
   inherit = Filter,
 
