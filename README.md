@@ -1,7 +1,7 @@
 
 # mlr3filters
 
-Package website: [release](https://mlr3filters.mlr-org.com/) |
+Package website: [release](https://mlr3filters.mlr-org.com/) \|
 [dev](https://mlr3filters.mlr-org.com/dev/)
 
 {mlr3filters} adds feature selection filters to
@@ -54,7 +54,6 @@ as.data.table(filter$calculate(task))
 ```
 
     ##     feature     score
-    ##      <char>     <num>
     ## 1:  glucose 0.2927906
     ## 2:  insulin 0.2316288
     ## 3:     mass 0.1870358
@@ -66,28 +65,29 @@ as.data.table(filter$calculate(task))
 
 ### Implemented Filters
 
-| Name               | label                                                    | Task Type      | Feature Types                                                  | Package                                                                                                                                   |
-| :----------------- | :------------------------------------------------------- | :------------- | :------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
-| anova              | ANOVA F-Test                                             | Classif        | Integer, Numeric                                               | [c(“mlr3filters”, “stats”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22stats%22\))                                     |
-| auc                | Area Under the ROC Curve Score                           | Classif        | Integer, Numeric                                               | [c(“mlr3filters”, “mlr3measures”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22mlr3measures%22\))                       |
-| carsurvscore       | Correlation-Adjusted coRrelation Survival Score          | Surv           | Integer, Numeric                                               | [c(“mlr3filters”, “carSurv”, “mlr3proba”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22carSurv%22,%20%22mlr3proba%22\)) |
-| cmim               | Minimal Conditional Mutual Information Maximization      | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [c(“mlr3filters”, “praznik”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22praznik%22\))                                 |
-| correlation        | Correlation                                              | Regr           | Integer, Numeric                                               | [c(“mlr3filters”, “stats”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22stats%22\))                                     |
-| disr               | Double Input Symmetrical Relevance                       | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [c(“mlr3filters”, “praznik”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22praznik%22\))                                 |
-| find\_correlation  | Correlation-based Score                                  | Classif & Regr | Integer, Numeric                                               | [c(“mlr3filters”, “stats”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22stats%22\))                                     |
-| importance         | Importance Score                                         | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                                           |
-| information\_gain  | Information Gain                                         | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [c(“mlr3filters”, “FSelectorRcpp”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22FSelectorRcpp%22\))                     |
-| jmi                | Joint Mutual Information                                 | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [c(“mlr3filters”, “praznik”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22praznik%22\))                                 |
-| jmim               | Minimal Joint Mutual Information Maximization            | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [c(“mlr3filters”, “praznik”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22praznik%22\))                                 |
-| kruskal\_test      | Kruskal-Wallis Test                                      | Classif        | Integer, Numeric                                               | [c(“mlr3filters”, “stats”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22stats%22\))                                     |
-| mim                | Mutual Information Maximization                          | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [c(“mlr3filters”, “praznik”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22praznik%22\))                                 |
-| mrmr               | Minimum Redundancy Maximal Relevancy                     | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [c(“mlr3filters”, “praznik”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22praznik%22\))                                 |
-| njmim              | Minimal Normalised Joint Mutual Information Maximization | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [c(“mlr3filters”, “praznik”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22praznik%22\))                                 |
-| performance        | Predictive Performance                                   | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                                           |
-| permutation        | Permutation Score                                        | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                                           |
-| relief             | RELIEF                                                   | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [c(“mlr3filters”, “FSelectorRcpp”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22FSelectorRcpp%22\))                     |
-| selected\_features | Embedded Feature Selection                               | Classif        | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                                           |
-| variance           | Variance                                                 | NA             | Integer, Numeric                                               | [c(“mlr3filters”, “stats”)](https://cran.r-project.org/package=c\(%22mlr3filters%22,%20%22stats%22\))                                     |
+| Name              | label                                                    | Task Type      | Feature Types                                                  | Package                                                                                                           |
+|:------------------|:---------------------------------------------------------|:---------------|:---------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------|
+| anova             | ANOVA F-Test                                             | Classif        | Integer, Numeric                                               | stats                                                                                                             |
+| auc               | Area Under the ROC Curve Score                           | Classif        | Integer, Numeric                                               | [mlr3measures](https://cran.r-project.org/package=mlr3measures)                                                   |
+| carscore          | Correlation-Adjusted coRrelation Score                   | Regr           | Numeric                                                        | [care](https://cran.r-project.org/package=care)                                                                   |
+| carsurvscore      | Correlation-Adjusted coRrelation Survival Score          | Surv           | Integer, Numeric                                               | [carSurv](https://cran.r-project.org/package=carSurv) , [mlr3proba](https://cran.r-project.org/package=mlr3proba) |
+| cmim              | Minimal Conditional Mutual Information Maximization      | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                             |
+| correlation       | Correlation                                              | Regr           | Integer, Numeric                                               | stats                                                                                                             |
+| disr              | Double Input Symmetrical Relevance                       | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                             |
+| find_correlation  | Correlation-based Score                                  | Classif & Regr | Integer, Numeric                                               | stats                                                                                                             |
+| importance        | Importance Score                                         | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                   |
+| information_gain  | Information Gain                                         | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp)                                                 |
+| jmi               | Joint Mutual Information                                 | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                             |
+| jmim              | Minimal Joint Mutual Information Maximization            | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                             |
+| kruskal_test      | Kruskal-Wallis Test                                      | Classif        | Integer, Numeric                                               | stats                                                                                                             |
+| mim               | Mutual Information Maximization                          | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                             |
+| mrmr              | Minimum Redundancy Maximal Relevancy                     | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                             |
+| njmim             | Minimal Normalised Joint Mutual Information Maximization | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                             |
+| performance       | Predictive Performance                                   | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                   |
+| permutation       | Permutation Score                                        | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                   |
+| relief            | RELIEF                                                   | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp)                                                 |
+| selected_features | Embedded Feature Selection                               | Classif        | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                   |
+| variance          | Variance                                                 | NA             | Integer, Numeric                                               | stats                                                                                                             |
 
 ### Variable Importance Filters
 
@@ -119,11 +119,10 @@ filter$calculate(task)
 head(as.data.table(filter), 3)
 ```
 
-    ##         feature     score
-    ##          <char>     <num>
-    ## 1:  Petal.Width 44.224198
-    ## 2: Petal.Length 43.303520
-    ## 3: Sepal.Length  9.618601
+    ##         feature    score
+    ## 1:  Petal.Width 43.66496
+    ## 2: Petal.Length 43.10837
+    ## 3: Sepal.Length 10.21944
 
 ### Performance Filter
 
@@ -151,5 +150,3 @@ graph = po("filter", filter = flt("auc"), filter.frac = 0.5) %>>%
 learner = as_learner(graph)
 rr = resample(task, learner, rsmp("holdout"))
 ```
-
-    ## INFO  [10:19:06.498] [mlr3] Applying learner 'auc.classif.rpart' on task 'spam' (iter 1/1)
