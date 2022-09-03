@@ -187,40 +187,63 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 20:      classif                                          method</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 21:           NA                                           na.rm</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        task_type task_properties                          params</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            feature_types          packages</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:                                      integer,numeric             stats</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:                                      integer,numeric      mlr3measures</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:                                              numeric              care</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:                                      integer,numeric carSurv,mlr3proba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:                       integer,numeric,factor,ordered           praznik</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:                                      integer,numeric             stats</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:                       integer,numeric,factor,ordered           praznik</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:                                      integer,numeric             stats</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9: logical,integer,numeric,character,factor,ordered,...              mlr3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:                       integer,numeric,factor,ordered     FSelectorRcpp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:                       integer,numeric,factor,ordered           praznik</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:                       integer,numeric,factor,ordered           praznik</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:                                      integer,numeric             stats</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:                       integer,numeric,factor,ordered           praznik</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:                       integer,numeric,factor,ordered           praznik</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:                       integer,numeric,factor,ordered           praznik</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17: logical,integer,numeric,character,factor,ordered,... mlr3,mlr3measures</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18: logical,integer,numeric,character,factor,ordered,... mlr3,mlr3measures</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19:                       integer,numeric,factor,ordered     FSelectorRcpp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20: logical,integer,numeric,character,factor,ordered,...              mlr3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:                                      integer,numeric             stats</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            feature_types          packages</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            feature_types</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1:                                      integer,numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2:                                      integer,numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3:                                              numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4:                                      integer,numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5:                       integer,numeric,factor,ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6:                                      integer,numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7:                       integer,numeric,factor,ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8:                                      integer,numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9: logical,integer,numeric,character,factor,ordered,...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10:                       integer,numeric,factor,ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11:                       integer,numeric,factor,ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12:                       integer,numeric,factor,ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13:                                      integer,numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14:                       integer,numeric,factor,ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15:                       integer,numeric,factor,ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16:                       integer,numeric,factor,ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17: logical,integer,numeric,character,factor,ordered,...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18: logical,integer,numeric,character,factor,ordered,...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19:                       integer,numeric,factor,ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20: logical,integer,numeric,character,factor,ordered,...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21:                                      integer,numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            feature_types</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                          packages</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1:             mlr3filters,stats</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2:      mlr3filters,mlr3measures</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3:              mlr3filters,care</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4: mlr3filters,carSurv,mlr3proba</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5:           mlr3filters,praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6:             mlr3filters,stats</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7:           mlr3filters,praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8:             mlr3filters,stats</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9:              mlr3filters,mlr3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10:     mlr3filters,FSelectorRcpp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11:           mlr3filters,praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12:           mlr3filters,praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13:             mlr3filters,stats</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14:           mlr3filters,praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15:           mlr3filters,praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16:           mlr3filters,praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17: mlr3filters,mlr3,mlr3measures</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18: mlr3filters,mlr3,mlr3measures</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19:     mlr3filters,FSelectorRcpp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20:              mlr3filters,mlr3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21:             mlr3filters,stats</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                          packages</span>
 <span class="r-in"><span><span class="va">mlr_filters</span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="st">"mim"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;FilterMIM:mim&gt;: Mutual Information Maximization</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Task Types: classif, regr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Task Properties: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Packages: praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Packages: mlr3filters, praznik</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Feature types: integer, numeric, factor, ordered</span>
 <span class="r-in"><span><span class="fu"><a href="flt.html">flt</a></span><span class="op">(</span><span class="st">"anova"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;FilterAnova:anova&gt;: ANOVA F-Test</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Task Types: classif</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Task Properties: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Packages: stats</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Packages: mlr3filters, stats</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Feature types: integer, numeric</span>
 </code></pre></div>
     </div>
