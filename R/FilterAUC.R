@@ -18,7 +18,7 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' task = mlr3::tsk("pima")
+#' task = mlr3::tsk("sonar")
 #' filter = flt("auc")
 #' filter$calculate(task)
 #' head(as.data.table(filter), 3)
@@ -43,7 +43,7 @@ FilterAUC = R6Class("FilterAUC",
     initialize = function() {
       super$initialize(
         id = "auc",
-        task_type = "classif",
+        task_types = "classif",
         task_properties = "twoclass",
         feature_types = c("integer", "numeric"),
         packages = "mlr3measures",

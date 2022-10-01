@@ -50,7 +50,7 @@ FilterKruskalTest = R6Class("FilterKruskalTest",
 
       super$initialize(
         id = "kruskal_test",
-        task_type = "classif",
+        task_types = "classif",
         param_set = param_set,
         packages = "stats",
         feature_types = c("integer", "numeric"),

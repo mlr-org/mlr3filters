@@ -7,12 +7,12 @@ test_that("FilterImportance", {
   expect_filter(f, task = task)
 })
 
-test_that("task_type check", {
+test_that("task_types check", {
   task = mlr3::tsk("mtcars")
   filter = flt("importance", learner = mlr3::lrn("classif.featureless"))
 
   expect_error(
     filter$calculate(task),
-    "match.*type"
+    "type"
   )
 })

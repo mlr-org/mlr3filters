@@ -59,7 +59,7 @@ FilterSelectedFeatures = R6Class("FilterSelectedFeatures",
 
       super$initialize(
         id = "selected_features",
-        task_type = learner$task_type,
+        task_types = learner$task_type,
         feature_types = learner$feature_types,
         packages = learner$packages,
         param_set = learner$param_set,

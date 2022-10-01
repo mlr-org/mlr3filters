@@ -44,7 +44,7 @@ set.seed(1)
 library("mlr3")
 library("mlr3filters")
 
-task = tsk("pima")
+task = tsk("sonar")
 filter = flt("auc")
 as.data.table(filter$calculate(task))
 ```
@@ -73,12 +73,12 @@ link_cran = function(pkg) {
 }
 
 tab = as.data.table(mlr_filters)[, !c("params", "task_properties")]
-tab[, task_type := sapply(task_type, function(x) paste(capitalize(x), collapse = " & "))]
+tab[, task_types := sapply(task_types, function(x) paste(capitalize(x), collapse = " & "))]
 tab[, feature_types := sapply(feature_types, function(x) paste(capitalize(x), collapse = ", "))]
 tab[, packages := link_cran(packages)]
 setnames(tab,
-  old = c("key", "task_type", "feature_types", "packages"),
-  new = c("Name", "Task Type", "Feature Types", "Package"))
+  old = c("key", "task_types", "feature_types", "packages"),
+  new = c("Name", "Task Types", "Feature Types", "Package"))
 # manually change the task type for specific filters
 tab[Name == "performance", `Task Type` := "Universal"]
 tab[Name == "permutation", `Task Type` := "Universal"]

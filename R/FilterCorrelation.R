@@ -51,7 +51,7 @@ FilterCorrelation = R6Class("FilterCorrelation",
 
       super$initialize(
         id = "correlation",
-        task_type = "regr",
+        task_types = "regr",
         param_set = param_set,
         feature_types = c("integer", "numeric"),
         packages = "stats",

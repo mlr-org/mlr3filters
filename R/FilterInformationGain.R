@@ -18,7 +18,7 @@
 #' @examples
 #' if (requireNamespace("FSelectorRcpp")) {
 #'   ## InfoGain (default)
-#'   task = mlr3::tsk("pima")
+#'   task = mlr3::tsk("sonar")
 #'   filter = flt("information_gain")
 #'   filter$calculate(task)
 #'   head(filter$scores, 3)
@@ -61,7 +61,7 @@ FilterInformationGain = R6Class("FilterInformationGain",
 
       super$initialize(
         id = "information_gain",
-        task_type = c("classif", "regr"),
+        task_types = c("classif", "regr"),
         param_set = param_set,
         feature_types = c("integer", "numeric", "factor", "ordered"),
         packages = "FSelectorRcpp",

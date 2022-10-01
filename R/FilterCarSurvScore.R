@@ -27,7 +27,7 @@ FilterCarSurvScore = R6Class("FilterCarSurvScore",
         packages = c("carSurv", "mlr3proba"),
         param_set = ps,
         feature_types = c("integer", "numeric"),
-        task_type = "surv",
+        task_types = "surv",
         label = "Correlation-Adjusted coRrelation Survival Score",
         man = "mlr3filters::mlr_filters_carsurvscore"
       )

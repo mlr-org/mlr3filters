@@ -47,7 +47,7 @@ FilterVariance = R6Class("FilterVariance",
 
       super$initialize(
         id = "variance",
-        task_type = NA_character_,
+        task_types = NA_character_,
         param_set = param_set,
         packages = "stats",
         feature_types = c("integer", "numeric"),

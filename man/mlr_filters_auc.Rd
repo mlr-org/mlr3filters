@@ -12,7 +12,7 @@ calculating the AUC. If the AUC is undefined for the input, it is set to 0.5
 0.5 is used as final filter value.
 }
 \examples{
-task = mlr3::tsk("pima")
+task = mlr3::tsk("sonar")
 filter = flt("auc")
 filter$calculate(task)
 head(as.data.table(filter), 3)
