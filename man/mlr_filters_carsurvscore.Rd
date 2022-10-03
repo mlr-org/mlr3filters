@@ -17,7 +17,7 @@ Bommert A, Welchowski T, Schmid M, Rahnenführer J (2021).
 }
 \seealso{
 \itemize{
-\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3pipelines:PipeOpFilter]{PipeOpFilter} for filter-based feature selection.
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 }
 
