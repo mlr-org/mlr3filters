@@ -5,21 +5,6 @@
 ## Chore
 
 - do not use deprecated function from mlr3misc
-
-## Uncategorized
-
-- Improve PipeOpFilter docu (@66853113+pre-commit-ci[bot], #135)
-
-- [github.com/lorenzwalthert/precommit: v0.3.0 → v0.3.2](https://github.com/lorenzwalthert/precommit/compare/v0.3.0...v0.3.2) (@66853113+pre-commit-ci[bot], #129)
-
-- [github.com/pre-commit/pre-commit-hooks: v4.2.0 → v4.3.0](https://github.com/pre-commit/pre-commit-hooks/compare/v4.2.0...v4.3.0) (@66853113+pre-commit-ci[bot], #129)
-
-- [pre-commit.ci] pre-commit autoupdate (@66853113+pre-commit-ci[bot], #128)
-
-- [github.com/lorenzwalthert/precommit: v0.2.2.9015 → v0.3.0](https://github.com/lorenzwalthert/precommit/compare/v0.2.2.9015...v0.3.0) (@66853113+pre-commit-ci[bot], #128)
-
-- [pre-commit.ci] auto fixes from pre-commit.com hooks (@66853113+pre-commit-ci[bot], #128)
-
 - Use featureless learner in defaults (#124)
 
 
