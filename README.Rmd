@@ -52,13 +52,9 @@ as.data.table(filter$calculate(task))
 ### Implemented Filters
 
 ```{r echo = FALSE, message=FALSE}
+library("mlr3misc")
 library("mlr3filters")
 library("data.table")
-
-capitalize = function(x) {
-  substr(x, 1, 1) = toupper(substr(x, 1, 1))
-  x
-}
 
 link_cran = function(pkg) {
   mlr3misc::map(pkg, function(.x) {
@@ -73,22 +69,22 @@ link_cran = function(pkg) {
 }
 
 tab = as.data.table(mlr_filters)[, !c("params", "task_properties")]
-tab[, task_types := sapply(task_types, function(x) paste(capitalize(x), collapse = " & "))]
+tab[, task_types := sapply(task_types, function(x) if (is_scalar_na(x)) "Universal" else paste(capitalize(x), collapse = " & "))]
 tab[, feature_types := sapply(feature_types, function(x) paste(capitalize(x), collapse = ", "))]
-tab[, packages := link_cran(packages)]
+tab[, packages := sapply(packages, function(x) paste(link_cran(x), collapse = ", "))]
+
+# manually change the task type for specific filters
+learner_based = c("performance", "permutation", "importance", "selected_features")
+tab[key %in% learner_based, task_types := "Universal"]
+tab[key %in% learner_based, packages := ""]
+
+
 setnames(tab,
   old = c("key", "task_types", "feature_types", "packages"),
-  new = c("Name", "Task Types", "Feature Types", "Package"))
-# manually change the task type for specific filters
-tab[Name == "performance", `Task Type` := "Universal"]
-tab[Name == "permutation", `Task Type` := "Universal"]
-tab[Name == "importance", `Task Type` := "Universal"]
-# manually change the package for filter "performance" and "parmutation"
-tab[Name == "performance", `Package` := ""]
-tab[Name == "permutation", `Package` := ""]
-tab[Name == "selected_features", `Package` := ""]
-tab[Name == "importance", `Package` := ""]
-knitr::kable(tab[order(Name)], format = "markdown")
+  new = c("Name", "Task Types", "Feature Types", "Package")
+)
+
+knitr::kable(tab, format = "markdown")
 ```
 
 ### Variable Importance Filters
