@@ -61,7 +61,7 @@ FilterPerformance = R6Class("FilterPerformance",
 
       super$initialize(
         id = "performance",
-        task_type = learner$task_type,
+        task_types = learner$task_type,
         param_set = learner$param_set,
         feature_types = learner$feature_types,
         packages = packages,

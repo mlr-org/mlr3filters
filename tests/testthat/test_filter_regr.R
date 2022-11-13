@@ -3,13 +3,26 @@ test_that("all regr filters return correct filter values", {
   filters = mlr_filters$mget(mlr_filters$keys())
 
   for (f in filters) {
-    if ("regr" %in% f$task_type && all(require_namespaces(f$packages, quietly = TRUE))) {
+    if ("regr" %in% f$task_types && all(require_namespaces(f$packages, quietly = TRUE))) {
       f$calculate(task)
       expect_filter(f, task = task)
     }
   }
 })
 
+test_that("filters throw errors on missing values", {
+  data = tsk("mtcars")$data()
+  data$cyl[1] = NA
+  task = as_task_regr(data, target = "mpg")
+
+  filters = mlr_filters$mget(mlr_filters$keys())
+
+  for (f in filters) {
+    if ("regr" %in% f$task_types && all(require_namespaces(f$packages, quietly = TRUE))) {
+      expect_error(f$calculate(task), "missing values")
+    }
+  }
+})
 
 test_that("Errors for unsupported features", {
   filters = mlr_filters$mget(mlr_filters$keys())

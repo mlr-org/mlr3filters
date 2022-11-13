@@ -50,7 +50,7 @@ FilterNJMIM = R6Class("FilterNJMIM",
       param_set$values = list(threads = 1L)
       super$initialize(
         id = "njmim",
-        task_type = c("classif", "regr"),
+        task_types = c("classif", "regr"),
         param_set = param_set,
         packages = "praznik",
         feature_types = c("integer", "numeric", "factor", "ordered"),

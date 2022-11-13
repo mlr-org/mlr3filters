@@ -17,7 +17,7 @@ Argument \code{equal} defaults to \code{FALSE} for classification tasks, and to
 \examples{
 if (requireNamespace("FSelectorRcpp")) {
   ## InfoGain (default)
-  task = mlr3::tsk("pima")
+  task = mlr3::tsk("sonar")
   filter = flt("information_gain")
   filter$calculate(task)
   head(filter$scores, 3)

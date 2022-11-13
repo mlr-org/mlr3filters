@@ -11,7 +11,7 @@ Information gain filter calling
 \examples{
 if (requireNamespace("FSelectorRcpp")) {
   ## Relief (default)
-  task = mlr3::tsk("pima")
+  task = mlr3::tsk("sonar")
   filter = flt("relief")
   filter$calculate(task)
   head(filter$scores, 3)

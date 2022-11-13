@@ -53,9 +53,9 @@ Used in tables, plot and text output.}
 Label for this object.
 Can be used in tables, plot and text output instead of the ID.}
 
-\item{\code{task_type}}{(\code{character(1)})\cr
-Task type, e.g. \code{"classif"} or \code{"regr"}.
-Can be set to \code{NA} to allow all task types.
+\item{\code{task_types}}{(\code{character()})\cr
+Set of supported task types, e.g. \code{"classif"} or \code{"regr"}.
+Can be set to the scalar value \code{NA} to allow any task type.
 
 For a complete list of possible task types (depending on the loaded packages),
 see \code{\link[=mlr_reflections]{mlr_reflections$task_types$type}}.}
@@ -103,7 +103,7 @@ Create a Filter object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Filter$new(
   id,
-  task_type,
+  task_types,
   task_properties = character(),
   param_set = ps(),
   feature_types = character(),
@@ -119,9 +119,9 @@ Create a Filter object.
 \item{\code{id}}{(\code{character(1)})\cr
 Identifier for the filter.}
 
-\item{\code{task_type}}{(\code{character()})\cr
+\item{\code{task_types}}{(\code{character()})\cr
 Types of the task the filter can operator on. E.g., \code{"classif"} or
-\code{"regr"}. Can be set to \code{NA} to allow all task types.}
+\code{"regr"}. Can be set to scalar \code{NA} to allow any task type.}
 
 \item{\code{task_properties}}{(\code{character()})\cr
 Required task properties, see \link[mlr3:Task]{mlr3::Task}.

@@ -53,7 +53,7 @@ FilterCarScore = R6Class("FilterCarScore",
 
       super$initialize(
         id = "carscore",
-        task_type = "regr",
+        task_types = "regr",
         param_set = param_set,
         feature_types = "numeric",
         packages = "care",

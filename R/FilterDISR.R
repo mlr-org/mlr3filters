@@ -51,7 +51,7 @@ FilterDISR = R6Class("FilterDISR",
 
       super$initialize(
         id = "disr",
-        task_type = c("classif", "regr"),
+        task_types = c("classif", "regr"),
         param_set = param_set,
         feature_types = c("integer", "numeric", "factor", "ordered"),
         packages = "praznik",

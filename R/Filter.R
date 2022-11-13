@@ -27,13 +27,13 @@ Filter = R6Class("Filter",
     #'   Can be used in tables, plot and text output instead of the ID.
     label = NA_character_,
 
-    #' @field task_type (`character(1)`)\cr
-    #'   Task type, e.g. `"classif"` or `"regr"`.
-    #'   Can be set to `NA` to allow all task types.
+    #' @field task_types (`character()`)\cr
+    #'   Set of supported task types, e.g. `"classif"` or `"regr"`.
+    #'   Can be set to the scalar value `NA` to allow any task type.
     #'
     #'   For a complete list of possible task types (depending on the loaded packages),
     #'   see [`mlr_reflections$task_types$type`][mlr_reflections].
-    task_type = NULL,
+    task_types = NULL,
 
     #' @field task_properties (`character()`)\cr
     #'   [mlr3::Task]task properties.
@@ -67,9 +67,9 @@ Filter = R6Class("Filter",
     #' @description Create a Filter object.
     #' @param id (`character(1)`)\cr
     #'   Identifier for the filter.
-    #' @param task_type (`character()`)\cr
+    #' @param task_types (`character()`)\cr
     #'   Types of the task the filter can operator on. E.g., `"classif"` or
-    #'   `"regr"`. Can be set to `NA` to allow all task types.
+    #'   `"regr"`. Can be set to scalar `NA` to allow any task type.
     #' @param param_set ([paradox::ParamSet])\cr
     #'   Set of hyperparameters.
     #' @param feature_types (`character()`)\cr
@@ -90,18 +90,18 @@ Filter = R6Class("Filter",
     #'   String in the format `[pkg]::[topic]` pointing to a manual page for
     #'   this object. The referenced help package can be opened via method
     #'   `$help()`.
-    initialize = function(id, task_type, task_properties = character(),
+    initialize = function(id, task_types, task_properties = character(),
       param_set = ps(), feature_types = character(),
       packages = character(), label = NA_character_, man = NA_character_) {
 
       self$id = assert_string(id)
       self$label = assert_string(label, na.ok = TRUE)
-      if (!test_scalar_na(task_type)) {
+      if (!test_scalar_na(task_types)) {
         # we allow any task type here, otherwise we are not able to construct
         # the filter without loading additional packages like mlr3proba
-        assert_character(task_type, any.missing = FALSE)
+        assert_character(task_types, any.missing = FALSE)
       }
-      self$task_type = task_type
+      self$task_types = task_types
       self$task_properties = assert_subset(
         task_properties,
         unlist(mlr_reflections$task_properties, use.names = FALSE))
@@ -124,7 +124,7 @@ Filter = R6Class("Filter",
     #' Printer for Filter class
     print = function() {
       catn(format(self), if (is.na(self$label)) "" else paste0(": ", self$label))
-      catn(str_indent("Task Types:", self$task_type))
+      catn(str_indent("Task Types:", self$task_types))
       catn(str_indent("Task Properties:", self$task_properties))
       catn(str_indent("Packages:", self$packages))
       catn(str_indent("Feature types:", self$feature_types))
@@ -162,6 +162,11 @@ Filter = R6Class("Filter",
       task = assert_task(as_task(task),
         feature_types = self$feature_types,
         task_properties = self$task_properties)
+
+      if (!is_scalar_na(self$task_types) && task$task_type %nin% self$task_types) {
+        stopf("Filter '%s' does not support the type '%s' of task '%s'",
+          self$id, task$task_type, task$id)
+      }
       fn = task$feature_names
 
       if (task$nrow == 0L) {
@@ -174,6 +179,11 @@ Filter = R6Class("Filter",
         } else {
           nfeat = assert_count(nfeat, coerce = TRUE)
           nfeat = min(nfeat, length(fn))
+        }
+
+        if (any(task$missings() > 0L)) {
+          stopf("Cannot apply filter '%s' on task '%s', missing values detected",
+            self$id, task$id)
         }
 
         # calculate filter values using the dedicated filter
