@@ -137,25 +137,78 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3.mlr-org.com" class="external-link">"mlr3"</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3filters.mlr-org.com">"mlr3filters"</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span></span>
+<span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span>
 <span><span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="reference/flt.html">flt</a></span><span class="op">(</span><span class="st">"auc"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">##     feature     score</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 1:  glucose 0.2927906</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 2:  insulin 0.2316288</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 3:     mass 0.1870358</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 4:      age 0.1869403</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 5:  triceps 0.1625115</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 6: pregnant 0.1195149</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 7: pressure 0.1075760</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 8: pedigree 0.1062015</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">##     feature       score</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  1:     V11 0.281136807</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  2:     V12 0.242918176</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  3:     V10 0.232701774</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  4:     V49 0.231262190</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  5:      V9 0.230844246</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  6:     V48 0.206278443</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  7:     V13 0.204699545</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  8:     V51 0.199359153</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  9:     V47 0.197408749</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 10:     V52 0.188028234</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 11:     V46 0.187053032</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 12:     V45 0.172703631</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 13:      V4 0.165227083</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 14:     V36 0.165180645</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 15:      V5 0.153710411</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 16:      V1 0.152317266</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 17:     V44 0.151063435</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 18:     V21 0.144469211</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 19:     V35 0.141450729</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 20:      V8 0.141032785</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 21:     V43 0.140893471</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 22:     V37 0.128076530</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="do">## 23:      V6 0.124640104</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 24:     V20 0.123572026</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="do">## 25:      V2 0.122782576</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 26:     V50 0.121807374</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 27:      V3 0.116513421</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="do">## 28:     V14 0.114748769</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 29:     V22 0.113680691</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 30:     V58 0.098402526</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="do">## 31:     V42 0.091436798</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="do">## 32:     V34 0.090275843</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="do">## 33:     V23 0.085632024</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="do">## 34:      V7 0.085074765</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="do">## 35:     V28 0.078944924</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="do">## 36:     V31 0.078341228</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="do">## 37:     V19 0.077366026</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="do">## 38:     V53 0.071607690</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="do">## 39:     V54 0.068031949</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="do">## 40:     V56 0.060648277</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="do">## 41:     V39 0.058094177</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="do">## 42:     V33 0.056793907</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="do">## 43:     V24 0.055447200</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="do">## 44:     V59 0.054611312</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="do">## 45:     V27 0.053543234</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="do">## 46:     V15 0.053264605</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="do">## 47:     V32 0.043187517</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="do">## 48:     V16 0.031485093</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="do">## 49:     V29 0.028605926</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="do">## 50:     V17 0.026516207</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="do">## 51:     V41 0.024472927</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="do">## 52:     V18 0.018621714</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="do">## 53:     V26 0.017507198</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="do">## 54:     V38 0.014813783</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="do">## 55:     V25 0.013838581</span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="do">## 56:     V60 0.012213244</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="do">## 57:     V30 0.006965729</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="do">## 58:     V57 0.004876010</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="do">## 59:     V55 0.003204235</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="do">## 60:     V40 0.002182595</span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="do">##     feature       score</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="implemented-filters">Implemented Filters<a class="anchor" aria-label="anchor" href="#implemented-filters"></a>
 </h3>
 <table class="table">
 <colgroup>
-<col width="6%">
+<col width="7%">
 <col width="21%">
 <col width="5%">
 <col width="23%">
@@ -164,7 +217,7 @@
 <thead><tr class="header">
 <th align="left">Name</th>
 <th align="left">label</th>
-<th align="left">Task Type</th>
+<th align="left">Task Types</th>
 <th align="left">Feature Types</th>
 <th align="left">Package</th>
 </tr></thead>
@@ -196,7 +249,7 @@
 <td align="left">Surv</td>
 <td align="left">Integer, Numeric</td>
 <td align="left">
-<a href="https://cran.r-project.org/package=carSurv" class="external-link">carSurv</a> , <a href="https://cran.r-project.org/package=mlr3proba" class="external-link">mlr3proba</a>
+<a href="https://cran.r-project.org/package=carSurv" class="external-link">carSurv</a>, <a href="https://cran.r-project.org/package=mlr3proba" class="external-link">mlr3proba</a>
 </td>
 </tr>
 <tr class="odd">
@@ -307,14 +360,14 @@
 <tr class="even">
 <td align="left">selected_features</td>
 <td align="left">Embedded Feature Selection</td>
-<td align="left">Classif</td>
+<td align="left">Universal</td>
 <td align="left">Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct</td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">variance</td>
 <td align="left">Variance</td>
-<td align="left">NA</td>
+<td align="left">Universal</td>
 <td align="left">Integer, Numeric</td>
 <td align="left">stats</td>
 </tr>
@@ -338,10 +391,10 @@
 <span><span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="reference/flt.html">flt</a></span><span class="op">(</span><span class="st">"importance"</span>, learner <span class="op">=</span> <span class="va">lrn</span><span class="op">)</span></span>
 <span><span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">##         feature    score</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 1:  Petal.Width 43.66496</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 2: Petal.Length 43.10837</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 3: Sepal.Length 10.21944</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">##         feature     score</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 1: Petal.Length 44.682462</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 2:  Petal.Width 43.113031</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 3: Sepal.Length  9.039099</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="performance-filter">Performance Filter<a class="anchor" aria-label="anchor" href="#performance-filter"></a>
@@ -393,8 +446,8 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://pat-s.me" class="external-link">Patrick Schratz</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-0748-6624" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Michel Lang <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-9754-0393" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<a href="https://pat-s.me" class="external-link">Patrick Schratz</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-0748-6624" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Michel Lang <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0001-9754-0393" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Bernd Bischl <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-6002-6980" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Martin Binder <br><small class="roles"> Author </small>  </li>
 </ul>

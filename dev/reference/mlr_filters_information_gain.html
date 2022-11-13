@@ -174,7 +174,7 @@ parameter <code>"type"</code> to <code>"gainratio"</code> to calculate the gain 
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"FSelectorRcpp"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="co">## InfoGain (default)</span></span></span>
-<span class="r-in"><span>  <span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"pima"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="flt.html">flt</a></span><span class="op">(</span><span class="st">"information_gain"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">filter</span><span class="op">$</span><span class="va">scores</span>, <span class="fl">3</span><span class="op">)</span></span></span>
@@ -188,10 +188,10 @@ parameter <code>"type"</code> to <code>"gainratio"</code> to calculate the gain 
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filterGR</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    feature      score</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: glucose 0.09829336</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:    mass 0.08428940</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:     age 0.07257535</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    feature     score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:     V11 0.2053399</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2:     V12 0.1802854</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3:      V9 0.1633805</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">mlr3misc</span><span class="fu">::</span><span class="fu"><a href="https://mlr3misc.mlr-org.com/reference/require_namespaces.html" class="external-link">require_namespaces</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mlr3pipelines"</span>, <span class="st">"FSelectorRcpp"</span>, <span class="st">"rpart"</span><span class="op">)</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3pipelines.mlr-org.com" class="external-link">"mlr3pipelines"</a></span><span class="op">)</span></span></span>
