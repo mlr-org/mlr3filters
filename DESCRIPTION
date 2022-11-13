@@ -2,9 +2,9 @@ Package: mlr3filters
 Title: Filter Based Feature Selection for 'mlr3'
 Version: 0.6.0.9000
 Authors@R: c(
-    person("Patrick", "Schratz", , "patrick.schratz@gmail.com", role = c("aut", "cre"),
+    person("Patrick", "Schratz", , "patrick.schratz@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0003-0748-6624")),
-    person("Michel", "Lang", , "michellang@gmail.com", role = "aut",
+    person("Michel", "Lang", , "michellang@gmail.com", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0001-9754-0393")),
     person("Bernd", "Bischl", , "bernd_bischl@gmx.net", role = "aut",
            comment = c(ORCID = "0000-0001-6002-6980")),
