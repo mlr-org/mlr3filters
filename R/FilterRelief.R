@@ -11,7 +11,7 @@
 #' @examples
 #' if (requireNamespace("FSelectorRcpp")) {
 #'   ## Relief (default)
-#'   task = mlr3::tsk("sonar")
+#'   task = mlr3::tsk("iris")
 #'   filter = flt("relief")
 #'   filter$calculate(task)
 #'   head(filter$scores, 3)

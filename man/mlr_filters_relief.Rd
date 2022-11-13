@@ -11,7 +11,7 @@ Information gain filter calling
 \examples{
 if (requireNamespace("FSelectorRcpp")) {
   ## Relief (default)
-  task = mlr3::tsk("sonar")
+  task = mlr3::tsk("iris")
   filter = flt("relief")
   filter$calculate(task)
   head(filter$scores, 3)
@@ -32,7 +32,7 @@ if (mlr3misc::require_namespaces(c("mlr3pipelines", "FSelectorRcpp", "rpart"), q
 }
 \seealso{
 \itemize{
-\item \link[mlr3pipelines:PipeOpFilter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 }
 
