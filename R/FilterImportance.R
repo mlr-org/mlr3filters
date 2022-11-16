@@ -66,6 +66,10 @@ FilterImportance = R6Class("FilterImportance",
       learner = self$learner$clone(deep = TRUE)
       learner = learner$train(task = task)
       learner$base_learner()$importance()
+    },
+
+    .get_properties = function() {
+      intersect("missings", self$learner$properties)
     }
   )
 )

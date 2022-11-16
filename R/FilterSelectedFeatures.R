@@ -75,6 +75,10 @@ FilterSelectedFeatures = R6Class("FilterSelectedFeatures",
       learner = learner$train(task = task)
       score = named_vector(task$feature_names, init = 0)
       replace(score, names(score) %in% learner$selected_features(), 1)
+    },
+
+    .get_properties = function() {
+      intersect("missings", self$learner$properties)
     }
   )
 )

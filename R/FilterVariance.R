@@ -61,6 +61,10 @@ FilterVariance = R6Class("FilterVariance",
     .calculate = function(task, nfeat) {
       na_rm = self$param_set$values$na.rm %??% TRUE
       map_dbl(task$data(cols = task$feature_names), var, na.rm = na_rm)
+    },
+
+    .get_properties = function() {
+      if (isTRUE(self$param_set$values$na.rm)) "missings" else character()
     }
   )
 )

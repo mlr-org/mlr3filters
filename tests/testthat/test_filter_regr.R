@@ -18,6 +18,10 @@ test_that("filters throw errors on missing values", {
   filters = mlr_filters$mget(mlr_filters$keys())
 
   for (f in filters) {
+    if ("missings" %in% f$properties) {
+      next
+    }
+
     if ("regr" %in% f$task_types && all(require_namespaces(f$packages, quietly = TRUE))) {
       expect_error(f$calculate(task), "missing values")
     }

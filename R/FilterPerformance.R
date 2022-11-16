@@ -87,6 +87,10 @@ FilterPerformance = R6Class("FilterPerformance",
       }
 
       set_names(perf, fn)
+    },
+
+    .get_properties = function() {
+      intersect("missings", self$learner$properties)
     }
   )
 )
