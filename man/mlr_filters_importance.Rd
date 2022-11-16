@@ -22,7 +22,7 @@ if (requireNamespace("rpart")) {
 if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart", "mlr3learners"), quietly = TRUE)) {
   library("mlr3learners")
   library("mlr3pipelines")
-  task = mlr3::tsk("iris")
+  task = mlr3::tsk("sonar")
 
   learner = mlr3::lrn("classif.rpart")
 
@@ -36,7 +36,7 @@ if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart", "mlr3learners"), qu
 }
 \seealso{
 \itemize{
-\item \link[mlr3pipelines:PipeOpFilter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 }
 
