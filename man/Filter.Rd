@@ -84,6 +84,17 @@ non-deterministic order.}
 }
 \if{html}{\out{</div>}}
 }
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{properties}}{(\code{\link[=character]{character()}})\cr
+Properties of the filter. Currently, only \code{"missings"} is supported.
+A filter has the property \code{"missings"}, iff the filter can handle missing values
+in the features in a graceful way. Otherwise, an assertion is thrown if missing
+values are detected.}
+}
+\if{html}{\out{</div>}}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{

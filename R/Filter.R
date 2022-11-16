@@ -212,7 +212,6 @@ Filter = R6Class("Filter",
       get_properties = get0(".get_properties", private)
       if (is.null(get_properties)) character() else get_properties()
     }
-
   )
 )
 
