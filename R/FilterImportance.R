@@ -22,7 +22,7 @@
 #' if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart", "mlr3learners"), quietly = TRUE)) {
 #'   library("mlr3learners")
 #'   library("mlr3pipelines")
-#'   task = mlr3::tsk("spam")
+#'   task = mlr3::tsk("iris")
 #'
 #'   learner = mlr3::lrn("classif.rpart")
 #'
