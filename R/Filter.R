@@ -116,6 +116,7 @@ Filter = R6Class("Filter",
 
     #' @description
     #' Format helper for Filter class
+    #' @param ... (ignored).
     format = function(...) {
       sprintf("<%s:%s>", class(self)[1L], self$id) # nocov
     },
