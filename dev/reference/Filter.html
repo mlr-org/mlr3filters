@@ -3,7 +3,7 @@
 dictionary mlr_filters. A Filter calculates a score
 for each feature of a task. Important features get a large value and
 unimportant features get a small value. Note that filter scores may also be
-negative."><title>Filter Base Class — Filter • mlr3filters</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.4/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.4/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.4/font.css" rel="stylesheet"><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Filter Base Class — Filter"><meta property="og:description" content="Base class for filters. Predefined filters are stored in the
+negative."><title>Filter Base Class — Filter • mlr3filters</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.4/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.4/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.4/font.css" rel="stylesheet"><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Filter Base Class — Filter"><meta property="og:description" content="Base class for filters. Predefined filters are stored in the
 dictionary mlr_filters. A Filter calculates a score
 for each feature of a task. Important features get a large value and
 unimportant features get a small value. Note that filter scores may also be
@@ -84,7 +84,7 @@ negative."><meta property="og:image" content="https://mlr3filters.mlr-org.com/lo
 
     <div class="ref-description section level2">
     <p>Base class for filters. Predefined filters are stored in the
-<a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> <a href="mlr_filters.html">mlr_filters</a>. A Filter calculates a score
+<a href="https://rdrr.io/pkg/mlr3misc/man/Dictionary.html" class="external-link">dictionary</a> <a href="mlr_filters.html">mlr_filters</a>. A Filter calculates a score
 for each feature of a task. Important features get a large value and
 unimportant features get a small value. Note that filter scores may also be
 negative.</p>
@@ -143,15 +143,15 @@ Can be used in tables, plot and text output instead of the ID.</p></dd>
 Set of supported task types, e.g. <code>"classif"</code> or <code>"regr"</code>.
 Can be set to the scalar value <code>NA</code> to allow any task type.</p>
 <p>For a complete list of possible task types (depending on the loaded packages),
-see <code><a href="https://mlr3.mlr-org.com/reference/mlr_reflections.html" class="external-link">mlr_reflections$task_types$type</a></code>.</p></dd>
+see <code><a href="https://rdrr.io/pkg/mlr3/man/mlr_reflections.html" class="external-link">mlr_reflections$task_types$type</a></code>.</p></dd>
 
 
 <dt><code>task_properties</code></dt>
-<dd><p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>)<br><a href="https://mlr3.mlr-org.com/reference/Task.html" class="external-link">mlr3::Task</a>task properties.</p></dd>
+<dd><p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>)<br><a href="https://rdrr.io/pkg/mlr3/man/Task.html" class="external-link">mlr3::Task</a>task properties.</p></dd>
 
 
 <dt><code>param_set</code></dt>
-<dd><p>(<a href="https://paradox.mlr-org.com/reference/ParamSet.html" class="external-link">paradox::ParamSet</a>)<br>
+<dd><p>(<a href="https://rdrr.io/pkg/paradox/man/ParamSet.html" class="external-link">paradox::ParamSet</a>)<br>
 Set of hyperparameters.</p></dd>
 
 
@@ -224,13 +224,13 @@ Types of the task the filter can operator on. E.g., <code>"classif"</code> or
 
 <dt><code>task_properties</code></dt>
 <dd><p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>)<br>
-Required task properties, see <a href="https://mlr3.mlr-org.com/reference/Task.html" class="external-link">mlr3::Task</a>.
+Required task properties, see <a href="https://rdrr.io/pkg/mlr3/man/Task.html" class="external-link">mlr3::Task</a>.
 Must be a subset of
-<code><a href="https://mlr3.mlr-org.com/reference/mlr_reflections.html" class="external-link">mlr_reflections$task_properties</a></code>.</p></dd>
+<code><a href="https://rdrr.io/pkg/mlr3/man/mlr_reflections.html" class="external-link">mlr_reflections$task_properties</a></code>.</p></dd>
 
 
 <dt><code>param_set</code></dt>
-<dd><p>(<a href="https://paradox.mlr-org.com/reference/ParamSet.html" class="external-link">paradox::ParamSet</a>)<br>
+<dd><p>(<a href="https://rdrr.io/pkg/paradox/man/ParamSet.html" class="external-link">paradox::ParamSet</a>)<br>
 Set of hyperparameters.</p></dd>
 
 
@@ -238,7 +238,7 @@ Set of hyperparameters.</p></dd>
 <dd><p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>)<br>
 Feature types the filter operates on.
 Must be a subset of
-<code><a href="https://mlr3.mlr-org.com/reference/mlr_reflections.html" class="external-link">mlr_reflections$task_feature_types</a></code>.</p></dd>
+<code><a href="https://rdrr.io/pkg/mlr3/man/mlr_reflections.html" class="external-link">mlr_reflections$task_feature_types</a></code>.</p></dd>
 
 
 <dt><code>packages</code></dt>
@@ -289,7 +289,7 @@ this object. The referenced help package can be opened via method
 
 </div><p></p><hr><a id="method-Filter-calculate"></a><div class="section">
 <h3 id="method-calculate-">Method <code>calculate()</code><a class="anchor" aria-label="anchor" href="#method-calculate-"></a></h3>
-<p>Calculates the filter score values for the provided <a href="https://mlr3.mlr-org.com/reference/Task.html" class="external-link">mlr3::Task</a> and
+<p>Calculates the filter score values for the provided <a href="https://rdrr.io/pkg/mlr3/man/Task.html" class="external-link">mlr3::Task</a> and
 stores them in field <code>scores</code>. <code>nfeat</code> determines the minimum number of
 features to score (see details), and defaults to the number
 of features in <code>task</code>. Loads required packages and then calls
@@ -307,7 +307,7 @@ If the task has no rows, each feature gets the score <code>NA</code>.</p><div cl
 <div class="section">
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>task</code></dt>
-<dd><p>(<a href="https://mlr3.mlr-org.com/reference/Task.html" class="external-link">mlr3::Task</a>)<br><a href="https://mlr3.mlr-org.com/reference/Task.html" class="external-link">mlr3::Task</a> to calculate the filter scores for.</p></dd>
+<dd><p>(<a href="https://rdrr.io/pkg/mlr3/man/Task.html" class="external-link">mlr3::Task</a>)<br><a href="https://rdrr.io/pkg/mlr3/man/Task.html" class="external-link">mlr3::Task</a> to calculate the filter scores for.</p></dd>
 
 
 <dt><code>nfeat</code></dt>
@@ -347,7 +347,7 @@ The minimum number of features to calculate filter scores for.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
     </footer></div>
