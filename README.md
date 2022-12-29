@@ -17,9 +17,7 @@ from this package for embedded feature selection.
 
 <!-- badges: start -->
 
-[![tic](https://github.com/mlr-org/mlr3filters/workflows/tic/badge.svg?branch=master)](https://github.com/mlr-org/mlr3filters/actions)
-[![CRAN
-Status](https://www.r-pkg.org/badges/version/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
+[![r-cmd-check](https://github.com/mlr-org/mlr3filters/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/mlr-org/mlr3filters/actions/workflows/r-cmd-check.yml)
 [![CodeFactor](https://www.codefactor.io/repository/github/mlr-org/mlr3filters/badge)](https://www.codefactor.io/repository/github/mlr-org/mlr3filters)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 [![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
@@ -172,10 +170,10 @@ filter$calculate(task)
 head(as.data.table(filter), 3)
 ```
 
-    ##         feature     score
-    ## 1: Petal.Length 44.682462
-    ## 2:  Petal.Width 43.113031
-    ## 3: Sepal.Length  9.039099
+    ##         feature    score
+    ## 1: Petal.Length 43.19847
+    ## 2:  Petal.Width 43.11627
+    ## 3: Sepal.Length 10.62848
 
 ### Performance Filter
 
