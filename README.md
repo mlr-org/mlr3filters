@@ -18,7 +18,8 @@ from this package for embedded feature selection.
 <!-- badges: start -->
 
 [![r-cmd-check](https://github.com/mlr-org/mlr3filters/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/mlr-org/mlr3filters/actions/workflows/r-cmd-check.yml)
-[![CRAN Status](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
+[![CRAN
+Status](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 [![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
 <!-- badges: end -->
@@ -48,71 +49,16 @@ library("mlr3filters")
 
 task = tsk("sonar")
 filter = flt("auc")
-as.data.table(filter$calculate(task))
+head(as.data.table(filter$calculate(task)))
 ```
 
-    ##     feature       score
-    ##  1:     V11 0.281136807
-    ##  2:     V12 0.242918176
-    ##  3:     V10 0.232701774
-    ##  4:     V49 0.231262190
-    ##  5:      V9 0.230844246
-    ##  6:     V48 0.206278443
-    ##  7:     V13 0.204699545
-    ##  8:     V51 0.199359153
-    ##  9:     V47 0.197408749
-    ## 10:     V52 0.188028234
-    ## 11:     V46 0.187053032
-    ## 12:     V45 0.172703631
-    ## 13:      V4 0.165227083
-    ## 14:     V36 0.165180645
-    ## 15:      V5 0.153710411
-    ## 16:      V1 0.152317266
-    ## 17:     V44 0.151063435
-    ## 18:     V21 0.144469211
-    ## 19:     V35 0.141450729
-    ## 20:      V8 0.141032785
-    ## 21:     V43 0.140893471
-    ## 22:     V37 0.128076530
-    ## 23:      V6 0.124640104
-    ## 24:     V20 0.123572026
-    ## 25:      V2 0.122782576
-    ## 26:     V50 0.121807374
-    ## 27:      V3 0.116513421
-    ## 28:     V14 0.114748769
-    ## 29:     V22 0.113680691
-    ## 30:     V58 0.098402526
-    ## 31:     V42 0.091436798
-    ## 32:     V34 0.090275843
-    ## 33:     V23 0.085632024
-    ## 34:      V7 0.085074765
-    ## 35:     V28 0.078944924
-    ## 36:     V31 0.078341228
-    ## 37:     V19 0.077366026
-    ## 38:     V53 0.071607690
-    ## 39:     V54 0.068031949
-    ## 40:     V56 0.060648277
-    ## 41:     V39 0.058094177
-    ## 42:     V33 0.056793907
-    ## 43:     V24 0.055447200
-    ## 44:     V59 0.054611312
-    ## 45:     V27 0.053543234
-    ## 46:     V15 0.053264605
-    ## 47:     V32 0.043187517
-    ## 48:     V16 0.031485093
-    ## 49:     V29 0.028605926
-    ## 50:     V17 0.026516207
-    ## 51:     V41 0.024472927
-    ## 52:     V18 0.018621714
-    ## 53:     V26 0.017507198
-    ## 54:     V38 0.014813783
-    ## 55:     V25 0.013838581
-    ## 56:     V60 0.012213244
-    ## 57:     V30 0.006965729
-    ## 58:     V57 0.004876010
-    ## 59:     V55 0.003204235
-    ## 60:     V40 0.002182595
-    ##     feature       score
+    ##    feature     score
+    ## 1:     V11 0.2811368
+    ## 2:     V12 0.2429182
+    ## 3:     V10 0.2327018
+    ## 4:     V49 0.2312622
+    ## 5:      V9 0.2308442
+    ## 6:     V48 0.2062784
 
 ### Implemented Filters
 
@@ -145,8 +91,8 @@ as.data.table(filter$calculate(task))
 The following learners allow the extraction of variable importance and
 therefore are supported by `FilterImportance`:
 
-    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"
-    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"
+    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
+    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
     ## [7] "regr.rpart"          "regr.xgboost"
 
 If your learner is not listed here but capable of extracting variable

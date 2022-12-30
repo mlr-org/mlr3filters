@@ -45,7 +45,7 @@ library("mlr3filters")
 
 task = tsk("sonar")
 filter = flt("auc")
-as.data.table(filter$calculate(task))
+head(as.data.table(filter$calculate(task)))
 ```
 
 ### Implemented Filters
