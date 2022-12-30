@@ -18,7 +18,7 @@ from this package for embedded feature selection.
 <!-- badges: start -->
 
 [![r-cmd-check](https://github.com/mlr-org/mlr3filters/actions/workflows/r-cmd-check.yml/badge.svg)](https://github.com/mlr-org/mlr3filters/actions/workflows/r-cmd-check.yml)
-[![CodeFactor](https://www.codefactor.io/repository/github/mlr-org/mlr3filters/badge)](https://www.codefactor.io/repository/github/mlr-org/mlr3filters)
+[![CRAN Status](https://www.r-pkg.org/badges/version-ago/mlr3filters)](https://cran.r-project.org/package=mlr3filters)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 [![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
 <!-- badges: end -->
@@ -145,8 +145,8 @@ as.data.table(filter$calculate(task))
 The following learners allow the extraction of variable importance and
 therefore are supported by `FilterImportance`:
 
-    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
-    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
+    ## [1] "classif.featureless" "classif.ranger"      "classif.rpart"
+    ## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"
     ## [7] "regr.rpart"          "regr.xgboost"
 
 If your learner is not listed here but capable of extracting variable
