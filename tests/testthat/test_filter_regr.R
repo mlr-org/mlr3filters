@@ -18,24 +18,31 @@ test_that("filters throw errors on missing values", {
   filters = mlr_filters$mget(mlr_filters$keys())
 
   for (f in filters) {
-    if ("missings" %in% f$properties) {
+    if ("regr" %nin% f$task_types) {
       next
     }
 
-    if ("regr" %in% f$task_types && all(require_namespaces(f$packages, quietly = TRUE))) {
+    if (!all(require_namespaces(f$packages, quietly = TRUE))) {
+      next
+    }
+
+    if ("missings" %in% f$properties) {
+      f$calculate(task)
+    } else {
       expect_error(f$calculate(task), "missing values")
     }
   }
 })
 
 test_that("Errors for unsupported features", {
+  task = tsk("boston_housing")
   filters = mlr_filters$mget(mlr_filters$keys())
 
   # supported: numeric, integer
   # supplied: factor, integer, numeric
   for (f in filters) {
-    if (any(c("integer", "numeric") %in% f$feature_types) && all(require_namespaces(f$packages, quietly = TRUE))) {
-      expect_error(f$calculate(task_bh))
+    if ("factor" %nin% f$feature_types && all(require_namespaces(f$packages, quietly = TRUE))) {
+      expect_error(f$calculate(task))
     }
   }
 })
