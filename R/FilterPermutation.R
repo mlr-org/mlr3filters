@@ -4,7 +4,7 @@
 #'
 #' @description
 #' The permutation filter randomly permutes the values of a single feature in a
-#' [mlr3::Task] to break the association with the response. The permutated
+#' [mlr3::Task] to break the association with the response. The permuted
 #' feature, together with the unmodified features, is used to perform a
 #' [mlr3::resample()]. The permutation filter score is the difference between
 #' the aggregated performance of the [mlr3::Measure] and the performance

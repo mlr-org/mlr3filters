@@ -6,7 +6,7 @@
 \title{Permutation Score Filter}
 \description{
 The permutation filter randomly permutes the values of a single feature in a
-\link[mlr3:Task]{mlr3::Task} to break the association with the response. The permutated
+\link[mlr3:Task]{mlr3::Task} to break the association with the response. The permuted
 feature, together with the unmodified features, is used to perform a
 \code{\link[mlr3:resample]{mlr3::resample()}}. The permutation filter score is the difference between
 the aggregated performance of the \link[mlr3:Measure]{mlr3::Measure} and the performance
