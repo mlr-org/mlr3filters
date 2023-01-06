@@ -91,8 +91,8 @@ Filter = R6Class("Filter",
     #'   this object. The referenced help package can be opened via method
     #'   `$help()`.
     initialize = function(id, task_types, task_properties = character(),
-      param_set = ps(), feature_types = character(),
-      packages = character(), label = NA_character_, man = NA_character_) {
+      param_set = ps(), feature_types = character(), packages = character(), label = NA_character_,
+      man = NA_character_) {
 
       self$id = assert_string(id)
       self$label = assert_string(label, na.ok = TRUE)
@@ -102,13 +102,9 @@ Filter = R6Class("Filter",
         assert_character(task_types, any.missing = FALSE)
       }
       self$task_types = task_types
-      self$task_properties = assert_subset(
-        task_properties,
-        unlist(mlr_reflections$task_properties, use.names = FALSE))
+      self$task_properties = assert_subset(task_properties, unlist(mlr_reflections$task_properties, use.names = FALSE))
       self$param_set = assert_param_set(param_set)
-      self$feature_types = assert_subset(
-        feature_types,
-        mlr_reflections$task_feature_types)
+      self$feature_types = assert_subset(feature_types, mlr_reflections$task_feature_types)
       self$packages = assert_character(packages, any.missing = FALSE, min.chars = 1L)
       self$scores = set_names(numeric(), character())
       self$man = assert_string(man, na.ok = TRUE)
@@ -126,6 +122,7 @@ Filter = R6Class("Filter",
     print = function() {
       catn(format(self), if (is.na(self$label)) "" else paste0(": ", self$label))
       catn(str_indent("Task Types:", self$task_types))
+      catn(str_indent("Properties:", self$properties))
       catn(str_indent("Task Properties:", self$task_properties))
       catn(str_indent("Packages:", self$packages))
       catn(str_indent("Feature types:", self$feature_types))
@@ -162,13 +159,15 @@ Filter = R6Class("Filter",
     calculate = function(task, nfeat = NULL) {
       task = assert_task(as_task(task),
         feature_types = self$feature_types,
-        task_properties = self$task_properties)
+        task_properties = self$task_properties
+      )
+
+      fn = task$feature_names
 
       if (!is_scalar_na(self$task_types) && task$task_type %nin% self$task_types) {
         stopf("Filter '%s' does not support the type '%s' of task '%s'",
           self$id, task$task_type, task$id)
       }
-      fn = task$feature_names
 
       if (task$nrow == 0L) {
         self$scores = shuffle(set_names(rep.int(NA_real_, length(fn)), fn))
@@ -182,7 +181,7 @@ Filter = R6Class("Filter",
           nfeat = min(nfeat, length(fn))
         }
 
-        if (any(task$missings() > 0L)) {
+        if ("missings" %nin% self$properties && any(task$missings() > 0L)) {
           stopf("Cannot apply filter '%s' on task '%s', missing values detected",
             self$id, task$id)
         }
@@ -200,6 +199,19 @@ Filter = R6Class("Filter",
       }
 
       invisible(self)
+    }
+  ),
+
+  active = list(
+    #' @field properties ([character()])\cr
+    #'   Properties of the filter. Currently, only `"missings"` is supported.
+    #'   A filter has the property `"missings"`, iff the filter can handle missing values
+    #'   in the features in a graceful way. Otherwise, an assertion is thrown if missing
+    #'   values are detected.
+    properties = function(rhs) {
+      assert_ro_binding(rhs)
+      get_properties = get0(".get_properties", private)
+      if (is.null(get_properties)) character() else get_properties()
     }
   )
 )

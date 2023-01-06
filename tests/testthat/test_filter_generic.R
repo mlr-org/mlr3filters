@@ -9,3 +9,27 @@ test_that("all generic filters return correct filter values", {
     }
   }
 })
+
+test_that("filters throw errors on missing values", {
+  data = tsk("mtcars")$data()
+  data$cyl[1] = NA
+  task = as_task_regr(data, target = "mpg")
+
+  filters = mlr_filters$mget(mlr_filters$keys())
+
+  for (f in filters) {
+    if (!is_scalar_na(f$task_types)) {
+      next
+    }
+
+    if (!all(require_namespaces(f$packages, quietly = TRUE))) {
+      next
+    }
+
+    if ("missings" %in% f$properties) {
+      f$calculate(task)
+    } else {
+      expect_error(f$calculate(task), "missing values")
+    }
+  }
+})

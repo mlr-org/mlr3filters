@@ -28,7 +28,7 @@ if (requireNamespace("rpart")) {
 if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners", "rpart"), quietly = TRUE)) {
   library("mlr3pipelines")
   library("mlr3learners")
-  task = mlr3::tsk("spam")
+  task = mlr3::tsk("sonar")
 
   filter = flt("selected_features", learner = lrn("classif.rpart"))
 

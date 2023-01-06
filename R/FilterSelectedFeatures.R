@@ -29,7 +29,7 @@
 #' if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners", "rpart"), quietly = TRUE)) {
 #'   library("mlr3pipelines")
 #'   library("mlr3learners")
-#'   task = mlr3::tsk("spam")
+#'   task = mlr3::tsk("sonar")
 #'
 #'   filter = flt("selected_features", learner = lrn("classif.rpart"))
 #'
@@ -75,6 +75,10 @@ FilterSelectedFeatures = R6Class("FilterSelectedFeatures",
       learner = learner$train(task = task)
       score = named_vector(task$feature_names, init = 0)
       replace(score, names(score) %in% learner$selected_features(), 1)
+    },
+
+    .get_properties = function() {
+      intersect("missings", self$learner$properties)
     }
   )
 )

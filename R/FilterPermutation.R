@@ -129,8 +129,13 @@ FilterPermutation = R6Class("FilterPermutation",
       }
 
       delta
+    },
+
+    .get_properties = function() {
+      intersect("missings", self$learner$properties)
     }
   )
+
 )
 
 #' @include mlr_filters.R

@@ -22,7 +22,7 @@
 #' if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart", "mlr3learners"), quietly = TRUE)) {
 #'   library("mlr3learners")
 #'   library("mlr3pipelines")
-#'   task = mlr3::tsk("spam")
+#'   task = mlr3::tsk("sonar")
 #'
 #'   learner = mlr3::lrn("classif.rpart")
 #'
@@ -66,6 +66,10 @@ FilterImportance = R6Class("FilterImportance",
       learner = self$learner$clone(deep = TRUE)
       learner = learner$train(task = task)
       learner$base_learner()$importance()
+    },
+
+    .get_properties = function() {
+      intersect("missings", self$learner$properties)
     }
   )
 )
