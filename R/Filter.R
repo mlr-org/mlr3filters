@@ -164,8 +164,8 @@ Filter = R6Class("Filter",
 
       fn = task$feature_names
 
-      if (!is_scalar_na(self$task_types) && task$task_type %nin% self$task_types) {
-        stopf("Filter '%s' does not support the type '%s' of task '%s'",
+      if (!is_scalar_na(self$task_types) && !some(self$task_types, test_matching_task_type, object = task, class = "learner")) {
+        stopf("Filter '%s' not compatible with type '%s' of task '%s'",
           self$id, task$task_type, task$id)
       }
 

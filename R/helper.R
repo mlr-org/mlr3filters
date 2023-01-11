@@ -12,3 +12,23 @@ call_praznik = function(self, task, fun, nfeat) {
 catn = function(..., file = "") {
   cat(paste0(..., collapse = "\n"), "\n", sep = "", file = file)
 }
+
+
+test_matching_task_type = function(task_type, object, class) {
+  fget = function(tab, i, j, key) {
+    x = tab[[key]]
+    tab[[j]][x %chin% i]
+  }
+
+  if (is.null(task_type) || object$task_type == task_type) {
+    return(TRUE)
+  }
+
+  cl_task_type = fget(mlr_reflections$task_types, task_type, class, "type")
+  if (inherits(object, cl_task_type)) {
+    return(TRUE)
+  }
+
+  cl_object = fget(mlr_reflections$task_types, object$task_type, class, "type")
+  return(cl_task_type == cl_object)
+}
