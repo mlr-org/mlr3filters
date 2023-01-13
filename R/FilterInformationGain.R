@@ -72,6 +72,10 @@ FilterInformationGain = R6Class("FilterInformationGain",
   ),
 
   private = list(
+    .get_properties = function() {
+      "missings"
+    },
+
     .calculate = function(task, nfeat) {
       pv = self$param_set$values
       pv$type = pv$type %??% "infogain"
