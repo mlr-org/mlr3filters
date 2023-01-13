@@ -72,10 +72,6 @@ FilterInformationGain = R6Class("FilterInformationGain",
   ),
 
   private = list(
-    .get_properties = function() {
-      "missings"
-    },
-
     .calculate = function(task, nfeat) {
       pv = self$param_set$values
       pv$type = pv$type %??% "infogain"
@@ -85,6 +81,10 @@ FilterInformationGain = R6Class("FilterInformationGain",
       y = task$truth()
       scores = invoke(FSelectorRcpp::information_gain, x = x, y = y, .args = pv)
       set_names(scores$importance, scores$attributes)
+    },
+
+    .get_properties = function() {
+      "missings"
     }
   )
 )

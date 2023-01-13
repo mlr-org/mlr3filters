@@ -70,7 +70,12 @@ FilterCorrelation = R6Class("FilterCorrelation",
         y = as.matrix(task$truth()),
         .args = pv)[, 1L]
       set_names(abs(score), fn)
+    },
+
+    .get_properties = function() {
+      "missings"
     }
+
   )
 )
 

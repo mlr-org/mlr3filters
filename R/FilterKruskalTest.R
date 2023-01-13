@@ -45,7 +45,7 @@ FilterKruskalTest = R6Class("FilterKruskalTest",
     #' @description Create a FilterKruskalTest object.
     initialize = function() {
       param_set = ps(
-        na.action = p_fct(c("na.omit", "na.fail", "na.exclude", "na.pass"), default = "na.omit")
+        na.action = p_fct(c("na.omit", "na.fail", "na.exclude"), default = "na.omit")
       )
 
       super$initialize(
@@ -69,6 +69,11 @@ FilterKruskalTest = R6Class("FilterKruskalTest",
       -log10(map_dbl(data, function(x) {
         kruskal.test(x = x, g = g, na.action = na_action)$p.value
       }))
+    },
+
+    .get_properties = function() {
+      ok = c("na.omit", "na.exclude")
+      if ((self$param_set$values$na.action %??% "na.omit") %in% ok) "missings" else character()
     }
   )
 )
