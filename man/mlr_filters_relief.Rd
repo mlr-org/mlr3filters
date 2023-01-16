@@ -8,6 +8,13 @@
 Information gain filter calling
 \code{\link[FSelectorRcpp:relief]{FSelectorRcpp::relief()}} in package \CRANpkg{FSelectorRcpp}.
 }
+\note{
+This filter can handle missing values in the features.
+However, the resulting filter scores may be misleading or at least difficult to compare
+if some features have a large proportion of missing values.
+
+If a feature has no non-missing observation, the resulting score will be (close to) 0.
+}
 \examples{
 if (requireNamespace("FSelectorRcpp")) {
   ## Relief (default)

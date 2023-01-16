@@ -8,6 +8,14 @@
 Simple correlation filter calling \code{\link[stats:cor]{stats::cor()}}.
 The filter score is the absolute value of the correlation.
 }
+\note{
+This filter, in its default settings, can handle missing values in the features.
+However, the resulting filter scores may be misleading or at least difficult to compare
+if some features have a large proportion of missing values.
+
+If a feature has no non-missing value, the resulting score will be \code{NA}.
+Missing scores  appear in a random, non-deterministic order at the end of the vector of scores.
+}
 \examples{
 ## Pearson (default)
 task = mlr3::tsk("mtcars")

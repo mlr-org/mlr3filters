@@ -7,6 +7,15 @@
 #' The filter value is `-log10(p)` where `p` is the \eqn{p}-value. This
 #' transformation is necessary to ensure numerical stability for very small
 #' \eqn{p}-values.
+
+#' @note
+#' This filter, in its default settings, can handle missing values in the features.
+#' However, the resulting filter scores may be misleading or at least difficult to compare
+#' if some features have a large proportion of missing values.
+#'
+#' If a feature has not at least one non-missing observation per label, the resulting score will be NA.
+#' Missing scores  appear in a random, non-deterministic order at the end of the vector of scores.
+#'
 #'
 #' @references
 #' For a benchmark of filter methods:
@@ -66,8 +75,15 @@ FilterKruskalTest = R6Class("FilterKruskalTest",
 
       data = task$data(cols = task$feature_names)
       g = task$truth()
+
       -log10(map_dbl(data, function(x) {
-        kruskal.test(x = x, g = g, na.action = na_action)$p.value
+        tab = table(g[!is.na(x)])
+
+        if (any(tab == 0L)) {
+          NA_real_
+        } else {
+          kruskal.test(x = x, g = g, na.action = na_action)$p.value
+        }
       }))
     },
 

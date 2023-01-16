@@ -11,6 +11,14 @@ The filter value is \code{-log10(p)} where \code{p} is the \eqn{p}-value. This
 transformation is necessary to ensure numerical stability for very small
 \eqn{p}-values.
 }
+\note{
+This filter, in its default settings, can handle missing values in the features.
+However, the resulting filter scores may be misleading or at least difficult to compare
+if some features have a large proportion of missing values.
+
+If a feature has not at least one non-missing observation per label, the resulting score will be NA.
+Missing scores  appear in a random, non-deterministic order at the end of the vector of scores.
+}
 \examples{
 task = mlr3::tsk("iris")
 filter = flt("kruskal_test")

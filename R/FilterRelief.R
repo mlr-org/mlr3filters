@@ -5,6 +5,13 @@
 #' @description Information gain filter calling
 #'   [FSelectorRcpp::relief()] in package \CRANpkg{FSelectorRcpp}.
 #'
+#' @note
+#' This filter can handle missing values in the features.
+#' However, the resulting filter scores may be misleading or at least difficult to compare
+#' if some features have a large proportion of missing values.
+#'
+#' If a feature has no non-missing observation, the resulting score will be (close to) 0.
+#'
 #' @family Filter
 #' @template seealso_filter
 #' @export

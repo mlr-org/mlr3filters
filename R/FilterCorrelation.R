@@ -6,6 +6,14 @@
 #' Simple correlation filter calling [stats::cor()].
 #' The filter score is the absolute value of the correlation.
 #'
+#' @note
+#' This filter, in its default settings, can handle missing values in the features.
+#' However, the resulting filter scores may be misleading or at least difficult to compare
+#' if some features have a large proportion of missing values.
+#'
+#' If a feature has no non-missing value, the resulting score will be `NA`.
+#' Missing scores  appear in a random, non-deterministic order at the end of the vector of scores.
+#'
 #' @references
 #' For a benchmark of filter methods:
 #'
@@ -45,7 +53,8 @@ FilterCorrelation = R6Class("FilterCorrelation",
     #' @description Create a FilterCorrelation object.
     initialize = function() {
       param_set = ps(
-        use    = p_fct(c("everything", "all.obs", "complete.obs", "na.or.complete", "pairwise.complete.obs"), default = "everything"),
+        use    = p_fct(c("everything", "all.obs", "complete.obs", "na.or.complete", "pairwise.complete.obs"),
+          default = "everything"),
         method = p_fct(c("pearson", "kendall", "spearman"), default = "pearson")
       )
 
