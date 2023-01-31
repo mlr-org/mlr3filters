@@ -34,7 +34,7 @@ FilterGausscovF1st = R6Class(
         kmn  = p_int(lower = 0, default = 0),
         kmx  = p_int(lower = 0, default = 0),
         mx   = p_int(lower = 1, default = 21),
-        kex  = p_int(lower = 1, default = 0),
+        kex  = p_int(lower = 0, default = 0),
         sub  = p_lgl(default = TRUE),
         inr  = p_lgl(default = TRUE),
         xinr = p_lgl(default = FALSE),
