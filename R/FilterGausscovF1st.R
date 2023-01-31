@@ -38,7 +38,7 @@ FilterGausscovF1st = R6Class(
         sub  = p_lgl(default = TRUE),
         inr  = p_lgl(default = TRUE),
         xinr = p_lgl(default = FALSE),
-        qq   = p_int(lower = 1, default = 0)
+        qq   = p_int(lower = 0, default = 0)
       )
 
       super$initialize(
