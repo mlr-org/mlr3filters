@@ -32,6 +32,7 @@ Suggests:
     care,
     caret,
     carSurv,
+    gausscov,
     FSelectorRcpp,
     knitr,
     lgr,
@@ -58,6 +59,7 @@ Collate:
     'FilterCorrelation.R'
     'FilterDISR.R'
     'FilterFindCorrelation.R'
+    'FilterGausscovF1st.R'
     'FilterImportance.R'
     'FilterInformationGain.R'
     'FilterJMI.R'
