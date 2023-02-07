@@ -3,7 +3,7 @@
 - Features are now checked for missing values to improve error messages (#140)
 - Removed deprecated functions
 - Use featureless learner in defaults (#124)
-
+- Filed `task_type` of `Filiter` class is changed to `task_types`.
 
 # mlr3filters 0.6.0
 
