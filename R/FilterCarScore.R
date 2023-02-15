@@ -55,7 +55,7 @@ FilterCarScore = R6Class("FilterCarScore",
         id = "carscore",
         task_types = "regr",
         param_set = param_set,
-        feature_types = "numeric",
+        feature_types = c("logical", "integer", "numeric"),
         packages = "care",
         label = "Correlation-Adjusted coRrelation Score",
         man = "mlr3filters::mlr_filters_carscore"
@@ -66,7 +66,7 @@ FilterCarScore = R6Class("FilterCarScore",
   private = list(
     .calculate = function(task, nfeat) {
       target = task$truth()
-      features = task$data(cols = task$feature_names)
+      features = as_numeric_matrix(task$data(cols = task$feature_names))
 
       pv = self$param_set$values
       scores = invoke(care::carscore,

@@ -13,6 +13,13 @@ catn = function(..., file = "") {
   cat(paste0(..., collapse = "\n"), "\n", sep = "", file = file)
 }
 
+as_numeric_matrix = function(x) {
+  x = as.matrix(x)
+  if (is.logical(x)) {
+    storage.mode(x) = "double"
+  }
+  x
+}
 
 test_matching_task_type = function(task_type, object, class) {
   fget = function(tab, i, j, key) {
