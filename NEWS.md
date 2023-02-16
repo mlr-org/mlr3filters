@@ -1,3 +1,9 @@
+# mlr3filters 0.7.1
+
+- Tagged multiple filters to be able of gracefully handling missing values.
+- Added more supported feature types to FilterCarScore.
+- Improved documentation.
+
 # mlr3filters 0.7.0
 
 - Features are now checked for missing values to improve error messages (#140)
