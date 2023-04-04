@@ -1,3 +1,7 @@
+# mlr3filters 0.7.1-9000
+
+* Parameter value `na.rm` is properly initialized to `TRUE` (Thanks to @bblodfon)
+
 # mlr3filters 0.7.1
 
 - Tagged multiple filters to be able of gracefully handling missing values.
