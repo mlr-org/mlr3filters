@@ -43,7 +43,7 @@ FilterVariance = R6Class("FilterVariance",
       param_set = ps(
         na.rm = p_lgl(default = TRUE)
       )
-      self$param_set$values = list(na.rm = TRUE)
+      param_set$values = list(na.rm = TRUE)
 
       super$initialize(
         id = "variance",
