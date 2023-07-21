@@ -62,6 +62,7 @@ Other Filter:
 \code{\link{mlr_filters_correlation}},
 \code{\link{mlr_filters_disr}},
 \code{\link{mlr_filters_find_correlation}},
+\code{\link{mlr_filters_gauscovf1st}},
 \code{\link{mlr_filters_importance}},
 \code{\link{mlr_filters_information_gain}},
 \code{\link{mlr_filters_jmim}},
