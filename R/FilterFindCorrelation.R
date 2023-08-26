@@ -16,6 +16,7 @@
 #' that are excluded with `FilterFindCorrelation` at score 0.1 (= 1 - 0.9).
 #'
 #' @family Filter
+#' @include Filter.R
 #' @template seealso_filter
 #' @export
 #' @examples

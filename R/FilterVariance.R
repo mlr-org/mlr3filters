@@ -12,6 +12,7 @@
 #' `r format_bib("bommert_2020")`
 #'
 #' @family Filter
+#' @include Filter.R
 #' @importFrom stats var
 #' @template seealso_filter
 #' @export

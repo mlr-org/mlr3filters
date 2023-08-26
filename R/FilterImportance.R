@@ -8,6 +8,7 @@
 #' and extracts the importance values to use as filter scores.
 #'
 #' @family Filter
+#' @include FilterLearner.R
 #' @template seealso_filter
 #' @export
 #' @examples
@@ -34,7 +35,7 @@
 #'   graph$train(task)
 #' }
 FilterImportance = R6Class("FilterImportance",
-  inherit = Filter,
+  inherit = FilterLearner,
 
   public = list(
 
@@ -60,6 +61,7 @@ FilterImportance = R6Class("FilterImportance",
       )
     }
   ),
+
 
   private = list(
     .calculate = function(task, nfeat) {

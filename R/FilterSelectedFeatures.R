@@ -15,6 +15,7 @@
 #' \CRANpkg{mlr3pipelines}, only the filter criterion `cutoff` makes sense.
 #'
 #' @family Filter
+#' @include Filter.R
 #' @template seealso_filter
 #' @export
 #' @examples
@@ -42,7 +43,7 @@
 #'   graph$train(task)
 #' }
 FilterSelectedFeatures = R6Class("FilterSelectedFeatures",
-  inherit = Filter,
+  inherit = FilterLearner,
 
   public = list(
 
