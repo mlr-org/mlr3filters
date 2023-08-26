@@ -11,6 +11,7 @@
 #' Argument `verbose` defaults to `FALSE`.
 #'
 #' @family Filter
+#' @include Filter.R
 #' @template seealso_filter
 #' @export
 #' @examples

@@ -13,6 +13,7 @@
 #' If a feature has no non-missing observation, the resulting score will be (close to) 0.
 #'
 #' @family Filter
+#' @include Filter.R
 #' @template seealso_filter
 #' @export
 #' @examples

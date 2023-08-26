@@ -19,6 +19,7 @@
 #' }
 #'
 #' @family Filter
+#' @include FilterLearner.R
 #' @template seealso_filter
 #' @export
 #' @examples
@@ -45,7 +46,7 @@
 #'   graph$train(task)
 #' }
 FilterPermutation = R6Class("FilterPermutation",
-  inherit = Filter,
+  inherit = FilterLearner,
   public = list(
 
     #' @field learner ([mlr3::Learner])\cr
@@ -85,6 +86,26 @@ FilterPermutation = R6Class("FilterPermutation",
         label = "Permutation Score",
         man = "mlr3filters::mlr_filters_performance"
       )
+    }
+  ),
+
+  active = list(
+    #' @field hash (`character(1)`)\cr
+    #' Hash (unique identifier) for this object.
+    hash = function(rhs) {
+      assert_ro_binding(rhs)
+      calculate_hash(class(self), self$id, self$param_set$values, self$learner$hash,
+        self$resampling$hash, self$measure$hash)
+    },
+
+    #' @field phash (`character(1)`)\cr
+    #' Hash (unique identifier) for this partial object, excluding some components
+    #' which are varied systematically during tuning (parameter values) or feature
+    #' selection (feature names).
+    phash = function(rhs) {
+      assert_ro_binding(rhs)
+      calculate_hash(class(self), self$id, self$learner$hash, self$resampling$hash,
+        self$measure$hash)
     }
   ),
 
