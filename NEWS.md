@@ -1,6 +1,7 @@
 # mlr3filters 0.7.1-9000
 
 * Parameter value `na.rm` is properly initialized to `TRUE` (Thanks to @bblodfon)
+* Bugfix: property `missings` is now set correctly for `FilterFindCorrelation`
 
 # mlr3filters 0.7.1
 
