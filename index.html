@@ -184,7 +184,7 @@
 <td align="left">carscore</td>
 <td align="left">Correlation-Adjusted coRrelation Score</td>
 <td align="left">Regr</td>
-<td align="left">Numeric</td>
+<td align="left">Logical, Integer, Numeric</td>
 <td align="left"><a href="https://cran.r-project.org/package=care" class="external-link">care</a></td>
 </tr>
 <tr class="even">
@@ -325,7 +325,7 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        </span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [7] "regr.rpart"          "regr.xgboost"</span></span></code></pre></div>
-<p>If your learner is not listed here but capable of extracting variable importance from the fitted model, the reason is most likely that it is not yet integrated in the package <a href="https://github.com/mlr-org/mlr3learners" class="external-link">mlr3learners</a> or the <a href="https://github.com/mlr3learners" class="external-link">extra learner organization</a>. Please open an issue so we can add your package.</p>
+<p>If your learner is not listed here but capable of extracting variable importance from the fitted model, the reason is most likely that it is not yet integrated in the package <a href="https://github.com/mlr-org/mlr3learners" class="external-link">mlr3learners</a> or the <a href="https://github.com/mlr-org/mlr3extralearners" class="external-link">extra learner extension</a>. Please open an issue so we can add your package.</p>
 <p>Some learners need to have their variable importance measure “activated” during learner creation. For example, to use the “impurity” measure of Random Forest via the {ranger} package:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span></span>
@@ -335,10 +335,10 @@
 <span><span class="va">filter</span> <span class="op">=</span> <span class="fu"><a href="reference/flt.html">flt</a></span><span class="op">(</span><span class="st">"importance"</span>, learner <span class="op">=</span> <span class="va">lrn</span><span class="op">)</span></span>
 <span><span class="va">filter</span><span class="op">$</span><span class="fu">calculate</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">##         feature    score</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 1: Petal.Length 43.19847</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 2:  Petal.Width 43.11627</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 3: Sepal.Length 10.62848</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">##         feature     score</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 1: Petal.Length 44.682462</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 2:  Petal.Width 43.113031</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 3: Sepal.Length  9.039099</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="performance-filter">Performance Filter<a class="anchor" aria-label="anchor" href="#performance-filter"></a>
