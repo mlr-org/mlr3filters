@@ -70,6 +70,7 @@ Collate:
     'FilterPermutation.R'
     'FilterRelief.R'
     'FilterSelectedFeatures.R'
+    'FilterUnivariateCox.R'
     'FilterVariance.R'
     'bibentries.R'
     'flt.R'
