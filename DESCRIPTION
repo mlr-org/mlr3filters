@@ -38,6 +38,7 @@ Suggests:
     mlr3learners,
     mlr3measures,
     mlr3pipelines,
+    mlr3proba,
     praznik,
     rpart,
     testthat (>= 3.0.0),
