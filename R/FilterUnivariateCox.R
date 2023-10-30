@@ -23,20 +23,25 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' if (requireNamespace("mlr3proba")) {
-#'   task = tsk("rats")$select(c("rx","litter"))
-#'   filter = flt("univariatecox")
-#'   filter$calculate(task)
-#'   as.data.table(filter)
-#' }
+#' if (mlr3misc::require_namespaces(c("mlr3", "mlr3proba", "mlr3pipelines"), quietly = TRUE)) {
+#'   library(mlr3)
+#'   library(mlr3proba)
+#'   library(mlr3pipelines)
 #'
-#' if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3proba"), quietly = TRUE)) {
-#'   library("mlr3pipelines")
+#'   # encode `sex` (two-level factor)
 #'   task = tsk("rats")
-#'   # encode `sex` which is a two-level factor
 #'   enc = po("encode", method = "treatment")
 #'   task = enc$train(list(task))[[1L]]
 #'
+#'   # simple filter use
+#'   filter = flt("univariatecox")
+#'   filter$calculate(task)
+#'   as.data.table(filter)
+#'
+#'   # transform to p-value
+#'   10^(-filter$scores)
+#'
+#'   # Use filter in a learner pipeline
 #'   # Note: `filter.cutoff` is selected randomly and should be tuned.
 #'   # The significance level of `0.05` serves as a conventional threshold.
 #'   # The filter returns the `-log`-transformed scores so we transform
