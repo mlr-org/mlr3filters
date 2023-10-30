@@ -17,11 +17,13 @@ feature independently and extracts the \eqn{p}-value that quantifies the
 significance of the feature's impact on survival. The filter value is
 \code{-log10(p)} where \code{p} is the \eqn{p}-value. This transformation is necessary
 to ensure numerical stability for very small \eqn{p}-values. Also higher
-values denote more important features.
+values denote more important features. The filter works only for numeric
+features so please ensure that factor variables are properly encoded, e.g.
+using \link[mlr3pipelines:mlr_pipeops_encode]{PipeOpEncode}.
 }
 \examples{
 if (requireNamespace("mlr3proba")) {
-  task = tsk("rats")
+  task = tsk("rats")$select(c("rx","litter"))
   filter = flt("univariatecox")
   filter$calculate(task)
   as.data.table(filter)
@@ -30,6 +32,9 @@ if (requireNamespace("mlr3proba")) {
 if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3proba"), quietly = TRUE)) {
   library("mlr3pipelines")
   task = tsk("rats")
+  # encode `sex` which is a two-level factor
+  enc = po("encode", method = "treatment")
+  task = enc$train(list(task))[[1L]]
 
   # Note: `filter.cutoff` is selected randomly and should be tuned.
   # The significance level of `0.05` serves as a conventional threshold.
