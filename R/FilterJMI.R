@@ -17,6 +17,7 @@
 #'
 #' @template details_praznik
 #' @family Filter
+#' @include Filter.R
 #' @template seealso_filter
 #' @export
 #' @examples

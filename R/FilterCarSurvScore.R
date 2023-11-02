@@ -10,6 +10,7 @@
 #' `r format_bib("bommert_2021")`
 #'
 #' @family Filter
+#' @include Filter.R
 #' @template seealso_filter
 #' @export
 FilterCarSurvScore = R6Class("FilterCarSurvScore",

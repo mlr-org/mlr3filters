@@ -212,6 +212,22 @@ Filter = R6Class("Filter",
       assert_ro_binding(rhs)
       get_properties = get0(".get_properties", private)
       if (is.null(get_properties)) character() else get_properties()
+    },
+
+    #' @field hash (`character(1)`)\cr
+    #' Hash (unique identifier) for this object.
+    hash = function(rhs) {
+      assert_ro_binding(rhs)
+      calculate_hash(class(self), self$id, self$param_set$values, mget(private$.extra_hash, envir = self))
+    },
+
+    #' @field phash (`character(1)`)\cr
+    #' Hash (unique identifier) for this partial object, excluding some components
+    #' which are varied systematically during tuning (parameter values) or feature
+    #' selection (feature names).
+    phash = function(rhs) {
+      assert_ro_binding(rhs)
+      calculate_hash(class(self), self$id, mget(private$.extra_hash, envir = self))
     }
   )
 )

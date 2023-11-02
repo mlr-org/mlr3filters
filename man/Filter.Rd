@@ -93,6 +93,14 @@ Properties of the filter. Currently, only \code{"missings"} is supported.
 A filter has the property \code{"missings"}, iff the filter can handle missing values
 in the features in a graceful way. Otherwise, an assertion is thrown if missing
 values are detected.}
+
+\item{\code{hash}}{(\code{character(1)})\cr
+Hash (unique identifier) for this object.}
+
+\item{\code{phash}}{(\code{character(1)})\cr
+Hash (unique identifier) for this partial object, excluding some components
+which are varied systematically during tuning (parameter values) or feature
+selection (feature names).}
 }
 \if{html}{\out{</div>}}
 }

@@ -16,6 +16,7 @@
 #' that are excluded with `FilterFindCorrelation` at score 0.1 (= 1 - 0.9).
 #'
 #' @family Filter
+#' @include Filter.R
 #' @template seealso_filter
 #' @export
 #' @examples
@@ -93,6 +94,14 @@ FilterFindCorrelation = R6Class("FilterFindCorrelation",
       # The following has the correct names and values, BUT we need scores in
       # reverse order. Shift by 1 to get positive values.
       1 - apply(cm, 2, max)
+    },
+    .get_properties = function() {
+      use = self$param_set$values$use %??% "everything"
+      if (use %in% c("complete.obs", "pairwise.complete.obs")) {
+        "missings"
+      } else {
+        character(0)
+      }
     }
   )
 )

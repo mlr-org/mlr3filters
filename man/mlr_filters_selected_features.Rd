@@ -73,8 +73,8 @@ Other Filter:
 \code{\link{mlr_filters}}
 }
 \concept{Filter}
-\section{Super class}{
-\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{FilterSelectedFeatures}
+\section{Super classes}{
+\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{mlr3filters::FilterLearner} -> \code{FilterSelectedFeatures}
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}

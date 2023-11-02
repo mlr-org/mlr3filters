@@ -15,6 +15,7 @@
 #' `r format_bib("bommert_2020")`
 #'
 #' @family Filter
+#' @include Filter.R
 #' @importFrom stats aov
 #' @template seealso_filter
 #' @export

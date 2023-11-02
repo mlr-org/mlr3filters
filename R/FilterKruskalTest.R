@@ -23,6 +23,7 @@
 #' `r format_bib("bommert_2020")`
 #'
 #' @family Filter
+#' @include Filter.R
 #' @importFrom stats kruskal.test
 #' @template seealso_filter
 #' @export

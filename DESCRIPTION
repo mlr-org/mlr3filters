@@ -58,6 +58,7 @@ Collate:
     'FilterCorrelation.R'
     'FilterDISR.R'
     'FilterFindCorrelation.R'
+    'FilterLearner.R'
     'FilterImportance.R'
     'FilterInformationGain.R'
     'FilterJMI.R'

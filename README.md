@@ -100,8 +100,8 @@ If your learner is not listed here but capable of extracting variable
 importance from the fitted model, the reason is most likely that it is
 not yet integrated in the package
 [mlr3learners](https://github.com/mlr-org/mlr3learners) or the [extra
-learner organization](https://github.com/mlr3learners). Please open an
-issue so we can add your package.
+learner extension](https://github.com/mlr-org/mlr3extralearners).
+Please open an issue so we can add your package.
 
 Some learners need to have their variable importance measure “activated”
 during learner creation. For example, to use the “impurity” measure of

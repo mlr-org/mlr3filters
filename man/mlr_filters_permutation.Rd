@@ -78,8 +78,8 @@ Other Filter:
 \code{\link{mlr_filters}}
 }
 \concept{Filter}
-\section{Super class}{
-\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{FilterPermutation}
+\section{Super classes}{
+\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{mlr3filters::FilterLearner} -> \code{FilterPermutation}
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
@@ -89,6 +89,19 @@ Other Filter:
 \item{\code{resampling}}{(\link[mlr3:Resampling]{mlr3::Resampling})\cr}
 
 \item{\code{measure}}{(\link[mlr3:Measure]{mlr3::Measure})\cr}
+}
+\if{html}{\out{</div>}}
+}
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{hash}}{(\code{character(1)})\cr
+Hash (unique identifier) for this object.}
+
+\item{\code{phash}}{(\code{character(1)})\cr
+Hash (unique identifier) for this partial object, excluding some components
+which are varied systematically during tuning (parameter values) or feature
+selection (feature names).}
 }
 \if{html}{\out{</div>}}
 }

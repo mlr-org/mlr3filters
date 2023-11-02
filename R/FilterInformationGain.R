@@ -13,6 +13,7 @@
 #'   `TRUE` for regression tasks.
 #'
 #' @family Filter
+#' @include Filter.R
 #' @template seealso_filter
 #' @export
 #' @examples
