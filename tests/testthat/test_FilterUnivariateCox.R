@@ -3,7 +3,7 @@ skip_if_not_installed("mlr3proba")
 test_that("FilterUnivariateCox", {
   t = tsk("rats")
   t2 = t$clone()$select(c("rx", "litter"))
-  f = flt("univariatecox")
+  f = flt("univariate_cox")
   f$calculate(t2)
 
   # simple testing of filter scores

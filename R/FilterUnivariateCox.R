@@ -1,6 +1,6 @@
 #' @title Univariate Cox Survival Filter
 #'
-#' @name mlr_filters_univariatecox
+#' @name mlr_filters_univariate_cox
 #'
 #' @description Calculates scores for assessing the relationship between
 #' individual features and the time-to-event outcome (right-censored survival
@@ -34,7 +34,7 @@
 #'   task = enc$train(list(task))[[1L]]
 #'
 #'   # simple filter use
-#'   filter = flt("univariatecox")
+#'   filter = flt("univariate_cox")
 #'   filter$calculate(task)
 #'   as.data.table(filter)
 #'
@@ -49,14 +49,14 @@
 #'   cutoff = -log10(0.05) # ~1.3
 #'
 #'   graph =
-#'     po("filter", filter = flt("univariatecox"), filter.cutoff = cutoff) %>>%
+#'     po("filter", filter = flt("univariate_cox"), filter.cutoff = cutoff) %>>%
 #'     po("learner", lrn("surv.coxph"))
 #'   learner = as_learner(graph)
 #'
 #'   learner$train(task)
 #'
 #'   # univariate cox filter scores
-#'   learner$model$surv.univariatecox$scores
+#'   learner$model$surv.univariate_cox$scores
 #'
 #'   # only two features had a score larger than the specified `cutoff` and
 #'   # were used to train the CoxPH model
@@ -68,13 +68,13 @@ FilterUnivariateCox = R6Class("FilterUnivariateCox",
     #' @description Create a FilterUnivariateCox object.
     initialize = function() {
       super$initialize(
-        id = "surv.univariatecox",
-        packages = c("survival"),
+        id = "surv.univariate_cox",
+        packages = "survival",
         param_set = ps(),
         feature_types = c("integer", "numeric", "logical"),
         task_types = "surv",
         label = "Univariate Cox Survival Score",
-        man = "mlr3filters::mlr_filters_univariatecox"
+        man = "mlr3filters::mlr_filters_univariate_cox"
       )
     }
   ),
@@ -97,4 +97,4 @@ FilterUnivariateCox = R6Class("FilterUnivariateCox",
 )
 
 #' @include mlr_filters.R
-mlr_filters$add("univariatecox", FilterUnivariateCox)
+mlr_filters$add("univariate_cox", FilterUnivariateCox)
