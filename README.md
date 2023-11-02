@@ -84,7 +84,7 @@ head(as.data.table(filter$calculate(task)))
 | permutation       | Permutation Score                                        | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                  |
 | relief            | RELIEF                                                   | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp)                                                |
 | selected_features | Embedded Feature Selection                               | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                  |
-| univariatecox     | Univariate Cox Survival Score                            | Surv           | Integer, Numeric, Factor                                       | [mlr3proba](https://cran.r-project.org/package=mlr3proba)                                                        |
+| univariate_cox    | Univariate Cox Survival Score                            | Surv           | Integer, Numeric, Logical                                      | [survival](https://cran.r-project.org/package=survival)                                                          |
 | variance          | Variance                                                 | Universal      | Integer, Numeric                                               | stats                                                                                                            |
 
 ### Variable Importance Filters
@@ -109,7 +109,7 @@ Random Forest via the {ranger} package:
 
 ``` r
 task = tsk("iris")
-lrn = lrn("classif.ranger")
+lrn = lrn("classif.ranger", seed = 42)
 lrn$param_set$values = list(importance = "impurity")
 
 filter = flt("importance", learner = lrn)

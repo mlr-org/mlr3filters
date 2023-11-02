@@ -103,9 +103,8 @@ Some learners need to have their variable importance measure "activated" during 
 For example, to use the "impurity" measure of Random Forest via the {ranger} package:
 
 ```{r}
-set.seed(0)
 task = tsk("iris")
-lrn = lrn("classif.ranger")
+lrn = lrn("classif.ranger", seed = 42)
 lrn$param_set$values = list(importance = "impurity")
 
 filter = flt("importance", learner = lrn)
