@@ -1,3 +1,8 @@
+# mlr3filters 0.7.1-9000
+
+- Fixed issue with `FilterPerformance` where the arg `measure` wasn't passed on
+- Added `FilterUnivariateCox` (thanks to @bblodfon)
+
 # mlr3filters 0.7.1
 
 - Tagged multiple filters to be able of gracefully handling missing values.
