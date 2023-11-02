@@ -24,7 +24,7 @@ test_that("FilterUnivariateCox", {
   l = lrn("surv.coxph")
   t$col_roles$feature = "sex"
   l$train(t)
-  manual_score = -log(summary(l$model)$coefficients[,"Pr(>|z|)"])
+  manual_score = -log10(summary(l$model)$coefficients[,"Pr(>|z|)"])
 
   # for 2-level factors, same result is returned if 0-1 encoded
   expect_equal(manual_score, score)
