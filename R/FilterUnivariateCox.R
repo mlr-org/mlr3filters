@@ -9,8 +9,8 @@
 #' association with the event of interest, typically in the context of clinical
 #' or biomedical research.
 #'
-#' This filter fits a [CoxPH][mlr3proba::LearnerSurvCoxPH()] learner using each
-#' feature independently and extracts the \eqn{p}-value that quantifies the
+#' This filter fits a [Cox Proportional Hazards][survival::coxph()] model using
+#' each feature independently and extracts the \eqn{p}-value that quantifies the
 #' significance of the feature's impact on survival. The filter value is
 #' `-log10(p)` where `p` is the \eqn{p}-value. This transformation is necessary
 #' to ensure numerical stability for very small \eqn{p}-values. Also higher
@@ -44,9 +44,9 @@
 #'   # Use filter in a learner pipeline
 #'   # Note: `filter.cutoff` is selected randomly and should be tuned.
 #'   # The significance level of `0.05` serves as a conventional threshold.
-#'   # The filter returns the `-log`-transformed scores so we transform
+#'   # The filter returns the `-log10`-transformed scores so we transform
 #'   # the cutoff as well:
-#'   cutoff = -log(0.05) # ~2.99
+#'   cutoff = -log10(0.05) # ~1.3
 #'
 #'   graph =
 #'     po("filter", filter = flt("univariatecox"), filter.cutoff = cutoff) %>>%
@@ -69,7 +69,7 @@ FilterUnivariateCox = R6Class("FilterUnivariateCox",
     initialize = function() {
       super$initialize(
         id = "surv.univariatecox",
-        packages = c("mlr3proba"),
+        packages = c("survival"),
         param_set = ps(),
         feature_types = c("integer", "numeric"),
         task_types = "surv",
@@ -83,13 +83,12 @@ FilterUnivariateCox = R6Class("FilterUnivariateCox",
     .calculate = function(task, nfeat) {
       t = task$clone()
       features = t$feature_names
-      learner = lrn("surv.coxph")
 
       scores = map_dbl(features, function(feature) {
         t$col_roles$feature = feature
-        learner$train(t)
-        pval = summary(learner$model)$coefficients[, "Pr(>|z|)"]
-        -log(pval) # smaller p-values => larger scores
+        model = invoke(survival::coxph, formula = t$formula(), data = t$data())
+        pval = summary(model)$coefficients[, "Pr(>|z|)"]
+        -log10(pval) # smaller p-values => larger scores
       })
 
       set_names(scores, features)
