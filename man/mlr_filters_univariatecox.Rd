@@ -12,8 +12,8 @@ The goal is to determine which features have a statistically significant
 association with the event of interest, typically in the context of clinical
 or biomedical research.
 
-This filter fits a \link[mlr3proba:mlr_learners_surv.coxph]{CoxPH} learner using each
-feature independently and extracts the \eqn{p}-value that quantifies the
+This filter fits a \link[survival:coxph]{Cox Proportional Hazards} model using
+each feature independently and extracts the \eqn{p}-value that quantifies the
 significance of the feature's impact on survival. The filter value is
 \code{-log10(p)} where \code{p} is the \eqn{p}-value. This transformation is necessary
 to ensure numerical stability for very small \eqn{p}-values. Also higher
@@ -43,9 +43,9 @@ if (mlr3misc::require_namespaces(c("mlr3", "mlr3proba", "mlr3pipelines"), quietl
   # Use filter in a learner pipeline
   # Note: `filter.cutoff` is selected randomly and should be tuned.
   # The significance level of `0.05` serves as a conventional threshold.
-  # The filter returns the `-log`-transformed scores so we transform
+  # The filter returns the `-log10`-transformed scores so we transform
   # the cutoff as well:
-  cutoff = -log(0.05) # ~2.99
+  cutoff = -log10(0.05) # ~1.3
 
   graph =
     po("filter", filter = flt("univariatecox"), filter.cutoff = cutoff) \%>>\%
