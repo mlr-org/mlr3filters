@@ -8,7 +8,9 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-9754-0393")),
     person("Bernd", "Bischl", , "bernd_bischl@gmx.net", role = "aut",
            comment = c(ORCID = "0000-0001-6002-6980")),
-    person("Martin", "Binder", , "mlr.developer@mb706.com", role = "aut")
+    person("Martin", "Binder", , "mlr.developer@mb706.com", role = "aut"),
+    person("John", "Zobolas", , "bblodfon@gmail.com", role = "aut",
+           comment = c(ORCID = "0000-0002-3609-8674"))
   )
 Description: Extends 'mlr3' with filter methods for feature selection.
     Besides standalone filter methods built-in methods of any
