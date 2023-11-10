@@ -46,12 +46,15 @@ FilterUnivariateCox = R6Class("FilterUnivariateCox",
 
   private = list(
     .calculate = function(task, nfeat) {
-      t = task$clone()
-      features = t$feature_names
+      features = task$feature_names
+      targets  = task$data(cols = task$target_names)
 
       scores = map_dbl(features, function(feature) {
-        t$col_roles$feature = feature
-        model = invoke(survival::coxph, formula = t$formula(), data = t$data())
+        model = invoke(
+          survival::coxph,
+          formula = task$formula(rhs = feature),
+          data = cbind(task$data(cols = feature), targets)
+        )
         pval = summary(model)$coefficients[, "Pr(>|z|)"]
         -log10(pval) # smaller p-values => larger scores
       })
