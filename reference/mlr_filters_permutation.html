@@ -134,6 +134,7 @@ Number of Monte-Carlo iterations to use in computing the feature importance.
 <code><a href="mlr_filters_performance.html">mlr_filters_performance</a></code>,
 <code><a href="mlr_filters_relief.html">mlr_filters_relief</a></code>,
 <code><a href="mlr_filters_selected_features.html">mlr_filters_selected_features</a></code>,
+<code><a href="mlr_filters_univariate_cox.html">mlr_filters_univariate_cox</a></code>,
 <code><a href="mlr_filters_variance.html">mlr_filters_variance</a></code>,
 <code><a href="mlr_filters.html">mlr_filters</a></code></p></div>
     </div>
@@ -246,10 +247,10 @@ selection (feature names).</p></dd>
 <span class="r-in"><span>  <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">filter</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         feature score</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1: Petal.Length  -Inf</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2:  Sepal.Width  -Inf</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3:  Petal.Width   NaN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4: Sepal.Length   NaN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1:  Petal.Width     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2: Petal.Length     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3: Sepal.Length     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4:  Sepal.Width     1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">mlr3misc</span><span class="fu">::</span><span class="fu"><a href="https://mlr3misc.mlr-org.com/reference/require_namespaces.html" class="external-link">require_namespaces</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mlr3pipelines"</span>, <span class="st">"rpart"</span><span class="op">)</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://mlr3pipelines.mlr-org.com" class="external-link">"mlr3pipelines"</a></span><span class="op">)</span></span></span>
@@ -272,7 +273,7 @@ selection (feature names).</p></dd>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Michel Lang, Bernd Bischl, Martin Binder.</p>
+  <p></p><p>Developed by <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Michel Lang, Bernd Bischl, Martin Binder, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">

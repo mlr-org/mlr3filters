@@ -75,7 +75,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.7.1-9000" id="mlr3filters-071-9000">mlr3filters 0.7.1-9000<a class="anchor" aria-label="anchor" href="#mlr3filters-071-9000"></a></h2>
-<ul><li>Parameter value <code>na.rm</code> is properly initialized to <code>TRUE</code> (Thanks to <a href="https://github.com/bblodfon" class="external-link">@bblodfon</a>)</li>
+<ul><li>Fixed issue with <code>FilterPerformance</code> where the arg <code>measure</code> wasn’t passed on</li>
+<li>Added <code>FilterUnivariateCox</code> (thanks to <a href="https://github.com/bblodfon" class="external-link">@bblodfon</a>)</li>
+<li>Parameter value <code>na.rm</code> is properly initialized to <code>TRUE</code> (thanks to <a href="https://github.com/bblodfon" class="external-link">@bblodfon</a>)</li>
 <li>Bugfix: property <code>missings</code> is now set correctly for <code>FilterFindCorrelation</code>
 </li>
 </ul></div>
@@ -155,7 +157,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Michel Lang, Bernd Bischl, Martin Binder.</p>
+  <p></p><p>Developed by <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Michel Lang, Bernd Bischl, Martin Binder, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">
