@@ -49,6 +49,7 @@ if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners", "rpart"), qu
 
 Other Filter: 
 \code{\link{Filter}},
+\code{\link{mlr_filters}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
 \code{\link{mlr_filters_carscore}},
@@ -59,8 +60,8 @@ Other Filter:
 \code{\link{mlr_filters_find_correlation}},
 \code{\link{mlr_filters_importance}},
 \code{\link{mlr_filters_information_gain}},
-\code{\link{mlr_filters_jmim}},
 \code{\link{mlr_filters_jmi}},
+\code{\link{mlr_filters_jmim}},
 \code{\link{mlr_filters_kruskal_test}},
 \code{\link{mlr_filters_mim}},
 \code{\link{mlr_filters_mrmr}},
@@ -69,8 +70,7 @@ Other Filter:
 \code{\link{mlr_filters_permutation}},
 \code{\link{mlr_filters_relief}},
 \code{\link{mlr_filters_univariate_cox}},
-\code{\link{mlr_filters_variance}},
-\code{\link{mlr_filters}}
+\code{\link{mlr_filters_variance}}
 }
 \concept{Filter}
 \section{Super classes}{

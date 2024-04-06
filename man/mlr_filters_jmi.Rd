@@ -60,6 +60,7 @@ Bommert A, Sun X, Bischl B, Rahnenführer J, Lang M (2020).
 
 Other Filter: 
 \code{\link{Filter}},
+\code{\link{mlr_filters}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
 \code{\link{mlr_filters_carscore}},
@@ -80,8 +81,7 @@ Other Filter:
 \code{\link{mlr_filters_relief}},
 \code{\link{mlr_filters_selected_features}},
 \code{\link{mlr_filters_univariate_cox}},
-\code{\link{mlr_filters_variance}},
-\code{\link{mlr_filters}}
+\code{\link{mlr_filters_variance}}
 }
 \concept{Filter}
 \section{Super class}{
