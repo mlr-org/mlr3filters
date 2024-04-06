@@ -11,7 +11,7 @@
 #' @template seealso_filter
 #' @export
 #' @examples
-#' /donttest{
+#' \donttest{
 #'   if (requireNamespace("Boruta")) {
 #'    task = mlr3::tsk("sonar")
 #'    filter = flt("boruta")

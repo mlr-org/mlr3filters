@@ -9,7 +9,7 @@ Filter using the Boruta algorithm for feature selection.
 Boruta is a wrapper
 }
 \examples{
-/donttest{
+\donttest{
   if (requireNamespace("Boruta")) {
    task = mlr3::tsk("sonar")
    filter = flt("boruta")
