@@ -9,11 +9,13 @@ Filter using the Boruta algorithm for feature selection.
 Boruta is a wrapper
 }
 \examples{
-if (requireNamespace("Boruta")) {
- task = tsk("sonar")
- filter = flt("boruta")
- filter$calculate(task)
- as.data.table(filter)
+/donttest{
+  if (requireNamespace("Boruta")) {
+   task = mlr3::tsk("sonar")
+   filter = flt("boruta")
+   filter$calculate(task)
+   as.data.table(filter)
+  }
 }
 }
 \seealso{
