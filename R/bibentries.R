@@ -43,5 +43,5 @@ bibentries = c(
     journal = "Journal of Statistical Software",
     author = "Miron B. Kursa and Witold R. Rudnicki",
     year = "2010",
-    pages = "1–13")
+    pages = "1-13")
 )
