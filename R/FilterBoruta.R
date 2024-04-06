@@ -4,7 +4,10 @@
 #'
 #' @description
 #' Filter using the Boruta algorithm for feature selection.
-#' Boruta is a wrapper
+#' If `keep = "tentative"`, confirmed and tentative features are returned.
+#'
+#' @references
+#' `r format_bib("kursa_2010")`
 #'
 #' @family Filter
 #' @include Filter.R

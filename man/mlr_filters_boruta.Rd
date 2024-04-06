@@ -6,7 +6,7 @@
 \title{Burota Filter}
 \description{
 Filter using the Boruta algorithm for feature selection.
-Boruta is a wrapper
+If \code{keep = "tentative"}, confirmed and tentative features are returned.
 }
 \examples{
 \donttest{
@@ -17,6 +17,11 @@ Boruta is a wrapper
    as.data.table(filter)
   }
 }
+}
+\references{
+Kursa MB, Rudnicki WR (2010).
+\dQuote{Feature Selection with the Boruta Package.}
+\emph{Journal of Statistical Software}, \bold{36}(11), 1–13.
 }
 \seealso{
 \itemize{
