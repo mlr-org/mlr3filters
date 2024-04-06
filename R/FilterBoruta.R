@@ -32,7 +32,8 @@ FilterBoruta = R6Class("FilterBoruta",
 
   public = list(
 
-    #' @description Create a FilterAnova object.
+    #' @description
+    #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
       param_set = ps(
@@ -48,7 +49,7 @@ FilterBoruta = R6Class("FilterBoruta",
       param_set$set_values(keep = "confirmed")
 
       super$initialize(
-        id = "anova",
+        id = "boruta",
         task_types = c("regr", "classif"),
         param_set = param_set,
         packages = "Boruta",
