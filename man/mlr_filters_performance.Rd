@@ -44,6 +44,7 @@ Other Filter:
 \code{\link{mlr_filters}},
 \code{\link{mlr_filters_anova}},
 \code{\link{mlr_filters_auc}},
+\code{\link{mlr_filters_boruta}},
 \code{\link{mlr_filters_carscore}},
 \code{\link{mlr_filters_carsurvscore}},
 \code{\link{mlr_filters_cmim}},
