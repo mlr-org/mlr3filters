@@ -5,6 +5,10 @@
 #' @description
 #' Filter using the Boruta algorithm for feature selection.
 #' If `keep = "tentative"`, confirmed and tentative features are returned.
+#' Note that there is no ordering in the selected features.
+#' Selected features get a score of 1, deselected features get a score of 0.
+#' The order of selected features is random.
+#' In combination with \CRANpkg{mlr3pipelines}, only the filter criterion `cutoff` makes sense.
 #'
 #' @references
 #' `r format_bib("kursa_2010")`
