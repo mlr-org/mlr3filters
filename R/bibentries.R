@@ -34,5 +34,14 @@ bibentries = c(
     author = "Andrea Bommert and Thomas Welchowski and Matthias Schmid and J\u00f6rg Rahnenf\u00fchrer",
     title = "Benchmark of filter methods for feature selection in high-dimensional gene expression survival data",
     journal = "Briefings in Bioinformatics"
-  )
+  ),
+
+  kursa_2010 = bibentry("article",
+    title = "Feature Selection with the Boruta Package",
+    volume = "36",
+    number = "11",
+    journal = "Journal of Statistical Software",
+    author = "Miron B. Kursa and Witold R. Rudnicki",
+    year = "2010",
+    pages = "1-13")
 )
