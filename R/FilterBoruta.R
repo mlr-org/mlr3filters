@@ -72,14 +72,9 @@ FilterBoruta = R6Class("FilterBoruta",
 
       res = invoke(Boruta::Boruta, formula = formula, data = data, .args = pv)
 
-      selected_features = if (keep == "confirmed") {
-        Boruta::getSelectedAttributes(res)
-      } else {
-        Boruta::getSelectedAttributes(res, withTentative = TRUE)
-      }
+      selected_features = Boruta::getSelectedAttributes(res, withTentative = (keep == "tentative"))
 
-      score = named_vector(features, init = 0)
-      replace(score, names(score) %in% selected_features, 1)
+      set_names(as.numeric(features %in% selected_features), features)
     }
   )
 )
