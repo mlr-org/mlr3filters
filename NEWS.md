@@ -1,5 +1,6 @@
-# mlr3filters 0.7.1-9000
+# mlr3filters 0.8.0
 
+- Added `FilterBoruta`
 - Fixed issue with `FilterPerformance` where the arg `measure` wasn't passed on
 - Added `FilterUnivariateCox` (thanks to @bblodfon)
 - Parameter value `na.rm` is properly initialized to `TRUE` (thanks to @bblodfon)
