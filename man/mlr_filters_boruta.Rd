@@ -25,7 +25,7 @@ In combination with \CRANpkg{mlr3pipelines}, only the filter criterion \code{cut
 \references{
 Kursa MB, Rudnicki WR (2010).
 \dQuote{Feature Selection with the Boruta Package.}
-\emph{Journal of Statistical Software}, \bold{36}(11), 1–13.
+\emph{Journal of Statistical Software}, \bold{36}(11), 1-13.
 }
 \seealso{
 \itemize{

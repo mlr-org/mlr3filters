@@ -25,7 +25,7 @@ bibentries = c(
   ),
 
   bommert_2021 = bibentry("article",
-    doi = "0.1093/bib/bbab354",
+    doi = "10.1093/bib/bbab354",
     year = "2021",
     month = "9",
     publisher = "Oxford University Press ({OUP})",

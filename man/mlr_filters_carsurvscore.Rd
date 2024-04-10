@@ -13,7 +13,7 @@ Calls the implementation in \code{\link[carSurv:carSurvScore]{carSurv::carSurvSc
 Bommert A, Welchowski T, Schmid M, Rahnenführer J (2021).
 \dQuote{Benchmark of filter methods for feature selection in high-dimensional gene expression survival data.}
 \emph{Briefings in Bioinformatics}, \bold{23}(1).
-\doi{0.1093/bib/bbab354}.
+\doi{10.1093/bib/bbab354}.
 }
 \seealso{
 \itemize{
