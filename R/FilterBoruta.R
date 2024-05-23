@@ -32,6 +32,10 @@ FilterBoruta = R6Class("FilterBoruta",
 
   public = list(
 
+    #' @field model [Boruta::Boruta]\cr
+    #' The Boruta model.
+    model = NULL,
+
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
@@ -70,9 +74,8 @@ FilterBoruta = R6Class("FilterBoruta",
       keep = pv$keep
       pv$keep = NULL
 
-      res = invoke(Boruta::Boruta, formula = formula, data = data, .args = pv)
-
-      selected_features = Boruta::getSelectedAttributes(res, withTentative = (keep == "tentative"))
+      self$model = invoke(Boruta::Boruta, formula = formula, data = data, .args = pv)
+      selected_features = Boruta::getSelectedAttributes(self$model, withTentative = (keep == "tentative"))
 
       set_names(as.numeric(features %in% selected_features), features)
     }
