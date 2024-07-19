@@ -1,4 +1,4 @@
-linters: with_defaults(
+linters: linters_with_defaults(
     # lintr defaults: https://github.com/jimhester/lintr#available-linters
     # the following setup changes/removes certain linters
     assignment_linter = NULL, # do not force using <- for assignments
@@ -7,7 +7,4 @@ linters: with_defaults(
     commented_code_linter = NULL, # allow code in comments
     line_length_linter = line_length_linter(120)
     )
-exclusions: list("R/Filter.R" = 159,
-                 "R/mlr_filters.R" = 30,
-                 "R/zzz.R" = 10
-                 )
+
