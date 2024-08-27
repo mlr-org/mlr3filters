@@ -65,9 +65,6 @@ see \code{\link[=mlr_reflections]{mlr_reflections$task_types$type}}.}
 \item{\code{task_properties}}{(\code{character()})\cr
 \link[mlr3:Task]{mlr3::Task}task properties.}
 
-\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
-Set of hyperparameters.}
-
 \item{\code{feature_types}}{(\code{character()})\cr
 Feature types of the filter.}
 
@@ -89,6 +86,9 @@ non-deterministic order.}
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
+\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
+Set of hyperparameters.}
+
 \item{\code{properties}}{(\code{\link[=character]{character()}})\cr
 Properties of the filter. Currently, only \code{"missings"} is supported.
 A filter has the property \code{"missings"}, iff the filter can handle missing values
