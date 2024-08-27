@@ -1,5 +1,7 @@
 # mlr3filters (development version)
 
+- Field `param_set` of class `Filter` is now an active binding.
+
 # mlr3filters 0.8.0
 
 - Added `FilterBoruta`
