@@ -39,10 +39,6 @@ Filter = R6Class("Filter",
     #'   [mlr3::Task]task properties.
     task_properties = NULL,
 
-    #' @field param_set ([paradox::ParamSet])\cr
-    #'   Set of hyperparameters.
-    param_set = NULL,
-
     #' @field feature_types (`character()`)\cr
     #'   Feature types of the filter.
     feature_types = NULL,
@@ -103,7 +99,7 @@ Filter = R6Class("Filter",
       }
       self$task_types = task_types
       self$task_properties = assert_subset(task_properties, unlist(mlr_reflections$task_properties, use.names = FALSE))
-      self$param_set = assert_param_set(param_set)
+      private$.param_set = assert_param_set(param_set)
       self$feature_types = assert_subset(feature_types, mlr_reflections$task_feature_types)
       self$packages = assert_character(packages, any.missing = FALSE, min.chars = 1L)
       self$scores = set_names(numeric(), character())
@@ -203,6 +199,14 @@ Filter = R6Class("Filter",
   ),
 
   active = list(
+    #' @field param_set ([paradox::ParamSet])\cr
+    #'   Set of hyperparameters.
+    param_set = function(rhs) {
+      if (!missing(rhs) && !identical(rhs, private$.param_set)) {
+        stop("Field $param_set of Filter object is read-only.")
+      }
+      private$.param_set
+    },
     #' @field properties ([character()])\cr
     #'   Properties of the filter. Currently, only `"missings"` is supported.
     #'   A filter has the property `"missings"`, iff the filter can handle missing values
@@ -229,6 +233,9 @@ Filter = R6Class("Filter",
       assert_ro_binding(rhs)
       calculate_hash(class(self), self$id, mget(private$.extra_hash, envir = self))
     }
+  ),
+  private = list(
+    param_set = NULL
   )
 )
 
