@@ -235,7 +235,7 @@ Filter = R6Class("Filter",
     }
   ),
   private = list(
-    param_set = NULL
+    .param_set = NULL
   )
 )
 
