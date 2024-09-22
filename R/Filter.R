@@ -229,6 +229,10 @@ Filter = R6Class("Filter",
       assert_ro_binding(rhs)
       calculate_hash(class(self), self$id, mget(private$.extra_hash, envir = self))
     }
+  ),
+
+  private = list(
+    .extra_hash = character()
   )
 )
 
