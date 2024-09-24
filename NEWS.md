@@ -7,6 +7,7 @@
 - Added `FilterUnivariateCox` (thanks to @bblodfon)
 - Parameter value `na.rm` is properly initialized to `TRUE` (thanks to @bblodfon)
 - Bugfix: property `missings` is now set correctly for `FilterFindCorrelation`
+- Bugfix: `$hash` now works for `Filter`s
 
 # mlr3filters 0.7.1
 
