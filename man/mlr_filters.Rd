@@ -5,13 +5,13 @@
 \alias{mlr_filters}
 \title{Dictionary of Filters}
 \format{
-\link{R6Class} object
+\link[R6:R6Class]{R6::R6Class} object
 }
 \usage{
 mlr_filters
 }
 \description{
-A simple \link{Dictionary} storing objects of class \link{Filter}.
+A simple \link[mlr3misc:Dictionary]{mlr3misc::Dictionary} storing objects of class \link{Filter}.
 Each Filter has an associated help page, see \code{mlr_filters_[id]}.
 
 This dictionary can get populated with additional filters by add-on packages.
@@ -21,7 +21,7 @@ For a more convenient way to retrieve and construct filters, see \code{\link[=fl
 \section{Usage}{
 
 
-See \link{Dictionary}.
+See \link[mlr3misc:Dictionary]{mlr3misc::Dictionary}.
 }
 
 \examples{
