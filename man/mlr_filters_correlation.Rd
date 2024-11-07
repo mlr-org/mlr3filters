@@ -30,7 +30,7 @@ filter$calculate(task)
 as.data.table(filter)
 if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart"), quietly = TRUE)) {
   library("mlr3pipelines")
-  task = mlr3::tsk("boston_housing")
+  task = mlr3::tsk("mtcars")
 
   # Note: `filter.frac` is selected randomly and should be tuned.
 
