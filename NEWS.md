@@ -1,4 +1,4 @@
-# mlr3filters (development version)
+# mlr3filters 0.8.1
 
 * compatibility: mlr3 0.22.0
 

@@ -1,8 +1,8 @@
 #' @title Dictionary of Filters
 #'
-#' @format [R6Class] object
+#' @format [R6::R6Class] object
 #' @description
-#' A simple [Dictionary] storing objects of class [Filter].
+#' A simple [mlr3misc::Dictionary] storing objects of class [Filter].
 #' Each Filter has an associated help page, see `mlr_filters_[id]`.
 #'
 #' This dictionary can get populated with additional filters by add-on packages.
@@ -10,7 +10,7 @@
 #' For a more convenient way to retrieve and construct filters, see [flt()].
 #' @section Usage:
 #'
-#' See [Dictionary].
+#' See [mlr3misc::Dictionary].
 #'
 #' @family Dictionary
 #' @family Filter

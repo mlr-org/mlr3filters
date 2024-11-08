@@ -32,7 +32,7 @@ Filter = R6Class("Filter",
     #'   Can be set to the scalar value `NA` to allow any task type.
     #'
     #'   For a complete list of possible task types (depending on the loaded packages),
-    #'   see [`mlr_reflections$task_types$type`][mlr_reflections].
+    #'   see [`mlr_reflections$task_types$type`][mlr3::mlr_reflections].
     task_types = NULL,
 
     #' @field task_properties (`character()`)\cr
