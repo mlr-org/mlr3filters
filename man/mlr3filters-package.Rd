@@ -20,11 +20,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Michel Lang \email{michellang@gmail.com} (\href{https://orcid.org/0000-0001-9754-0393}{ORCID})
+\strong{Maintainer}: Marc Becker \email{marcbecker@posteo.de} (\href{https://orcid.org/0000-0002-8115-0400}{ORCID})
 
 Authors:
 \itemize{
   \item Patrick Schratz \email{patrick.schratz@gmail.com} (\href{https://orcid.org/0000-0003-0748-6624}{ORCID})
+  \item Michel Lang \email{michellang@gmail.com} (\href{https://orcid.org/0000-0001-9754-0393}{ORCID})
   \item Bernd Bischl \email{bernd_bischl@gmx.net} (\href{https://orcid.org/0000-0001-6002-6980}{ORCID})
   \item Martin Binder \email{mlr.developer@mb706.com}
   \item John Zobolas \email{bblodfon@gmail.com} (\href{https://orcid.org/0000-0002-3609-8674}{ORCID})

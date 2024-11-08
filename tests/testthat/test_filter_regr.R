@@ -35,8 +35,8 @@ test_that("filters throw errors on missing values", {
 })
 
 test_that("Errors for unsupported features", {
-  skip_if("ames_housing" %nin% mlr_tasks$keys())
-  task = tsk("ames_housing")
+  skip_if("california_housing" %nin% mlr_tasks$keys())
+  task = tsk("california_housing")
   filters = mlr_filters$mget(mlr_filters$keys())
 
   # supported: numeric, integer

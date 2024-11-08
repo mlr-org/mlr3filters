@@ -12,6 +12,18 @@ Selected features get a score of 1, deselected features get a score of 0.
 The order of selected features is random.
 In combination with \CRANpkg{mlr3pipelines}, only the filter criterion \code{cutoff} makes sense.
 }
+\section{Initial parameter values}{
+
+\itemize{
+\item \code{num.threads}:
+\itemize{
+\item Actual default: \code{NULL}, triggering auto-detection of the number of CPUs.
+\item Adjusted value: 1.
+\item Reason for change: Conflicting with parallelization via \CRANpkg{future}.
+}
+}
+}
+
 \examples{
 \donttest{
   if (requireNamespace("Boruta")) {
