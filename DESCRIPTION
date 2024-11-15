@@ -25,6 +25,7 @@ Depends:
 Imports:
     backports,
     checkmate,
+    cli,
     data.table,
     mlr3 (>= 0.12.0),
     mlr3misc,

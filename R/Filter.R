@@ -120,12 +120,12 @@ Filter = R6Class("Filter",
     #' @description
     #' Printer for Filter class
     print = function() {
-      catn(format(self), if (is.na(self$label)) "" else paste0(": ", self$label))
-      catn(str_indent("Task Types:", self$task_types))
-      catn(str_indent("Properties:", self$properties))
-      catn(str_indent("Task Properties:", self$task_properties))
-      catn(str_indent("Packages:", self$packages))
-      catn(str_indent("Feature types:", self$feature_types))
+      cli_h1(sprintf("%s %s%s", class(self)[1L], self$id, if (is.na(self$label)) "" else paste0(": ", self$label)))
+      cli_li(sprintf("Task Types: %s", paste(self$task_types, collapse = ", ")))
+      cli_li(sprintf("Properties: %s", paste(self$properties, collapse = ", ")))
+      cli_li(sprintf("Task Properties: %s", paste(self$task_properties, collapse = ", ")))
+      cli_li(sprintf("Packages: %s", paste(self$packages, collapse = ", ")))
+      cli_li(sprintf("Feature types: %s", paste(self$feature_types, collapse = ", ")))
       if (length(self$scores)) {
         print(as.data.table(self),
           nrows = 10L, topn = 5L, class = FALSE,
