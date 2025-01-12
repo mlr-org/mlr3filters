@@ -121,13 +121,16 @@ Filter = R6Class("Filter",
     #' Printer for Filter class
     print = function() {
       msg_h = if (is.na(self$label)) "" else paste0(": ", self$label)
-      cli_h1("{.cls {class(self)[1L]}} {self$id}{msg_h}")
-      cli_li("Task Types: {self$task_types}")
       properties = if (length(self$properties)) paste(self$properties, collapse = ", ") else "-"
-      cli_li("Properties: {properties}")
-      cli_li("Task Properties: {self$task_properties}")
-      cli_li("Packages: {.pkg {self$packages}}")
-      cli_li("Feature types: {self$feature_types}")
+      cat_cli({
+        cli_h1("{.cls {class(self)[1L]}} {self$id}{msg_h}")
+        cli_li("Task Types: {self$task_types}")
+        cli_li("Properties: {properties}")
+        cli_li("Task Properties: {self$task_properties}")
+        cli_li("Packages: {.pkg {self$packages}}")
+        cli_li("Feature types: {self$feature_types}")
+      })
+
       if (length(self$scores)) {
         print(as.data.table(self),
               nrows = 10L, topn = 5L, class = FALSE,
