@@ -47,6 +47,7 @@ Suggests:
     survival,
     testthat (>= 3.0.0),
     withr
+Remotes: mlr-org/mlr3misc
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
