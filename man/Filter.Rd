@@ -60,7 +60,7 @@ Set of supported task types, e.g. \code{"classif"} or \code{"regr"}.
 Can be set to the scalar value \code{NA} to allow any task type.
 
 For a complete list of possible task types (depending on the loaded packages),
-see \code{\link[=mlr_reflections]{mlr_reflections$task_types$type}}.}
+see \code{\link[mlr3:mlr_reflections]{mlr_reflections$task_types$type}}.}
 
 \item{\code{task_properties}}{(\code{character()})\cr
 \link[mlr3:Task]{mlr3::Task}task properties.}
