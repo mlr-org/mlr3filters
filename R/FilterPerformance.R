@@ -77,10 +77,14 @@ FilterPerformance = R6Class("FilterPerformance",
     .calculate = function(task, nfeat) {
       task = task$clone()
       fn = task$feature_names
-
+      # need to clone `resampling` between different invocations of `.calculate()`,
+      # since `resample()` will instantiate it.
+      # We also instantiate it here -- this happens implicitly in `resample()`,
+      # but we do it explicitly here for readability and clarity.
+      resampling = self$resampling$clone(deep = TRUE)$instantiate(task)
       perf = map_dbl(fn, function(x) {
         task$col_roles$feature = x
-        resample(task, self$learner, self$resampling, clone = character())$
+        resample(task, self$learner, resampling, clone = character())$
           aggregate(measures = self$measure)
       })
 
