@@ -19,7 +19,7 @@ significance of the feature's impact on survival. The filter value is
 to ensure numerical stability for very small \eqn{p}-values. Also higher
 values denote more important features. The filter works only for numeric
 features so please ensure that factor variables are properly encoded, e.g.
-using \link[mlr3pipelines:mlr_pipeops_encode]{PipeOpEncode}.
+using \link[mlr3pipelines:PipeOpEncode]{PipeOpEncode}.
 }
 \examples{
 
@@ -29,7 +29,7 @@ filter
 }
 \seealso{
 \itemize{
-\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3pipelines:PipeOpFilter]{PipeOpFilter} for filter-based feature selection.
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 }
 
@@ -74,8 +74,6 @@ Other Filter:
 <details open><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>mlr3filters::Filter$calculate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>mlr3filters::Filter$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>mlr3filters::Filter$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>mlr3filters::Filter$print()</code></a></span></li>
 </ul>
 </details>

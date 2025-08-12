@@ -46,18 +46,15 @@ FilterDISR = R6Class("FilterDISR",
     #' @description Create a FilterDISR object.
     initialize = function() {
       param_set = ps(
-        threads = p_int(lower = 0L, default = 0L, tags = "threads")
+        threads = p_int(lower = 0L, default = 0L, tags = "threads", init = 1L)
       )
-      param_set$values = list(threads = 1L)
 
       super$initialize(
-        id = "disr",
+        dict_entry = "disr",
         task_types = c("classif", "regr"),
         param_set = param_set,
         feature_types = c("integer", "numeric", "factor", "ordered"),
-        packages = "praznik",
-        label = "Double Input Symmetrical Relevance",
-        man = "mlr3filters::mlr_filters_disr"
+        packages = "praznik"
       )
     }
   ),

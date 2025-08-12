@@ -59,13 +59,12 @@ FilterKruskalTest = R6Class("FilterKruskalTest",
       )
 
       super$initialize(
-        id = "kruskal_test",
+        dict_entry = "kruskal_test",
         task_types = "classif",
         param_set = param_set,
         packages = "stats",
         feature_types = c("integer", "numeric"),
-        label = "Kruskal-Wallis Test",
-        man = "mlr3filters::mlr_filters_kruskal_test"
+        properties = "missings"
       )
     }
   ),
@@ -86,11 +85,6 @@ FilterKruskalTest = R6Class("FilterKruskalTest",
           kruskal.test(x = x, g = g, na.action = na_action)$p.value
         }
       }))
-    },
-
-    .get_properties = function() {
-      ok = c("na.omit", "na.exclude")
-      if ((self$param_set$values$na.action %??% "na.omit") %in% ok) "missings" else character()
     }
   )
 )

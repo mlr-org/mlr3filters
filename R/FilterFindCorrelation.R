@@ -55,13 +55,12 @@ FilterFindCorrelation = R6Class("FilterFindCorrelation",
       )
 
       super$initialize(
-        id = "find_correlation",
+        dict_entry = "find_correlation",
         task_types = NA_character_,
         param_set = param_set,
         feature_types = c("integer", "numeric"),
         packages = "stats",
-        label = "Correlation-based Score",
-        man = "mlr3filters::mlr_filters_find_correlation"
+        properties = "missings"
       )
     }
   ),
@@ -94,14 +93,6 @@ FilterFindCorrelation = R6Class("FilterFindCorrelation",
       # The following has the correct names and values, BUT we need scores in
       # reverse order. Shift by 1 to get positive values.
       1 - apply(cm, 2, max)
-    },
-    .get_properties = function() {
-      use = self$param_set$values$use %??% "everything"
-      if (use %in% c("complete.obs", "pairwise.complete.obs")) {
-        "missings"
-      } else {
-        character(0)
-      }
     }
   )
 )

@@ -36,7 +36,7 @@ if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart", "mlr3learners"), qu
 }
 \seealso{
 \itemize{
-\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3pipelines:PipeOpFilter]{PipeOpFilter} for filter-based feature selection.
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 }
 
@@ -70,14 +70,6 @@ Other Filter:
 \section{Super classes}{
 \code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{mlr3filters::FilterLearner} -> \code{FilterImportance}
 }
-\section{Public fields}{
-\if{html}{\out{<div class="r6-fields">}}
-\describe{
-\item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr
-Learner to extract the importance values from.}
-}
-\if{html}{\out{</div>}}
-}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -89,8 +81,6 @@ Learner to extract the importance values from.}
 <details open><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>mlr3filters::Filter$calculate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>mlr3filters::Filter$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>mlr3filters::Filter$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>mlr3filters::Filter$print()</code></a></span></li>
 </ul>
 </details>
@@ -101,7 +91,7 @@ Learner to extract the importance values from.}
 \subsection{Method \code{new()}}{
 Create a FilterImportance object.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterImportance$new(learner = mlr3::lrn("classif.featureless"))}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FilterImportance$new(learner)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

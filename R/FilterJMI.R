@@ -47,18 +47,15 @@ FilterJMI = R6Class("FilterJMI",
     #' @description Create a FilterJMI object.
     initialize = function() {
       param_set = ps(
-        threads = p_int(lower = 0L, default = 0L, tags = "threads")
+        threads = p_int(lower = 0L, default = 0L, tags = "threads", init = 1L)
       )
-      param_set$values = list(threads = 1L)
 
       super$initialize(
-        id = "jmi",
+        dict_entry = "jmi",
         task_types = c("classif", "regr"),
         param_set = param_set,
         packages = "praznik",
-        feature_types = c("integer", "numeric", "factor", "ordered"),
-        label = "Joint Mutual Information",
-        man = "mlr3filters::mlr_filters_jmi"
+        feature_types = c("integer", "numeric", "factor", "ordered")
       )
     }
   ),

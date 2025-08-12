@@ -60,13 +60,12 @@ FilterCorrelation = R6Class("FilterCorrelation",
       )
 
       super$initialize(
-        id = "correlation",
+        dict_entry = "correlation",
         task_types = "regr",
         param_set = param_set,
         feature_types = c("integer", "numeric"),
         packages = "stats",
-        label = "Correlation",
-        man = "mlr3filters::mlr_filters_correlation"
+        properties = "missings"
       )
     }
   ),
@@ -80,12 +79,7 @@ FilterCorrelation = R6Class("FilterCorrelation",
         y = as.matrix(task$truth()),
         .args = pv)[, 1L]
       set_names(abs(score), fn)
-    },
-
-    .get_properties = function() {
-      "missings"
     }
-
   )
 )
 

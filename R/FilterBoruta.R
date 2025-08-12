@@ -49,20 +49,16 @@ FilterBoruta = R6Class("FilterBoruta",
         doTrace = p_int(lower = 0, upper = 4, default = 0),
         holdHistory = p_lgl(default = TRUE),
         getImp = p_uty(),
-        keep = p_fct(levels = c("confirmed", "tentative"), default = "confirmed"),
-        num.threads = p_int(lower = 1, default = 1)
+        keep = p_fct(levels = c("confirmed", "tentative"), tags = "required", init = "confirmed"),
+        num.threads = p_int(lower = 1, default = 2, init = 1)
       )
 
-      param_set$set_values(keep = "confirmed", num.threads = 1)
-
       super$initialize(
-        id = "boruta",
+        dict_entry = "boruta",
         task_types = c("regr", "classif"),
         param_set = param_set,
         packages = "Boruta",
-        feature_types = c("integer", "numeric"),
-        label = "Burota",
-        man = "mlr3filters::mlr_filters_boruta"
+        feature_types = c("integer", "numeric")
       )
     }
   ),

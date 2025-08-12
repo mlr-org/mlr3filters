@@ -44,16 +44,14 @@ FilterVariance = R6Class("FilterVariance",
       param_set = ps(
         na.rm = p_lgl(default = TRUE)
       )
-      param_set$values = list(na.rm = TRUE)
 
       super$initialize(
-        id = "variance",
+        dict_entry = "variance",
         task_types = NA_character_,
         param_set = param_set,
         packages = "stats",
         feature_types = c("integer", "numeric"),
-        label = "Variance",
-        man = "mlr3filters::mlr_filters_variance"
+        properties = "missings"
       )
     }
   ),
@@ -62,10 +60,6 @@ FilterVariance = R6Class("FilterVariance",
     .calculate = function(task, nfeat) {
       na_rm = self$param_set$values$na.rm %??% TRUE
       map_dbl(task$data(cols = task$feature_names), var, na.rm = na_rm)
-    },
-
-    .get_properties = function() {
-      if (isTRUE(self$param_set$values$na.rm)) "missings" else character()
     }
   )
 )

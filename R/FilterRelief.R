@@ -50,22 +50,17 @@ FilterRelief = R6Class("FilterRelief",
       )
 
       super$initialize(
-        id = "relief",
+        dict_entry = "relief",
         task_types = c("classif", "regr"),
         param_set = param_set,
         feature_types = c("integer", "numeric", "factor", "ordered"),
         packages = "FSelectorRcpp",
-        label = "RELIEF",
-        man = "mlr3filters::mlr_filters_relief"
+        properties = "missings"
       )
     }
   ),
 
   private = list(
-    .get_properties = function() {
-      "missings"
-    },
-
     .calculate = function(task, nfeat) {
       pv = self$param_set$values
 

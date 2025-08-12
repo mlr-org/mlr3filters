@@ -43,13 +43,10 @@ FilterAUC = R6Class("FilterAUC",
     #' @description Create a FilterAUC object.
     initialize = function() {
       super$initialize(
-        id = "auc",
+        dict_entry = "auc",
         task_types = "classif",
         task_properties = "twoclass",
-        feature_types = c("integer", "numeric"),
-        packages = "mlr3measures",
-        label = "Area Under the ROC Curve Score",
-        man = "mlr3filters::mlr_filters_auc"
+        feature_types = c("integer", "numeric")
       )
     }
   ),

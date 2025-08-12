@@ -47,12 +47,10 @@ FilterAnova = R6Class("FilterAnova",
     #' @description Create a FilterAnova object.
     initialize = function() {
       super$initialize(
-        id = "anova",
+        dict_entry = "anova",
         packages = "stats",
         feature_types = c("integer", "numeric"),
-        task_types = "classif",
-        label = "ANOVA F-Test",
-        man = "mlr3filters::mlr_filters_anova"
+        task_types = "classif"
       )
     }
   ),

@@ -38,26 +38,13 @@ FilterImportance = R6Class("FilterImportance",
   inherit = FilterLearner,
 
   public = list(
-
-    #' @field learner ([mlr3::Learner])\cr
-    #'   Learner to extract the importance values from.
-    learner = NULL,
-
     #' @description Create a FilterImportance object.
     #' @param learner ([mlr3::Learner])\cr
     #'   Learner to extract the importance values from.
-    initialize = function(learner = mlr3::lrn("classif.featureless")) {
-      self$learner = learner = assert_learner(as_learner(learner, clone = TRUE),
-        properties = "importance")
-
+    initialize = function(learner) {
       super$initialize(
-        id = "importance",
-        task_types = learner$task_type,
-        feature_types = learner$feature_types,
-        packages = learner$packages,
-        param_set = learner$param_set,
-        label = "Importance Score",
-        man = "mlr3filters::mlr_filters_importance"
+        learner = assert_learner(as_learner(learner, clone = TRUE), properties = "importance"),
+        dict_entry = "importance"
       )
     }
   ),
@@ -68,10 +55,6 @@ FilterImportance = R6Class("FilterImportance",
       learner = self$learner$clone(deep = TRUE)
       learner = learner$train(task = task)
       learner$base_learner()$importance()
-    },
-
-    .get_properties = function() {
-      intersect("missings", self$learner$properties)
     }
   )
 )

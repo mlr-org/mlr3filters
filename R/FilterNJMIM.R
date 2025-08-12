@@ -46,17 +46,14 @@ FilterNJMIM = R6Class("FilterNJMIM",
     #' @description Create a FilterNJMIM object.
     initialize = function() {
       param_set = ps(
-        threads = p_int(lower = 0L, default = 0L, tags = "threads")
+        threads = p_int(lower = 0L, default = 0L, tags = "threads", init = 1L)
       )
-      param_set$values = list(threads = 1L)
       super$initialize(
-        id = "njmim",
+        dict_entry = "njmim",
         task_types = c("classif", "regr"),
         param_set = param_set,
         packages = "praznik",
-        feature_types = c("integer", "numeric", "factor", "ordered"),
-        label = "Minimal Normalised Joint Mutual Information Maximization",
-        man = "mlr3filters::mlr_filters_njmim"
+        feature_types = c("integer", "numeric", "factor", "ordered")
       )
     }
   ),

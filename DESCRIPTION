@@ -71,6 +71,7 @@ Collate:
     'FilterJMI.R'
     'FilterJMIM.R'
     'FilterKruskalTest.R'
+    'FilterLearnerPerformance.R'
     'FilterMIM.R'
     'FilterMRMR.R'
     'FilterNJMIM.R'

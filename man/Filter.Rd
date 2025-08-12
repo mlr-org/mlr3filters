@@ -47,14 +47,6 @@ Other Filter:
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
-\item{\code{id}}{(\code{character(1)})\cr
-Identifier of the object.
-Used in tables, plot and text output.}
-
-\item{\code{label}}{(\code{character(1)})\cr
-Label for this object.
-Can be used in tables, plot and text output instead of the ID.}
-
 \item{\code{task_types}}{(\code{character()})\cr
 Set of supported task types, e.g. \code{"classif"} or \code{"regr"}.
 Can be set to the scalar value \code{NA} to allow any task type.
@@ -65,18 +57,8 @@ see \code{\link[mlr3:mlr_reflections]{mlr_reflections$task_types$type}}.}
 \item{\code{task_properties}}{(\code{character()})\cr
 \link[mlr3:Task]{mlr3::Task}task properties.}
 
-\item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
-Set of hyperparameters.}
-
 \item{\code{feature_types}}{(\code{character()})\cr
 Feature types of the filter.}
-
-\item{\code{packages}}{(\code{\link[=character]{character()}})\cr
-Packages which this filter is relying on.}
-
-\item{\code{man}}{(\code{character(1)})\cr
-String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.
-Defaults to \code{NA}, but can be set by child classes.}
 
 \item{\code{scores}}{Stores the calculated filter score values as named numeric vector.
 The vector is sorted in decreasing order with possible \code{NA} values
@@ -86,32 +68,11 @@ non-deterministic order.}
 }
 \if{html}{\out{</div>}}
 }
-\section{Active bindings}{
-\if{html}{\out{<div class="r6-active-bindings">}}
-\describe{
-\item{\code{properties}}{(\code{\link[=character]{character()}})\cr
-Properties of the filter. Currently, only \code{"missings"} is supported.
-A filter has the property \code{"missings"}, iff the filter can handle missing values
-in the features in a graceful way. Otherwise, an assertion is thrown if missing
-values are detected.}
-
-\item{\code{hash}}{(\code{character(1)})\cr
-Hash (unique identifier) for this object.}
-
-\item{\code{phash}}{(\code{character(1)})\cr
-Hash (unique identifier) for this partial object, excluding some components
-which are varied systematically during tuning (parameter values) or feature
-selection (feature names).}
-}
-\if{html}{\out{</div>}}
-}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-Filter-new}{\code{Filter$new()}}
-\item \href{#method-Filter-format}{\code{Filter$format()}}
 \item \href{#method-Filter-print}{\code{Filter$print()}}
-\item \href{#method-Filter-help}{\code{Filter$help()}}
 \item \href{#method-Filter-calculate}{\code{Filter$calculate()}}
 \item \href{#method-Filter-clone}{\code{Filter$clone()}}
 }
@@ -123,23 +84,22 @@ selection (feature names).}
 Create a Filter object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Filter$new(
-  id,
+  dict_entry,
   task_types,
-  task_properties = character(),
+  task_properties = character(0),
   param_set = ps(),
-  feature_types = character(),
-  packages = character(),
-  label = NA_character_,
-  man = NA_character_
+  feature_types = character(0),
+  packages = character(0),
+  properties = character(0),
+  label,
+  man,
+  id = dict_entry
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{id}}{(\code{character(1)})\cr
-Identifier for the filter.}
-
 \item{\code{task_types}}{(\code{character()})\cr
 Types of the task the filter can operator on. E.g., \code{"classif"} or
 \code{"regr"}. Can be set to scalar \code{NA} to allow any task type.}
@@ -169,23 +129,9 @@ Label for the new instance.}
 String in the format \verb{[pkg]::[topic]} pointing to a manual page for
 this object. The referenced help package can be opened via method
 \verb{$help()}.}
-}
-\if{html}{\out{</div>}}
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Filter-format"></a>}}
-\if{latex}{\out{\hypertarget{method-Filter-format}{}}}
-\subsection{Method \code{format()}}{
-Format helper for Filter class
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Filter$format(...)}\if{html}{\out{</div>}}
-}
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{(ignored).}
+\item{\code{id}}{(\code{character(1)})\cr
+Identifier for the filter.}
 }
 \if{html}{\out{</div>}}
 }
@@ -197,16 +143,6 @@ Format helper for Filter class
 Printer for Filter class
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Filter$print()}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Filter-help"></a>}}
-\if{latex}{\out{\hypertarget{method-Filter-help}{}}}
-\subsection{Method \code{help()}}{
-Opens the corresponding help page referenced by field \verb{$man}.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Filter$help()}\if{html}{\out{</div>}}
 }
 
 }
