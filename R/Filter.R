@@ -16,6 +16,7 @@
 #' @family Filter
 #' @export
 Filter = R6Class("Filter",
+  inherit = Mlr3Component,
   public = list(
     #' @field task_types (`character()`)\cr
     #'   Set of supported task types, e.g. `"classif"` or `"regr"`.
