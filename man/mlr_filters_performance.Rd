@@ -35,7 +35,7 @@ if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart"), quietly = TRUE)) {
 }
 \seealso{
 \itemize{
-\item \link[mlr3pipelines:PipeOpFilter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 }
 
@@ -67,7 +67,7 @@ Other Filter:
 }
 \concept{Filter}
 \section{Super classes}{
-\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{mlr3filters::FilterLearnerPerformance} -> \code{FilterPerformance}
+\code{\link[mlr3misc:Mlr3Component]{mlr3misc::Mlr3Component}} -> \code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{mlr3filters::FilterLearnerPerformance} -> \code{FilterPerformance}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -77,8 +77,13 @@ Other Filter:
 }
 }
 \if{html}{\out{
-<details open><summary>Inherited methods</summary>
+<details><summary>Inherited methods</summary>
 <ul>
+<li><span class="pkg-link" data-pkg="mlr3misc" data-topic="Mlr3Component" data-id="configure"><a href='../../mlr3misc/html/Mlr3Component.html#method-Mlr3Component-configure'><code>mlr3misc::Mlr3Component$configure()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3misc" data-topic="Mlr3Component" data-id="format"><a href='../../mlr3misc/html/Mlr3Component.html#method-Mlr3Component-format'><code>mlr3misc::Mlr3Component$format()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3misc" data-topic="Mlr3Component" data-id="help"><a href='../../mlr3misc/html/Mlr3Component.html#method-Mlr3Component-help'><code>mlr3misc::Mlr3Component$help()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3misc" data-topic="Mlr3Component" data-id="override_info"><a href='../../mlr3misc/html/Mlr3Component.html#method-Mlr3Component-override_info'><code>mlr3misc::Mlr3Component$override_info()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3misc" data-topic="Mlr3Component" data-id="require_namespaces"><a href='../../mlr3misc/html/Mlr3Component.html#method-Mlr3Component-require_namespaces'><code>mlr3misc::Mlr3Component$require_namespaces()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>mlr3filters::Filter$calculate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>mlr3filters::Filter$print()</code></a></span></li>
 </ul>

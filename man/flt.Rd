@@ -9,6 +9,16 @@ flt(.key, ...)
 
 flts(.keys, ...)
 }
+\arguments{
+\item{.key}{(\code{character(1)})\cr
+Key passed to the respective \link[mlr3misc:Dictionary]{dictionary} to retrieve the object.}
+
+\item{...}{(any)\cr
+Additional arguments.}
+
+\item{.keys}{(\code{character()})\cr
+Keys passed to the respective \link[mlr3misc:Dictionary]{dictionary} to retrieve multiple objects.}
+}
 \value{
 \link{Filter}.
 }
