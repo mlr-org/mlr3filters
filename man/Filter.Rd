@@ -98,7 +98,7 @@ non-deterministic order.}
 Create a Filter object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Filter$new(
-  dict_entry,
+  id = dict_entry,
   task_types,
   task_properties = character(0),
   param_set = ps(),
@@ -107,13 +107,16 @@ Create a Filter object.
   properties = character(0),
   label,
   man,
-  id = dict_entry
+  dict_entry = id
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{id}}{(\code{character(1)})\cr
+Identifier for the filter.}
+
 \item{\code{task_types}}{(\code{character()})\cr
 Types of the task the filter can operator on. E.g., \code{"classif"} or
 \code{"regr"}. Can be set to scalar \code{NA} to allow any task type.}
@@ -143,9 +146,6 @@ Label for the new instance.}
 String in the format \verb{[pkg]::[topic]} pointing to a manual page for
 this object. The referenced help package can be opened via method
 \verb{$help()}.}
-
-\item{\code{id}}{(\code{character(1)})\cr
-Identifier for the filter.}
 }
 \if{html}{\out{</div>}}
 }

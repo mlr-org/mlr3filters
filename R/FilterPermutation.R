@@ -40,8 +40,10 @@
 #'
 #'   # Note: `filter.frac` is selected randomly and should be tuned.
 #'
-#'   graph = po("filter", filter = flt("permutation", nmc = 2), filter.frac = 0.5) %>>%
-#'     po("learner", mlr3::lrn("classif.rpart"))
+#'   graph = po("filter",
+#'     filter = flt("permutation", learner = lrn("classif.rpart"), nmc = 2),
+#'     filter.frac = 0.5
+#'   ) %>>% po("learner", mlr3::lrn("classif.rpart"))
 #'
 #'   graph$train(task)
 #' }
