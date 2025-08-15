@@ -1,7 +1,7 @@
 test_that("all classif filters return correct filter values", {
   task = mlr_tasks$get("sonar")
   task$select(head(task$feature_names, 3))
-  filters = mlr_filters$mget(mlr_filters$keys())
+  filters = mlr_filters$mget(mlr_filters$keys(), .prototype = TRUE)
   filters$permutation$param_set$values = list(nmc = 2)
 
   for (f in filters) {
@@ -19,7 +19,7 @@ test_that("filters throw errors on missing values", {
   data$V1[1] = NA
   task = as_task_classif(data, target = task$target_names)
 
-  filters = mlr_filters$mget(mlr_filters$keys())
+  filters = mlr_filters$mget(mlr_filters$keys(), .prototype = TRUE)
 
   for (f in filters) {
     if ("classif" %nin% f$task_types) {
