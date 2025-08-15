@@ -24,13 +24,11 @@ FilterCarSurvScore = R6Class("FilterCarSurvScore",
         denom = p_fct(c("1/n", "sum_w"), default = "1/n")
       )
       super$initialize(
-        id = "surv.carsurvscore",
+        dict_entry = "carsurvscore",
         packages = c("carSurv", "mlr3proba"),
         param_set = ps,
         feature_types = c("integer", "numeric"),
-        task_types = "surv",
-        label = "Correlation-Adjusted coRrelation Survival Score",
-        man = "mlr3filters::mlr_filters_carsurvscore"
+        task_types = "surv"
       )
     }
   ),

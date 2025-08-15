@@ -1,6 +1,6 @@
 test_that("all regr filters return correct filter values", {
   task = mlr_tasks$get("mtcars")
-  filters = mlr_filters$mget(mlr_filters$keys())
+  filters = mlr_filters$mget(mlr_filters$keys(), .prototype = TRUE)
 
   for (f in filters) {
     if ("regr" %in% f$task_types && all(require_namespaces(f$packages, quietly = TRUE))) {
@@ -15,7 +15,7 @@ test_that("filters throw errors on missing values", {
   data$cyl[1] = NA
   task = as_task_regr(data, target = "mpg")
 
-  filters = mlr_filters$mget(mlr_filters$keys())
+  filters = mlr_filters$mget(mlr_filters$keys(), .prototype = TRUE)
 
   for (f in filters) {
     if ("regr" %nin% f$task_types) {
@@ -37,7 +37,7 @@ test_that("filters throw errors on missing values", {
 test_that("Errors for unsupported features", {
   skip_if("california_housing" %nin% mlr_tasks$keys())
   task = tsk("california_housing")
-  filters = mlr_filters$mget(mlr_filters$keys())
+  filters = mlr_filters$mget(mlr_filters$keys(), .prototype = TRUE)
 
   # supported: numeric, integer
   # supplied: factor, integer, numeric

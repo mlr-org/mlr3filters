@@ -46,18 +46,15 @@ FilterMIM = R6Class("FilterMIM",
     #' @description Create a FilterMIM object.
     initialize = function() {
       param_set = ps(
-        threads = p_int(lower = 0L, default = 0L, tags = "threads")
+        threads = p_int(lower = 0L, default = 0L, tags = "threads", init = 1L)
       )
-      param_set$values = list(threads = 1L)
 
       super$initialize(
-        id = "mim",
+        dict_entry = "mim",
         task_types = c("classif", "regr"),
         param_set = param_set,
         packages = "praznik",
-        feature_types = c("integer", "numeric", "factor", "ordered"),
-        label = "Mutual Information Maximization",
-        man = "mlr3filters::mlr_filters_mim"
+        feature_types = c("integer", "numeric", "factor", "ordered")
       )
     }
   ),

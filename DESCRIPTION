@@ -48,6 +48,10 @@ Suggests:
     survival,
     testthat (>= 3.0.0),
     withr
+Remotes:
+    mlr-org/mlr3misc@common_baseclass,
+    mlr-org/mlr3pipelines@common_baseclass,
+    mlr-org/mlr3@common_baseclass
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
@@ -71,6 +75,7 @@ Collate:
     'FilterJMI.R'
     'FilterJMIM.R'
     'FilterKruskalTest.R'
+    'FilterLearnerPerformance.R'
     'FilterMIM.R'
     'FilterMRMR.R'
     'FilterNJMIM.R'

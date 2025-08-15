@@ -1,6 +1,6 @@
 test_that("all generic filters return correct filter values", {
   task = mlr_tasks$get("mtcars")
-  filters = mlr_filters$mget(mlr_filters$keys())
+  filters = mlr_filters$mget(mlr_filters$keys(), .prototype = TRUE)
 
   for (f in filters) {
     if (NA %in% f$task_types && all(require_namespaces(f$packages, quietly = TRUE))) {
@@ -15,7 +15,7 @@ test_that("filters throw errors on missing values", {
   data$cyl[1] = NA
   task = as_task_regr(data, target = "mpg")
 
-  filters = mlr_filters$mget(mlr_filters$keys())
+  filters = mlr_filters$mget(mlr_filters$keys(), .prototype = TRUE)
 
   for (f in filters) {
     if (!is_scalar_na(f$task_types)) {

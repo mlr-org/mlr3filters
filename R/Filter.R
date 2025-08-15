@@ -16,17 +16,8 @@
 #' @family Filter
 #' @export
 Filter = R6Class("Filter",
+  inherit = Mlr3Component,
   public = list(
-    #' @field id (`character(1)`)\cr
-    #'   Identifier of the object.
-    #'   Used in tables, plot and text output.
-    id = NULL,
-
-    #' @field label (`character(1)`)\cr
-    #'   Label for this object.
-    #'   Can be used in tables, plot and text output instead of the ID.
-    label = NA_character_,
-
     #' @field task_types (`character()`)\cr
     #'   Set of supported task types, e.g. `"classif"` or `"regr"`.
     #'   Can be set to the scalar value `NA` to allow any task type.
@@ -39,22 +30,9 @@ Filter = R6Class("Filter",
     #'   [mlr3::Task]task properties.
     task_properties = NULL,
 
-    #' @field param_set ([paradox::ParamSet])\cr
-    #'   Set of hyperparameters.
-    param_set = NULL,
-
     #' @field feature_types (`character()`)\cr
     #'   Feature types of the filter.
     feature_types = NULL,
-
-    #' @field packages ([character()])\cr
-    #'   Packages which this filter is relying on.
-    packages = NULL,
-
-    #' @field man (`character(1)`)\cr
-    #'   String in the format `[pkg]::[topic]` pointing to a manual page for this object.
-    #'   Defaults to `NA`, but can be set by child classes.
-    man = NULL,
 
     #' @field scores
     #'   Stores the calculated filter score values as named numeric vector.
@@ -90,31 +68,27 @@ Filter = R6Class("Filter",
     #'   String in the format `[pkg]::[topic]` pointing to a manual page for
     #'   this object. The referenced help package can be opened via method
     #'   `$help()`.
-    initialize = function(id, task_types, task_properties = character(),
-      param_set = ps(), feature_types = character(), packages = character(), label = NA_character_,
-      man = NA_character_) {
+    initialize = function(id = dict_entry, task_types, task_properties = character(0),
+      param_set = ps(), feature_types = character(0), packages = character(0),
+      properties = character(0), label, man, dict_entry = id
+    ) {
+      if (!missing(label) || !missing(man)) {
+        mlr3component_deprecation_msg("label and man are deprecated for Filter construction and will be removed in the future.")
+      }
 
-      self$id = assert_string(id)
-      self$label = assert_string(label, na.ok = TRUE)
+      super$initialize(dict_entry = dict_entry, dict_shortaccess = "flt", id = id,
+        param_set = param_set, packages = packages, properties = properties)
+
       if (!test_scalar_na(task_types)) {
         # we allow any task type here, otherwise we are not able to construct
         # the filter without loading additional packages like mlr3proba
         assert_character(task_types, any.missing = FALSE)
       }
+      assert_subset(properties, mlr_reflections$filter_properties)  # only allow missings for now
       self$task_types = task_types
       self$task_properties = assert_subset(task_properties, unlist(mlr_reflections$task_properties, use.names = FALSE))
-      self$param_set = assert_param_set(param_set)
       self$feature_types = assert_subset(feature_types, mlr_reflections$task_feature_types)
-      self$packages = assert_character(packages, any.missing = FALSE, min.chars = 1L)
       self$scores = set_names(numeric(), character())
-      self$man = assert_string(man, na.ok = TRUE)
-    },
-
-    #' @description
-    #' Format helper for Filter class
-    #' @param ... (ignored).
-    format = function(...) {
-      sprintf("<%s:%s>", class(self)[1L], self$id) # nocov
     },
 
     #' @description
@@ -131,12 +105,6 @@ Filter = R6Class("Filter",
           nrows = 10L, topn = 5L, class = FALSE,
           row.names = TRUE, print.keys = FALSE)
       }
-    },
-
-    #' @description
-    #' Opens the corresponding help page referenced by field `$man`.
-    help = function() {
-      open_help(self$man) # nocov
     },
 
     #' @description
@@ -200,39 +168,6 @@ Filter = R6Class("Filter",
 
       invisible(self)
     }
-  ),
-
-  active = list(
-    #' @field properties ([character()])\cr
-    #'   Properties of the filter. Currently, only `"missings"` is supported.
-    #'   A filter has the property `"missings"`, iff the filter can handle missing values
-    #'   in the features in a graceful way. Otherwise, an assertion is thrown if missing
-    #'   values are detected.
-    properties = function(rhs) {
-      assert_ro_binding(rhs)
-      get_properties = get0(".get_properties", private)
-      if (is.null(get_properties)) character() else get_properties()
-    },
-
-    #' @field hash (`character(1)`)\cr
-    #' Hash (unique identifier) for this object.
-    hash = function(rhs) {
-      assert_ro_binding(rhs)
-      calculate_hash(class(self), self$id, self$param_set$values, mget(private$.extra_hash, envir = self))
-    },
-
-    #' @field phash (`character(1)`)\cr
-    #' Hash (unique identifier) for this partial object, excluding some components
-    #' which are varied systematically during tuning (parameter values) or feature
-    #' selection (feature names).
-    phash = function(rhs) {
-      assert_ro_binding(rhs)
-      calculate_hash(class(self), self$id, mget(private$.extra_hash, envir = self))
-    }
-  ),
-
-  private = list(
-    .extra_hash = character()
   )
 )
 

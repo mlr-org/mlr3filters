@@ -53,13 +53,11 @@ FilterCarScore = R6Class("FilterCarScore",
       param_set$values = list(verbose = FALSE)
 
       super$initialize(
-        id = "carscore",
+        dict_entry = "carscore",
         task_types = "regr",
         param_set = param_set,
         feature_types = c("logical", "integer", "numeric"),
-        packages = "care",
-        label = "Correlation-Adjusted coRrelation Score",
-        man = "mlr3filters::mlr_filters_carscore"
+        packages = "care"
       )
     }
   ),

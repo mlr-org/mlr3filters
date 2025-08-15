@@ -34,16 +34,9 @@
 #'   graph$train(task)
 #' }
 FilterPerformance = R6Class("FilterPerformance",
-  inherit = FilterLearner,
+  inherit = FilterLearnerPerformance,
 
   public = list(
-
-    #' @field learner ([mlr3::Learner])\cr
-    learner = NULL,
-    #' @field resampling ([mlr3::Resampling])\cr
-    resampling = NULL,
-    #' @field measure ([mlr3::Measure])\cr
-    measure = NULL,
 
     #' @description Create a FilterDISR object.
     #' @param learner ([mlr3::Learner])\cr
@@ -52,23 +45,17 @@ FilterPerformance = R6Class("FilterPerformance",
     #'   [mlr3::Resampling] to be used within resampling.
     #' @param measure ([mlr3::Measure])\cr
     #'   [mlr3::Measure] to be used for evaluating the performance.
-    initialize = function(learner = mlr3::lrn("classif.featureless"),
-      resampling = mlr3::rsmp("holdout"), measure = NULL) {
+    initialize = function(learner, resampling = mlr3::rsmp("holdout"), measure = NULL) {
 
-      self$learner = learner = assert_learner(as_learner(learner, clone = TRUE))
-      self$resampling = assert_resampling(as_resampling(resampling))
-      self$measure = assert_measure(as_measure(measure,
-        task_type = learner$task_type), learner = learner)
-      packages = unique(c(self$learner$packages, self$measure$packages))
+      learner = assert_learner(as_learner(learner, clone = TRUE))
+      resampling = assert_resampling(as_resampling(resampling, clone = TRUE))
+      measure = assert_measure(as_measure(measure, task_type = learner$task_type, clone = TRUE), learner = learner)
 
       super$initialize(
-        id = "performance",
-        task_types = learner$task_type,
-        param_set = learner$param_set,
-        feature_types = learner$feature_types,
-        packages = packages,
-        label = "Predictive Performance",
-        man = "mlr3filters::mlr_filters_performance"
+        dict_entry = "performance",
+        learner = learner,
+        resampling = resampling,
+        measure = measure
       )
     }
   ),
@@ -89,13 +76,9 @@ FilterPerformance = R6Class("FilterPerformance",
       }
 
       set_names(perf, fn)
-    },
-
-    .get_properties = function() {
-      intersect("missings", self$learner$properties)
     }
   )
 )
 
 #' @include mlr_filters.R
-mlr_filters$add("performance", FilterPerformance)
+mlr_filters$add("performance", FilterPerformance, .prototype_args = list(learner = lrn("classif.featureless")))

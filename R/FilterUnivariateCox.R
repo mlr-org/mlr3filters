@@ -33,13 +33,11 @@ FilterUnivariateCox = R6Class("FilterUnivariateCox",
     #' @description Create a FilterUnivariateCox object.
     initialize = function() {
       super$initialize(
-        id = "surv.univariate_cox",
+        dict_entry = "univariate_cox",
         packages = "survival",
         param_set = ps(),
         feature_types = c("integer", "numeric", "logical"),
-        task_types = "surv",
-        label = "Univariate Cox Survival Score",
-        man = "mlr3filters::mlr_filters_univariate_cox"
+        task_types = "surv"
       )
     }
   ),

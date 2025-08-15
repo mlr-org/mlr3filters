@@ -46,26 +46,13 @@ FilterSelectedFeatures = R6Class("FilterSelectedFeatures",
   inherit = FilterLearner,
 
   public = list(
-
-    #' @field learner ([mlr3::Learner])\cr
-    #'   Learner to extract the importance values from.
-    learner = NULL,
-
     #' @description Create a FilterImportance object.
     #' @param learner ([mlr3::Learner])\cr
     #'   Learner to extract the selected features from.
-    initialize = function(learner = mlr3::lrn("classif.featureless")) {
-      self$learner = learner = assert_learner(as_learner(learner, clone = TRUE),
-        properties = "selected_features")
-
+    initialize = function(learner) {
       super$initialize(
-        id = "selected_features",
-        task_types = learner$task_type,
-        feature_types = learner$feature_types,
-        packages = learner$packages,
-        param_set = learner$param_set,
-        label = "Embedded Feature Selection",
-        man = "mlr3filters::mlr_filters_selected_features"
+        learner = assert_learner(as_learner(learner, clone = TRUE), properties = "selected_features"),
+        dict_entry = "selected_features"
       )
     }
   ),
@@ -76,13 +63,9 @@ FilterSelectedFeatures = R6Class("FilterSelectedFeatures",
       learner = learner$train(task = task)
       score = named_vector(task$feature_names, init = 0)
       replace(score, names(score) %in% learner$selected_features(), 1)
-    },
-
-    .get_properties = function() {
-      intersect("missings", self$learner$properties)
     }
   )
 )
 
 #' @include mlr_filters.R
-mlr_filters$add("selected_features", FilterSelectedFeatures)
+mlr_filters$add("selected_features", FilterSelectedFeatures, .prototype_args = list(learner = lrn("classif.featureless")))

@@ -10,6 +10,8 @@
 .onLoad = function(libname, pkgname) {
   # nolint
   # nocov start
+  x = utils::getFromNamespace("mlr_reflections", ns = "mlr3")
+  x$filter_properties = "missings"  # only allow missings for now
   backports::import(pkgname)
 } # nocov end
 

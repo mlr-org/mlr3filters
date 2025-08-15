@@ -61,13 +61,12 @@ FilterInformationGain = R6Class("FilterInformationGain",
       )
 
       super$initialize(
-        id = "information_gain",
+        dict_entry = "information_gain",
         task_types = c("classif", "regr"),
         param_set = param_set,
         feature_types = c("integer", "numeric", "factor", "ordered"),
         packages = "FSelectorRcpp",
-        label = "Information Gain",
-        man = "mlr3filters::mlr_filters_information_gain"
+        properties = "missings"
       )
     }
   ),
@@ -82,10 +81,6 @@ FilterInformationGain = R6Class("FilterInformationGain",
       y = task$truth()
       scores = invoke(FSelectorRcpp::information_gain, x = x, y = y, .args = pv)
       set_names(scores$importance, scores$attributes)
-    },
-
-    .get_properties = function() {
-      "missings"
     }
   )
 )
