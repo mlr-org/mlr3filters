@@ -2,7 +2,7 @@ test_that("all classif filters return correct filter values", {
   task = mlr_tasks$get("sonar")
   task$select(head(task$feature_names, 3))
   filters = mlr_filters$mget(mlr_filters$keys(), .prototype = TRUE)
-  filters$permutation$param_set$values = list(nmc = 2)
+  filters$permutation$param_set$set_values(nmc = 2)
 
   for (f in filters) {
     if ("classif" %in% f$task_types && all(require_namespaces(f$packages, quietly = TRUE))) {

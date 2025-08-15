@@ -4,7 +4,7 @@ FilterLearner = R6Class("FilterLearner", inherit = Filter,
     initialize = function(learner, dict_entry) {
       private$.learner = learner
       super$initialize(
-        id = learner$id,
+        id = paste0(dict_entry, ".", learner$id),
         dict_entry = dict_entry,
         task_types = learner$task_type,
         feature_types = learner$feature_types,

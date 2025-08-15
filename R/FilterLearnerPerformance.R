@@ -7,7 +7,7 @@ FilterLearnerPerformance = R6Class("FilterLearnerPerformance", inherit = Filter,
       private$.measure = measure
       private$.additional_param_set = assert_param_set(additional_param_set)
       super$initialize(
-        id = learner$id,
+        id = paste0(dict_entry, ".", learner$id),
         dict_entry = dict_entry,
         task_types = learner$task_type,
         feature_types = learner$feature_types,
