@@ -68,4 +68,4 @@ FilterSelectedFeatures = R6Class("FilterSelectedFeatures",
 )
 
 #' @include mlr_filters.R
-mlr_filters$add("selected_features", FilterSelectedFeatures)
+mlr_filters$add("selected_features", FilterSelectedFeatures, .prototype_args = list(learner = lrn("classif.featureless")))

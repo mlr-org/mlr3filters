@@ -81,4 +81,4 @@ FilterPerformance = R6Class("FilterPerformance",
 )
 
 #' @include mlr_filters.R
-mlr_filters$add("performance", FilterPerformance)
+mlr_filters$add("performance", FilterPerformance, .prototype_args = list(learner = lrn("classif.featureless")))

@@ -68,9 +68,9 @@ Filter = R6Class("Filter",
     #'   String in the format `[pkg]::[topic]` pointing to a manual page for
     #'   this object. The referenced help package can be opened via method
     #'   `$help()`.
-    initialize = function(dict_entry, task_types, task_properties = character(0),
+    initialize = function(id = dict_entry, task_types, task_properties = character(0),
       param_set = ps(), feature_types = character(0), packages = character(0),
-      properties = character(0), label, man, id = dict_entry
+      properties = character(0), label, man, dict_entry = id
     ) {
       if (!missing(label) || !missing(man)) {
         deprecated_component("label and man are deprecated for Filter construction and will be removed in the future.")

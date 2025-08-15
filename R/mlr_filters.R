@@ -31,7 +31,7 @@ as.data.table.DictionaryFilter = function(x, ..., objects = FALSE) {
   assert_flag(objects)
 
   setkeyv(map_dtr(x$keys(), function(key) {
-    f = x$get(key)
+    f = x$get(key, .prototype = TRUE)
     insert_named(
       list(key = key, label = f$label, task_types = list(f$task_types),
         task_properties = list(f$task_properties), params = list(f$param_set$ids()),

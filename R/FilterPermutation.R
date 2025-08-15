@@ -124,4 +124,4 @@ FilterPermutation = R6Class("FilterPermutation",
 )
 
 #' @include mlr_filters.R
-mlr_filters$add("permutation", FilterPermutation)
+mlr_filters$add("permutation", FilterPermutation, .prototype_args = list(learner = lrn("classif.featureless")))

@@ -60,4 +60,4 @@ FilterImportance = R6Class("FilterImportance",
 )
 
 #' @include mlr_filters.R
-mlr_filters$add("importance", FilterImportance)
+mlr_filters$add("importance", FilterImportance, .prototype_args = list(learner = lrn("classif.featureless")))
