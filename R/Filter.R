@@ -32,7 +32,7 @@ Filter = R6Class("Filter",
     #'   Can be set to the scalar value `NA` to allow any task type.
     #'
     #'   For a complete list of possible task types (depending on the loaded packages),
-    #'   see [`mlr_reflections$task_types$type`][mlr_reflections].
+    #'   see [`mlr_reflections$task_types$type`][mlr3::mlr_reflections].
     task_types = NULL,
 
     #' @field task_properties (`character()`)\cr
@@ -116,16 +116,21 @@ Filter = R6Class("Filter",
     #' @description
     #' Printer for Filter class
     print = function() {
-      catn(format(self), if (is.na(self$label)) "" else paste0(": ", self$label))
-      catn(str_indent("Task Types:", self$task_types))
-      catn(str_indent("Properties:", self$properties))
-      catn(str_indent("Task Properties:", self$task_properties))
-      catn(str_indent("Packages:", self$packages))
-      catn(str_indent("Feature types:", self$feature_types))
+      msg_h = if (is.na(self$label)) "" else paste0(": ", self$label)
+      properties = if (length(self$properties)) paste(self$properties, collapse = ", ") else "-"
+      cat_cli({
+        cli_h1("{.cls {class(self)[1L]}} {self$id}{msg_h}")
+        cli_li("Task Types: {self$task_types}")
+        cli_li("Properties: {properties}")
+        cli_li("Task Properties: {self$task_properties}")
+        cli_li("Packages: {.pkg {self$packages}}")
+        cli_li("Feature types: {self$feature_types}")
+      })
+
       if (length(self$scores)) {
         print(as.data.table(self),
-          nrows = 10L, topn = 5L, class = FALSE,
-          row.names = TRUE, print.keys = FALSE)
+              nrows = 10L, topn = 5L, class = FALSE,
+              row.names = TRUE, print.keys = FALSE)
       }
     },
 
@@ -235,7 +240,8 @@ Filter = R6Class("Filter",
     }
   ),
   private = list(
-    .param_set = NULL
+    .param_set = NULL,
+    .extra_hash = character()
   )
 )
 

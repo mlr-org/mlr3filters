@@ -84,7 +84,7 @@ FilterPermutation = R6Class("FilterPermutation",
         packages = packages,
         param_set = param_set,
         label = "Permutation Score",
-        man = "mlr3filters::mlr_filters_performance"
+        man = "mlr3filters::mlr_filters_permutation"
       )
     }
   ),
@@ -145,7 +145,7 @@ FilterPermutation = R6Class("FilterPermutation",
         delta = -delta
       }
 
-      if (!isTRUE(self$param_set$values$standardize)) {
+      if (isTRUE(self$param_set$values$standardize)) {
         delta = delta / max(delta)
       }
 
