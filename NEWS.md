@@ -1,5 +1,7 @@
 # mlr3filters (development version)
 
+* refactor:Field `param_set` of class `Filter` is now an active binding.
+
 # mlr3filters 0.8.1
 
 * compatibility: mlr3 0.22.0
