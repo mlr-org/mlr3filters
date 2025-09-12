@@ -1,6 +1,10 @@
-# mlr3filters (development version)
+# mlr3filters 0.9.0
 
-* refactor:Field `param_set` of class `Filter` is now an active binding.
+* refactor: Field `param_set` of class `Filter` is now an active binding.
+* feat: Added support for `logical`, `factor`, and `ordered` features to `FilterBoruta`.
+* feat: Added cli package for class printer.
+* fix: Use fresh resampling instance in each invocation in `FilterPerformance`.
+* fix: `standardize` parameter in `FilterPermutation` works now as expected.
 
 # mlr3filters 0.8.1
 
