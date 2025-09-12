@@ -60,7 +60,7 @@ FilterBoruta = R6Class("FilterBoruta",
         task_types = c("regr", "classif"),
         param_set = param_set,
         packages = "Boruta",
-        feature_types = c("integer", "numeric"),
+        feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         label = "Burota",
         man = "mlr3filters::mlr_filters_boruta"
       )
