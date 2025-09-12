@@ -114,11 +114,6 @@ see <code><a href="https://mlr3.mlr-org.com/reference/mlr_reflections.html" clas
 <dd><p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>)<br><a href="https://mlr3.mlr-org.com/reference/Task.html" class="external-link">mlr3::Task</a>task properties.</p></dd>
 
 
-<dt><code>param_set</code></dt>
-<dd><p>(<a href="https://paradox.mlr-org.com/reference/ParamSet.html" class="external-link">paradox::ParamSet</a>)<br>
-Set of hyperparameters.</p></dd>
-
-
 <dt><code>feature_types</code></dt>
 <dd><p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>)<br>
 Feature types of the filter.</p></dd>
@@ -147,7 +142,12 @@ non-deterministic order.</p></dd>
     </div>
     <div class="section level2">
     <h2 id="active-bindings">Active bindings<a class="anchor" aria-label="anchor" href="#active-bindings"></a></h2>
-    <p></p><div class="r6-active-bindings"><dl><dt><code>properties</code></dt>
+    <p></p><div class="r6-active-bindings"><dl><dt><code>param_set</code></dt>
+<dd><p>(<a href="https://paradox.mlr-org.com/reference/ParamSet.html" class="external-link">paradox::ParamSet</a>)<br>
+Set of hyperparameters.</p></dd>
+
+
+<dt><code>properties</code></dt>
 <dd><p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>)<br>
 Properties of the filter. Currently, only <code>"missings"</code> is supported.
 A filter has the property <code>"missings"</code>, iff the filter can handle missing values
