@@ -1,5 +1,18 @@
 #' @importFrom utils bibentry
 bibentries = c(
+  breiman_2001 = bibentry("article",
+    doi        = "10.1023/A:1010933404324",
+    year       = "2001",
+    month      = "10",
+    publisher  = "Kluwer Academic Publishers",
+    volume     = "45",
+    number     = "1",
+    pages      = "5-32",
+    author     = "Leo Breiman",
+    title      = "Random Forests",
+    journal    = "Machine Learning"
+  ),
+
   bommert_2020 = bibentry("article",
     doi        = "10.1016/j.csda.2019.106839",
     year       = "2020",
