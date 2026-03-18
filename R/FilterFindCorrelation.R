@@ -42,15 +42,18 @@
 #'
 #'   graph$train(task)
 #' }
-FilterFindCorrelation = R6Class("FilterFindCorrelation",
+FilterFindCorrelation = R6Class(
+  "FilterFindCorrelation",
   inherit = Filter,
 
   public = list(
-
     #' @description Create a FilterFindCorrelation object.
     initialize = function() {
       param_set = ps(
-        use    = p_fct(c("everything", "all.obs", "complete.obs", "na.or.complete", "pairwise.complete.obs"), default = "everything"),
+        use = p_fct(
+          c("everything", "all.obs", "complete.obs", "na.or.complete", "pairwise.complete.obs"),
+          default = "everything"
+        ),
         method = p_fct(levels = c("pearson", "kendall", "spearman"), default = "pearson")
       )
 
@@ -68,12 +71,9 @@ FilterFindCorrelation = R6Class("FilterFindCorrelation",
 
   private = list(
     .calculate = function(task, nfeat) {
-
       fn = task$feature_names
       pv = self$param_set$values
-      cm = invoke(stats::cor,
-        x = task$data(cols = fn),
-        .args = pv)
+      cm = invoke(stats::cor, x = task$data(cols = fn), .args = pv)
       cm = abs(cm)
       # a feature is removed as soon as it is in the higher average correlation
       # col in a pair (note: tie broken by removing /later/ feature first)

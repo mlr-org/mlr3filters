@@ -45,10 +45,10 @@
 #'
 #'   graph$train(task)
 #' }
-FilterPermutation = R6Class("FilterPermutation",
+FilterPermutation = R6Class(
+  "FilterPermutation",
   inherit = FilterLearner,
   public = list(
-
     #' @field learner ([mlr3::Learner])\cr
     learner = NULL,
     #' @field resampling ([mlr3::Resampling])\cr
@@ -63,18 +63,19 @@ FilterPermutation = R6Class("FilterPermutation",
     #'   [mlr3::Resampling] to be used within resampling.
     #' @param measure ([mlr3::Measure])\cr
     #'   [mlr3::Measure] to be used for evaluating the performance.
-    initialize = function(learner = mlr3::lrn("classif.featureless"), resampling = mlr3::rsmp("holdout"),
-      measure = NULL) {
-
+    initialize = function(
+      learner = mlr3::lrn("classif.featureless"),
+      resampling = mlr3::rsmp("holdout"),
+      measure = NULL
+    ) {
       param_set = ps(
         standardize = p_lgl(default = FALSE),
-        nmc         = p_int(lower = 1L, default = 50L)
+        nmc = p_int(lower = 1L, default = 50L)
       )
 
       self$learner = learner = assert_learner(as_learner(learner, clone = TRUE))
       self$resampling = assert_resampling(as_resampling(resampling), instantiated = FALSE)
-      self$measure = assert_measure(as_measure(measure,
-        task_type = learner$task_type, clone = TRUE), learner = learner)
+      self$measure = assert_measure(as_measure(measure, task_type = learner$task_type, clone = TRUE), learner = learner)
       packages = unique(c(self$learner$packages, self$measure$packages))
 
       super$initialize(
@@ -94,8 +95,14 @@ FilterPermutation = R6Class("FilterPermutation",
     #' Hash (unique identifier) for this object.
     hash = function(rhs) {
       assert_ro_binding(rhs)
-      calculate_hash(class(self), self$id, self$param_set$values, self$learner$hash,
-        self$resampling$hash, self$measure$hash)
+      calculate_hash(
+        class(self),
+        self$id,
+        self$param_set$values,
+        self$learner$hash,
+        self$resampling$hash,
+        self$measure$hash
+      )
     },
 
     #' @field phash (`character(1)`)\cr
@@ -104,8 +111,7 @@ FilterPermutation = R6Class("FilterPermutation",
     #' selection (feature names).
     phash = function(rhs) {
       assert_ro_binding(rhs)
-      calculate_hash(class(self), self$id, self$learner$hash, self$resampling$hash,
-        self$measure$hash)
+      calculate_hash(class(self), self$id, self$learner$hash, self$resampling$hash, self$measure$hash)
     }
   ),
 
@@ -119,8 +125,7 @@ FilterPermutation = R6Class("FilterPermutation",
       rr = resample(task, self$learner, self$resampling)
       baseline = rr$aggregate(self$measure)
 
-      perf = matrix(NA_real_, nrow = nmc, ncol = length(fn),
-        dimnames = list(NULL, fn))
+      perf = matrix(NA_real_, nrow = nmc, ncol = length(fn), dimnames = list(NULL, fn))
 
       for (j in seq_col(perf)) {
         data = task$data(cols = fn[j])
@@ -156,7 +161,6 @@ FilterPermutation = R6Class("FilterPermutation",
       intersect("missings", self$learner$properties)
     }
   )
-
 )
 
 #' @include mlr_filters.R

@@ -38,11 +38,11 @@
 #'
 #'   graph$train(task)
 #' }
-FilterJMIM = R6Class("FilterJMIM",
+FilterJMIM = R6Class(
+  "FilterJMIM",
   inherit = Filter,
 
   public = list(
-
     #' @description Create a FilterJMIM object.
     initialize = function() {
       param_set = ps(

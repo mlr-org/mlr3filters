@@ -35,11 +35,11 @@
 #'
 #'   graph$train(task)
 #' }
-FilterAUC = R6Class("FilterAUC",
+FilterAUC = R6Class(
+  "FilterAUC",
   inherit = Filter,
 
   public = list(
-
     #' @description Create a FilterAUC object.
     initialize = function() {
       super$initialize(

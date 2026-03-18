@@ -33,11 +33,11 @@
 #'
 #'   graph$train(task)
 #' }
-FilterPerformance = R6Class("FilterPerformance",
+FilterPerformance = R6Class(
+  "FilterPerformance",
   inherit = FilterLearner,
 
   public = list(
-
     #' @field learner ([mlr3::Learner])\cr
     learner = NULL,
     #' @field resampling ([mlr3::Resampling])\cr
@@ -52,13 +52,14 @@ FilterPerformance = R6Class("FilterPerformance",
     #'   [mlr3::Resampling] to be used within resampling.
     #' @param measure ([mlr3::Measure])\cr
     #'   [mlr3::Measure] to be used for evaluating the performance.
-    initialize = function(learner = mlr3::lrn("classif.featureless"),
-      resampling = mlr3::rsmp("holdout"), measure = NULL) {
-
+    initialize = function(
+      learner = mlr3::lrn("classif.featureless"),
+      resampling = mlr3::rsmp("holdout"),
+      measure = NULL
+    ) {
       self$learner = learner = assert_learner(as_learner(learner, clone = TRUE))
       self$resampling = assert_resampling(as_resampling(resampling))
-      self$measure = assert_measure(as_measure(measure,
-        task_type = learner$task_type), learner = learner)
+      self$measure = assert_measure(as_measure(measure, task_type = learner$task_type), learner = learner)
       packages = unique(c(self$learner$packages, self$measure$packages))
 
       super$initialize(
@@ -84,8 +85,7 @@ FilterPerformance = R6Class("FilterPerformance",
       resampling = self$resampling$clone(deep = TRUE)$instantiate(task)
       perf = map_dbl(fn, function(x) {
         task$col_roles$feature = x
-        resample(task, self$learner, resampling, clone = character())$
-          aggregate(measures = self$measure)
+        resample(task, self$learner, resampling, clone = character())$aggregate(measures = self$measure)
       })
 
       if (self$measure$minimize) {

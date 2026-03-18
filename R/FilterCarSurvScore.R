@@ -13,7 +13,8 @@
 #' @include Filter.R
 #' @template seealso_filter
 #' @export
-FilterCarSurvScore = R6Class("FilterCarSurvScore",
+FilterCarSurvScore = R6Class(
+  "FilterCarSurvScore",
   inherit = Filter,
 
   public = list(
@@ -41,12 +42,7 @@ FilterCarSurvScore = R6Class("FilterCarSurvScore",
 
       surv = task$truth()
       X = as.matrix(task$data(cols = task$feature_names))
-      scores = invoke(carSurv::carSurvScore,
-        obsTime = surv[, 1L],
-        obsEvent = surv[, 2L],
-        X = X,
-        .args = pv
-      )
+      scores = invoke(carSurv::carSurvScore, obsTime = surv[, 1L], obsEvent = surv[, 2L], X = X, .args = pv)
 
       set_names(abs(scores), colnames(X))
     }

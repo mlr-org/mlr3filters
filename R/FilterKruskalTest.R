@@ -47,11 +47,11 @@
 #'
 #'   graph$train(task)
 #' }
-FilterKruskalTest = R6Class("FilterKruskalTest",
+FilterKruskalTest = R6Class(
+  "FilterKruskalTest",
   inherit = Filter,
 
   public = list(
-
     #' @description Create a FilterKruskalTest object.
     initialize = function() {
       param_set = ps(

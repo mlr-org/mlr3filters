@@ -1,5 +1,7 @@
 #' @include Filter.R
-FilterLearner = R6Class("FilterLearner", inherit = Filter,
+FilterLearner = R6Class(
+  "FilterLearner",
+  inherit = Filter,
   active = list(
     #' @field hash (`character(1)`)\cr
     #' Hash (unique identifier) for this object.

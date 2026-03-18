@@ -1,4 +1,3 @@
-
 #' @title Joint Mutual Information Filter
 #'
 #' @name mlr_filters_jmi
@@ -39,11 +38,11 @@
 #'
 #'   graph$train(task)
 #' }
-FilterJMI = R6Class("FilterJMI",
+FilterJMI = R6Class(
+  "FilterJMI",
   inherit = Filter,
 
   public = list(
-
     #' @description Create a FilterJMI object.
     initialize = function() {
       param_set = ps(

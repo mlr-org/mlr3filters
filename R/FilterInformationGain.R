@@ -1,4 +1,3 @@
-
 #' @title Information Gain Filter
 #'
 #' @name mlr_filters_information_gain
@@ -46,18 +45,18 @@
 #'   graph$train(task)
 #'
 #' }
-FilterInformationGain = R6Class("FilterInformationGain",
+FilterInformationGain = R6Class(
+  "FilterInformationGain",
   inherit = Filter,
 
   public = list(
-
     #' @description Create a FilterInformationGain object.
     initialize = function() {
       param_set = ps(
-        type         = p_fct(c("infogain", "gainratio", "symuncert"), default = "infogain"),
-        equal        = p_lgl(default = FALSE),
+        type = p_fct(c("infogain", "gainratio", "symuncert"), default = "infogain"),
+        equal = p_lgl(default = FALSE),
         discIntegers = p_lgl(default = TRUE),
-        threads      = p_int(lower = 0L, default = 0L, tags = "threads")
+        threads = p_int(lower = 0L, default = 0L, tags = "threads")
       )
 
       super$initialize(

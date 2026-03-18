@@ -39,16 +39,17 @@
 #'
 #'   graph$train(task)
 #' }
-FilterCarScore = R6Class("FilterCarScore",
+FilterCarScore = R6Class(
+  "FilterCarScore",
   inherit = Filter,
 
   public = list(
     #' @description Create a FilterCarScore object.
     initialize = function() {
       param_set = ps(
-        lambda   = p_dbl(lower = 0, upper = 1, default = NO_DEF),
+        lambda = p_dbl(lower = 0, upper = 1, default = NO_DEF),
         diagonal = p_lgl(default = FALSE),
-        verbose  = p_lgl(default = TRUE)
+        verbose = p_lgl(default = TRUE)
       )
       param_set$values = list(verbose = FALSE)
 
@@ -70,9 +71,7 @@ FilterCarScore = R6Class("FilterCarScore",
       features = as_numeric_matrix(task$data(cols = task$feature_names))
 
       pv = self$param_set$values
-      scores = invoke(care::carscore,
-        Xtrain = features, Ytrain = target,
-        .args = pv)
+      scores = invoke(care::carscore, Xtrain = features, Ytrain = target, .args = pv)
       set_names(abs(scores), names(scores))
     }
   )

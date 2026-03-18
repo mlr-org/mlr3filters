@@ -2,9 +2,7 @@ skip_if_not_installed("praznik")
 
 test_that("praznik 'nfeat' argument works correctly", {
   task = mlr_tasks$get("mtcars")
-  filters = mlr_filters$mget(as.data.table(mlr_filters)[map_lgl(packages,
-    is.element,
-    el = "praznik"), key])
+  filters = mlr_filters$mget(as.data.table(mlr_filters)[map_lgl(packages, is.element, el = "praznik"), key])
   nfeat = 3
 
   for (f in filters) {
