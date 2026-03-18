@@ -1,0 +1,235 @@
+# mlr3filters
+
+Package website: [release](https://mlr3filters.mlr-org.com/) \|
+[dev](https://mlr3filters.mlr-org.com/dev/)
+
+{mlr3filters} adds feature selection filters to
+[mlr3](https://mlr3.mlr-org.com). The implemented filters can be used
+stand-alone, or as part of a machine learning pipeline in combination
+with [mlr3pipelines](https://mlr3pipelines.mlr-org.com) and the [filter
+operator](https://mlr3pipelines.mlr-org.com/reference/mlr_pipeops_filter.html).
+
+Wrapper methods for feature selection are implemented in
+[mlr3fselect](https://mlr3fselect.mlr-org.com). Learners which support
+the extraction feature importance scores can be combined with a filter
+from this package for embedded feature selection.
+
+## Installation
+
+CRAN version
+
+``` r
+install.packages("mlr3filters")
+```
+
+Development version
+
+``` r
+remotes::install_github("mlr-org/mlr3filters")
+```
+
+## Filters
+
+### Filter Example
+
+``` r
+set.seed(1)
+library("mlr3")
+library("mlr3filters")
+
+task = tsk("sonar")
+filter = flt("auc")
+head(as.data.table(filter$calculate(task)))
+```
+
+``` R
+##    feature     score
+## 1:     V11 0.2811368
+## 2:     V12 0.2429182
+## 3:     V10 0.2327018
+## 4:     V49 0.2312622
+## 5:      V9 0.2308442
+## 6:     V48 0.2062784
+```
+
+### Implemented Filters
+
+| Name              | label                                                    | Task Types     | Feature Types                                                  | Package                                                                                                          |
+|:------------------|:---------------------------------------------------------|:---------------|:---------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|
+| anova             | ANOVA F-Test                                             | Classif        | Integer, Numeric                                               | stats                                                                                                            |
+| auc               | Area Under the ROC Curve Score                           | Classif        | Integer, Numeric                                               | [mlr3measures](https://cran.r-project.org/package=mlr3measures)                                                  |
+| carscore          | Correlation-Adjusted coRrelation Score                   | Regr           | Logical, Integer, Numeric                                      | [care](https://cran.r-project.org/package=care)                                                                  |
+| carsurvscore      | Correlation-Adjusted coRrelation Survival Score          | Surv           | Integer, Numeric                                               | [carSurv](https://cran.r-project.org/package=carSurv), [mlr3proba](https://cran.r-project.org/package=mlr3proba) |
+| cmim              | Minimal Conditional Mutual Information Maximization      | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
+| correlation       | Correlation                                              | Regr           | Integer, Numeric                                               | stats                                                                                                            |
+| disr              | Double Input Symmetrical Relevance                       | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
+| find_correlation  | Correlation-based Score                                  | Universal      | Integer, Numeric                                               | stats                                                                                                            |
+| importance        | Importance Score                                         | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                  |
+| information_gain  | Information Gain                                         | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp)                                                |
+| jmi               | Joint Mutual Information                                 | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
+| jmim              | Minimal Joint Mutual Information Maximization            | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
+| kruskal_test      | Kruskal-Wallis Test                                      | Classif        | Integer, Numeric                                               | stats                                                                                                            |
+| mim               | Mutual Information Maximization                          | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
+| mrmr              | Minimum Redundancy Maximal Relevancy                     | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
+| njmim             | Minimal Normalised Joint Mutual Information Maximization | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
+| performance       | Predictive Performance                                   | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                  |
+| permutation       | Permutation Score                                        | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                  |
+| relief            | RELIEF                                                   | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp)                                                |
+| selected_features | Embedded Feature Selection                               | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                  |
+| univariate_cox    | Univariate Cox Survival Score                            | Surv           | Integer, Numeric, Logical                                      | [survival](https://cran.r-project.org/package=survival)                                                          |
+| variance          | Variance                                                 | Universal      | Integer, Numeric                                               | stats                                                                                                            |
+
+### Variable Importance Filters
+
+The following learners allow the extraction of variable importance and
+therefore are supported by `FilterImportance`:
+
+``` R
+## [1] "classif.featureless" "classif.ranger"      "classif.rpart"      
+## [4] "classif.xgboost"     "regr.featureless"    "regr.ranger"        
+## [7] "regr.rpart"          "regr.xgboost"
+```
+
+If your learner is not listed here but capable of extracting variable
+importance from the fitted model, the reason is most likely that it is
+not yet integrated in the package
+[mlr3learners](https://github.com/mlr-org/mlr3learners) or the [extra
+learner extension](https://github.com/mlr-org/mlr3extralearners). Please
+open an issue so we can add your package.
+
+Some learners need to have their variable importance measure “activated”
+during learner creation. For example, to use the “impurity” measure of
+Random Forest via the {ranger} package:
+
+``` r
+task = tsk("iris")
+lrn = lrn("classif.ranger", seed = 42)
+lrn$param_set$values = list(importance = "impurity")
+
+filter = flt("importance", learner = lrn)
+filter$calculate(task)
+head(as.data.table(filter), 3)
+```
+
+``` R
+##         feature     score
+## 1: Petal.Length 44.682462
+## 2:  Petal.Width 43.113031
+## 3: Sepal.Length  9.039099
+```
+
+### Performance Filter
+
+`FilterPerformance` is a univariate filter method which calls
+[`resample()`](https://mlr3.mlr-org.com/reference/resample.html) with
+every predictor variable in the dataset and ranks the final outcome
+using the supplied measure. Any learner can be passed to this filter
+with `classif.rpart` being the default. Of course, also regression
+learners can be passed if the task is of type “regr”.
+
+### Filter-based Feature Selection
+
+In many cases filtering is only one step in the modeling pipeline. To
+select features based on filter values, one can use
+[`PipeOpFilter`](https://mlr3pipelines.mlr-org.com/reference/mlr_pipeops_filter.html)
+from [mlr3pipelines](https://github.com/mlr-org/mlr3pipelines).
+
+``` r
+library(mlr3pipelines)
+task = tsk("spam")
+
+# the `filter.frac` should be tuned
+graph = po("filter", filter = flt("auc"), filter.frac = 0.5) %>>%
+  po("learner", lrn("classif.rpart"))
+
+learner = as_learner(graph)
+rr = resample(task, learner, rsmp("holdout"))
+```
+
+# Package index
+
+## Filters
+
+- [`mlr_filters_anova`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_anova.md)
+  [`FilterAnova`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_anova.md)
+  : ANOVA F-Test Filter
+- [`mlr_filters_auc`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_auc.md)
+  [`FilterAUC`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_auc.md)
+  : AUC Filter
+- [`mlr_filters_boruta`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_boruta.md)
+  [`FilterBoruta`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_boruta.md)
+  : Burota Filter
+- [`mlr_filters_carscore`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_carscore.md)
+  [`FilterCarScore`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_carscore.md)
+  : Correlation-Adjusted Marignal Correlation Score Filter
+- [`mlr_filters_carsurvscore`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_carsurvscore.md)
+  [`FilterCarSurvScore`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_carsurvscore.md)
+  : Correlation-Adjusted Survival Score Filter
+- [`mlr_filters_cmim`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_cmim.md)
+  [`FilterCMIM`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_cmim.md)
+  : Minimal Conditional Mutual Information Maximization Filter
+- [`mlr_filters_correlation`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_correlation.md)
+  [`FilterCorrelation`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_correlation.md)
+  : Correlation Filter
+- [`mlr_filters_disr`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_disr.md)
+  [`FilterDISR`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_disr.md)
+  : Double Input Symmetrical Relevance Filter
+- [`mlr_filters_find_correlation`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_find_correlation.md)
+  [`FilterFindCorrelation`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_find_correlation.md)
+  : Correlation Filter
+- [`mlr_filters_importance`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_importance.md)
+  [`FilterImportance`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_importance.md)
+  : Filter for Embedded Feature Selection via Variable Importance
+- [`mlr_filters_information_gain`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_information_gain.md)
+  [`FilterInformationGain`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_information_gain.md)
+  : Information Gain Filter
+- [`mlr_filters_jmi`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_jmi.md)
+  [`FilterJMI`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_jmi.md)
+  : Joint Mutual Information Filter
+- [`mlr_filters_jmim`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_jmim.md)
+  [`FilterJMIM`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_jmim.md)
+  : Minimal Joint Mutual Information Maximization Filter
+- [`mlr_filters_kruskal_test`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_kruskal_test.md)
+  [`FilterKruskalTest`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_kruskal_test.md)
+  : Kruskal-Wallis Test Filter
+- [`mlr_filters_mim`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_mim.md)
+  [`FilterMIM`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_mim.md)
+  : Mutual Information Maximization Filter
+- [`mlr_filters_mrmr`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_mrmr.md)
+  [`FilterMRMR`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_mrmr.md)
+  : Minimum Redundancy Maximal Relevancy Filter
+- [`mlr_filters_njmim`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_njmim.md)
+  [`FilterNJMIM`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_njmim.md)
+  : Minimal Normalised Joint Mutual Information Maximization Filter
+- [`mlr_filters_performance`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_performance.md)
+  [`FilterPerformance`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_performance.md)
+  : Predictive Performance Filter
+- [`mlr_filters_permutation`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_permutation.md)
+  [`FilterPermutation`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_permutation.md)
+  : Permutation Score Filter
+- [`mlr_filters_relief`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_relief.md)
+  [`FilterRelief`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_relief.md)
+  : RELIEF Filter
+- [`mlr_filters_selected_features`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_selected_features.md)
+  [`FilterSelectedFeatures`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_selected_features.md)
+  : Filter for Embedded Feature Selection
+- [`mlr_filters_univariate_cox`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_univariate_cox.md)
+  [`FilterUnivariateCox`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_univariate_cox.md)
+  : Univariate Cox Survival Filter
+- [`mlr_filters_variance`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_variance.md)
+  [`FilterVariance`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_variance.md)
+  : Variance Filter
+
+## General
+
+- [`Filter`](https://mlr3filters.mlr-org.com/dev/reference/Filter.md) :
+  Filter Base Class
+- [`flt()`](https://mlr3filters.mlr-org.com/dev/reference/flt.md)
+  [`flts()`](https://mlr3filters.mlr-org.com/dev/reference/flt.md) :
+  Syntactic Sugar for Filter Construction
+- [`mlr3filters`](https://mlr3filters.mlr-org.com/dev/reference/mlr3filters-package.md)
+  [`mlr3filters-package`](https://mlr3filters.mlr-org.com/dev/reference/mlr3filters-package.md)
+  : mlr3filters: Filter Based Feature Selection for 'mlr3'
+- [`mlr_filters`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters.md)
+  : Dictionary of Filters
+
