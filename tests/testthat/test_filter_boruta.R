@@ -1,3 +1,5 @@
+skip_if_not_installed("Boruta")
+
 test_that("filter boruta works", {
   task = tsk("sonar")
   f = flt("boruta")

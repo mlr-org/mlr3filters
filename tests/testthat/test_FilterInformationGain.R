@@ -1,3 +1,5 @@
+skip_if_not_installed("FSelectorRcpp")
+
 test_that("FilterInformationGain handles features with only missings gracefully", {
   data = tsk("mtcars")$data()
   data[, wt := NA]
