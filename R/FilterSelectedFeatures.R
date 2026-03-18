@@ -42,11 +42,11 @@
 #'
 #'   graph$train(task)
 #' }
-FilterSelectedFeatures = R6Class("FilterSelectedFeatures",
+FilterSelectedFeatures = R6Class(
+  "FilterSelectedFeatures",
   inherit = FilterLearner,
 
   public = list(
-
     #' @field learner ([mlr3::Learner])\cr
     #'   Learner to extract the importance values from.
     learner = NULL,
@@ -55,8 +55,7 @@ FilterSelectedFeatures = R6Class("FilterSelectedFeatures",
     #' @param learner ([mlr3::Learner])\cr
     #'   Learner to extract the selected features from.
     initialize = function(learner = mlr3::lrn("classif.featureless")) {
-      self$learner = learner = assert_learner(as_learner(learner, clone = TRUE),
-        properties = "selected_features")
+      self$learner = learner = assert_learner(as_learner(learner, clone = TRUE), properties = "selected_features")
 
       super$initialize(
         id = "selected_features",

@@ -38,11 +38,11 @@
 #'
 #'   graph$train(task)
 #' }
-FilterDISR = R6Class("FilterDISR",
+FilterDISR = R6Class(
+  "FilterDISR",
   inherit = Filter,
 
   public = list(
-
     #' @description Create a FilterDISR object.
     initialize = function() {
       param_set = ps(

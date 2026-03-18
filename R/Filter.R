@@ -15,7 +15,8 @@
 #' @importFrom stats runif
 #' @family Filter
 #' @export
-Filter = R6Class("Filter",
+Filter = R6Class(
+  "Filter",
   public = list(
     #' @field id (`character(1)`)\cr
     #'   Identifier of the object.
@@ -86,10 +87,16 @@ Filter = R6Class("Filter",
     #'   String in the format `[pkg]::[topic]` pointing to a manual page for
     #'   this object. The referenced help package can be opened via method
     #'   `$help()`.
-    initialize = function(id, task_types, task_properties = character(),
-      param_set = ps(), feature_types = character(), packages = character(), label = NA_character_,
-      man = NA_character_) {
-
+    initialize = function(
+      id,
+      task_types,
+      task_properties = character(),
+      param_set = ps(),
+      feature_types = character(),
+      packages = character(),
+      label = NA_character_,
+      man = NA_character_
+    ) {
       self$id = assert_string(id)
       self$label = assert_string(label, na.ok = TRUE)
       if (!test_scalar_na(task_types)) {
@@ -128,9 +135,7 @@ Filter = R6Class("Filter",
       })
 
       if (length(self$scores)) {
-        print(as.data.table(self),
-              nrows = 10L, topn = 5L, class = FALSE,
-              row.names = TRUE, print.keys = FALSE)
+        print(as.data.table(self), nrows = 10L, topn = 5L, class = FALSE, row.names = TRUE, print.keys = FALSE)
       }
     },
 
@@ -158,16 +163,15 @@ Filter = R6Class("Filter",
     #' @param nfeat ([integer()])\cr
     #'   The minimum number of features to calculate filter scores for.
     calculate = function(task, nfeat = NULL) {
-      task = assert_task(as_task(task),
-        feature_types = self$feature_types,
-        task_properties = self$task_properties
-      )
+      task = assert_task(as_task(task), feature_types = self$feature_types, task_properties = self$task_properties)
 
       fn = task$feature_names
 
-      if (!is_scalar_na(self$task_types) && !some(self$task_types, test_matching_task_type, object = task, class = "learner")) {
-        stopf("Filter '%s' not compatible with type '%s' of task '%s'",
-          self$id, task$task_type, task$id)
+      if (
+        !is_scalar_na(self$task_types) &&
+          !some(self$task_types, test_matching_task_type, object = task, class = "learner")
+      ) {
+        stopf("Filter '%s' not compatible with type '%s' of task '%s'", self$id, task$task_type, task$id)
       }
 
       if (task$nrow == 0L) {
@@ -183,8 +187,7 @@ Filter = R6Class("Filter",
         }
 
         if ("missings" %nin% self$properties && any(task$missings() > 0L)) {
-          stopf("Cannot apply filter '%s' on task '%s', missing values detected",
-            self$id, task$id)
+          stopf("Cannot apply filter '%s' on task '%s', missing values detected", self$id, task$id)
         }
 
         # calculate filter values using the dedicated filter
@@ -195,8 +198,7 @@ Filter = R6Class("Filter",
         assert_numeric(scores, any.missing = TRUE, names = "unique")
         assert_names(names(scores), type = "unique", subset.of = fn)
         scores = insert_named(set_names(rep(NA_real_, length(fn)), fn), scores)
-        self$scores = scores[order(scores, runif(length(scores)),
-          decreasing = TRUE, na.last = TRUE)]
+        self$scores = scores[order(scores, runif(length(scores)), decreasing = TRUE, na.last = TRUE)]
       }
 
       invisible(self)
@@ -246,6 +248,7 @@ Filter = R6Class("Filter",
 )
 
 #' @export
-as.data.table.Filter = function(x, ...) { # nolint
+#nolint next
+as.data.table.Filter = function(x, ...) {
   mlr3misc::enframe(x$scores, name = "feature", value = "score")
 }

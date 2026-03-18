@@ -38,11 +38,11 @@
 #'
 #'   graph$train(task)
 #' }
-FilterMRMR = R6Class("FilterMRMR",
+FilterMRMR = R6Class(
+  "FilterMRMR",
   inherit = Filter,
 
   public = list(
-
     #' @description Create a FilterMRMR object.
     initialize = function() {
       param_set = ps(

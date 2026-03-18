@@ -39,11 +39,11 @@
 #'
 #'   graph$train(task)
 #' }
-FilterAnova = R6Class("FilterAnova",
+FilterAnova = R6Class(
+  "FilterAnova",
   inherit = Filter,
 
   public = list(
-
     #' @description Create a FilterAnova object.
     initialize = function() {
       super$initialize(

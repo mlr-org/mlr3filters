@@ -33,15 +33,14 @@
 #'   }
 #' }
 
-FilterBoruta = R6Class("FilterBoruta",
+FilterBoruta = R6Class(
+  "FilterBoruta",
   inherit = Filter,
 
   public = list(
-
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-
       param_set = ps(
         pValue = p_dbl(default = 0.01),
         mcAdj = p_lgl(default = TRUE),

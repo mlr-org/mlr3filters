@@ -38,11 +38,11 @@
 #'
 #'   graph$train(task)
 #' }
-FilterMIM = R6Class("FilterMIM",
+FilterMIM = R6Class(
+  "FilterMIM",
   inherit = Filter,
 
   public = list(
-
     #' @description Create a FilterMIM object.
     initialize = function() {
       param_set = ps(

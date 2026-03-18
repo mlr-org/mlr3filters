@@ -47,4 +47,3 @@ test_that("Errors for unsupported features", {
     }
   }
 })
-

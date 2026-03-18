@@ -8,8 +8,8 @@
 #' @importFrom utils head
 "_PACKAGE"
 
+#nolint next
 .onLoad = function(libname, pkgname) {
-  # nolint
   # nocov start
   backports::import(pkgname)
 } # nocov end

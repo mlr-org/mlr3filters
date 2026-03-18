@@ -34,11 +34,11 @@
 #'
 #'   graph$train(task)
 #' }
-FilterImportance = R6Class("FilterImportance",
+FilterImportance = R6Class(
+  "FilterImportance",
   inherit = FilterLearner,
 
   public = list(
-
     #' @field learner ([mlr3::Learner])\cr
     #'   Learner to extract the importance values from.
     learner = NULL,
@@ -47,8 +47,7 @@ FilterImportance = R6Class("FilterImportance",
     #' @param learner ([mlr3::Learner])\cr
     #'   Learner to extract the importance values from.
     initialize = function(learner = mlr3::lrn("classif.featureless")) {
-      self$learner = learner = assert_learner(as_learner(learner, clone = TRUE),
-        properties = "importance")
+      self$learner = learner = assert_learner(as_learner(learner, clone = TRUE), properties = "importance")
 
       super$initialize(
         id = "importance",
@@ -61,7 +60,6 @@ FilterImportance = R6Class("FilterImportance",
       )
     }
   ),
-
 
   private = list(
     .calculate = function(task, nfeat) {

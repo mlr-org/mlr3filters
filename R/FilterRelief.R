@@ -37,16 +37,16 @@
 #'
 #'   graph$train(task)
 #' }
-FilterRelief = R6Class("FilterRelief",
+FilterRelief = R6Class(
+  "FilterRelief",
   inherit = Filter,
 
   public = list(
-
     #' @description Create a FilterRelief object.
     initialize = function() {
       param_set = ps(
         neighboursCount = p_int(lower = 1L, default = 5L),
-        sampleSize      = p_int(lower = 1L, default = 10L)
+        sampleSize = p_int(lower = 1L, default = 10L)
       )
 
       super$initialize(

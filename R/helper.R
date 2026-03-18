@@ -1,5 +1,6 @@
 call_praznik = function(self, task, fun, nfeat) {
-  selection = invoke(fun,
+  selection = invoke(
+    fun,
     X = task$data(cols = task$feature_names),
     Y = task$truth(),
     k = nfeat,
@@ -37,5 +38,5 @@ test_matching_task_type = function(task_type, object, class) {
   }
 
   cl_object = fget(mlr_reflections$task_types, object$task_type, class, "type")
-  return(cl_task_type == cl_object)
+  cl_task_type == cl_object
 }

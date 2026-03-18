@@ -34,11 +34,11 @@
 #'
 #'   graph$train(task)
 #' }
-FilterVariance = R6Class("FilterVariance",
+FilterVariance = R6Class(
+  "FilterVariance",
   inherit = Filter,
 
   public = list(
-
     #' @description Create a FilterVariance object.
     initialize = function() {
       param_set = ps(

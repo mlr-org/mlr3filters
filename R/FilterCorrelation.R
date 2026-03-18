@@ -46,16 +46,18 @@
 #'
 #'   graph$train(task)
 #' }
-FilterCorrelation = R6Class("FilterCorrelation",
+FilterCorrelation = R6Class(
+  "FilterCorrelation",
   inherit = Filter,
 
   public = list(
-
     #' @description Create a FilterCorrelation object.
     initialize = function() {
       param_set = ps(
-        use    = p_fct(c("everything", "all.obs", "complete.obs", "na.or.complete", "pairwise.complete.obs"),
-          default = "everything"),
+        use = p_fct(
+          c("everything", "all.obs", "complete.obs", "na.or.complete", "pairwise.complete.obs"),
+          default = "everything"
+        ),
         method = p_fct(c("pearson", "kendall", "spearman"), default = "pearson")
       )
 
@@ -75,17 +77,13 @@ FilterCorrelation = R6Class("FilterCorrelation",
     .calculate = function(task, nfeat) {
       fn = task$feature_names
       pv = self$param_set$values
-      score = invoke(stats::cor,
-        x = as.matrix(task$data(cols = fn)),
-        y = as.matrix(task$truth()),
-        .args = pv)[, 1L]
+      score = invoke(stats::cor, x = as.matrix(task$data(cols = fn)), y = as.matrix(task$truth()), .args = pv)[, 1L]
       set_names(abs(score), fn)
     },
 
     .get_properties = function() {
       "missings"
     }
-
   )
 )
 

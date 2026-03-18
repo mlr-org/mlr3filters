@@ -27,7 +27,8 @@
 #' filter = flt("univariate_cox")
 #' filter
 #'
-FilterUnivariateCox = R6Class("FilterUnivariateCox",
+FilterUnivariateCox = R6Class(
+  "FilterUnivariateCox",
   inherit = Filter,
   public = list(
     #' @description Create a FilterUnivariateCox object.
@@ -47,7 +48,7 @@ FilterUnivariateCox = R6Class("FilterUnivariateCox",
   private = list(
     .calculate = function(task, nfeat) {
       features = task$feature_names
-      targets  = task$data(cols = task$target_names)
+      targets = task$data(cols = task$target_names)
 
       scores = map_dbl(features, function(feature) {
         model = invoke(
