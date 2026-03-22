@@ -29,7 +29,7 @@ as.data.table.DictionaryFilter = function(x, ..., objects = FALSE) {
 
   setkeyv(
     map_dtr(x$keys(), function(key) {
-      f = x$get(key)
+      f = x$get(key, .prototype = TRUE)
       insert_named(
         list(
           key = key,
