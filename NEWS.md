@@ -1,5 +1,7 @@
 # mlr3filters (development version)
 
+* fix: Enables retrieval of prototype information for dictionary entries when constructing `as.data.table.mlr_filters`. 
+
 # mlr3filters 0.9.0
 
 * refactor: Field `param_set` of class `Filter` is now an active binding.
