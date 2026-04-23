@@ -23,12 +23,12 @@ Source:
 
 Becker M, Schratz P, Lang M, Bischl B, Binder M, Zobolas J (2026).
 *mlr3filters: Filter Based Feature Selection for 'mlr3'*. R package
-version 0.9.0.9000, <https://mlr3filters.mlr-org.com>.
+version 0.9.1.9000, <https://mlr3filters.mlr-org.com>.
 
     @Manual{,
       title = {mlr3filters: Filter Based Feature Selection for 'mlr3'},
       author = {Marc Becker and Patrick Schratz and Michel Lang and Bernd Bischl and Martin Binder and John Zobolas},
       year = {2026},
-      note = {R package version 0.9.0.9000},
+      note = {R package version 0.9.1.9000},
       url = {https://mlr3filters.mlr-org.com},
     }

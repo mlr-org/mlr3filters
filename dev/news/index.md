@@ -2,6 +2,12 @@
 
 ## mlr3filters (development version)
 
+## mlr3filters 0.9.1
+
+- fix:
+  [`as.data.table()`](https://rdrr.io/pkg/data.table/man/as.data.table.html)
+  for the dictionary of filters now uses prototypes.
+
 ## mlr3filters 0.9.0
 
 CRAN release: 2025-09-12
