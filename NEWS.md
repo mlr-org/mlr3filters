@@ -1,4 +1,6 @@
-# mlr3filters (development version)
+# mlr3filters 0.9.1
+
+* fix: `as.data.table()` for the dictionary of filters now uses prototypes.
 
 # mlr3filters 0.9.0
 
