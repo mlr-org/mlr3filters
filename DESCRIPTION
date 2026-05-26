@@ -34,7 +34,7 @@ Imports:
     paradox,
     R6
 Suggests:
-    Boruta,
+    Boruta (>= 10.0.0),
     care,
     caret,
     carSurv,
