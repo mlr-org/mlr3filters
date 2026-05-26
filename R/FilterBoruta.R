@@ -48,11 +48,9 @@ FilterBoruta = R6Class(
         doTrace = p_int(lower = 0, upper = 4, default = 0),
         holdHistory = p_lgl(default = TRUE),
         getImp = p_uty(),
-        keep = p_fct(levels = c("confirmed", "tentative"), default = "confirmed"),
-        threads = p_int(lower = 0, default = 0)
+        keep = p_fct(levels = c("confirmed", "tentative"), init = "confirmed"),
+        threads = p_int(lower = 0, init = 1)
       )
-
-      param_set$set_values(keep = "confirmed", threads = 1)
 
       super$initialize(
         id = "boruta",
