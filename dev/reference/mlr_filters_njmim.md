@@ -129,8 +129,8 @@ if (requireNamespace("praznik")) {
 #>          <char> <num>
 #> 1:  Petal.Width     1
 #> 2: Petal.Length     0
-#> 3: Sepal.Length    NA
-#> 4:  Sepal.Width    NA
+#> 3:  Sepal.Width    NA
+#> 4: Sepal.Length    NA
 
 if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart", "praznik"), quietly = TRUE)) {
   library("mlr3pipelines")

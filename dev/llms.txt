@@ -19,12 +19,14 @@ from this package for embedded feature selection.
 CRAN version
 
 ``` r
+
 install.packages("mlr3filters")
 ```
 
 Development version
 
 ``` r
+
 remotes::install_github("mlr-org/mlr3filters")
 ```
 
@@ -33,6 +35,7 @@ remotes::install_github("mlr-org/mlr3filters")
 ### Filter Example
 
 ``` r
+
 set.seed(1)
 library("mlr3")
 library("mlr3filters")
@@ -54,30 +57,30 @@ head(as.data.table(filter$calculate(task)))
 
 ### Implemented Filters
 
-| Name              | label                                                    | Task Types     | Feature Types                                                  | Package                                                                                                          |
-|:------------------|:---------------------------------------------------------|:---------------|:---------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|
-| anova             | ANOVA F-Test                                             | Classif        | Integer, Numeric                                               | stats                                                                                                            |
-| auc               | Area Under the ROC Curve Score                           | Classif        | Integer, Numeric                                               | [mlr3measures](https://cran.r-project.org/package=mlr3measures)                                                  |
-| carscore          | Correlation-Adjusted coRrelation Score                   | Regr           | Logical, Integer, Numeric                                      | [care](https://cran.r-project.org/package=care)                                                                  |
-| carsurvscore      | Correlation-Adjusted coRrelation Survival Score          | Surv           | Integer, Numeric                                               | [carSurv](https://cran.r-project.org/package=carSurv), [mlr3proba](https://cran.r-project.org/package=mlr3proba) |
-| cmim              | Minimal Conditional Mutual Information Maximization      | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
-| correlation       | Correlation                                              | Regr           | Integer, Numeric                                               | stats                                                                                                            |
-| disr              | Double Input Symmetrical Relevance                       | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
-| find_correlation  | Correlation-based Score                                  | Universal      | Integer, Numeric                                               | stats                                                                                                            |
-| importance        | Importance Score                                         | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                  |
-| information_gain  | Information Gain                                         | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp)                                                |
-| jmi               | Joint Mutual Information                                 | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
-| jmim              | Minimal Joint Mutual Information Maximization            | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
-| kruskal_test      | Kruskal-Wallis Test                                      | Classif        | Integer, Numeric                                               | stats                                                                                                            |
-| mim               | Mutual Information Maximization                          | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
-| mrmr              | Minimum Redundancy Maximal Relevancy                     | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
-| njmim             | Minimal Normalised Joint Mutual Information Maximization | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [praznik](https://cran.r-project.org/package=praznik)                                                            |
-| performance       | Predictive Performance                                   | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                  |
-| permutation       | Permutation Score                                        | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                  |
-| relief            | RELIEF                                                   | Classif & Regr | Integer, Numeric, Factor, Ordered                              | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp)                                                |
-| selected_features | Embedded Feature Selection                               | Universal      | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |                                                                                                                  |
-| univariate_cox    | Univariate Cox Survival Score                            | Surv           | Integer, Numeric, Logical                                      | [survival](https://cran.r-project.org/package=survival)                                                          |
-| variance          | Variance                                                 | Universal      | Integer, Numeric                                               | stats                                                                                                            |
+| Name | label | Task Types | Feature Types | Package |
+|:---|:---|:---|:---|:---|
+| anova | ANOVA F-Test | Classif | Integer, Numeric | stats |
+| auc | Area Under the ROC Curve Score | Classif | Integer, Numeric | [mlr3measures](https://cran.r-project.org/package=mlr3measures) |
+| carscore | Correlation-Adjusted coRrelation Score | Regr | Logical, Integer, Numeric | [care](https://cran.r-project.org/package=care) |
+| carsurvscore | Correlation-Adjusted coRrelation Survival Score | Surv | Integer, Numeric | [carSurv](https://cran.r-project.org/package=carSurv), [mlr3proba](https://cran.r-project.org/package=mlr3proba) |
+| cmim | Minimal Conditional Mutual Information Maximization | Classif & Regr | Integer, Numeric, Factor, Ordered | [praznik](https://cran.r-project.org/package=praznik) |
+| correlation | Correlation | Regr | Integer, Numeric | stats |
+| disr | Double Input Symmetrical Relevance | Classif & Regr | Integer, Numeric, Factor, Ordered | [praznik](https://cran.r-project.org/package=praznik) |
+| find_correlation | Correlation-based Score | Universal | Integer, Numeric | stats |
+| importance | Importance Score | Universal | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |  |
+| information_gain | Information Gain | Classif & Regr | Integer, Numeric, Factor, Ordered | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
+| jmi | Joint Mutual Information | Classif & Regr | Integer, Numeric, Factor, Ordered | [praznik](https://cran.r-project.org/package=praznik) |
+| jmim | Minimal Joint Mutual Information Maximization | Classif & Regr | Integer, Numeric, Factor, Ordered | [praznik](https://cran.r-project.org/package=praznik) |
+| kruskal_test | Kruskal-Wallis Test | Classif | Integer, Numeric | stats |
+| mim | Mutual Information Maximization | Classif & Regr | Integer, Numeric, Factor, Ordered | [praznik](https://cran.r-project.org/package=praznik) |
+| mrmr | Minimum Redundancy Maximal Relevancy | Classif & Regr | Integer, Numeric, Factor, Ordered | [praznik](https://cran.r-project.org/package=praznik) |
+| njmim | Minimal Normalised Joint Mutual Information Maximization | Classif & Regr | Integer, Numeric, Factor, Ordered | [praznik](https://cran.r-project.org/package=praznik) |
+| performance | Predictive Performance | Universal | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |  |
+| permutation | Permutation Score | Universal | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |  |
+| relief | RELIEF | Classif & Regr | Integer, Numeric, Factor, Ordered | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
+| selected_features | Embedded Feature Selection | Universal | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |  |
+| univariate_cox | Univariate Cox Survival Score | Surv | Integer, Numeric, Logical | [survival](https://cran.r-project.org/package=survival) |
+| variance | Variance | Universal | Integer, Numeric | stats |
 
 ### Variable Importance Filters
 
@@ -102,6 +105,7 @@ during learner creation. For example, to use the “impurity” measure of
 Random Forest via the {ranger} package:
 
 ``` r
+
 task = tsk("iris")
 lrn = lrn("classif.ranger", seed = 42)
 lrn$param_set$values = list(importance = "impurity")
@@ -135,6 +139,7 @@ select features based on filter values, one can use
 from [mlr3pipelines](https://github.com/mlr-org/mlr3pipelines).
 
 ``` r
+
 library(mlr3pipelines)
 task = tsk("spam")
 

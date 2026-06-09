@@ -170,10 +170,10 @@ if (requireNamespace("rpart")) {
 }
 #>         feature score
 #>          <char> <num>
-#> 1: Sepal.Length  0.03
-#> 2:  Sepal.Width  0.00
-#> 3: Petal.Length -0.01
-#> 4:  Petal.Width -0.02
+#> 1: Sepal.Length  0.08
+#> 2:  Sepal.Width  0.01
+#> 3: Petal.Length  0.01
+#> 4:  Petal.Width  0.00
 
 if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart"), quietly = TRUE)) {
   library("mlr3pipelines")

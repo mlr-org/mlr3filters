@@ -108,10 +108,10 @@ if (requireNamespace("FSelectorRcpp")) {
 }
 #>         feature     score
 #>          <char>     <num>
-#> 1: Petal.Length 0.3220339
-#> 2:  Petal.Width 0.3187500
-#> 3:  Sepal.Width 0.1820833
-#> 4: Sepal.Length 0.1200000
+#> 1:  Petal.Width 0.3333333
+#> 2: Petal.Length 0.3123729
+#> 3:  Sepal.Width 0.1458333
+#> 4: Sepal.Length 0.1283333
 
 if (mlr3misc::require_namespaces(c("mlr3pipelines", "FSelectorRcpp", "rpart"), quietly = TRUE)) {
   library("mlr3pipelines")

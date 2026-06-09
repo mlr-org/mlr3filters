@@ -121,10 +121,10 @@ if (requireNamespace("rpart")) {
 }
 #>         feature score
 #>          <char> <num>
-#> 1:  Petal.Width     1
-#> 2: Petal.Length     1
-#> 3:  Sepal.Width     0
-#> 4: Sepal.Length     0
+#> 1: Petal.Length     1
+#> 2:  Petal.Width     1
+#> 3: Sepal.Length     0
+#> 4:  Sepal.Width     0
 
 if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners", "rpart"), quietly = TRUE)) {
   library("mlr3pipelines")

@@ -102,6 +102,7 @@ The objects of this class are cloneable with this method.
 ## Examples
 
 ``` r
+
 filter = flt("univariate_cox")
 filter
 #> 
