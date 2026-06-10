@@ -2,6 +2,10 @@
 
 ## mlr3filters (development version)
 
+- fix: `FilterBoruta` parameter `num.threads` renamed to `threads` to
+  support Boruta \>= 10.0.0 which uses fru as the default importance
+  source.
+
 ## mlr3filters 0.9.1
 
 CRAN release: 2026-04-23

@@ -10,10 +10,9 @@ the filter criterion `cutoff` makes sense.
 
 ## Initial parameter values
 
-- `num.threads`:
+- `threads`:
 
-  - Actual default: `NULL`, triggering auto-detection of the number of
-    CPUs.
+  - Actual default: 0, triggering auto-detection of the number of CPUs.
 
   - Adjusted value: 1.
 
