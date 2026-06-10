@@ -11,8 +11,8 @@
 #' In combination with \CRANpkg{mlr3pipelines}, only the filter criterion `cutoff` makes sense.
 #'
 #' @section Initial parameter values:
-#' - `num.threads`:
-#'   - Actual default: `NULL`, triggering auto-detection of the number of CPUs.
+#' - `threads`:
+#'   - Actual default: 0, triggering auto-detection of the number of CPUs.
 #'   - Adjusted value: 1.
 #'   - Reason for change: Conflicting with parallelization via \CRANpkg{future}.
 #'
@@ -48,11 +48,9 @@ FilterBoruta = R6Class(
         doTrace = p_int(lower = 0, upper = 4, default = 0),
         holdHistory = p_lgl(default = TRUE),
         getImp = p_uty(),
-        keep = p_fct(levels = c("confirmed", "tentative"), default = "confirmed"),
-        num.threads = p_int(lower = 1, default = 1)
+        keep = p_fct(levels = c("confirmed", "tentative"), init = "confirmed"),
+        threads = p_int(lower = 0, init = 1)
       )
-
-      param_set$set_values(keep = "confirmed", num.threads = 1)
 
       super$initialize(
         id = "boruta",
