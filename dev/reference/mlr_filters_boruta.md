@@ -1,4 +1,4 @@
-# Burota Filter
+# Boruta Filter
 
 Filter using the Boruta algorithm for feature selection. If
 `keep = "tentative"`, confirmed and tentative features are returned.

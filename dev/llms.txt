@@ -74,7 +74,7 @@ head(as.data.table(filter$calculate(task)))
 | kruskal_test | Kruskal-Wallis Test | Classif | Integer, Numeric | stats |
 | mim | Mutual Information Maximization | Classif & Regr | Integer, Numeric, Factor, Ordered | [praznik](https://cran.r-project.org/package=praznik) |
 | mrmr | Minimum Redundancy Maximal Relevancy | Classif & Regr | Integer, Numeric, Factor, Ordered | [praznik](https://cran.r-project.org/package=praznik) |
-| njmim | Minimal Normalised Joint Mutual Information Maximization | Classif & Regr | Integer, Numeric, Factor, Ordered | [praznik](https://cran.r-project.org/package=praznik) |
+| njmim | Minimal Normalized Joint Mutual Information Maximization | Classif & Regr | Integer, Numeric, Factor, Ordered | [praznik](https://cran.r-project.org/package=praznik) |
 | performance | Predictive Performance | Universal | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |  |
 | permutation | Permutation Score | Universal | Logical, Integer, Numeric, Character, Factor, Ordered, POSIXct |  |
 | relief | RELIEF | Classif & Regr | Integer, Numeric, Factor, Ordered | [FSelectorRcpp](https://cran.r-project.org/package=FSelectorRcpp) |
@@ -163,10 +163,10 @@ rr = resample(task, learner, rsmp("holdout"))
   : AUC Filter
 - [`mlr_filters_boruta`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_boruta.md)
   [`FilterBoruta`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_boruta.md)
-  : Burota Filter
+  : Boruta Filter
 - [`mlr_filters_carscore`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_carscore.md)
   [`FilterCarScore`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_carscore.md)
-  : Correlation-Adjusted Marignal Correlation Score Filter
+  : Correlation-Adjusted Marginal Correlation Score Filter
 - [`mlr_filters_carsurvscore`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_carsurvscore.md)
   [`FilterCarSurvScore`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_carsurvscore.md)
   : Correlation-Adjusted Survival Score Filter
@@ -205,7 +205,7 @@ rr = resample(task, learner, rsmp("holdout"))
   : Minimum Redundancy Maximal Relevancy Filter
 - [`mlr_filters_njmim`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_njmim.md)
   [`FilterNJMIM`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_njmim.md)
-  : Minimal Normalised Joint Mutual Information Maximization Filter
+  : Minimal Normalized Joint Mutual Information Maximization Filter
 - [`mlr_filters_performance`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_performance.md)
   [`FilterPerformance`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_performance.md)
   : Predictive Performance Filter

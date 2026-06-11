@@ -1,6 +1,6 @@
-# Minimal Normalised Joint Mutual Information Maximization Filter
+# Minimal Normalized Joint Mutual Information Maximization Filter
 
-Minimal normalised joint mutual information maximization filter calling
+Minimal normalized joint mutual information maximization filter calling
 [`praznik::NJMIM()`](https://rdrr.io/pkg/praznik/man/NJMIM.html) from
 package [praznik](https://CRAN.R-project.org/package=praznik).
 

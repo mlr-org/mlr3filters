@@ -1,4 +1,4 @@
-# Correlation-Adjusted Marignal Correlation Score Filter
+# Correlation-Adjusted Marginal Correlation Score Filter
 
 Calculates the Correlation-Adjusted (marginal) coRrelation scores (short
 CAR scores) implemented in

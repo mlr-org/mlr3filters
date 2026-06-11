@@ -10,10 +10,10 @@
   : AUC Filter
 - [`mlr_filters_boruta`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_boruta.md)
   [`FilterBoruta`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_boruta.md)
-  : Burota Filter
+  : Boruta Filter
 - [`mlr_filters_carscore`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_carscore.md)
   [`FilterCarScore`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_carscore.md)
-  : Correlation-Adjusted Marignal Correlation Score Filter
+  : Correlation-Adjusted Marginal Correlation Score Filter
 - [`mlr_filters_carsurvscore`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_carsurvscore.md)
   [`FilterCarSurvScore`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_carsurvscore.md)
   : Correlation-Adjusted Survival Score Filter
@@ -52,7 +52,7 @@
   : Minimum Redundancy Maximal Relevancy Filter
 - [`mlr_filters_njmim`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_njmim.md)
   [`FilterNJMIM`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_njmim.md)
-  : Minimal Normalised Joint Mutual Information Maximization Filter
+  : Minimal Normalized Joint Mutual Information Maximization Filter
 - [`mlr_filters_performance`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_performance.md)
   [`FilterPerformance`](https://mlr3filters.mlr-org.com/dev/reference/mlr_filters_performance.md)
   : Predictive Performance Filter
