@@ -1,4 +1,4 @@
-#' @title Correlation-Adjusted Marignal Correlation Score Filter
+#' @title Correlation-Adjusted Marginal Correlation Score Filter
 #'
 #' @name mlr_filters_carscore
 #'

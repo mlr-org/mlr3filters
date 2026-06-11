@@ -3,7 +3,7 @@
 \name{mlr_filters_boruta}
 \alias{mlr_filters_boruta}
 \alias{FilterBoruta}
-\title{Burota Filter}
+\title{Boruta Filter}
 \description{
 Filter using the Boruta algorithm for feature selection.
 If \code{keep = "tentative"}, confirmed and tentative features are returned.
