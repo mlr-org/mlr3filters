@@ -49,27 +49,27 @@ Other Filter:
 
 ## Super class
 
-[`mlr3filters::Filter`](https://mlr3filters.mlr-org.com/dev/reference/Filter.md)
--\> `FilterCarSurvScore`
+[`Filter`](https://mlr3filters.mlr-org.com/dev/reference/Filter.md) -\>
+`FilterCarSurvScore`
 
 ## Methods
 
 ### Public methods
 
-- [`FilterCarSurvScore$new()`](#method-FilterCarSurvScore-new)
+- [`FilterCarSurvScore$new()`](#method-FilterCarSurvScore-initialize)
 
 - [`FilterCarSurvScore$clone()`](#method-FilterCarSurvScore-clone)
 
 Inherited methods
 
-- [`mlr3filters::Filter$calculate()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-calculate)
-- [`mlr3filters::Filter$format()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-format)
-- [`mlr3filters::Filter$help()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-help)
-- [`mlr3filters::Filter$print()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-print)
+- [`Filter$calculate()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-calculate)
+- [`Filter$format()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-format)
+- [`Filter$help()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-help)
+- [`Filter$print()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-print)
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `FilterCarSurvScore$new()`
 
 Create a FilterCarSurvScore object.
 
@@ -79,7 +79,7 @@ Create a FilterCarSurvScore object.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `FilterCarSurvScore$clone()`
 
 The objects of this class are cloneable with this method.
 

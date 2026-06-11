@@ -72,27 +72,27 @@ Other Filter:
 
 ## Super class
 
-[`mlr3filters::Filter`](https://mlr3filters.mlr-org.com/dev/reference/Filter.md)
--\> `FilterMIM`
+[`Filter`](https://mlr3filters.mlr-org.com/dev/reference/Filter.md) -\>
+`FilterMIM`
 
 ## Methods
 
 ### Public methods
 
-- [`FilterMIM$new()`](#method-FilterMIM-new)
+- [`FilterMIM$new()`](#method-FilterMIM-initialize)
 
 - [`FilterMIM$clone()`](#method-FilterMIM-clone)
 
 Inherited methods
 
-- [`mlr3filters::Filter$calculate()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-calculate)
-- [`mlr3filters::Filter$format()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-format)
-- [`mlr3filters::Filter$help()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-help)
-- [`mlr3filters::Filter$print()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-print)
+- [`Filter$calculate()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-calculate)
+- [`Filter$format()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-format)
+- [`Filter$help()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-help)
+- [`Filter$print()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-print)
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `FilterMIM$new()`
 
 Create a FilterMIM object.
 
@@ -102,7 +102,7 @@ Create a FilterMIM object.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `FilterMIM$clone()`
 
 The objects of this class are cloneable with this method.
 

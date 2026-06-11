@@ -66,27 +66,27 @@ Other Filter:
 
 ## Super class
 
-[`mlr3filters::Filter`](https://mlr3filters.mlr-org.com/dev/reference/Filter.md)
--\> `FilterKruskalTest`
+[`Filter`](https://mlr3filters.mlr-org.com/dev/reference/Filter.md) -\>
+`FilterKruskalTest`
 
 ## Methods
 
 ### Public methods
 
-- [`FilterKruskalTest$new()`](#method-FilterKruskalTest-new)
+- [`FilterKruskalTest$new()`](#method-FilterKruskalTest-initialize)
 
 - [`FilterKruskalTest$clone()`](#method-FilterKruskalTest-clone)
 
 Inherited methods
 
-- [`mlr3filters::Filter$calculate()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-calculate)
-- [`mlr3filters::Filter$format()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-format)
-- [`mlr3filters::Filter$help()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-help)
-- [`mlr3filters::Filter$print()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-print)
+- [`Filter$calculate()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-calculate)
+- [`Filter$format()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-format)
+- [`Filter$help()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-help)
+- [`Filter$print()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-print)
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `FilterKruskalTest$new()`
 
 Create a FilterKruskalTest object.
 
@@ -96,7 +96,7 @@ Create a FilterKruskalTest object.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `FilterKruskalTest$clone()`
 
 The objects of this class are cloneable with this method.
 

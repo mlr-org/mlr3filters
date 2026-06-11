@@ -126,7 +126,7 @@ Other Filter:
 
 ### Public methods
 
-- [`Filter$new()`](#method-Filter-new)
+- [`Filter$new()`](#method-Filter-initialize)
 
 - [`Filter$format()`](#method-Filter-format)
 
@@ -140,7 +140,7 @@ Other Filter:
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `Filter$new()`
 
 Create a Filter object.
 
@@ -210,7 +210,7 @@ Create a Filter object.
 
 ------------------------------------------------------------------------
 
-### Method [`format()`](https://rdrr.io/r/base/format.html)
+### `Filter$format()`
 
 Format helper for Filter class
 
@@ -226,7 +226,7 @@ Format helper for Filter class
 
 ------------------------------------------------------------------------
 
-### Method [`print()`](https://rdrr.io/r/base/print.html)
+### `Filter$print()`
 
 Printer for Filter class
 
@@ -236,7 +236,7 @@ Printer for Filter class
 
 ------------------------------------------------------------------------
 
-### Method [`help()`](https://rdrr.io/r/utils/help.html)
+### `Filter$help()`
 
 Opens the corresponding help page referenced by field `$man`.
 
@@ -246,7 +246,7 @@ Opens the corresponding help page referenced by field `$man`.
 
 ------------------------------------------------------------------------
 
-### Method `calculate()`
+### `Filter$calculate()`
 
 Calculates the filter score values for the provided
 [mlr3::Task](https://mlr3.mlr-org.com/reference/Task.html) and stores
@@ -280,7 +280,7 @@ the task has no rows, each feature gets the score `NA`.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `Filter$clone()`
 
 The objects of this class are cloneable with this method.
 

@@ -63,27 +63,27 @@ Other Filter:
 
 ## Super class
 
-[`mlr3filters::Filter`](https://mlr3filters.mlr-org.com/dev/reference/Filter.md)
--\> `FilterCorrelation`
+[`Filter`](https://mlr3filters.mlr-org.com/dev/reference/Filter.md) -\>
+`FilterCorrelation`
 
 ## Methods
 
 ### Public methods
 
-- [`FilterCorrelation$new()`](#method-FilterCorrelation-new)
+- [`FilterCorrelation$new()`](#method-FilterCorrelation-initialize)
 
 - [`FilterCorrelation$clone()`](#method-FilterCorrelation-clone)
 
 Inherited methods
 
-- [`mlr3filters::Filter$calculate()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-calculate)
-- [`mlr3filters::Filter$format()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-format)
-- [`mlr3filters::Filter$help()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-help)
-- [`mlr3filters::Filter$print()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-print)
+- [`Filter$calculate()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-calculate)
+- [`Filter$format()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-format)
+- [`Filter$help()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-help)
+- [`Filter$print()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-print)
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `FilterCorrelation$new()`
 
 Create a FilterCorrelation object.
 
@@ -93,7 +93,7 @@ Create a FilterCorrelation object.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `FilterCorrelation$clone()`
 
 The objects of this class are cloneable with this method.
 

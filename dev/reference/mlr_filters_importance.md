@@ -44,8 +44,8 @@ Other Filter:
 
 ## Super classes
 
-[`mlr3filters::Filter`](https://mlr3filters.mlr-org.com/dev/reference/Filter.md)
--\> `mlr3filters::FilterLearner` -\> `FilterImportance`
+[`Filter`](https://mlr3filters.mlr-org.com/dev/reference/Filter.md) -\>
+`FilterLearner` -\> `FilterImportance`
 
 ## Public fields
 
@@ -58,20 +58,20 @@ Other Filter:
 
 ### Public methods
 
-- [`FilterImportance$new()`](#method-FilterImportance-new)
+- [`FilterImportance$new()`](#method-FilterImportance-initialize)
 
 - [`FilterImportance$clone()`](#method-FilterImportance-clone)
 
 Inherited methods
 
-- [`mlr3filters::Filter$calculate()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-calculate)
-- [`mlr3filters::Filter$format()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-format)
-- [`mlr3filters::Filter$help()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-help)
-- [`mlr3filters::Filter$print()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-print)
+- [`Filter$calculate()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-calculate)
+- [`Filter$format()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-format)
+- [`Filter$help()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-help)
+- [`Filter$print()`](https://mlr3filters.mlr-org.com/dev/reference/Filter.html#method-print)
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `FilterImportance$new()`
 
 Create a FilterImportance object.
 
@@ -88,7 +88,7 @@ Create a FilterImportance object.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `FilterImportance$clone()`
 
 The objects of this class are cloneable with this method.
 
