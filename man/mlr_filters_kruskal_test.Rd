@@ -50,11 +50,11 @@ Bommert A, Sun X, Bischl B, Rahnenführer J, Lang M (2020).
 }
 \seealso{
 \itemize{
-\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3pipelines:PipeOpFilter]{PipeOpFilter} for filter-based feature selection.
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 }
 
-Other Filter: 
+Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters}},
 \code{\link{mlr_filters_anova}},
@@ -82,50 +82,52 @@ Other Filter:
 }
 \concept{Filter}
 \section{Super class}{
-\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{FilterKruskalTest}
+\code{\link[mlr3filters:Filter]{Filter}} -> \code{FilterKruskalTest}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-FilterKruskalTest-new}{\code{FilterKruskalTest$new()}}
-\item \href{#method-FilterKruskalTest-clone}{\code{FilterKruskalTest$clone()}}
+  \itemize{
+    \item \href{#method-FilterKruskalTest-initialize}{\code{FilterKruskalTest$new()}}
+    \item \href{#method-FilterKruskalTest-clone}{\code{FilterKruskalTest$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>mlr3filters::Filter$calculate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>mlr3filters::Filter$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>mlr3filters::Filter$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>mlr3filters::Filter$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>Filter$calculate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>Filter$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>Filter$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>Filter$print()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-FilterKruskalTest-new"></a>}}
-\if{latex}{\out{\hypertarget{method-FilterKruskalTest-new}{}}}
-\subsection{Method \code{new()}}{
-Create a FilterKruskalTest object.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterKruskalTest$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-FilterKruskalTest-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-FilterKruskalTest-initialize}{}}}
+\subsection{\code{FilterKruskalTest$new()}}{
+  Create a FilterKruskalTest object.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{FilterKruskalTest$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-FilterKruskalTest-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-FilterKruskalTest-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterKruskalTest$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{FilterKruskalTest$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{FilterKruskalTest$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

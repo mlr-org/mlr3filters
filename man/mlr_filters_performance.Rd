@@ -35,11 +35,11 @@ if (mlr3misc::require_namespaces(c("mlr3pipelines", "rpart"), quietly = TRUE)) {
 }
 \seealso{
 \itemize{
-\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3pipelines:PipeOpFilter]{PipeOpFilter} for filter-based feature selection.
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 }
 
-Other Filter: 
+Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters}},
 \code{\link{mlr_filters_anova}},
@@ -67,79 +67,79 @@ Other Filter:
 }
 \concept{Filter}
 \section{Super classes}{
-\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{mlr3filters::FilterLearner} -> \code{FilterPerformance}
+\code{\link[mlr3filters:Filter]{Filter}} -> \code{FilterLearner} -> \code{FilterPerformance}
 }
 \section{Public fields}{
-\if{html}{\out{<div class="r6-fields">}}
-\describe{
-\item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr}
+  \if{html}{\out{<div class="r6-fields">}}
+  \describe{
+    \item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr}
 
-\item{\code{resampling}}{(\link[mlr3:Resampling]{mlr3::Resampling})\cr}
+    \item{\code{resampling}}{(\link[mlr3:Resampling]{mlr3::Resampling})\cr}
 
-\item{\code{measure}}{(\link[mlr3:Measure]{mlr3::Measure})\cr}
-}
-\if{html}{\out{</div>}}
+    \item{\code{measure}}{(\link[mlr3:Measure]{mlr3::Measure})\cr}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-FilterPerformance-new}{\code{FilterPerformance$new()}}
-\item \href{#method-FilterPerformance-clone}{\code{FilterPerformance$clone()}}
+  \itemize{
+    \item \href{#method-FilterPerformance-initialize}{\code{FilterPerformance$new()}}
+    \item \href{#method-FilterPerformance-clone}{\code{FilterPerformance$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>mlr3filters::Filter$calculate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>mlr3filters::Filter$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>mlr3filters::Filter$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>mlr3filters::Filter$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>Filter$calculate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>Filter$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>Filter$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>Filter$print()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-FilterPerformance-new"></a>}}
-\if{latex}{\out{\hypertarget{method-FilterPerformance-new}{}}}
-\subsection{Method \code{new()}}{
-Create a FilterDISR object.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterPerformance$new(
+\if{html}{\out{<a id="method-FilterPerformance-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-FilterPerformance-initialize}{}}}
+\subsection{\code{FilterPerformance$new()}}{
+  Create a FilterDISR object.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{FilterPerformance$new(
   learner = mlr3::lrn("classif.featureless"),
   resampling = mlr3::rsmp("holdout"),
   measure = NULL
-)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr
+)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr
 \link[mlr3:Learner]{mlr3::Learner} to use for model fitting.}
-
-\item{\code{resampling}}{(\link[mlr3:Resampling]{mlr3::Resampling})\cr
+      \item{\code{resampling}}{(\link[mlr3:Resampling]{mlr3::Resampling})\cr
 \link[mlr3:Resampling]{mlr3::Resampling} to be used within resampling.}
-
-\item{\code{measure}}{(\link[mlr3:Measure]{mlr3::Measure})\cr
+      \item{\code{measure}}{(\link[mlr3:Measure]{mlr3::Measure})\cr
 \link[mlr3:Measure]{mlr3::Measure} to be used for evaluating the performance.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
-\if{html}{\out{</div>}}
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-FilterPerformance-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-FilterPerformance-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterPerformance$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{FilterPerformance$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{FilterPerformance$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

@@ -19,7 +19,7 @@ significance of the feature's impact on survival. The filter value is
 to ensure numerical stability for very small \eqn{p}-values. Also higher
 values denote more important features. The filter works only for numeric
 features so please ensure that factor variables are properly encoded, e.g.
-using \link[mlr3pipelines:mlr_pipeops_encode]{PipeOpEncode}.
+using \link[mlr3pipelines:PipeOpEncode]{PipeOpEncode}.
 }
 \examples{
 
@@ -29,11 +29,11 @@ filter
 }
 \seealso{
 \itemize{
-\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3pipelines:PipeOpFilter]{PipeOpFilter} for filter-based feature selection.
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 }
 
-Other Filter: 
+Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters}},
 \code{\link{mlr_filters_anova}},
@@ -61,50 +61,52 @@ Other Filter:
 }
 \concept{Filter}
 \section{Super class}{
-\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{FilterUnivariateCox}
+\code{\link[mlr3filters:Filter]{Filter}} -> \code{FilterUnivariateCox}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-FilterUnivariateCox-new}{\code{FilterUnivariateCox$new()}}
-\item \href{#method-FilterUnivariateCox-clone}{\code{FilterUnivariateCox$clone()}}
+  \itemize{
+    \item \href{#method-FilterUnivariateCox-initialize}{\code{FilterUnivariateCox$new()}}
+    \item \href{#method-FilterUnivariateCox-clone}{\code{FilterUnivariateCox$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>mlr3filters::Filter$calculate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>mlr3filters::Filter$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>mlr3filters::Filter$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>mlr3filters::Filter$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>Filter$calculate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>Filter$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>Filter$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>Filter$print()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-FilterUnivariateCox-new"></a>}}
-\if{latex}{\out{\hypertarget{method-FilterUnivariateCox-new}{}}}
-\subsection{Method \code{new()}}{
-Create a FilterUnivariateCox object.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterUnivariateCox$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-FilterUnivariateCox-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-FilterUnivariateCox-initialize}{}}}
+\subsection{\code{FilterUnivariateCox$new()}}{
+  Create a FilterUnivariateCox object.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{FilterUnivariateCox$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-FilterUnivariateCox-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-FilterUnivariateCox-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterUnivariateCox$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{FilterUnivariateCox$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{FilterUnivariateCox$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

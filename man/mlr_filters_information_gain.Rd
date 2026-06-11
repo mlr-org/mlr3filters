@@ -47,11 +47,11 @@ if (mlr3misc::require_namespaces(c("mlr3pipelines", "FSelectorRcpp", "rpart"), q
 }
 \seealso{
 \itemize{
-\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3pipelines:PipeOpFilter]{PipeOpFilter} for filter-based feature selection.
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 }
 
-Other Filter: 
+Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters}},
 \code{\link{mlr_filters_anova}},
@@ -79,50 +79,52 @@ Other Filter:
 }
 \concept{Filter}
 \section{Super class}{
-\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{FilterInformationGain}
+\code{\link[mlr3filters:Filter]{Filter}} -> \code{FilterInformationGain}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-FilterInformationGain-new}{\code{FilterInformationGain$new()}}
-\item \href{#method-FilterInformationGain-clone}{\code{FilterInformationGain$clone()}}
+  \itemize{
+    \item \href{#method-FilterInformationGain-initialize}{\code{FilterInformationGain$new()}}
+    \item \href{#method-FilterInformationGain-clone}{\code{FilterInformationGain$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>mlr3filters::Filter$calculate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>mlr3filters::Filter$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>mlr3filters::Filter$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>mlr3filters::Filter$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>Filter$calculate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>Filter$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>Filter$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>Filter$print()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-FilterInformationGain-new"></a>}}
-\if{latex}{\out{\hypertarget{method-FilterInformationGain-new}{}}}
-\subsection{Method \code{new()}}{
-Create a FilterInformationGain object.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterInformationGain$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-FilterInformationGain-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-FilterInformationGain-initialize}{}}}
+\subsection{\code{FilterInformationGain$new()}}{
+  Create a FilterInformationGain object.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{FilterInformationGain$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-FilterInformationGain-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-FilterInformationGain-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterInformationGain$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{FilterInformationGain$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{FilterInformationGain$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }
