@@ -1,4 +1,4 @@
-#' @title Burota Filter
+#' @title Boruta Filter
 #'
 #' @name mlr_filters_boruta
 #'
@@ -58,7 +58,7 @@ FilterBoruta = R6Class(
         param_set = param_set,
         packages = "Boruta",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
-        label = "Burota",
+        label = "Boruta",
         man = "mlr3filters::mlr_filters_boruta"
       )
     }

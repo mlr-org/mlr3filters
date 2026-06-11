@@ -3,7 +3,7 @@
 \name{mlr_filters_carscore}
 \alias{mlr_filters_carscore}
 \alias{FilterCarScore}
-\title{Correlation-Adjusted Marignal Correlation Score Filter}
+\title{Correlation-Adjusted Marginal Correlation Score Filter}
 \description{
 Calculates the Correlation-Adjusted (marginal) coRrelation scores
 (short CAR scores) implemented in \code{\link[care:carscore]{care::carscore()}} in package
