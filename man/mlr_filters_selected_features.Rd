@@ -43,11 +43,11 @@ if (mlr3misc::require_namespaces(c("mlr3pipelines", "mlr3learners", "rpart"), qu
 }
 \seealso{
 \itemize{
-\item \link[mlr3pipelines:mlr_pipeops_filter]{PipeOpFilter} for filter-based feature selection.
+\item \link[mlr3pipelines:PipeOpFilter]{PipeOpFilter} for filter-based feature selection.
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[=Filter]{Filters}: \link{mlr_filters}
 }
 
-Other Filter: 
+Other Filter:
 \code{\link{Filter}},
 \code{\link{mlr_filters}},
 \code{\link{mlr_filters_anova}},
@@ -75,66 +75,68 @@ Other Filter:
 }
 \concept{Filter}
 \section{Super classes}{
-\code{\link[mlr3filters:Filter]{mlr3filters::Filter}} -> \code{mlr3filters::FilterLearner} -> \code{FilterSelectedFeatures}
+\code{\link[mlr3filters:Filter]{Filter}} -> \code{FilterLearner} -> \code{FilterSelectedFeatures}
 }
 \section{Public fields}{
-\if{html}{\out{<div class="r6-fields">}}
-\describe{
-\item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr
+  \if{html}{\out{<div class="r6-fields">}}
+  \describe{
+    \item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr
 Learner to extract the importance values from.}
-}
-\if{html}{\out{</div>}}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-FilterSelectedFeatures-new}{\code{FilterSelectedFeatures$new()}}
-\item \href{#method-FilterSelectedFeatures-clone}{\code{FilterSelectedFeatures$clone()}}
+  \itemize{
+    \item \href{#method-FilterSelectedFeatures-initialize}{\code{FilterSelectedFeatures$new()}}
+    \item \href{#method-FilterSelectedFeatures-clone}{\code{FilterSelectedFeatures$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>mlr3filters::Filter$calculate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>mlr3filters::Filter$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>mlr3filters::Filter$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>mlr3filters::Filter$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="calculate"><a href='../../mlr3filters/html/Filter.html#method-Filter-calculate'><code>Filter$calculate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="format"><a href='../../mlr3filters/html/Filter.html#method-Filter-format'><code>Filter$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="help"><a href='../../mlr3filters/html/Filter.html#method-Filter-help'><code>Filter$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3filters" data-topic="Filter" data-id="print"><a href='../../mlr3filters/html/Filter.html#method-Filter-print'><code>Filter$print()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-FilterSelectedFeatures-new"></a>}}
-\if{latex}{\out{\hypertarget{method-FilterSelectedFeatures-new}{}}}
-\subsection{Method \code{new()}}{
-Create a FilterImportance object.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterSelectedFeatures$new(learner = mlr3::lrn("classif.featureless"))}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-FilterSelectedFeatures-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-FilterSelectedFeatures-initialize}{}}}
+\subsection{\code{FilterSelectedFeatures$new()}}{
+  Create a FilterImportance object.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{FilterSelectedFeatures$new(learner = mlr3::lrn("classif.featureless"))}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr
+Learner to extract the selected features from.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{learner}}{(\link[mlr3:Learner]{mlr3::Learner})\cr
-Learner to extract the selected features from.}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-FilterSelectedFeatures-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-FilterSelectedFeatures-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FilterSelectedFeatures$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{FilterSelectedFeatures$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{FilterSelectedFeatures$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

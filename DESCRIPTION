@@ -53,7 +53,6 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.3.3
 Collate:
     'Filter.R'
     'mlr_filters.R'
@@ -86,3 +85,4 @@ Collate:
     'helper.R'
     'reexports.R'
     'zzz.R'
+Config/roxygen2/version: 8.0.0.9000
