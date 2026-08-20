@@ -38,9 +38,13 @@ import(mlr3misc)
 import(paradox)
 importFrom(R6,R6Class)
 importFrom(data.table,as.data.table)
-importFrom(stats,aov)
-importFrom(stats,kruskal.test)
-importFrom(stats,runif)
-importFrom(stats,var)
-importFrom(utils,bibentry)
-importFrom(utils,head)
+importFrom(stats,
+  aov,
+  kruskal.test,
+  runif,
+  var
+)
+importFrom(utils,
+  bibentry,
+  head
+)
