@@ -106,7 +106,119 @@ Each Filter has an associated help page, see <code>mlr_filters_[id]</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [19] "performance"       "permutation"       "relief"           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [22] "selected_features" "univariate_cox"    "variance"         </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/data.table/man/as.data.table.html" class="external-link">as.data.table</a></span><span class="op">(</span><span class="va">mlr_filters</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in assert_list(filters, types = "Filter", min.len = 1):</span> argument "filters" is missing, with no default</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Key: &lt;key&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   key                                                    label</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                &lt;char&gt;                                                   &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1:             anova                                             ANOVA F-Test</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2:               auc                           Area Under the ROC Curve Score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3:            boruta                                                   Boruta</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4:          carscore                   Correlation-Adjusted coRrelation Score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5:      carsurvscore          Correlation-Adjusted coRrelation Survival Score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6:              cmim      Minimal Conditional Mutual Information Maximization</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7:       correlation                                              Correlation</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8:              disr                       Double Input Symmetrical Relevance</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9:          ensemble                                                     meta</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10:  find_correlation                                  Correlation-based Score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11:        importance                                         Importance Score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12:  information_gain                                         Information Gain</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13:               jmi                                 Joint Mutual Information</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14:              jmim            Minimal Joint Mutual Information Maximization</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15:      kruskal_test                                      Kruskal-Wallis Test</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16:               mim                          Mutual Information Maximization</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17:              mrmr                     Minimum Redundancy Maximal Relevancy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18:             njmim Minimal Normalized Joint Mutual Information Maximization</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19:       performance                                   Predictive Performance</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20:       permutation                                        Permutation Score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21:            relief                                                   RELIEF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22: selected_features                               Embedded Feature Selection</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23:    univariate_cox                            Univariate Cox Survival Score</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24:          variance                                                 Variance</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   key                                                    label</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                &lt;char&gt;                                                   &lt;char&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    task_types task_properties</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                        &lt;list&gt;          &lt;list&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1:                   classif                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2:                   classif        twoclass</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3:              regr,classif                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4:                      regr                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5:                      surv                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6:              classif,regr                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7:                      regr                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8:              classif,regr                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9: classif,regr,unsupervised                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10:                        NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11:                   classif                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12:              classif,regr                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13:              classif,regr                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14:              classif,regr                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15:                   classif                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16:              classif,regr                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17:              classif,regr                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18:              classif,regr                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19:                   classif                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20:                   classif                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21:              classif,regr                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22:                   classif                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23:                      surv                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24:                        NA                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    task_types task_properties</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                        &lt;list&gt;          &lt;list&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                              params</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                              &lt;list&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1:                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2:                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3:                          pValue,mcAdj,maxRuns,doTrace,holdHistory,getImp,...[8]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4:                                                         lambda,diagonal,verbose</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5:                                                              maxIPCweight,denom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6:                                                                         threads</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7:                                                                      use,method</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8:                                                                         threads</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9: weights,rank_transform,filter_score_transform,result_score_transform,aggregator</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10:                                                                      use,method</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11:                                                                          method</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12:                                                 type,equal,discIntegers,threads</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13:                                                                         threads</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14:                                                                         threads</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15:                                                                       na.action</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16:                                                                         threads</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17:                                                                         threads</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18:                                                                         threads</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19:                                                                          method</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20:                                                                 standardize,nmc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21:                                                      neighboursCount,sampleSize</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22:                                                                          method</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23:                                                                                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24:                                                                           na.rm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                              params</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                              &lt;list&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                               feature_types          packages</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                      &lt;list&gt;            &lt;list&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1:                                         integer,numeric             stats</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2:                                         integer,numeric      mlr3measures</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3:                  logical,integer,numeric,factor,ordered            Boruta</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4:                                 logical,integer,numeric              care</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5:                                         integer,numeric carSurv,mlr3proba</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6:                          integer,numeric,factor,ordered           praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7:                                         integer,numeric             stats</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8:                          integer,numeric,factor,ordered           praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9: logical,integer,numeric,character,factor,ordered,...[8]     mlr3pipelines</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10:                                         integer,numeric             stats</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11: logical,integer,numeric,character,factor,ordered,...[8]              mlr3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12:                          integer,numeric,factor,ordered     FSelectorRcpp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13:                          integer,numeric,factor,ordered           praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14:                          integer,numeric,factor,ordered           praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15:                                         integer,numeric             stats</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16:                          integer,numeric,factor,ordered           praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17:                          integer,numeric,factor,ordered           praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18:                          integer,numeric,factor,ordered           praznik</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19: logical,integer,numeric,character,factor,ordered,...[8] mlr3,mlr3measures</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20: logical,integer,numeric,character,factor,ordered,...[8] mlr3,mlr3measures</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21:                          integer,numeric,factor,ordered     FSelectorRcpp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22: logical,integer,numeric,character,factor,ordered,...[8]              mlr3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23:                                 integer,numeric,logical          survival</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24:                                         integer,numeric             stats</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                               feature_types          packages</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                      &lt;list&gt;            &lt;list&gt;</span>
 <span class="r-in"><span><span class="va">mlr_filters</span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="st">"mim"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;FilterMIM&gt;</span><span style="font-weight: bold;"> mim: Mutual Information Maximization</span> <span style="color: #00BBBB;">────────────────────────────</span></span>
