@@ -28,21 +28,9 @@ Filter = R6Class(
     #'   Can be used in tables, plot and text output instead of the ID.
     label = NA_character_,
 
-    #' @field task_types (`character()`)\cr
-    #'   Set of supported task types, e.g. `"classif"` or `"regr"`.
-    #'   Can be set to the scalar value `NA` to allow any task type.
-    #'
-    #'   For a complete list of possible task types (depending on the loaded packages),
-    #'   see [`mlr_reflections$task_types$type`][mlr3::mlr_reflections].
-    task_types = NULL,
-
     #' @field task_properties (`character()`)\cr
     #'   [mlr3::Task]task properties.
     task_properties = NULL,
-
-    #' @field feature_types (`character()`)\cr
-    #'   Feature types of the filter.
-    feature_types = NULL,
 
     #' @field packages ([character()])\cr
     #'   Packages which this filter is relying on.
@@ -104,10 +92,10 @@ Filter = R6Class(
         # the filter without loading additional packages like mlr3proba
         assert_character(task_types, any.missing = FALSE)
       }
-      self$task_types = task_types
+      private$.task_types = task_types
       self$task_properties = assert_subset(task_properties, unlist(mlr_reflections$task_properties, use.names = FALSE))
       private$.param_set = assert_param_set(param_set)
-      self$feature_types = assert_subset(feature_types, mlr_reflections$task_feature_types)
+      private$.feature_types = assert_subset(feature_types, mlr_reflections$task_feature_types)
       self$packages = assert_character(packages, any.missing = FALSE, min.chars = 1L)
       self$scores = set_names(numeric(), character())
       self$man = assert_string(man, na.ok = TRUE)
@@ -206,6 +194,31 @@ Filter = R6Class(
   ),
 
   active = list(
+    #' @field task_types (`character()`)\cr
+    #'   Set of supported task types, e.g. `"classif"` or `"regr"`.
+    #'   Can be set to the scalar value `NA` to allow any task type.
+    #'
+    #'   For a complete list of possible task types (depending on the loaded packages),
+    #'   see [`mlr_reflections$task_types$type`][mlr3::mlr_reflections].
+    task_types = function(rhs) {
+      if (!missing(rhs)) {
+        if (!test_scalar_na(rhs)) {
+          assert_character(rhs, any.missing = FALSE)
+        }
+        private$.task_types = rhs
+      }
+      private$.task_types
+    },
+
+    #' @field feature_types (`character()`)\cr
+    #'   Feature types of the filter.
+    feature_types = function(rhs) {
+      if (!missing(rhs)) {
+        private$.feature_types = assert_subset(rhs, mlr_reflections$task_feature_types)
+      }
+      private$.feature_types
+    },
+
     #' @field param_set ([paradox::ParamSet])\cr
     #'   Set of hyperparameters.
     param_set = function(rhs) {
@@ -242,6 +255,8 @@ Filter = R6Class(
     }
   ),
   private = list(
+    .task_types = NULL,
+    .feature_types = NULL,
     .param_set = NULL,
     .extra_hash = character()
   )
