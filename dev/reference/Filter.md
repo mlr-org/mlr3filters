@@ -55,26 +55,11 @@ Other Filter:
   Label for this object. Can be used in tables, plot and text output
   instead of the ID.
 
-- `task_types`:
-
-  ([`character()`](https://rdrr.io/r/base/character.html))  
-  Set of supported task types, e.g. `"classif"` or `"regr"`. Can be set
-  to the scalar value `NA` to allow any task type.
-
-  For a complete list of possible task types (depending on the loaded
-  packages), see
-  [`mlr_reflections$task_types$type`](https://mlr3.mlr-org.com/reference/mlr_reflections.html).
-
 - `task_properties`:
 
   ([`character()`](https://rdrr.io/r/base/character.html))  
   [mlr3::Task](https://mlr3.mlr-org.com/reference/Task.html)task
   properties.
-
-- `feature_types`:
-
-  ([`character()`](https://rdrr.io/r/base/character.html))  
-  Feature types of the filter.
 
 - `packages`:
 
@@ -96,6 +81,21 @@ Other Filter:
   order.
 
 ## Active bindings
+
+- `task_types`:
+
+  ([`character()`](https://rdrr.io/r/base/character.html))  
+  Set of supported task types, e.g. `"classif"` or `"regr"`. Can be set
+  to the scalar value `NA` to allow any task type.
+
+  For a complete list of possible task types (depending on the loaded
+  packages), see
+  [`mlr_reflections$task_types$type`](https://mlr3.mlr-org.com/reference/mlr_reflections.html).
+
+- `feature_types`:
+
+  ([`character()`](https://rdrr.io/r/base/character.html))  
+  Feature types of the filter.
 
 - `param_set`:
 

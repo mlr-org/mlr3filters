@@ -2,6 +2,10 @@
 
 ## mlr3filters (development version)
 
+- refactor: `Filter` fields `task_types` and `feature_types` are now
+  writable active bindings that validate assignments and can be
+  overridden by subclasses
+  ([\#194](https://github.com/mlr-org/mlr3filters/issues/194)).
 - fix: `FilterBoruta` parameter `num.threads` renamed to `threads` to
   support Boruta \>= 10.0.0 which uses fru as the default importance
   source.
