@@ -55,18 +55,8 @@ Used in tables, plot and text output.}
 Label for this object.
 Can be used in tables, plot and text output instead of the ID.}
 
-    \item{\code{task_types}}{(\code{character()})\cr
-Set of supported task types, e.g. \code{"classif"} or \code{"regr"}.
-Can be set to the scalar value \code{NA} to allow any task type.
-
-For a complete list of possible task types (depending on the loaded packages),
-see \code{\link[mlr3:mlr_reflections]{mlr_reflections$task_types$type}}.}
-
     \item{\code{task_properties}}{(\code{character()})\cr
 \link[mlr3:Task]{mlr3::Task}task properties.}
-
-    \item{\code{feature_types}}{(\code{character()})\cr
-Feature types of the filter.}
 
     \item{\code{packages}}{(\code{\link[=character]{character()}})\cr
 Packages which this filter is relying on.}
@@ -86,6 +76,16 @@ non-deterministic order.}
 \section{Active bindings}{
   \if{html}{\out{<div class="r6-active-bindings">}}
   \describe{
+    \item{\code{task_types}}{(\code{character()})\cr
+Set of supported task types, e.g. \code{"classif"} or \code{"regr"}.
+Can be set to the scalar value \code{NA} to allow any task type.
+
+For a complete list of possible task types (depending on the loaded packages),
+see \code{\link[mlr3:mlr_reflections]{mlr_reflections$task_types$type}}.}
+
+    \item{\code{feature_types}}{(\code{character()})\cr
+Feature types of the filter.}
+
     \item{\code{param_set}}{(\link[paradox:ParamSet]{paradox::ParamSet})\cr
 Set of hyperparameters.}
 

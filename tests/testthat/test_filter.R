@@ -1,3 +1,22 @@
+test_that("supported types can be read and updated", {
+  filter = Filter$new("test", task_types = "classif", feature_types = "numeric")
+  expect_identical(filter$task_types, "classif")
+  expect_identical(filter$feature_types, "numeric")
+
+  filter$task_types = "custom"
+  filter$feature_types = c("numeric", "integer")
+  expect_identical(filter$task_types, "custom")
+  expect_identical(filter$feature_types, c("numeric", "integer"))
+
+  filter$task_types = NA_character_
+  expect_identical(filter$task_types, NA_character_)
+  expect_error({ filter$task_types = c("classif", NA_character_) }, "missing")
+  expect_error({ filter$task_types = 1 }, "character")
+  expect_error({ filter$feature_types = "unsupported" }, "subset")
+  expect_identical(filter$task_types, NA_character_)
+  expect_identical(filter$feature_types, c("numeric", "integer"))
+})
+
 test_that("Filtering an empty Task (#39)", {
   task = mlr_tasks$get("mtcars")
   f = mlr_filters$get("variance")
